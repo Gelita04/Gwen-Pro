@@ -1,9 +1,10 @@
+using System;
 namespace GameLibrary.Objects
 {
-    public enum TypeUnit
+    public enum UnitMember
     {
         hero, //cartas de unidad de heroes
         archers, //cartas de unidad de arqueros
-        magicians, //cartas de unidad de magos
+        siege, //cartas de unidad de magos
     }
 }

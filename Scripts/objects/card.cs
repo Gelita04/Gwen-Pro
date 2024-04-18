@@ -1,5 +1,8 @@
+using System;
+
 namespace GameLibrary.Objects
 {
+
     public abstract class Card
     {
         public string Name;
@@ -15,9 +18,9 @@ namespace GameLibrary.Objects
         public int Attack { get; set; }
         public const int Max_Attack = 500;
         public const int Min_Attack = 0;
-        public type_unit Category { get; set; }
+        public UnitMember Category { get; set; }
 
-        public Unit(string name, int attack, type_unit category)
+        public Unit(string name, int attack, UnitMember category)
             : base(name)
         {
             Attack =
@@ -34,8 +37,7 @@ namespace GameLibrary.Objects
 
         public Leader(string name, string effect)
             : base(name)
-        {
-            Effect = effect;
+        { Effect = effect;
         }
     }
 
@@ -75,6 +77,9 @@ namespace GameLibrary.Objects
     public class Wildcard : Card // cartas señuelo
     {
         public Wildcard(string name)
-            : base(name) { }
+            : base(name)
+        {
+        }
     }
 }
+
