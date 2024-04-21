@@ -194,6 +194,94 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 16090221}
   m_CullTransparentMesh: 1
+--- !u!1 &89992310
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 89992311}
+  - component: {fileID: 89992313}
+  - component: {fileID: 89992312}
+  - component: {fileID: 89992314}
+  m_Layer: 5
+  m_Name: CementeryCats
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &89992311
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89992310}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 579828186}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 250.8, y: -51}
+  m_SizeDelta: {x: 38, y: 46}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &89992312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89992310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 6379686516033879303, guid: 98bf9fdb21f668343adfc29ce643252a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &89992313
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89992310}
+  m_CullTransparentMesh: 1
+--- !u!114 &89992314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89992310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2debe17552a69ef4094c040b8b24710b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &98268084
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,6 +685,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 363673577}
   m_CullTransparentMesh: 1
+--- !u!1 &554525059
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 554525060}
+  - component: {fileID: 554525062}
+  - component: {fileID: 554525061}
+  m_Layer: 5
+  m_Name: CementeryDogs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &554525060
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554525059}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 579828186}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 250.9, y: 52.1}
+  m_SizeDelta: {x: 37, y: 46}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &554525061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554525059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -5198912147559702987, guid: 4fcfd9da08e28944db2fe1c68de3ca2e, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &554525062
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554525059}
+  m_CullTransparentMesh: 1
 --- !u!1 &578219582
 GameObject:
   m_ObjectHideFlags: 0
@@ -800,6 +963,8 @@ RectTransform:
   - {fileID: 1570341879}
   - {fileID: 16090222}
   - {fileID: 1933767772}
+  - {fileID: 89992311}
+  - {fileID: 554525060}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1933,6 +2098,7 @@ MonoBehaviour:
   Effect: Bark to the sienge zone of your opponent and remove to a random card 90
     damage
   Category: 1
+  Type: Silver
 --- !u!222 &23758666571356429
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2313,6 +2479,7 @@ MonoBehaviour:
   Attack: 80
   Effect: 
   Category: 2
+  Type: 
 --- !u!224 &1066254652787000326
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2459,7 +2626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Patricio El Liciado
-  effect: 
+  effect: Increases the field by 15% damage.
 --- !u!114 &1600857153660564564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2582,6 +2749,7 @@ MonoBehaviour:
   Attack: 75
   Effect: 
   Category: 2
+  Type: 
 --- !u!1 &1906317012399855580
 GameObject:
   m_ObjectHideFlags: 0
@@ -2688,7 +2856,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: El hacedor de la paz
-  effect: 
+  effect: Remove the field card that is placed in the desired row.
 --- !u!114 &2169875829788845406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2776,6 +2944,7 @@ MonoBehaviour:
   Attack: 80
   Effect: 
   Category: 2
+  Type: 
 --- !u!224 &2279280884128876106
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2808,8 +2977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Catmmer
-  effect: Penalizes the 30% power of all cards with more than 400 damage. (Affectes
-    both player)
+  Effect: 
 --- !u!1 &2359941520786356554
 GameObject:
   m_ObjectHideFlags: 0
@@ -2872,7 +3040,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Doggipie
-  effect: 
+  effect: Remove the field card that is placed in the desired row.
 --- !u!224 &2486371706381661685
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2985,6 +3153,7 @@ MonoBehaviour:
   Effect: Throw fire to teh distance zone of your opponent, remove to a random card
     90 damage.
   Category: 1
+  Type: Silver
 --- !u!1 &2649113786458643236
 GameObject:
   m_ObjectHideFlags: 0
@@ -3039,6 +3208,7 @@ MonoBehaviour:
   Attack: 400
   Effect: 
   Category: 0
+  Type: 
 --- !u!224 &2875130029007392286
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3284,6 +3454,7 @@ MonoBehaviour:
   Attack: 250
   Effect: 
   Category: 1
+  Type: 
 --- !u!222 &3349560728710579446
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3308,6 +3479,7 @@ MonoBehaviour:
   Attack: 320
   Effect: 
   Category: 0
+  Type: 
 --- !u!1 &3436030048928304249
 GameObject:
   m_ObjectHideFlags: 0
@@ -3447,7 +3619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Catmmer
-  effect: 'Removes 90 damage (Affects both players '
+  Effect: 
 --- !u!224 &3856271472867467952
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3480,7 +3652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Enfermedog
-  effect: 
+  effect: Increases the field by 10% damage.
 --- !u!1 &3966309686312717329
 GameObject:
   m_ObjectHideFlags: 0
@@ -3592,7 +3764,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Kamikaze
-  effect: 
+  Effect: 
 --- !u!114 &4190681349247491141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3610,6 +3782,7 @@ MonoBehaviour:
   Effect: He accidentally shoots and the bullet falls  on one of the opponent's cards
     removing 200 damage.
   Category: 0
+  Type: Gold
 --- !u!1 &4211806038526005706
 GameObject:
   m_ObjectHideFlags: 0
@@ -3646,6 +3819,7 @@ MonoBehaviour:
   Effect: Affects the card with the greatest damage in  the melee zone removing 200
     damage.
   Category: 0
+  Type: Gold
 --- !u!1 &4328245864670185997
 GameObject:
   m_ObjectHideFlags: 0
@@ -3868,8 +4042,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Destruction
-  effect: If here is already a weather chart in the field, il will do the same but
-    10% more efficiently. (Affects both players)
+  Effect: 
 --- !u!1 &4935517333385656698
 GameObject:
   m_ObjectHideFlags: 0
@@ -3929,7 +4102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: DocDog
-  effect: 
+  effect: 'Increases the field by 20% damage. '
 --- !u!224 &5164208240335271080
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4226,6 +4399,7 @@ MonoBehaviour:
   Attack: 170
   Effect: 
   Category: 1
+  Type: 
 --- !u!224 &5916787738301162473
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4299,6 +4473,7 @@ MonoBehaviour:
   Attack: 220
   Effect: 
   Category: 0
+  Type: 
 --- !u!1 &6149166584784319001
 GameObject:
   m_ObjectHideFlags: 0
@@ -4421,6 +4596,7 @@ MonoBehaviour:
   Attack: 340
   Effect: 
   Category: 0
+  Type: 
 --- !u!114 &6221308318671875100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4437,6 +4613,7 @@ MonoBehaviour:
   Attack: 90
   Effect: 
   Category: 2
+  Type: 
 --- !u!224 &6277351156144889845
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4469,7 +4646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: DogAmen
-  effect: 
+  effect: It allows you to choose a card from the graveryard and put in your hand
 --- !u!1 &6375700622952958568
 GameObject:
   m_ObjectHideFlags: 0
@@ -4563,6 +4740,7 @@ MonoBehaviour:
   Effect: Throw fire to teh distance zone of your opponent, remove to a random card
     90 damage.
   Category: 1
+  Type: Silver
 --- !u!114 &6537778021182857514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4579,6 +4757,7 @@ MonoBehaviour:
   Attack: 300
   Effect: ...
   Category: 0
+  Type: 
 --- !u!224 &6653448285473492860
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4638,6 +4817,7 @@ MonoBehaviour:
   Attack: 250
   Effect: 
   Category: 0
+  Type: 
 --- !u!114 &6761045233437537955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4651,7 +4831,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Daniel el pacifista
-  effect: 
+  effect: Remove the field card that is placed in the desired row.
 --- !u!224 &6830104973037707358
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4812,6 +4992,7 @@ MonoBehaviour:
   Attack: 75
   Effect: 
   Category: 2
+  Type: 
 --- !u!114 &6950397329922085404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4866,6 +5047,7 @@ MonoBehaviour:
   Attack: 70
   Effect: 
   Category: 2
+  Type: 
 --- !u!114 &7089132856497253470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4944,7 +5126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Destruction
-  effect: 
+  Effect: 
 --- !u!114 &7244378140087086996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4961,6 +5143,7 @@ MonoBehaviour:
   Attack: 200
   Effect: 
   Category: 1
+  Type: 
 --- !u!114 &7244378140087086997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5160,6 +5343,7 @@ MonoBehaviour:
   Effect: Bark to the sienge zone of your opponent and remove to a random card 90
     damage
   Category: 1
+  Type: Silver
 --- !u!114 &7625712033856777422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5292,8 +5476,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5008f7f8dd4ff447b70a1054e478c26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
-  Effect: 
+  Name: Jocker
+  Effect: Replaced this card with one of your choice placed on the field.
 --- !u!114 &7849612367410550737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5344,8 +5528,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5008f7f8dd4ff447b70a1054e478c26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
-  Effect: 
+  Name: Jocker
+  Effect: Replaced this card with one of your choice placed on the field.
 --- !u!114 &7876926807248740187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5400,6 +5584,7 @@ MonoBehaviour:
   Attack: 180
   Effect: 
   Category: 1
+  Type: 
 --- !u!114 &7880735301198123155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5454,6 +5639,7 @@ MonoBehaviour:
   Attack: 90
   Effect: 
   Category: 2
+  Type: 
 --- !u!114 &8005665272297812359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5562,7 +5748,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Thor
-  effect: 
+  Effect: 
 --- !u!1 &8067081164784990306
 GameObject:
   m_ObjectHideFlags: 0
@@ -6178,8 +6364,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5008f7f8dd4ff447b70a1054e478c26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
-  Effect: 
+  Name: Jocker
+  Effect: Replaced this card with one of your choice placed on the field.
 --- !u!114 &8805714931535614526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6453,6 +6639,7 @@ MonoBehaviour:
   Attack: 70
   Effect: 
   Category: 2
+  Type: 
 --- !u!114 &9073251960713968592
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,7 +16,12 @@ public class GameLogic : MonoBehaviour
     public int roundCounter = 0;
     public bool playerWon = false;
     public bool enemyWon = false;
-    public GameObject[,] board;
+    public GameObject board;
+    public GameObject[,] matrixBoard;
+    public Effects effects;
+    public GameObject cementery;
+    
+    
     
     [ContextMenu("Logic")]
     public void addPlayerScore() //dataMatch es "Round: " + roundCounter + " Player: " + playerScore + " Enemy: " + enemyScore;
@@ -29,18 +34,26 @@ public class GameLogic : MonoBehaviour
          enemyScore++;
         dataMatch.text = "Round: " + roundCounter + "\nPlayer: " + playerScore + "\nEnemy: " + enemyScore;
     }
+
+   
+    
     public int GetBattleResult( GameObject[,] board) //1:playerWin -1:enemyWin 0:draw
     {
         int playerTotalAttack = 0;
         int enemyTotalAttack = 0;
         int result;
+        
         for (int i = 0; i < board.GetLength(0); i++)
         {
             for (int j = 1; j < board.GetLength(1); j++)
             {
-                if (board[i,j].tag== "Unit-Cards")
+                if (board[i,j].CompareTag("Unit-Cards"))
                 {
-                    if (i<2)
+                    if (board[i,j].GetComponent<Unit_Card>().Attack<=0)
+                    {
+                        board[i,j].transform.SetParent(cementery.transform,false);
+                    }
+                    else if (i<2)
                     {
                         enemyTotalAttack += board[i, j].GetComponent<Unit_Card>().Attack;
                     }
@@ -92,7 +105,7 @@ public class GameLogic : MonoBehaviour
         
         if (isPlayerTurnFinished && isEnemyTurnFinished)
         {
-            int battleResult = GetBattleResult(board); //1:playerWin -1:enemyWin 0:draw
+            int battleResult = GetBattleResult(matrixBoard); //1:playerWin -1:enemyWin 0:draw
             if (battleResult == 1)
             {
                 playerScore++;
@@ -141,7 +154,7 @@ public class GameLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        matrixBoard = board.GetComponent<MatrixBoard>().Board;
     }
 
     // Update is called once per frame
