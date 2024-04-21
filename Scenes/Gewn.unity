@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 16090224}
   - component: {fileID: 16090223}
   m_Layer: 5
-  m_Name: imagen
+  m_Name: EnemyImagenDecks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145,15 +145,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 16090221}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.7503468}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.31264448}
+  m_LocalScale: {x: 0.41666666, y: 0.41666666, z: 0.41666666}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1991082729}
+  m_Father: {fileID: 579828186}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 454, y: 259}
+  m_AnchoredPosition: {x: 250.48738, y: 109.34012}
   m_SizeDelta: {x: 95, y: 111}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &16090223
@@ -169,14 +169,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5377358, g: 0.19574675, b: 0.06848522, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 4449135244173198666, guid: a89352511f831be49b3bd72e3bd6ca81, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 98268087}
   - component: {fileID: 98268086}
   m_Layer: 5
-  m_Name: Draw
+  m_Name: PlayerDraw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -231,8 +231,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 313.6, y: -0.0000038147}
-  m_SizeDelta: {x: 36.1234, y: 26.06}
+  m_AnchoredPosition: {x: 313.6, y: -76}
+  m_SizeDelta: {x: 35, y: 26}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &98268086
 MonoBehaviour:
@@ -247,11 +247,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerHand: {fileID: 3547911697770313994}
-  EnemyHand: {fileID: 6414858828185323340}
   PlayerDeck: {fileID: 131780075}
-  EnemyDeck: {fileID: 1991082728}
   Deck1: []
-  Deck2: []
+  temp: {fileID: 0}
 --- !u!114 &98268087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,11 +396,10 @@ RectTransform:
   - {fileID: 8705995544656335301}
   - {fileID: 2538277013428230585}
   - {fileID: 5916787738301162473}
-  - {fileID: 7538379199283662366}
   - {fileID: 4468963840526391863}
   - {fileID: 5491497910354134859}
   - {fileID: 6020985961341873347}
-  - {fileID: 1570341879}
+  - {fileID: 7538379199283662366}
   m_Father: {fileID: 579828186}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -688,6 +685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1608ec9af5d5749b335df2503b201c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCardPositionValidScript: {fileID: 0}
   P_hero: {fileID: 8067081164784990306}
   P_archers: {fileID: 896491714512219251}
   P_siege: {fileID: 6375700622952958568}
@@ -793,10 +791,15 @@ RectTransform:
   - {fileID: 578219583}
   - {fileID: 131780076}
   - {fileID: 1991082729}
-  - {fileID: 1465786625}
   - {fileID: 174280519702629406}
   - {fileID: 6653448285473492860}
   - {fileID: 98268085}
+  - {fileID: 910732058}
+  - {fileID: 1549640464}
+  - {fileID: 2128111295}
+  - {fileID: 1570341879}
+  - {fileID: 16090222}
+  - {fileID: 1933767772}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -804,7 +807,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1465786624
+--- !u!1 &749276418
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -812,44 +815,344 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1465786625}
-  - component: {fileID: 1465786628}
-  - component: {fileID: 1465786627}
-  - component: {fileID: 1465786626}
-  - component: {fileID: 1465786629}
-  m_Layer: 5
-  m_Name: PlayerMelee1
-  m_TagString: Untagged
+  - component: {fileID: 749276420}
+  - component: {fileID: 749276419}
+  - component: {fileID: 749276421}
+  m_Layer: 0
+  m_Name: LogicManager
+  m_TagString: Logic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &1465786625
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465786624}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 579828186}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -69.9, y: -26.765}
-  m_SizeDelta: {x: 22.409, y: 27.47}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1465786626
+--- !u!114 &749276419
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465786624}
+  m_GameObject: {fileID: 749276418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e34a1fa51973a848afb4a1f2f25a571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &749276420
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749276418}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1091.9583, y: 538.12524, z: -3.5137725}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &749276421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749276418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e97eaaeeca969104f8b569d74a0739ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataMatch: {fileID: 2128111293}
+  turnCounter: 0
+  isPlayerTurn: 1
+  isPlayerTurnFinished: 0
+  isEnemyTurnFinished: 0
+  playerScore: 0
+  enemyScore: 0
+  roundCounter: 0
+  playerWon: 0
+  enemyWon: 0
+--- !u!1 &795591018
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 795591019}
+  - component: {fileID: 795591021}
+  - component: {fileID: 795591020}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &795591019
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795591018}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 910732058}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 1, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &795591020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795591018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 'Draw
+
+'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 10
+  m_fontSizeBase: 10
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &795591021
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795591018}
+  m_CullTransparentMesh: 1
+--- !u!1 &856787146
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 856787147}
+  - component: {fileID: 856787149}
+  - component: {fileID: 856787148}
+  m_Layer: 5
+  m_Name: Text (Legacy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &856787147
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856787146}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1549640464}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &856787148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856787146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 9
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 9
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: End Turn
+--- !u!222 &856787149
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856787146}
+  m_CullTransparentMesh: 1
+--- !u!1 &910732057
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 910732058}
+  - component: {fileID: 910732062}
+  - component: {fileID: 910732061}
+  - component: {fileID: 910732060}
+  - component: {fileID: 910732059}
+  m_Layer: 5
+  m_Name: EnemyDraw
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &910732058
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910732057}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 795591019}
+  m_Father: {fileID: 579828186}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 313.08, y: 80}
+  m_SizeDelta: {x: 35, y: 26}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &910732059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910732057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d540d72d521a874c87b89733fb7a6d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyHand: {fileID: 6414858828185323340}
+  EnemyDeck: {fileID: 1991082728}
+  Deck2: []
+--- !u!114 &910732060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910732057}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -883,36 +1186,36 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1465786627}
+  m_TargetGraphic: {fileID: 910732061}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -2074673546485712083, guid: 51740c176d19bc04a900d6d08462fc08, type: 3}
-        m_TargetAssemblyTypeName: CardPlacement, Assembly-CSharp
-        m_MethodName: PlaceCardOnButton
-        m_Mode: 2
+      - m_Target: {fileID: 910732059}
+        m_TargetAssemblyTypeName: EnemyDraw, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1465786626}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1465786627
+--- !u!114 &910732061
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465786624}
+  m_GameObject: {fileID: 910732057}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5803922, g: 0.1757731, b: 0, a: 0.70980394}
+  m_Color: {r: 0.6886792, g: 0.21518447, b: 0.1721698, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -929,26 +1232,147 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!222 &1465786628
+--- !u!222 &910732062
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465786624}
+  m_GameObject: {fileID: 910732057}
   m_CullTransparentMesh: 1
---- !u!114 &1465786629
+--- !u!1 &1549640463
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1549640464}
+  - component: {fileID: 1549640467}
+  - component: {fileID: 1549640466}
+  - component: {fileID: 1549640465}
+  m_Layer: 5
+  m_Name: PlayerEndTurn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1549640464
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549640463}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 856787147}
+  m_Father: {fileID: 579828186}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 313.08, y: -123.7471}
+  m_SizeDelta: {x: 37.162, y: 30.5058}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1549640465
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465786624}
+  m_GameObject: {fileID: 1549640463}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b959f64f3959b0342b87951de7691e88, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1549640466}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 749276421}
+        m_TargetAssemblyTypeName: GameLogic, Assembly-CSharp
+        m_MethodName: PassTurn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1549640466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549640463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.6698113, g: 0.19755185, b: 0.12953897, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1549640467
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549640463}
+  m_CullTransparentMesh: 1
 --- !u!1 &1570341878
 GameObject:
   m_ObjectHideFlags: 0
@@ -961,7 +1385,7 @@ GameObject:
   - component: {fileID: 1570341881}
   - component: {fileID: 1570341880}
   m_Layer: 5
-  m_Name: Image
+  m_Name: PlayerImageDecks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -979,11 +1403,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 131780076}
+  m_Father: {fileID: 579828186}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.5, y: -1.4}
+  m_AnchoredPosition: {x: 251.39998, y: -108.20001}
   m_SizeDelta: {x: 38, y: 46}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1570341880
@@ -999,14 +1423,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6037736, g: 0.16704257, b: 0.12246352, a: 1}
+  m_Color: {r: 1, g: 0.9276346, b: 0.9198113, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 4428274088663293093, guid: ff16f2cedb091e145a086391228f6f07, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1184,6 +1608,141 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1933767771
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1933767772}
+  - component: {fileID: 1933767776}
+  - component: {fileID: 1933767775}
+  - component: {fileID: 1933767774}
+  - component: {fileID: 1933767773}
+  m_Layer: 5
+  m_Name: Card1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1933767772
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933767771}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 579828186}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -56, y: -26}
+  m_SizeDelta: {x: 27, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1933767773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933767771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5754b39d9c39b8c4399d1b258403033d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  card: {fileID: 8067081164784990306}
+  button: {fileID: 1933767771}
+--- !u!114 &1933767774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933767771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1933767775}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1933767775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933767771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1933767776
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933767771}
+  m_CullTransparentMesh: 1
 --- !u!1 &1991082728
 GameObject:
   m_ObjectHideFlags: 0
@@ -1239,7 +1798,6 @@ Transform:
   - {fileID: 6159651046709685368}
   - {fileID: 4872958797279275413}
   - {fileID: 6108114835221423346}
-  - {fileID: 16090222}
   m_Father: {fileID: 579828186}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1991082730
@@ -1256,6 +1814,89 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyDeck: {fileID: 1991082728}
   Deck: []
+--- !u!1 &2128111292
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2128111295}
+  - component: {fileID: 2128111294}
+  - component: {fileID: 2128111293}
+  m_Layer: 5
+  m_Name: Text (Legacy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2128111293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128111292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 12
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Round: 0
+
+    Player: 0
+
+    Enemy: 0'
+--- !u!222 &2128111294
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128111292}
+  m_CullTransparentMesh: 1
+--- !u!224 &2128111295
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128111292}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 579828186}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -301.5, y: 167.3}
+  m_SizeDelta: {x: 56.9649, y: 41.716}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &16716601847694156
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1289,6 +1930,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Abracadogbra2
   Attack: 300
+  Effect: Bark to the sienge zone of your opponent and remove to a random card 90
+    damage
   Category: 1
 --- !u!222 &23758666571356429
 CanvasRenderer:
@@ -1331,7 +1974,7 @@ GameObject:
   - component: {fileID: 9082272532819941075}
   m_Layer: 0
   m_Name: El Brayan
-  m_TagString: Untagged
+  m_TagString: Unit-Cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1352,8 +1995,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 15.471001, y: -164.72998}
-  m_SizeDelta: {x: 411.06, y: 39.54}
+  m_AnchoredPosition: {x: 14.341, y: -163.5826}
+  m_SizeDelta: {x: 410, y: 42}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &231889450395317535
 RectTransform:
@@ -1388,7 +2031,7 @@ GameObject:
   - component: {fileID: 8980615245944916007}
   m_Layer: 0
   m_Name: Adolfo el frio
-  m_TagString: Untagged
+  m_TagString: Unit-Cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1407,7 +2050,7 @@ GameObject:
   - component: {fileID: 8991380153159779448}
   m_Layer: 0
   m_Name: Carlos Espadachin
-  m_TagString: Untagged
+  m_TagString: Unit-Cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1482,6 +2125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Jocker
+  Effect: Replaced this card with one of your choice placed on the field.
 --- !u!1 &554628370830692982
 GameObject:
   m_ObjectHideFlags: 0
@@ -1580,7 +2224,7 @@ GameObject:
   - component: {fileID: 8640302127013331146}
   m_Layer: 0
   m_Name: Jose El Espadachin
-  m_TagString: Untagged
+  m_TagString: Unit-Cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1648,7 +2292,7 @@ GameObject:
   - component: {fileID: 8353456158476249094}
   m_Layer: 0
   m_Name: Pedro El imparable 1
-  m_TagString: Untagged
+  m_TagString: Unit-Cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1667,6 +2311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: John Snow
   Attack: 80
+  Effect: 
   Category: 2
 --- !u!224 &1066254652787000326
 RectTransform:
@@ -1701,7 +2346,7 @@ GameObject:
   - component: {fileID: 8092354386961515793}
   m_Layer: 0
   m_Name: JackyCat
-  m_TagString: Untagged
+  m_TagString: Unit-Cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1935,6 +2580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: El Michi agresivo
   Attack: 75
+  Effect: 
   Category: 2
 --- !u!1 &1906317012399855580
 GameObject:
@@ -1950,7 +2596,7 @@ GameObject:
   - component: {fileID: 7343421910148109227}
   m_Layer: 0
   m_Name: Woufnipper
-  m_TagString: Untagged
+  m_TagString: Unit-Cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1968,7 +2614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Pepe
-  effect: 
+  effect: ' Earn a point in case the battle ends in a tie. '
 --- !u!222 &1951401583239999931
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1990,7 +2636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Peace
-  effect: 
+  effect: Remove the field card that is placed in the desired row.
 --- !u!224 &2068007933644412204
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2056,7 +2702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Docat
-  effect: 
+  effect: Increases the field by 15% damage.
 --- !u!1 &2215547299662856030
 GameObject:
   m_ObjectHideFlags: 0
@@ -2128,6 +2774,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Julio el comflictivo
   Attack: 80
+  Effect: 
   Category: 2
 --- !u!224 &2279280884128876106
 RectTransform:
@@ -2161,7 +2808,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Catmmer
-  effect: 
+  effect: Penalizes the 30% power of all cards with more than 400 damage. (Affectes
+    both player)
 --- !u!1 &2359941520786356554
 GameObject:
   m_ObjectHideFlags: 0
@@ -2290,7 +2938,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 346101741267318658}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -4.83485}
+  m_LocalPosition: {x: 0, y: 0, z: -0.7503468}
   m_LocalScale: {x: 0.41666, y: 0.41666, z: 0.41666}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2298,8 +2946,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1707.914, y: 334.41068}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0.6, y: -0.9}
+  m_SizeDelta: {x: 70, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &2583483888605973600
 RectTransform:
@@ -2334,6 +2982,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Pedro El Imparable 2
   Attack: 300
+  Effect: Throw fire to teh distance zone of your opponent, remove to a random card
+    90 damage.
   Category: 1
 --- !u!1 &2649113786458643236
 GameObject:
@@ -2387,6 +3037,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Cat Cruise
   Attack: 400
+  Effect: 
   Category: 0
 --- !u!224 &2875130029007392286
 RectTransform:
@@ -2478,7 +3129,7 @@ GameObject:
   - component: {fileID: 9073251960713968592}
   m_Layer: 0
   m_Name: CatBolls
-  m_TagString: Untagged
+  m_TagString: Unit-Cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2496,7 +3147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Peace
-  effect: 
+  effect: Remove the field card that is placed in the desired row.
 --- !u!114 &3047989248340688510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2559,7 +3210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Michidante
-  effect: 
+  effect: 'Increases the field by 20% damage. '
 --- !u!114 &3070428608178043959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2631,6 +3282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Cateyes
   Attack: 250
+  Effect: 
   Category: 1
 --- !u!222 &3349560728710579446
 CanvasRenderer:
@@ -2654,6 +3306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Yasmany
   Attack: 320
+  Effect: 
   Category: 0
 --- !u!1 &3436030048928304249
 GameObject:
@@ -2715,6 +3368,7 @@ GameObject:
   - component: {fileID: 174280519702629406}
   - component: {fileID: 8834961678434337472}
   - component: {fileID: 6830660603795662013}
+  - component: {fileID: 8834961678434337474}
   - component: {fileID: 8834961678434337473}
   m_Layer: 5
   m_Name: PlayerHand
@@ -2737,7 +3391,7 @@ GameObject:
   - component: {fileID: 7244378140087086997}
   m_Layer: 0
   m_Name: El Awouftador
-  m_TagString: Untagged
+  m_TagString: Unit-Cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2775,7 +3429,7 @@ GameObject:
   - component: {fileID: 6950397329922085404}
   m_Layer: 0
   m_Name: Rodolfo el Caliente
-  m_TagString: Untagged
+  m_TagString: Unit-Cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2793,7 +3447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Catmmer
-  effect: 
+  effect: 'Removes 90 damage (Affects both players '
 --- !u!224 &3856271472867467952
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2841,7 +3495,7 @@ GameObject:
   - component: {fileID: 7089132856497253470}
   m_Layer: 0
   m_Name: BollDog
-  m_TagString: Untagged
+  m_TagString: Unit-Cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2890,7 +3544,7 @@ GameObject:
   - component: {fileID: 7880735301198123155}
   m_Layer: 0
   m_Name: Catntalf
-  m_TagString: Untagged
+  m_TagString: Unit-Cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2916,7 +3570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Peace
-  effect: 
+  effect: Remove the field card that is placed in the desired row.
 --- !u!222 &4119164146303050185
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2953,6 +3607,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: The HitDog
   Attack: 500
+  Effect: He accidentally shoots and the bullet falls  on one of the opponent's cards
+    removing 200 damage.
   Category: 0
 --- !u!1 &4211806038526005706
 GameObject:
@@ -2968,7 +3624,7 @@ GameObject:
   - component: {fileID: 8005665272297812359}
   m_Layer: 0
   m_Name: El Diablo
-  m_TagString: Untagged
+  m_TagString: Unit-Cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2987,6 +3643,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: HulkCat
   Attack: 500
+  Effect: Affects the card with the greatest damage in  the melee zone removing 200
+    damage.
   Category: 0
 --- !u!1 &4328245864670185997
 GameObject:
@@ -3097,7 +3755,7 @@ GameObject:
   - component: {fileID: 7625712033856777422}
   m_Layer: 0
   m_Name: Abracadogbra1
-  m_TagString: Untagged
+  m_TagString: Unit-Cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3209,8 +3867,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59b62069daf75004793e2f4a2370c54e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Catmmer
-  effect: 
+  Name: Destruction
+  effect: If here is already a weather chart in the field, il will do the same but
+    10% more efficiently. (Affects both players)
 --- !u!1 &4935517333385656698
 GameObject:
   m_ObjectHideFlags: 0
@@ -3330,7 +3989,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Lorenzo El Pobrecito
-  effect: 
+  effect: Increases the field by 10% damage.
 --- !u!1 &5339492423891330758
 GameObject:
   m_ObjectHideFlags: 0
@@ -3345,7 +4004,7 @@ GameObject:
   - component: {fileID: 5339492423891330759}
   m_Layer: 0
   m_Name: Julio el comflictivo
-  m_TagString: Untagged
+  m_TagString: Unit-Cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3464,7 +4123,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 572508262066410605}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -4.83485}
+  m_LocalPosition: {x: 0, y: 0, z: -0.7503468}
   m_LocalScale: {x: 0.416666, y: 0.416666, z: 0.416666}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3472,8 +4131,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1707.914, y: 334.41068}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0.6, y: -0.9}
+  m_SizeDelta: {x: 70, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5500274428286279087
 GameObject:
@@ -3489,7 +4148,7 @@ GameObject:
   - component: {fileID: 5500274428286279088}
   m_Layer: 0
   m_Name: El Michi Agresivo
-  m_TagString: Untagged
+  m_TagString: Unit-Cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3565,6 +4224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Woufnipper
   Attack: 170
+  Effect: 
   Category: 1
 --- !u!224 &5916787738301162473
 RectTransform:
@@ -3574,7 +4234,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8496317587240504786}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -4.83485}
+  m_LocalPosition: {x: 0, y: 0, z: -0.7503468}
   m_LocalScale: {x: 0.41666, y: 0.41666, z: 0.41666}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3582,8 +4242,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1707.914, y: 334.41068}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0.6, y: -0.9}
+  m_SizeDelta: {x: 70, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &6020985961341873347
 RectTransform:
@@ -3593,7 +4253,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1750382581098086373}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -4.83485}
+  m_LocalPosition: {x: 0, y: 0, z: -0.7503468}
   m_LocalScale: {x: 0.416666, y: 0.416666, z: 0.416666}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3601,8 +4261,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1707.914, y: 334.41068}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0.6, y: -0.9}
+  m_SizeDelta: {x: 70, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &6108114835221423346
 RectTransform:
@@ -3637,6 +4297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: El Brayan
   Attack: 220
+  Effect: 
   Category: 0
 --- !u!1 &6149166584784319001
 GameObject:
@@ -3652,7 +4313,7 @@ GameObject:
   - component: {fileID: 6149166584784319002}
   m_Layer: 0
   m_Name: Abracadogbra2
-  m_TagString: Untagged
+  m_TagString: Unit-Cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3758,6 +4419,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Carlos Espadachin
   Attack: 340
+  Effect: 
   Category: 0
 --- !u!114 &6221308318671875100
 MonoBehaviour:
@@ -3773,6 +4435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Adolfo el frio
   Attack: 90
+  Effect: 
   Category: 2
 --- !u!224 &6277351156144889845
 RectTransform:
@@ -3821,7 +4484,7 @@ GameObject:
   - component: {fileID: 6375700622952958569}
   m_Layer: 0
   m_Name: John Snow
-  m_TagString: Untagged
+  m_TagString: Unit-Cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3897,6 +4560,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Pedro El imparable 1
   Attack: 300
+  Effect: Throw fire to teh distance zone of your opponent, remove to a random card
+    90 damage.
   Category: 1
 --- !u!114 &6537778021182857514
 MonoBehaviour:
@@ -3912,6 +4577,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: JackyCat
   Attack: 300
+  Effect: ...
   Category: 0
 --- !u!224 &6653448285473492860
 RectTransform:
@@ -3930,7 +4596,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 14.942, y: 167.14}
-  m_SizeDelta: {x: 407.6, y: 41.715}
+  m_SizeDelta: {x: 410, y: 42}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6653448285473492861
 MonoBehaviour:
@@ -3952,8 +4618,8 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 2
   m_StartAxis: 1
-  m_CellSize: {x: 70, y: 100}
-  m_Spacing: {x: -30, y: 0}
+  m_CellSize: {x: 27, y: 41}
+  m_Spacing: {x: 13, y: 0}
   m_Constraint: 2
   m_ConstraintCount: 1
 --- !u!114 &6710238142117520627
@@ -3970,6 +4636,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Jose El Espadachin
   Attack: 250
+  Effect: 
   Category: 0
 --- !u!114 &6761045233437537955
 MonoBehaviour:
@@ -4067,7 +4734,7 @@ GameObject:
   - component: {fileID: 6893873941590226530}
   m_Layer: 0
   m_Name: DogAmen
-  m_TagString: Untagged
+  m_TagString: Unit-Cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4143,6 +4810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Rodolfo el Caliente
   Attack: 75
+  Effect: 
   Category: 2
 --- !u!114 &6950397329922085404
 MonoBehaviour:
@@ -4196,6 +4864,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: BollDog
   Attack: 70
+  Effect: 
   Category: 2
 --- !u!114 &7089132856497253470
 MonoBehaviour:
@@ -4290,6 +4959,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: El Awouftador
   Attack: 200
+  Effect: 
   Category: 1
 --- !u!114 &7244378140087086997
 MonoBehaviour:
@@ -4487,6 +5157,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Abracadogbra1
   Attack: 300
+  Effect: Bark to the sienge zone of your opponent and remove to a random card 90
+    damage
   Category: 1
 --- !u!114 &7625712033856777422
 MonoBehaviour:
@@ -4538,7 +5210,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5008f7f8dd4ff447b70a1054e478c26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
+  Name: Jocker
+  Effect: Replaced this card with one of your choice placed on the field.
 --- !u!114 &7645638765257414508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4620,6 +5293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: 
+  Effect: 
 --- !u!114 &7849612367410550737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4671,6 +5345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: 
+  Effect: 
 --- !u!114 &7876926807248740187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4723,6 +5398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Catntalf
   Attack: 180
+  Effect: 
   Category: 1
 --- !u!114 &7880735301198123155
 MonoBehaviour:
@@ -4776,6 +5452,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: El Diablo
   Attack: 90
+  Effect: 
   Category: 2
 --- !u!114 &8005665272297812359
 MonoBehaviour:
@@ -4829,7 +5506,7 @@ GameObject:
   - component: {fileID: 8017193604437883914}
   m_Layer: 0
   m_Name: The HitDog
-  m_TagString: Untagged
+  m_TagString: Unit-Cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4900,7 +5577,7 @@ GameObject:
   - component: {fileID: 8067081164784990307}
   m_Layer: 0
   m_Name: HulkCat
-  m_TagString: Untagged
+  m_TagString: Unit-Cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5090,7 +5767,7 @@ GameObject:
   - component: {fileID: 8165468806369001585}
   m_Layer: 0
   m_Name: Pedro El Imparable 2
-  m_TagString: Untagged
+  m_TagString: Unit-Cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5147,7 +5824,7 @@ GameObject:
   - component: {fileID: 8322940569043989469}
   m_Layer: 0
   m_Name: Cat Cruise
-  m_TagString: Untagged
+  m_TagString: Unit-Cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5259,7 +5936,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5008f7f8dd4ff447b70a1054e478c26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
+  Name: Jocker
+  Effect: Replaced this card with one of your choice placed on the field.
 --- !u!114 &8476246631649377508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5501,6 +6179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: 
+  Effect: 
 --- !u!114 &8805714931535614526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5553,7 +6232,7 @@ GameObject:
   - component: {fileID: 8817775164754815200}
   m_Layer: 0
   m_Name: Yasmany
-  m_TagString: Untagged
+  m_TagString: Unit-Cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5625,9 +6304,25 @@ MonoBehaviour:
   m_StartCorner: 2
   m_StartAxis: 1
   m_CellSize: {x: 70, y: 100}
-  m_Spacing: {x: 5, y: 0}
+  m_Spacing: {x: -30, y: 0}
   m_Constraint: 2
   m_ConstraintCount: 1
+--- !u!114 &8834961678434337474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3547911697770313994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8a812bbdcc018f41a0641f3f64280cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerHand: {fileID: 3547911697770313994}
+  PlayerDeck: {fileID: 131780075}
+  Deck1: []
+  temp: {fileID: 0}
 --- !u!224 &8980615245944916006
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5756,6 +6451,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: CatBolls
   Attack: 70
+  Effect: 
   Category: 2
 --- !u!114 &9073251960713968592
 MonoBehaviour:
@@ -5866,7 +6562,7 @@ GameObject:
   - component: {fileID: 9198296307807651643}
   m_Layer: 0
   m_Name: Cateyes
-  m_TagString: Untagged
+  m_TagString: Unit-Cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5981,3 +6677,4 @@ SceneRoots:
   - {fileID: 1620341387}
   - {fileID: 579828186}
   - {fileID: 1609193845}
+  - {fileID: 749276420}

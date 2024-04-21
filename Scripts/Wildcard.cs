@@ -7,6 +7,7 @@ using GameLibrary.Objects;
 public class Wildcard : MonoBehaviour
 {
     public string Name;
+    public string Effect;
     
 
     public void Start()
