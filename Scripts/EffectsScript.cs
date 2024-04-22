@@ -6,7 +6,7 @@ using UnityEditor.Experimental;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Effects : MonoBehaviour
+public class EffectsScript : MonoBehaviour
 { 
     private GameObject cardTarget;
     private int attackCard;

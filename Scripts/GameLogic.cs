@@ -6,39 +6,36 @@ using UnityEngine.UI;
 public class GameLogic : MonoBehaviour
 {
     public Text dataMatch;
-
     public int turnCounter = 0;
     public bool isPlayerTurn = true;
-    public bool isPlayerTurnFinished = false;
-    public bool isEnemyTurnFinished = false;
+    public bool isPlayerReadyForBattle = true;
+    public bool isEnemyReadyForBattle = true;
+    public bool playerPassTurnBeingReadyForBattle = false;
+    public bool enemyPassTurnBeingReadyForBattle = false;
     public int playerScore = 0;
     public int enemyScore = 0;
     public int roundCounter = 0;
     public bool playerWon = false;
     public bool enemyWon = false;
-    public GameObject board;
+    public GameObject matrix;
     public GameObject[,] matrixBoard;
-    public Effects effects;
+    public GameObject effects;
     public GameObject cementery;
     public EffectWildcard effectwilcard;
-    
-    
-    
+
+
+
     [ContextMenu("Logic")]
-    public void addPlayerScore() //dataMatch es "Round: " + roundCounter + " Player: " + playerScore + " Enemy: " + enemyScore;
+    public void UpdateDataText() //dataMatch es "Round: " + roundCounter + " Player: " + playerScore + " Enemy: " + enemyScore;
     {
-        playerScore++;
         dataMatch.text = "Round: " + roundCounter + "\nPlayer: " + playerScore + "\nEnemy: " + enemyScore;
-    }
-    public void addEnemyScore() //dataMatch es "Round: " + roundCounter + " Player: " + playerScore + " Enemy: " + enemyScore;
-    {
-         enemyScore++;
-        dataMatch.text = "Round: " + roundCounter + "\nPlayer: " + playerScore + "\nEnemy: " + enemyScore;
+       
     }
 
 
     public void ActivateEffects( GameObject[,] board, GameObject card, int x, int y) // metodo que para activar effecto
     {
+        EffectsScript effects = this.effects.GetComponent<EffectsScript>();
         if (card.CompareTag("Field"))
         {
             effects.EffectsField(board,card,x ,y);
@@ -53,14 +50,14 @@ public class GameLogic : MonoBehaviour
         }
         if (card.CompareTag("Counterfield"))
         {
-            
+            //effects.EffectsCounterField(card, );
         }
         if (card.CompareTag("Wildcard"))
         {
             effectwilcard.effectWildcard(board,card);
         }
     }
-    public int GetBattleResult( GameObject[,] board) //1:playerWin -1:enemyWin 0:draw
+    public int GetBattleResult( GameObject[,] board) // 1:playerWin -1:enemyWin 0:draw
     {
         int playerTotalAttack = 0;
         int enemyTotalAttack = 0;
@@ -69,20 +66,23 @@ public class GameLogic : MonoBehaviour
         {
             for (int j = 1; j < board.GetLength(1); j++)
             {
-                ActivateEffects(board,board[i,j],i,j);
-                if (board[i,j].CompareTag("Unit-Cards"))
+                if(board[i,j]!=null)
                 {
-                    if (board[i,j].GetComponent<Unit_Card>().Attack<=0)
+                    ActivateEffects(board, board[i, j], i, j);
+                    if (board[i, j].CompareTag("Unit-Cards"))
                     {
-                        board[i,j].transform.SetParent(cementery.transform,false);
-                    }
-                    else if (i<2)
-                    {
-                        enemyTotalAttack += board[i, j].GetComponent<Unit_Card>().Attack;
-                    }
-                    else
-                    {
-                        playerTotalAttack += board[i, j].GetComponent<Unit_Card>().Attack;
+                        if (board[i, j].GetComponent<Unit_Card>().Attack <= 0)
+                        {
+                            board[i, j].transform.SetParent(cementery.transform, false);
+                        }
+                        else if (i < 2)
+                        {
+                            enemyTotalAttack += board[i, j].GetComponent<Unit_Card>().Attack;
+                        }
+                        else
+                        {
+                            playerTotalAttack += board[i, j].GetComponent<Unit_Card>().Attack;
+                        }
                     }
                 }
             }
@@ -99,58 +99,56 @@ public class GameLogic : MonoBehaviour
         {
             result = 0;
         }
-
         return result;
     }
-   
     
-    
-    /// //////////////////////////////////////////////////////
-    ///ARREGLAR AQUI////
     public void PassTurn() //se llama al presionar el boton de pasar turno
     {
         if (isPlayerTurn)
         {
+            if (isPlayerReadyForBattle)
+                playerPassTurnBeingReadyForBattle = true;
+            
             isPlayerTurn = false;
+            isPlayerReadyForBattle = true;
         }
         else
         {
+            if (isEnemyReadyForBattle)
+                enemyPassTurnBeingReadyForBattle = true;
             isPlayerTurn = true;
+            isEnemyReadyForBattle = true;
         }
-        turnCounter++;
     }
-    public void UpdateRoundCounter()
+
+    public void CheckReadyForBattle()
     {
-        if (turnCounter == 2)
+        int result = 0;
+        if (playerPassTurnBeingReadyForBattle && enemyPassTurnBeingReadyForBattle)
         {
+            matrixBoard = matrix.GetComponent<MatrixBoard>().Board;
+            result = GetBattleResult(matrixBoard);
             roundCounter++;
-            turnCounter = 0;
-        }
-    }
-    // ReSharper disable Unity.PerformanceAnalysis
-    public void UpdateScore()//se llama constantemente
-    {
-        if (isPlayerTurnFinished && isEnemyTurnFinished)
-        {
-            int battleResult = GetBattleResult(matrixBoard); //1:playerWin -1:enemyWin 0:draw
-            if (battleResult == 1)
+            if (result == 1)
             {
                 playerScore++;
-                Debug.Log("Player wins");
+                Debug.Log("Player Win");
             }
-            else if (battleResult == -1)
+            else if (result == -1)
             {
                 enemyScore++;
-                Debug.Log("Enemy wins");
+                Debug.Log("Enemy Win");
             }
             else
             {
                 Debug.Log("Draw");
             }
-            isPlayerTurnFinished = false;
-            isEnemyTurnFinished = false;
+            UpdateDataText();
+            playerPassTurnBeingReadyForBattle = false;
+            enemyPassTurnBeingReadyForBattle = false;
         }
     }
+    // ReSharper disable Unity.PerformanceAnalysis
 
     public void CheckEndGame() // se llama constantemente
     {
@@ -177,18 +175,14 @@ public class GameLogic : MonoBehaviour
             }
         }
     }
-
-    // Start is called before the first frame update
+    
     void Start()
     {
-        matrixBoard = board.GetComponent<MatrixBoard>().Board;
+        
     }
-
-    // Update is called once per frame
     void Update()
     {
-        UpdateRoundCounter();
-        UpdateScore();
+        CheckReadyForBattle();
         CheckEndGame();
     }
 }
