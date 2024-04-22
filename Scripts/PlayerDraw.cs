@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -9,7 +10,6 @@ public class DrawCard : MonoBehaviour
     public GameObject PlayerHand;
     public GameObject PlayerDeck;
     public List<GameObject> Deck1;
-    public GameObject temp;
 
     public void FillDeck()
     {
@@ -19,20 +19,32 @@ public class DrawCard : MonoBehaviour
             Transform childTransform = tempChildPlayer.GetChild(i); //utilizo el metodo Getchild para ir iterando por los gameObjects de PlayerDeck.
             Deck1.Add(childTransform.gameObject);
         }
-        
+
+    }
+
+    public void Start()
+    {
+        Deck1 = new List<GameObject>();
+        FillDeck();
     }
     
+
     public void OnClick()
     {
-        FillDeck();
-        
-        int card_to_draw = 10 - 0 ;
+        HandScript handPlayerScript = PlayerHand.GetComponent<HandScript>();
+        int card_to_draw = 10 - handPlayerScript.cards.Count;
+
+        Transform tempChildPlayer = GameObject.Find("PlayerDeck").transform;
         for (int i = 0; i < card_to_draw; i++)
-        { 
-            GameObject playerCard = Instantiate(Deck1[Random.Range(0, Deck1.Count)], new Vector3(0, 0, 0), quaternion.identity);
-            playerCard.transform.SetParent(PlayerHand.transform, false);
+        {
+            GameObject playerCard = tempChildPlayer.GetChild(Random.Range(0, tempChildPlayer.childCount)).gameObject; 
+            //Deck1[index_in_deck_of_card_to_draw];
+            //playerCard.transform.SetParent(PlayerHand.transform, false);
+            handPlayerScript.AddCard(playerCard);
+            // Deck1.RemoveAt(index_in_deck_of_card_to_draw);
         }
-        
+
+
     }
 
 

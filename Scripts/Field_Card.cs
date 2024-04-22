@@ -8,7 +8,7 @@ using GameLibrary.Objects;
 public class Field_Card : MonoBehaviour
 {
     public string Name;
-    public string effect;
+    public string Effect;
 
     public void Start()
     {

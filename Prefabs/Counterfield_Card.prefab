@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7850850378401705947}
   m_Layer: 0
   m_Name: Counterfield_Card
-  m_TagString: Untagged
+  m_TagString: Counterfield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -10,6 +10,7 @@ public class Unit_Card : MonoBehaviour
     public int Attack;
     public string Effect;
     public UnitMember Category;
+    public string Type;
 
     public void Start()
     {
