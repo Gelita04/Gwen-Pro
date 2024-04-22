@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 376405485702328226}
   - component: {fileID: -635702551977986680}
+  - component: {fileID: 6933870333454414076}
   m_Layer: 0
   m_Name: Leader_Card
   m_TagString: Leader
@@ -46,3 +47,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: 
   effect: 
+--- !u!114 &6933870333454414076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8125059692471298690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 076bf7b13ce31434e92c80e6af48f365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
