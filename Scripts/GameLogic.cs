@@ -33,30 +33,36 @@ public class GameLogic : MonoBehaviour
     }
 
 
-    public void ActivateEffects( GameObject[,] board, GameObject card, int x, int y) // metodo que para activar effecto
+    public void ActivateEffects( GameObject[,] board, GameObject card, int x) // metodo que para activar effecto
     {
         EffectsScript effects = this.effects.GetComponent<EffectsScript>();
-        if (card.CompareTag("Field"))
+        if (card!=null)
         {
-            effects.EffectsField(board,card,x ,y);
+            if (card.CompareTag("Field"))
+            {
+                effects.EffectsField(board,card,x);
+            }
+            if (card.CompareTag("Buff"))
+            {
+                effects.EffectsBuff(board,card,x);
+            }
+            if (card.CompareTag("Unit-Cards"))
+            {
+                effects.RemoveDamageRandomCards(board,card,x);
+            }
+            if (card.CompareTag("Counterfield"))
+            {
+                //effects.EffectsCounterField(card, );
+            }
+            if (card.CompareTag("Wildcard"))
+            {
+                effectwilcard.effectWildcard(board,card);
+            }
         }
-        if (card.CompareTag("Buff"))
-        {
-            effects.EffectsBuff(board,card,x);
-        }
-        if (card.CompareTag("Unit-Cards"))
-        {
-            effects.RemoveDamageRandomCards(board,card,x);
-        }
-        if (card.CompareTag("Counterfield"))
-        {
-            //effects.EffectsCounterField(card, );
-        }
-        if (card.CompareTag("Wildcard"))
-        {
-            effectwilcard.effectWildcard(board,card);
-        }
+        
     }
+    // ReSharper disable Unity.PerformanceAnalysis
+    //este metodo no se sobrecarga, solo se llama si cumple la condicion, no 30 veces por sengundo.
     public int GetBattleResult( GameObject[,] board) // 1:playerWin -1:enemyWin 0:draw
     {
         int playerTotalAttack = 0;
@@ -66,9 +72,9 @@ public class GameLogic : MonoBehaviour
         {
             for (int j = 1; j < board.GetLength(1); j++)
             {
-                if(board[i,j]!=null)
+                if(board[i,j] != null)
                 {
-                    ActivateEffects(board, board[i, j], i, j);
+                    ActivateEffects(board, board[i, j], i);
                     if (board[i, j].CompareTag("Unit-Cards"))
                     {
                         if (board[i, j].GetComponent<Unit_Card>().Attack <= 0)
@@ -90,10 +96,12 @@ public class GameLogic : MonoBehaviour
         if (playerTotalAttack > enemyTotalAttack)
         {
             result = 1;
+            Debug.Log(playerTotalAttack);
         }
         else if (playerTotalAttack < enemyTotalAttack)
         {
             result = -1;
+            Debug.Log(enemyTotalAttack);
         }
         else
         {

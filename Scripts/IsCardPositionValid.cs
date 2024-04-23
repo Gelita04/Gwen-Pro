@@ -63,6 +63,10 @@ public class IsCardPositionValidScript : MonoBehaviour
             {
                 return true;
             }
+            else if (card.CompareTag("Buff") && y != 0)
+            {
+                return true;
+            }
             else
             {
                 Debug.Log("Invalid position");
