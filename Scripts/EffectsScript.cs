@@ -26,7 +26,7 @@ public class EffectsScript : MonoBehaviour
                       number += i;
                   }
               } 
-              attack = int.Parse(number);
+              attack = int.Parse(number);//////error
               return attack;
           }
           else

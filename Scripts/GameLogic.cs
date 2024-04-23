@@ -12,27 +12,35 @@ public class GameLogic : MonoBehaviour
     public bool isEnemyReadyForBattle = true;
     public bool playerPassTurnBeingReadyForBattle = false;
     public bool enemyPassTurnBeingReadyForBattle = false;
-    public int playerScore = 0;
-    public int enemyScore = 0;
-    public int roundCounter = 0;
+    private int playerScore = 0;
+    private int enemyScore = 0;
+    private int roundCounter = 0;
     public bool playerWon = false;
     public bool enemyWon = false;
     public GameObject matrix;
     public GameObject[,] matrixBoard;
     public GameObject effects;
-    public GameObject cementery;
-    public EffectWildcard effectwilcard;
+    public GameObject cementeryCats;
+    public GameObject cementeryDogs;
+    private GameObject effectwilcard;
+    private GameObject leadereffect;
+    public GameObject TextEnemy;
+    public GameObject TextPlayer;
+    public GameObject textleader;
+    public GameObject cardLeaderPlayer;
+    public GameObject cardLeaderEnemy;
+    
+    
+    
 
 
 
     [ContextMenu("Logic")]
     public void UpdateDataText() //dataMatch es "Round: " + roundCounter + " Player: " + playerScore + " Enemy: " + enemyScore;
     {
-        dataMatch.text = "Round: " + roundCounter + "\nPlayer: " + playerScore + "\nEnemy: " + enemyScore;
+        dataMatch.text = "Round: " + roundCounter + "\nCats: " + playerScore + "\nDogs: " + enemyScore;
        
     }
-
-
     public void ActivateEffects( GameObject[,] board, GameObject card, int x) // metodo que para activar effecto
     {
         EffectsScript effects = this.effects.GetComponent<EffectsScript>();
@@ -56,7 +64,7 @@ public class GameLogic : MonoBehaviour
             }
             if (card.CompareTag("Wildcard"))
             {
-                effectwilcard.effectWildcard(board,card);
+                effectwilcard.GetComponent<EffectWildcard>().effectWildcard(board, card);
             }
         }
         
@@ -66,7 +74,7 @@ public class GameLogic : MonoBehaviour
     public int GetBattleResult( GameObject[,] board) // 1:playerWin -1:enemyWin 0:draw
     {
         int playerTotalAttack = 0;
-        int enemyTotalAttack = 0;
+        var enemyTotalAttack = 0;
         int result;
         for (int i = 0; i < board.GetLength(0); i++)
         {
@@ -79,7 +87,12 @@ public class GameLogic : MonoBehaviour
                     {
                         if (board[i, j].GetComponent<Unit_Card>().Attack <= 0)
                         {
-                            board[i, j].transform.SetParent(cementery.transform, false);
+                            if (i<3)
+                            {
+                                board[i, j].transform.SetParent(cementeryDogs.transform, false);   
+                            }
+                            board[i, j].transform.SetParent(cementeryCats.transform, false);
+                            
                         }
                         else if (i < 2)
                         {
@@ -106,6 +119,7 @@ public class GameLogic : MonoBehaviour
         else
         {
             result = 0;
+            
         }
         return result;
     }
@@ -129,6 +143,7 @@ public class GameLogic : MonoBehaviour
         }
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     public void CheckReadyForBattle()
     {
         int result = 0;
@@ -141,15 +156,21 @@ public class GameLogic : MonoBehaviour
             {
                 playerScore++;
                 Debug.Log("Player Win");
+                TextPlayer.GetComponent<TextPlayerWin>().ActiveText();
+                
             }
             else if (result == -1)
             {
                 enemyScore++;
                 Debug.Log("Enemy Win");
+                TextEnemy.GetComponent<TextEnemyWin>().ActiveText();
             }
             else
             {
-                Debug.Log("Draw");
+                cardLeaderPlayer.GetComponent<EffectPepe>().ActivateEffect(playerScore);
+                textleader.GetComponent<TextLeader>().ActivateLeader();
+                TextPlayer.GetComponent<TextPlayerWin>().ActiveText();
+                Debug.Log("Player Win");
             }
             UpdateDataText();
             playerPassTurnBeingReadyForBattle = false;
