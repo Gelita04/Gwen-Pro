@@ -9,13 +9,15 @@ using Random = UnityEngine.Random;
 public class EffectsScript : MonoBehaviour
 { 
     private GameObject cardTarget;
-    private int attackCard;
-    private int attackcardTarget;
-    private int removeAttack;
+    private long attackCard;
+    private long attackcardTarget;
+    private long removeAttack;
     public Cementery cementery; 
-    public int SearchNumber(string effect) //!!! busca en un string un numero. Lo immplemente para extraer la cantidad de damage que aparece en el string effect.
+    
+    //metodo que dado un efecto  como string selecciona del mismo el unico numero siendo asi el ataque a quitar 
+    public long SearchNumber(string effect) //!!! busca en un string un numero. Lo immplemente para extraer la cantidad de damage que aparece en el string effect.
       { 
-          int attack;
+          long attack;
           string number = "";
           if (!string.IsNullOrEmpty(effect))
           {
@@ -26,7 +28,7 @@ public class EffectsScript : MonoBehaviour
                       number += i;
                   }
               } 
-              attack = int.Parse(number);//////error
+              attack = int.Parse(number); //////error
               return attack;
           }
           else
@@ -34,13 +36,15 @@ public class EffectsScript : MonoBehaviour
               return attack = -1;
           }
       }
-
+    
+    //metodo que selecciona una fila dada la coordenada de la misma
     public GameObject[] Rowselected( GameObject[,] matrixboard, int x)//!!!
     {
         GameObject[] row = { matrixboard[x, 1], matrixboard[x, 2], matrixboard[x, 3], matrixboard[x, 4] };
         return row;
     }
 
+    //metodo que analiza cuantos espacios en la matriz no estan en null, o sea devuelve cuantas cartas hay puesta en una fila
     public GameObject[] ArrayCardNoNull(GameObject[] row)//!!!
     {
         GameObject[] result; 
@@ -64,6 +68,8 @@ public class EffectsScript : MonoBehaviour
         }
         return result;
     }
+   
+    //metodo que dado la cordenada de la fila del player 1 devuelve la coordenada de la fila del player enemy
     public int IndexRowEnemy(GameObject[,] board, int x)//!!!
     {
         int indexRowEnemy = 0;
@@ -102,7 +108,7 @@ public class EffectsScript : MonoBehaviour
         return indexRowEnemy;
     }
 
-    
+    //metodo de efecto que seleccriona a una carta random y le quita x cantidad de ataque.
     public void RemoveDamageRandomCards( GameObject[,] board, GameObject cardAttacking, int x) // !!! metodo que se encarga de remover damage a una carta random de la fila del enemigo
     { 
         removeAttack = SearchNumber(cardAttacking.GetComponent<Unit_Card>().Effect);
@@ -130,6 +136,8 @@ public class EffectsScript : MonoBehaviour
         }
     }
     // ReSharper disable Unity.PerformanceAnalysis
+
+    //metodo efecto de las cartas climas
     public void EffectsField( GameObject[,] board, GameObject cardField, int x) // metodo efecto cartas clima.
     {
         int indexRowEnemy = IndexRowEnemy(board, x);
@@ -142,11 +150,15 @@ public class EffectsScript : MonoBehaviour
             Debug.Log(board[indexRowEnemy,m].GetComponent<Unit_Card>().Name+ board[indexRowEnemy,m].GetComponent<Unit_Card>().Attack);
         }
     }
+    
+    //metodo efecto de las cartas despeje
     public void EffectsCounterField( GameObject cardcounterfield, GameObject cardtarget)
     {
         cementery.RemoveCardCementery(cardtarget);
         cementery.RemoveCardCementery(cardcounterfield);
     }
+   
+    //metodo efecto de las cartas aumento
     public void EffectsBuff( GameObject[,] board, GameObject cardBuff, int x)
     {
         removeAttack = SearchNumber(cardBuff.GetComponent<Buff_Card>().effect);
@@ -159,13 +171,11 @@ public class EffectsScript : MonoBehaviour
         }
         
     }
-    // Start is called before the first frame update
+    
     void Start()
     {
         
     }
-
-    // Update is called once per frame
     void Update()
     {
         

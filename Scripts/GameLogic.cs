@@ -71,11 +71,11 @@ public class GameLogic : MonoBehaviour
     }
     // ReSharper disable Unity.PerformanceAnalysis
     //este metodo no se sobrecarga, solo se llama si cumple la condicion, no 30 veces por sengundo.
-    public int GetBattleResult( GameObject[,] board) // 1:playerWin -1:enemyWin 0:draw
+    public long GetBattleResult( GameObject[,] board) // 1:playerWin -1:enemyWin 0:draw
     {
-        int playerTotalAttack = 0;
-        var enemyTotalAttack = 0;
-        int result;
+        long playerTotalAttack = 0;
+        long enemyTotalAttack = 0;
+        long result;
         for (int i = 0; i < board.GetLength(0); i++)
         {
             for (int j = 1; j < board.GetLength(1); j++)
@@ -146,7 +146,7 @@ public class GameLogic : MonoBehaviour
     // ReSharper disable Unity.PerformanceAnalysis
     public void CheckReadyForBattle()
     {
-        int result = 0;
+        long result = 0;
         if (playerPassTurnBeingReadyForBattle && enemyPassTurnBeingReadyForBattle)
         {
             matrixBoard = matrix.GetComponent<MatrixBoard>().Board;

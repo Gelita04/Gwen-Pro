@@ -8,9 +8,11 @@ public class Buff_Card : MonoBehaviour
 {
     public string Name;
     public string effect;
+    public long powerBuff;
     public void Start()
     {
-        Card Michidante = new Buff(Name, effect);
+        
         
     }
+    // aumenta la fila en la que se puso en un powerBuff porciento
 }
