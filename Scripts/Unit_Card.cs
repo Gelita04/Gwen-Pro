@@ -10,14 +10,73 @@ public class Unit_Card : MonoBehaviour
     public string Name;
     public long Attack;
     public string Effect;
+    public string keyword;
     public UnitMember Category;
     public string Type;
-    public GameObject cementery;
-    public GameObject rowToEliminate;
+    private GameObject cementery;
+    private GameObject rowToEliminate;
+    private GameObject Deck;
+    private GameObject matrixBoard;
 
-     // efecto que pone una carta aumento en la fila
+     // efecto que pone una carta aumento en la fila, la carta aumento sale del deck.
+     public void PutBuffCats() // al llama al metodo es importante verificar que dice la keyword, si es un buff se llama este metodo si es un clima se llama al otro. Y ademas ver de que tipo de carta es.
+     {
+         List<GameObject> deckCats = Deck.GetComponent<Deck_Cats>().Deck;
+         GameObject buffCats = deckCats.Find(obj => obj.CompareTag("Buff"));
+         GameObject[,] board = matrixBoard.GetComponent<MatrixBoard>().Board;
+         for (int i = 0; i < board.GetLength(1); i++)
+         {
+             if (board[3,i] == null)
+             {
+                 board[3, i] = buffCats;
+                 break;
+             }
+         }
+     }
+     public void PutBuffDogs()
+     {
+         List<GameObject> deckDogs = Deck.GetComponent<Deck_Dogs>().Deck;
+         GameObject buffDogs = deckDogs.Find(obj => obj.CompareTag("Buff"));
+         GameObject[,] board = matrixBoard.GetComponent<MatrixBoard>().Board;
+         for (int i = 0; i < board.GetLength(1); i++)
+         {
+             if (board[0,1] == null)
+             {
+                 board[0, 1] = buffDogs;
+                 break;
+             }
+         }
+     }
      
-     // efecto que pone una carta clima en la fila
+     // efecto que pone una carta clima en la fila, la carta clima sale del deck.
+     public void PutFieldCats() // misma situacion que los metodos de arriba. 
+     {
+         List<GameObject> deckCats = Deck.GetComponent<Deck_Cats>().Deck;
+         GameObject fieldCats = deckCats.Find(obj => obj.CompareTag("Field"));
+         GameObject[,] board = matrixBoard.GetComponent<MatrixBoard>().Board;
+         for (int i = 0; i < board.GetLength(1); i++)
+         {
+             if (board[0,i] == null)
+             {
+                 board[0, i] = fieldCats;
+                 break;
+             }
+         }
+     } 
+     public void PutFieldDogs()
+     {
+         List<GameObject> deckDogs = Deck.GetComponent<Deck_Cats>().Deck;
+         GameObject fieldDogs = deckDogs.Find(obj => obj.CompareTag("Field"));
+         GameObject[,] board = matrixBoard.GetComponent<MatrixBoard>().Board;
+         for (int i = 0; i < board.GetLength(1); i++)
+         {
+             if (board[0,i] == null)
+             {
+                 board[0, i] = fieldDogs;
+                 break;
+             }
+         }
+     }
      
      // efecto que elimina la carta con mas poder del campo (propio o del adversario)
      public void MaxPower( GameObject[,] matrix)
@@ -54,10 +113,7 @@ public class Unit_Card : MonoBehaviour
          }
          cardTarget.transform.SetParent(cementery.transform, false);
      }
-    
-     // efecto que te permite robar una carta extra
-     
-     
+
      // efecto que multiplica su ataque por la cantidad de cartas que hay puestas en el campo
      public void PowerPlusCards( GameObject[,] matrix, GameObject attackingCard)
      { 
@@ -153,8 +209,8 @@ public class Unit_Card : MonoBehaviour
                      attackCards += matrix[i, j].GetComponent<Unit_Card>().Attack;
                  }
              }
-         }
-
+         } 
+         // ReSharper disable once IntDivisionByZero
          long promedy = attackCards / quantityCards;
          for (int i = 0; i < matrix.GetLength(0); i++)
          {

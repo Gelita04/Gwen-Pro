@@ -155,20 +155,20 @@ public class GameLogic : MonoBehaviour
             if (result == 1)
             {
                 playerScore++;
-                Debug.Log("Player Win");
+                Debug.Log("Player win this round");
                 TextPlayer.GetComponent<TextPlayerWin>().ActiveText();
                 
             }
             else if (result == -1)
             {
                 enemyScore++;
-                Debug.Log("Enemy Win");
+                Debug.Log("Enemy win this round");
                 TextEnemy.GetComponent<TextEnemyWin>().ActiveText();
             }
             else
             {
                 cardLeaderPlayer.GetComponent<EffectPepe>().ActivateEffect(playerScore);
-                textleader.GetComponent<TextLeader>().ActivateLeader();
+                //textleader.GetComponent<TextLeader>().ActivateLeader();
                 TextPlayer.GetComponent<TextPlayerWin>().ActiveText();
                 Debug.Log("Player Win");
             }
