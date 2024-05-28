@@ -25,11 +25,12 @@ public class GameLogic : MonoBehaviour
     private GameObject effectwilcard;
     private GameObject leadereffect;
     public GameObject TextEnemy;
-    public GameObject TextPlayer;
-    public GameObject textleader;
+    public GameObject catsWinRound;
+    public GameObject dogsWinRound;
     public GameObject cardLeaderPlayer;
     public GameObject cardLeaderEnemy;
-    
+    public GameObject catsWin;
+    public GameObject dogsWin;
     
     
 
@@ -71,7 +72,7 @@ public class GameLogic : MonoBehaviour
     }
     // ReSharper disable Unity.PerformanceAnalysis
     //este metodo no se sobrecarga, solo se llama si cumple la condicion, no 30 veces por sengundo.
-    public long GetBattleResult( GameObject[,] board) // 1:playerWin -1:enemyWin 0:draw
+    public long GetBattleResult( GameObject[,] board) //  devuelve el result que es quien gano esa ronda, 1:playerWin -1:enemyWin 0:draw
     {
         long playerTotalAttack = 0;
         long enemyTotalAttack = 0;
@@ -124,7 +125,7 @@ public class GameLogic : MonoBehaviour
         return result;
     }
     
-    public void PassTurn() //se llama al presionar el boton de pasar turno
+    public void PassTurn() // se llama al presionar el boton de pasar turno
     {
         if (isPlayerTurn)
         {
@@ -143,6 +144,25 @@ public class GameLogic : MonoBehaviour
         }
     }
 
+    public void ChangeRound( GameObject[,] board)
+    {
+        for (int i = 0; i < board.GetLength(0); i++)
+        {
+            for (int j = 0; j < board.GetLength(1); j++)
+            {
+                if (board[i,j] != null && i<3)
+                {
+                    board[i,j].transform.SetParent(cementeryDogs.transform, false);
+                }
+                else if (board[i,j]!= null && i >=3 )
+                {
+                    board[i,j].transform.SetParent(cementeryCats.transform,false);
+                }
+                
+            }
+        }
+    }
+
     // ReSharper disable Unity.PerformanceAnalysis
     public void CheckReadyForBattle()
     {
@@ -154,23 +174,26 @@ public class GameLogic : MonoBehaviour
             roundCounter++;
             if (result == 1)
             {
-                playerScore++;
+                playerScore++; 
                 Debug.Log("Player win this round");
-                TextPlayer.GetComponent<TextPlayerWin>().ActiveText();
-                
+                catsWinRound.GetComponent<TextPlayerWin>().WinRound();
+                ChangeRound(matrixBoard);
+
             }
             else if (result == -1)
             {
                 enemyScore++;
                 Debug.Log("Enemy win this round");
-                TextEnemy.GetComponent<TextEnemyWin>().ActiveText();
+                dogsWinRound.GetComponent<TextEnemyWin>().WinRound();
+                ChangeRound(matrixBoard);
             }
             else
             {
                 cardLeaderPlayer.GetComponent<EffectPepe>().ActivateEffect(playerScore);
                 //textleader.GetComponent<TextLeader>().ActivateLeader();
-                TextPlayer.GetComponent<TextPlayerWin>().ActiveText();
+                //TextPlayer.GetComponent<TextPlayerWin>().ActiveText();
                 Debug.Log("Player Win");
+                ChangeRound(matrixBoard);
             }
             UpdateDataText();
             playerPassTurnBeingReadyForBattle = false;
@@ -179,17 +202,21 @@ public class GameLogic : MonoBehaviour
     }
     // ReSharper disable Unity.PerformanceAnalysis
 
-    public void CheckEndGame() // se llama constantemente
+    public void CheckEndGame() // se llama constantemente, metodo para verificar la cantidad de rondas.
     {
         if (roundCounter == 2)
         {
             if (playerScore == 2 && enemyScore != 2)
             {
                 playerWon = true;
+                Debug.Log("Cats Win");
+                catsWin.GetComponent<TextPlayerWin>().WinGame();
             }
             else if (playerScore != 2 && enemyScore == 2)
             {
                 enemyWon = true;
+                Debug.Log("Dogs Win");
+                dogsWin.GetComponent<TextEnemyWin>().WinGame();
             }
         }
         else if (roundCounter == 3)
@@ -197,10 +224,15 @@ public class GameLogic : MonoBehaviour
             if (playerScore > enemyScore)
             {
                 playerWon = true;
+                Debug.Log("Cats Win");
+                catsWin.GetComponent<TextPlayerWin>().WinGame();
             }
             else if (playerScore < enemyScore)
             {
                 enemyWon = true;
+                Debug.Log("Dogs Win");
+                dogsWin.GetComponent<TextEnemyWin>().WinGame();
+                
             }
         }
     }

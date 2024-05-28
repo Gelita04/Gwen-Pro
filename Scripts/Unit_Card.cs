@@ -211,18 +211,20 @@ public class Unit_Card : MonoBehaviour
              }
          } 
          // ReSharper disable once IntDivisionByZero
-         long promedy = attackCards / quantityCards;
-         for (int i = 0; i < matrix.GetLength(0); i++)
+         if ( quantityCards > 0)
          {
-             for (int j = 0; j < matrix.GetLength(1); j++)
+             long promedy = attackCards / quantityCards;
+             for (int i = 0; i < matrix.GetLength(0); i++)
              {
-                 if (matrix[i,j]!= null)
+                 for (int j = 0; j < matrix.GetLength(1); j++)
                  {
-                     matrix[i, j].GetComponent<Unit_Card>().Attack = promedy;
-                 }
-             }   
+                     if (matrix[i,j]!= null)
+                     {
+                         matrix[i, j].GetComponent<Unit_Card>().Attack = promedy;
+                     }
+                 }   
+             }  
          }
-         
      }
     public void Start()
     {

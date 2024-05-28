@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class TextEnemyWin : MonoBehaviour
 {
-    public GameObject TextEnemy;
+    public GameObject DogsWinRound;
+    public GameObject DogsWin;
     void Start()
     {
-        TextEnemy.SetActive(false);
+       DogsWinRound.SetActive(false);
+       DogsWin.SetActive(false);
     }
 
-    public void ActiveText()
+    public void WinRound()
     {
-        TextEnemy.SetActive(true);
+        DogsWinRound.SetActive(true);
+    }
+
+    public void WinGame()
+    {
+        DogsWin.SetActive(true);
     }
 
     

@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class TextPlayerWin : MonoBehaviour
 {
-    public GameObject TextPlayer;
+    public GameObject CatsWinRound;
+    public GameObject CatsWin;
     void Start()
     {
-        TextPlayer.SetActive(false);
+        CatsWinRound.SetActive(false);
+        CatsWin.SetActive(false);
     }
 
-    public void ActiveText()
+    public void WinRound()
     {
-        TextPlayer.SetActive(true);
+        CatsWinRound.SetActive(true);
+    }
+
+    public void WinGame()
+    {
+        CatsWin.SetActive(true);
     }
 
     
