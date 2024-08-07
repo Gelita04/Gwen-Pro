@@ -1339,6 +1339,142 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 313910753}
   m_CullTransparentMesh: 1
+--- !u!1 &360765179
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 360765180}
+  - component: {fileID: 360765182}
+  - component: {fileID: 360765181}
+  m_Layer: 5
+  m_Name: EnemyWingame
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &360765180
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360765179}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 579828186}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -114, y: 95}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &360765181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360765179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Dogs Win Game!!!
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278255393
+  m_fontColor: {r: 0.13039589, g: 1, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 50
+  m_fontSizeBase: 50
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: -284.4997, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &360765182
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360765179}
+  m_CullTransparentMesh: 1
 --- !u!1 &363673577
 GameObject:
   m_ObjectHideFlags: 0
@@ -2194,6 +2330,156 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 498150480}
   m_CullTransparentMesh: 1
+--- !u!1 &503992761
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 503992762}
+  - component: {fileID: 503992764}
+  - component: {fileID: 503992763}
+  - component: {fileID: 503992765}
+  m_Layer: 5
+  m_Name: ActivateLeaderDogs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &503992762
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503992761}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 579828186}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -3, y: 122}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &503992763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503992761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Leader Activated
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278255422
+  m_fontColor: {r: 0.24280453, g: 1, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 30
+  m_fontSizeBase: 30
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: -62.399994, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &503992764
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503992761}
+  m_CullTransparentMesh: 1
+--- !u!114 &503992765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503992761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7273e88c98ef4924eb7500db2ab66987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textLeaderDogs: {fileID: 503992761}
 --- !u!1 &578219582
 GameObject:
   m_ObjectHideFlags: 0
@@ -2425,6 +2711,9 @@ RectTransform:
   - {fileID: 633367425}
   - {fileID: 1629903045}
   - {fileID: 1317022595}
+  - {fileID: 503992762}
+  - {fileID: 837523959}
+  - {fileID: 360765180}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2739,7 +3028,7 @@ GameObject:
   - component: {fileID: 633367427}
   - component: {fileID: 633367426}
   m_Layer: 5
-  m_Name: PlayerTextWin
+  m_Name: PlayerTextWinRound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2761,7 +3050,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 39, y: 35}
+  m_AnchoredPosition: {x: 42, y: -34}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &633367426
@@ -2776,7 +3065,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6fcf6e35338d9a4fba135ca6d6002e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextPlayer: {fileID: 633367424}
+  CatsWinRound: {fileID: 633367424}
+  CatsWin: {fileID: 633367424}
 --- !u!114 &633367427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2797,7 +3087,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Cats Win!!!
+  m_text: Cats win this round !!!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2806,8 +3096,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278255591
+  m_fontColor: {r: 0.90548396, g: 1, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2824,8 +3114,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2862,7 +3152,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -288.082, y: 0, z: -242.5955, w: -170.28331}
+  m_margin: {x: -269.362, y: 0, z: -242.5955, w: -170.28331}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3433,10 +3723,12 @@ MonoBehaviour:
   cementeryCats: {fileID: 1523718913}
   cementeryDogs: {fileID: 1114807208}
   TextEnemy: {fileID: 1629903044}
-  TextPlayer: {fileID: 633367424}
-  textleader: {fileID: 1317022594}
+  catsWinRound: {fileID: 0}
+  dogsWinRound: {fileID: 0}
   cardLeaderPlayer: {fileID: 2118648437970570046}
   cardLeaderEnemy: {fileID: 6893873941590226529}
+  catsWin: {fileID: 0}
+  dogsWin: {fileID: 0}
 --- !u!1 &795591018
 GameObject:
   m_ObjectHideFlags: 0
@@ -3722,6 +4014,157 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 822680263}
   m_CullTransparentMesh: 1
+--- !u!1 &837523958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 837523959}
+  - component: {fileID: 837523961}
+  - component: {fileID: 837523960}
+  - component: {fileID: 837523962}
+  m_Layer: 5
+  m_Name: PlayerWinGame
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &837523959
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837523958}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 579828186}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 8, y: -82}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &837523960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837523958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Cats Win Game!!!
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278249215
+  m_fontColor: {r: 1, g: 0.9018861, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 50
+  m_fontSizeBase: 50
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: -114.769745, y: 0, z: -147.09935, w: -33.945984}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &837523961
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837523958}
+  m_CullTransparentMesh: 1
+--- !u!114 &837523962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837523958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6fcf6e35338d9a4fba135ca6d6002e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CatsWinRound: {fileID: 633367424}
+  CatsWin: {fileID: 837523958}
 --- !u!1 &856787146
 GameObject:
   m_ObjectHideFlags: 0
@@ -4919,7 +5362,7 @@ GameObject:
   - component: {fileID: 1317022597}
   - component: {fileID: 1317022596}
   m_Layer: 5
-  m_Name: ActivateLeader
+  m_Name: ActivateLeaderCats
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4941,7 +5384,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -5, y: 65}
+  m_AnchoredPosition: {x: -0, y: -131}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1317022596
@@ -4956,7 +5399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 224b377d70aa0c240923690e5e317b81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textLeader: {fileID: 1317022594}
+  textLeaderCats: {fileID: 1317022594}
 --- !u!114 &1317022597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4986,8 +5429,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4293984259
-  m_fontColor: {r: 0.013395076, g: 0, b: 0.9433962, a: 1}
+    rgba: 4280673791
+  m_fontColor: {r: 1, g: 0.8980527, b: 0.1462264, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5806,7 +6249,7 @@ GameObject:
   - component: {fileID: 1629903047}
   - component: {fileID: 1629903046}
   m_Layer: 5
-  m_Name: EnemyTextWin
+  m_Name: EnemyTextWinRound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5828,7 +6271,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 103, y: 36}
+  m_AnchoredPosition: {x: 143, y: 44}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1629903046
@@ -5843,7 +6286,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 603d2cf632317d04094cc43a3ec00016, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextEnemy: {fileID: 1629903044}
+  DogsWinRound: {fileID: 1629903044}
+  DogsWin: {fileID: 360765179}
 --- !u!114 &1629903047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5864,7 +6308,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Dogs Win!!!
+  m_text: Dogs win this round!!!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5891,8 +6335,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7005,12 +7449,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 
   Name: Abracadogbra2
   Attack: 300
   Effect: Bark to the sienge zone of your opponent and remove to a random card 90
     damage
+  keyword: 
   Category: 1
-  Type: 
 --- !u!222 &23758666571356429
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7208,6 +7653,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Jocker
   Effect: Replaced this card with one of your choice placed on the field.
+  Attack: 0
 --- !u!1 &554628370830692982
 GameObject:
   m_ObjectHideFlags: 0
@@ -7396,11 +7842,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 
   Name: John Snow
   Attack: 80
   Effect: 
+  keyword: 
   Category: 2
-  Type: 
 --- !u!224 &1066254652787000326
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7550,6 +7997,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Patricio El Liciado
   effect: Increases the field by 15% damage
+  powerBuff: 0
 --- !u!114 &1600857153660564564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7669,11 +8117,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 
   Name: El Michi agresivo
   Attack: 75
   Effect: 
+  keyword: 
   Category: 2
-  Type: 
 --- !u!1 &1906317012399855580
 GameObject:
   m_ObjectHideFlags: 0
@@ -7798,6 +8247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Docat
   effect: Increases the field by 15% damage.
+  powerBuff: 0
 --- !u!1 &2215547299662856030
 GameObject:
   m_ObjectHideFlags: 0
@@ -7870,11 +8320,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 
   Name: Julio el comflictivo
   Attack: 80
   Effect: 
+  keyword: 
   Category: 2
-  Type: 
 --- !u!224 &2279280884128876106
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7908,6 +8359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Catmmer
   Effect: Remove 100 damage. (Affect both players)
+  powerToTake: 0
 --- !u!1 &2359941520786356554
 GameObject:
   m_ObjectHideFlags: 0
@@ -8123,12 +8575,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 
   Name: Pedro El Imparable 2
   Attack: 300
   Effect: Throw fire to teh distance zone of your opponent, remove to a random card
     90 damage.
+  keyword: 
   Category: 1
-  Type: 
 --- !u!1 &2649113786458643236
 GameObject:
   m_ObjectHideFlags: 0
@@ -8180,11 +8633,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 
   Name: Cat Cruise
   Attack: 400
   Effect: 
+  keyword: 
   Category: 0
-  Type: 
 --- !u!224 &2875130029007392286
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8402,6 +8856,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Michidante
   effect: 'Increases the field by 20% damage. '
+  powerBuff: 0
 --- !u!114 &3070428608178043959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8515,11 +8970,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 
   Name: Cateyes
   Attack: 250
   Effect: 
+  keyword: 
   Category: 1
-  Type: 
 --- !u!222 &3349560728710579446
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8540,11 +8996,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 
   Name: Yasmany
   Attack: 320
   Effect: 
+  keyword: 
   Category: 0
-  Type: 
 --- !u!1 &3436030048928304249
 GameObject:
   m_ObjectHideFlags: 0
@@ -8688,6 +9145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Catmmer
   Effect: Remove 90 damage.  (Affect both players)
+  powerToTake: 0
 --- !u!224 &3856271472867467952
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8721,6 +9179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Enfermedog
   effect: Increases the field by 10% damage
+  powerBuff: 0
 --- !u!1 &3966309686312717329
 GameObject:
   m_ObjectHideFlags: 0
@@ -8835,6 +9294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Kamikaze
   Effect: Remove 90 damage.  (Affect both players)
+  powerToTake: 0
 --- !u!114 &4190681349247491141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8847,12 +9307,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 
   Name: The HitDog
   Attack: 500
   Effect: He accidentally shoots and the bullet falls  on one of the opponent's cards
     removing 200 damage.
+  keyword: 
   Category: 0
-  Type: 
 --- !u!1 &4211806038526005706
 GameObject:
   m_ObjectHideFlags: 0
@@ -8885,12 +9346,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: Cats
   Name: HulkCat
   Attack: 500
   Effect: Affects the card with the greatest damage in  the melee zone removing 200
     damage.
+  keyword: greastest
   Category: 0
-  Type: 
 --- !u!1 &4328245864670185997
 GameObject:
   m_ObjectHideFlags: 0
@@ -9206,6 +9668,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Catstruction
   Effect: Remove 95 damage. (Affect both players)
+  powerToTake: 0
 --- !u!114 &4905591939449921419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9355,6 +9818,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: DocDog
   effect: Increases the field by 20% damage
+  powerBuff: 0
 --- !u!224 &5164208240335271080
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9415,6 +9879,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Lorenzo El Pobrecito
   effect: Increases the field by 10% damage.
+  powerBuff: 0
 --- !u!1 &5339492423891330758
 GameObject:
   m_ObjectHideFlags: 0
@@ -9738,11 +10203,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 
   Name: Woufnipper
   Attack: 170
   Effect: 
+  keyword: 
   Category: 1
-  Type: 
 --- !u!224 &5916787738301162473
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9812,11 +10278,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 
   Name: El Brayan
   Attack: 220
   Effect: 
+  keyword: 
   Category: 0
-  Type: 
 --- !u!1 &6149166584784319001
 GameObject:
   m_ObjectHideFlags: 0
@@ -9980,11 +10447,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 
   Name: Carlos Espadachin
   Attack: 340
   Effect: 
+  keyword: 
   Category: 0
-  Type: 
 --- !u!114 &6221308318671875100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9997,11 +10465,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 
   Name: Adolfo el frio
   Attack: 90
   Effect: 
+  keyword: 
   Category: 2
-  Type: 
 --- !u!224 &6277351156144889845
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10169,12 +10638,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: Cats
   Name: Pedro El imparable 1
   Attack: 300
   Effect: Throw fire to teh distance zone of your opponent, remove to a random card
     90 damage.
+  keyword: 
   Category: 1
-  Type: 
 --- !u!114 &6537778021182857514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10187,11 +10657,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: Cats
   Name: JackyCat
   Attack: 300
   Effect: ...
+  keyword: 
   Category: 0
-  Type: 
 --- !u!224 &6653448285473492860
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10208,7 +10679,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14.942, y: 167.14}
+  m_AnchoredPosition: {x: 14.942, y: 169}
   m_SizeDelta: {x: 410, y: 42}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6653448285473492861
@@ -10263,11 +10734,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: Cats
   Name: Jose El Espadachin
   Attack: 250
   Effect: 
+  keyword: 
   Category: 0
-  Type: 
 --- !u!114 &6761045233437537955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10484,11 +10956,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 
   Name: Rodolfo el Caliente
   Attack: 75
   Effect: 
+  keyword: 
   Category: 2
-  Type: 
 --- !u!114 &6950397329922085404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10583,11 +11056,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 
   Name: BollDog
   Attack: 70
   Effect: 
+  keyword: 
   Category: 2
-  Type: 
 --- !u!114 &7089132856497253470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10756,6 +11230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Dogstruction
   Effect: Remove 95 damage.  (Affect both players)
+  powerToTake: 0
 --- !u!114 &7213142246164165421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10812,11 +11287,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 
   Name: El Awouftador
   Attack: 200
   Effect: 
+  keyword: 
   Category: 1
-  Type: 
 --- !u!114 &7244378140087086997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11155,12 +11631,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 
   Name: Abracadogbra1
   Attack: 300
   Effect: Bark to the sienge zone of your opponent and remove to a random card 90
     damage
+  keyword: 
   Category: 1
-  Type: 
 --- !u!114 &7625712033856777422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11257,6 +11734,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Jocker
   Effect: Replaced this card with one of your choice placed on the field.
+  Attack: 0
 --- !u!114 &7645638765257414508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11383,6 +11861,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Jocker
   Effect: Replaced this card with one of your choice placed on the field.
+  Attack: 0
 --- !u!114 &7849612367410550737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11479,6 +11958,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Jocker
   Effect: Replaced this card with one of your choice placed on the field.
+  Attack: 0
 --- !u!114 &7876926807248740187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11573,11 +12053,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 
   Name: Catntalf
   Attack: 180
   Effect: 
+  keyword: 
   Category: 1
-  Type: 
 --- !u!114 &7880735301198123155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11672,11 +12153,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 
   Name: El Diablo
   Attack: 90
   Effect: 
+  keyword: 
   Category: 2
-  Type: 
 --- !u!114 &8005665272297812359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11875,6 +12357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Thor
   Effect: Remove 100 damage. (Affect both players)
+  powerToTake: 0
 --- !u!114 &8031760144339559538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12606,6 +13089,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Jocker
   Effect: Replaced this card with one of your choice placed on the field.
+  Attack: 0
 --- !u!114 &8476246631649377508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13160,6 +13644,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Jocker
   Effect: Replaced this card with one of your choice placed on the field.
+  Attack: 0
 --- !u!114 &8805714931535614526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13606,11 +14091,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: 
   Name: CatBolls
   Attack: 70
   Effect: 
+  keyword: 
   Category: 2
-  Type: 
 --- !u!114 &9073251960713968592
 MonoBehaviour:
   m_ObjectHideFlags: 0

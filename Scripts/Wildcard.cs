@@ -8,7 +8,6 @@ public class Wildcard : MonoBehaviour
 {
     public string Name;
     public string Effect;
-    public long Attack;
 
     
     // sustituye una carta selecionada por una wilcard y regresa a tu mano

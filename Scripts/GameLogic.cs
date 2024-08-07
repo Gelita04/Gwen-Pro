@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class GameLogic : MonoBehaviour
 {
     public Text dataMatch;
@@ -31,21 +32,19 @@ public class GameLogic : MonoBehaviour
     public GameObject cardLeaderEnemy;
     public GameObject catsWin;
     public GameObject dogsWin;
-    
-    
-
-
 
     [ContextMenu("Logic")]
     public void UpdateDataText() //dataMatch es "Round: " + roundCounter + " Player: " + playerScore + " Enemy: " + enemyScore;
     {
-        dataMatch.text = "Round: " + roundCounter + "\nCats: " + playerScore + "\nDogs: " + enemyScore;
-       
+        dataMatch.text =
+            "Round: " + roundCounter + "\nCats: " + playerScore + "\nDogs: " + enemyScore;
     }
-    public void ActivateEffects( GameObject[,] board, GameObject card, int x) // metodo que para activar effecto
+
+    public void ActivateEffects(GameObject[,] board, GameObject card, int x) // metodo que para activar effecto
     {
         EffectsScript effects = this.effects.GetComponent<EffectsScript>();
-        if (card!=null)
+        Unit_Card effectsUnitCards = effects.GetComponent<Unit_Card>();
+        if (card != null)
         {
             if (card.CompareTag("Field"))
             {
@@ -57,22 +56,25 @@ public class GameLogic : MonoBehaviour
             }
             if (card.CompareTag("Unit-Cards"))
             {
-                effects.RemoveDamageRandomCards(board,card,x);
+                effectsUnitCards.EffectsUnitCardsAtivate(board, card);
             }
             if (card.CompareTag("Counterfield"))
             {
-                //effects.EffectsCounterField(card, );
+                effects.EffectsCounterField(card, board);
             }
             if (card.CompareTag("Wildcard"))
             {
-                effectwilcard.GetComponent<EffectWildcard>().effectWildcard(board, card);
+                //effectwilcard.GetComponent<EffectWildcard>().effectWildcard(board, card);
             }
         }
-        
     }
+
+    public void EndGame() //metodo que termina el juego
+    { }
+
     // ReSharper disable Unity.PerformanceAnalysis
     //este metodo no se sobrecarga, solo se llama si cumple la condicion, no 30 veces por sengundo.
-    public long GetBattleResult( GameObject[,] board) //  devuelve el result que es quien gano esa ronda, 1:playerWin -1:enemyWin 0:draw
+    public long GetBattleResult(GameObject[,] board) //devuelve el result que es quien gano esa ronda, 1:playerWin -1:enemyWin 0:draw
     {
         long playerTotalAttack = 0;
         long enemyTotalAttack = 0;
@@ -81,19 +83,18 @@ public class GameLogic : MonoBehaviour
         {
             for (int j = 1; j < board.GetLength(1); j++)
             {
-                if(board[i,j] != null)
+                if (board[i, j] != null)
                 {
                     ActivateEffects(board, board[i, j], i);
                     if (board[i, j].CompareTag("Unit-Cards"))
                     {
                         if (board[i, j].GetComponent<Unit_Card>().Attack <= 0)
                         {
-                            if (i<3)
+                            if (i < 3)
                             {
-                                board[i, j].transform.SetParent(cementeryDogs.transform, false);   
+                                board[i, j].transform.SetParent(cementeryDogs.transform, false);
                             }
                             board[i, j].transform.SetParent(cementeryCats.transform, false);
-                            
                         }
                         else if (i < 2)
                         {
@@ -120,18 +121,17 @@ public class GameLogic : MonoBehaviour
         else
         {
             result = 0;
-            
         }
         return result;
     }
-    
+
     public void PassTurn() // se llama al presionar el boton de pasar turno
     {
         if (isPlayerTurn)
         {
             if (isPlayerReadyForBattle)
                 playerPassTurnBeingReadyForBattle = true;
-            
+
             isPlayerTurn = false;
             isPlayerReadyForBattle = true;
         }
@@ -144,21 +144,20 @@ public class GameLogic : MonoBehaviour
         }
     }
 
-    public void ChangeRound( GameObject[,] board)
+    public void ChangeRound(GameObject[,] board) //mal hay que cambiar todo
     {
         for (int i = 0; i < board.GetLength(0); i++)
         {
             for (int j = 0; j < board.GetLength(1); j++)
             {
-                if (board[i,j] != null && i<3)
+                if (board[i, j] != null && i < 3)
                 {
-                    board[i,j].transform.SetParent(cementeryDogs.transform, false);
+                    board[i, j].transform.SetParent(cementeryDogs.transform, false);
                 }
-                else if (board[i,j]!= null && i >=3 )
+                else if (board[i, j] != null && i >= 3)
                 {
-                    board[i,j].transform.SetParent(cementeryCats.transform,false);
+                    board[i, j].transform.SetParent(cementeryCats.transform, false);
                 }
-                
             }
         }
     }
@@ -174,11 +173,10 @@ public class GameLogic : MonoBehaviour
             roundCounter++;
             if (result == 1)
             {
-                playerScore++; 
+                playerScore++;
                 Debug.Log("Player win this round");
                 catsWinRound.GetComponent<TextPlayerWin>().WinRound();
                 ChangeRound(matrixBoard);
-
             }
             else if (result == -1)
             {
@@ -200,6 +198,7 @@ public class GameLogic : MonoBehaviour
             enemyPassTurnBeingReadyForBattle = false;
         }
     }
+
     // ReSharper disable Unity.PerformanceAnalysis
 
     public void CheckEndGame() // se llama constantemente, metodo para verificar la cantidad de rondas.
@@ -211,12 +210,14 @@ public class GameLogic : MonoBehaviour
                 playerWon = true;
                 Debug.Log("Cats Win");
                 catsWin.GetComponent<TextPlayerWin>().WinGame();
+                EndGame();
             }
             else if (playerScore != 2 && enemyScore == 2)
             {
                 enemyWon = true;
                 Debug.Log("Dogs Win");
                 dogsWin.GetComponent<TextEnemyWin>().WinGame();
+                EndGame();
             }
         }
         else if (roundCounter == 3)
@@ -226,21 +227,20 @@ public class GameLogic : MonoBehaviour
                 playerWon = true;
                 Debug.Log("Cats Win");
                 catsWin.GetComponent<TextPlayerWin>().WinGame();
+                EndGame();
             }
             else if (playerScore < enemyScore)
             {
                 enemyWon = true;
                 Debug.Log("Dogs Win");
                 dogsWin.GetComponent<TextEnemyWin>().WinGame();
-                
+                EndGame();
             }
         }
     }
-    
-    void Start()
-    {
-        
-    }
+
+    void Start() { }
+
     void Update()
     {
         CheckReadyForBattle();
