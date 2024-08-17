@@ -48,11 +48,11 @@ public class GameLogic : MonoBehaviour
         {
             if (card.CompareTag("Field"))
             {
-                effects.EffectsField(board,card,x);
+                effects.EffectsField(board, card, x);
             }
             if (card.CompareTag("Buff"))
             {
-                effects.EffectsBuff(board,card,x);
+                effects.EffectsBuff(board, card, x);
             }
             if (card.CompareTag("Unit-Cards"))
             {
@@ -88,13 +88,19 @@ public class GameLogic : MonoBehaviour
                     ActivateEffects(board, board[i, j], i);
                     if (board[i, j].CompareTag("Unit-Cards"))
                     {
-                        if (board[i, j].GetComponent<Unit_Card>().Attack <= 0)
+                        if (board[i, j].GetComponent<Unit_Card>().Attack <= 0) //elimina las cartas que tienen 0 de poder en el campo y las manda para el cementerio
                         {
                             if (i < 3)
                             {
-                                board[i, j].transform.SetParent(cementeryDogs.transform, false);
+                                //board[i, j].transform.SetParent(cementeryDogs.transform, false);
+                                cementeryDogs
+                                    .GetComponent<Cementery>()
+                                    .RemoveCardCementery(board[i, j]);
                             }
-                            board[i, j].transform.SetParent(cementeryCats.transform, false);
+                            //board[i, j].transform.SetParent(cementeryCats.transform, false);
+                            cementeryCats
+                                .GetComponent<Cementery>()
+                                .RemoveCardCementery(board[i, j]);
                         }
                         else if (i < 2)
                         {
@@ -144,7 +150,7 @@ public class GameLogic : MonoBehaviour
         }
     }
 
-    public void ChangeRound(GameObject[,] board) //mal hay que cambiar todo
+    public void ChangeRound(GameObject[,] board) //metodo que cambia de ronda, elimina las cartas del campo y las manda para el cementerio
     {
         for (int i = 0; i < board.GetLength(0); i++)
         {
@@ -152,11 +158,13 @@ public class GameLogic : MonoBehaviour
             {
                 if (board[i, j] != null && i < 3)
                 {
-                    board[i, j].transform.SetParent(cementeryDogs.transform, false);
+                    //board[i, j].transform.SetParent(cementeryDogs.transform, false);
+                    cementeryDogs.GetComponent<Cementery>().RemoveCardCementery(board[i, j]);
                 }
                 else if (board[i, j] != null && i >= 3)
                 {
-                    board[i, j].transform.SetParent(cementeryCats.transform, false);
+                    //board[i, j].transform.SetParent(cementeryCats.transform, false);
+                    cementeryCats.GetComponent<Cementery>().RemoveCardCementery(board[i, j]);
                 }
             }
         }

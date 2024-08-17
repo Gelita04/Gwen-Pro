@@ -323,7 +323,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4449135244173198666, guid: a89352511f831be49b3bd72e3bd6ca81, type: 3}
+  m_Sprite: {fileID: 2674728079673009089, guid: 8dff3ab00275c7c40a77e0b63ec55c8d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5184,7 +5184,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 6379686516033879303, guid: 7ce94e4d938b7ab499b5467096732bf1, type: 3}
+  m_Sprite: {fileID: -7603845056133169658, guid: 59be45fee34c63342977c93826cf10ba, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5703,7 +5703,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5198912147559702987, guid: daf1ad9cafa78cc4aa9e016dc81a6861, type: 3}
+  m_Sprite: {fileID: -5798966475678702177, guid: 086834c5d17e22f4487a5e3b51f532d8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5911,7 +5911,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4428274088663293093, guid: ff16f2cedb091e145a086391228f6f07, type: 3}
+  m_Sprite: {fileID: 5309327837494817168, guid: b6289acf361dac9409d4120c48bf9189, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7449,12 +7449,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 
-  Name: Abracadogbra2
+  team: Dogs
+  Name: Avada Kadogbra
   Attack: 300
-  Effect: Bark to the sienge zone of your opponent and remove to a random card 90
-    damage
-  keyword: 
+  keywordAction: Elimina
+  keywordObject: mayor
   Category: 1
 --- !u!222 &23758666571356429
 CanvasRenderer:
@@ -7652,8 +7651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Jocker
-  Effect: Replaced this card with one of your choice placed on the field.
-  Attack: 0
+  Effect: Remplaza
 --- !u!1 &554628370830692982
 GameObject:
   m_ObjectHideFlags: 0
@@ -7842,11 +7840,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 
+  team: Cats
   Name: John Snow
   Attack: 80
-  Effect: 
-  keyword: 
+  keywordAction: Pone
+  keywordObject: Field
   Category: 2
 --- !u!224 &1066254652787000326
 RectTransform:
@@ -7945,7 +7943,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2391772699914769591, guid: cc301712885392e4a9cbd2622bcecca8, type: 3}
+  m_Sprite: {fileID: 2285722325964738194, guid: 9c1dcdb635dc67949afd14710fdf96a9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7996,8 +7994,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Patricio El Liciado
-  effect: Increases the field by 15% damage
-  powerBuff: 0
+  keywordAction: Aumenta
+  powerBuff: 10
 --- !u!114 &1600857153660564564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8018,7 +8016,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -6183576027644622382, guid: 3e5b62964618520489ce12731ffc4b57, type: 3}
+  m_Sprite: {fileID: -4166521706324740049, guid: 4be6be900cc0e9c43b5a7becdf9f3b32, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8067,7 +8065,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2205076821663205824, guid: b3eda1b15aa5a584b8787532add74eaa, type: 3}
+  m_Sprite: {fileID: 4360370850713134448, guid: b3eda1b15aa5a584b8787532add74eaa, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8117,11 +8115,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 
+  team: Cats
   Name: El Michi agresivo
   Attack: 75
-  Effect: 
-  keyword: 
+  keywordAction: Disminuye
+  keywordObject: random
   Category: 2
 --- !u!1 &1906317012399855580
 GameObject:
@@ -8155,8 +8153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a18a0cf5f3725444cb247985d914acd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Pepe
-  effect: ' Earn a point in case the battle ends in a tie. '
+  Name: El Machi
+  effect: Gana un punto en caso de empate
 --- !u!222 &1951401583239999931
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8177,8 +8175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7355173e499f814fbee4ba78b364fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Peace
-  effect: Remove the field card that is placed in the desired row.
+  Name: Pacifimichidor
 --- !u!224 &2068007933644412204
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8213,7 +8210,7 @@ GameObject:
   - component: {fileID: 7538379199283662369}
   - component: {fileID: 7538379199283662370}
   m_Layer: 0
-  m_Name: Pepe
+  m_Name: Machi
   m_TagString: Leader
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8232,7 +8229,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: El hacedor de la paz
-  effect: Remove the field card that is placed in the desired row.
 --- !u!114 &2169875829788845406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8246,8 +8242,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Docat
-  effect: Increases the field by 15% damage.
-  powerBuff: 0
+  keywordAction: Aumenta
+  powerBuff: 10
 --- !u!1 &2215547299662856030
 GameObject:
   m_ObjectHideFlags: 0
@@ -8320,11 +8316,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 
+  team: Dogs
   Name: Julio el comflictivo
   Attack: 80
-  Effect: 
-  keyword: 
+  keywordAction: Quita
+  keywordObject: random
   Category: 2
 --- !u!224 &2279280884128876106
 RectTransform:
@@ -8358,8 +8354,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Catmmer
-  Effect: Remove 100 damage. (Affect both players)
-  powerToTake: 0
+  Effect: Quita
+  powerToTake: 20
 --- !u!1 &2359941520786356554
 GameObject:
   m_ObjectHideFlags: 0
@@ -8374,7 +8370,7 @@ GameObject:
   - component: {fileID: 3070428608178043959}
   - component: {fileID: 3070428608178043961}
   m_Layer: 0
-  m_Name: Michidante
+  m_Name: CatNurse
   m_TagString: Buff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8400,7 +8396,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8538009365456601983, guid: 12d3d8c17d37bad4dbcb9bac50bc59e3, type: 3}
+  m_Sprite: {fileID: -5308058397928254226, guid: 3ac115e6a576cf24cb98b499cdb77110, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8423,7 +8419,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Doggipie
-  effect: Remove the field card that is placed in the desired row.
 --- !u!224 &2486371706381661685
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8463,7 +8458,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2273850565184374284, guid: 8f36ad154b96e7f4fbf0b6ba67aa847d, type: 3}
+  m_Sprite: {fileID: -3092399473026482874, guid: 9f2e876ab7e661840ade4de843256f98, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8575,12 +8570,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 
+  team: Cats
   Name: Pedro El Imparable 2
   Attack: 300
-  Effect: Throw fire to teh distance zone of your opponent, remove to a random card
-    90 damage.
-  keyword: 
+  keywordAction: Iguala
+  keywordObject: promedio
   Category: 1
 --- !u!1 &2649113786458643236
 GameObject:
@@ -8633,11 +8627,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 
+  team: Dogs
   Name: Cat Cruise
   Attack: 400
-  Effect: 
-  keyword: 
+  keywordAction: Elimina
+  keywordObject: menor
   Category: 0
 --- !u!224 &2875130029007392286
 RectTransform:
@@ -8697,7 +8691,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1603362541828625341, guid: 06cb527386de9be47a7d57a16a28e83e, type: 3}
+  m_Sprite: {fileID: 7399123931363549179, guid: 0b536327be9d5d2408dc69ef6057eca2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8791,8 +8785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7355173e499f814fbee4ba78b364fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Peace
-  effect: Remove the field card that is placed in the desired row.
+  Name: Michippie
 --- !u!114 &3047989248340688510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8813,7 +8806,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4205477880941391533, guid: 0c992b581cd67b2498eabf65655a4530, type: 3}
+  m_Sprite: {fileID: 319964189542255221, guid: 89153dbc056b25e429d78f34cf876d51, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8854,9 +8847,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ee34f75c140a7479d280d6d99874ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Michidante
-  effect: 'Increases the field by 20% damage. '
-  powerBuff: 0
+  Name: CatNurse
+  keywordAction: Aumenta
+  powerBuff: 6
 --- !u!114 &3070428608178043959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8877,7 +8870,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -7101358974934660194, guid: 4dcd62159d67c94459ea4c1c181e2616, type: 3}
+  m_Sprite: {fileID: -6688939550927425646, guid: 4b7a1465ee305624495bbbcfab78f274, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8970,11 +8963,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 
+  team: Cats
   Name: Cateyes
   Attack: 250
-  Effect: 
-  keyword: 
+  keywordAction: Elimina
+  keywordObject: menor
   Category: 1
 --- !u!222 &3349560728710579446
 CanvasRenderer:
@@ -8996,11 +8989,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 
+  team: Cats
   Name: Yasmany
   Attack: 320
-  Effect: 
-  keyword: 
+  keywordAction: Disminuye
+  keywordObject: random
   Category: 0
 --- !u!1 &3436030048928304249
 GameObject:
@@ -9042,7 +9035,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2879135777746476989, guid: 4abad32e45948bf469ffddf63fa86db8, type: 3}
+  m_Sprite: {fileID: 1055931136803617098, guid: 9691b7db6b1459944bef56d227fce46d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9144,8 +9137,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Catmmer
-  Effect: Remove 90 damage.  (Affect both players)
-  powerToTake: 0
+  Effect: Quita
+  powerToTake: 30
 --- !u!224 &3856271472867467952
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9178,8 +9171,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Enfermedog
-  effect: Increases the field by 10% damage
-  powerBuff: 0
+  keywordAction: Aumenta
+  powerBuff: 8
 --- !u!1 &3966309686312717329
 GameObject:
   m_ObjectHideFlags: 0
@@ -9270,8 +9263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7355173e499f814fbee4ba78b364fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Peace
-  effect: Remove the field card that is placed in the desired row.
+  Name: PeaceCat
 --- !u!222 &4119164146303050185
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9293,8 +9285,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Kamikaze
-  Effect: Remove 90 damage.  (Affect both players)
-  powerToTake: 0
+  Effect: Quita
+  powerToTake: 30
 --- !u!114 &4190681349247491141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9307,12 +9299,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 
+  team: Dogs
   Name: The HitDog
   Attack: 500
-  Effect: He accidentally shoots and the bullet falls  on one of the opponent's cards
-    removing 200 damage.
-  keyword: 
+  keywordAction: Iguala
+  keywordObject: promedio
   Category: 0
 --- !u!1 &4211806038526005706
 GameObject:
@@ -9349,9 +9340,8 @@ MonoBehaviour:
   team: Cats
   Name: HulkCat
   Attack: 500
-  Effect: Affects the card with the greatest damage in  the melee zone removing 200
-    damage.
-  keyword: greastest
+  keywordAction: Elimina
+  keywordObject: mayor
   Category: 0
 --- !u!1 &4328245864670185997
 GameObject:
@@ -9393,7 +9383,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4505863162157625469, guid: 462b79bd48d5c2b4babbcdd5b98d63dd, type: 3}
+  m_Sprite: {fileID: -4158140132544077786, guid: b322a3d9695a26c4880ef8555175b89a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9483,7 +9473,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1665455197840733621, guid: 0cd6032b286ed254c8a10a2952f39182, type: 3}
+  m_Sprite: {fileID: 715893932732367664, guid: 0cd6032b286ed254c8a10a2952f39182, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9507,7 +9497,7 @@ GameObject:
   - component: {fileID: 7625712033856777422}
   - component: {fileID: 7625712033856777424}
   m_Layer: 0
-  m_Name: Abracadogbra1
+  m_Name: Avada Kadogbra
   m_TagString: Unit-Cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9667,8 +9657,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Catstruction
-  Effect: Remove 95 damage. (Affect both players)
-  powerToTake: 0
+  Effect: Quita
+  powerToTake: 40
 --- !u!114 &4905591939449921419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9817,8 +9807,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: DocDog
-  effect: Increases the field by 20% damage
-  powerBuff: 0
+  keywordAction: Aumenta
+  powerBuff: 5
 --- !u!224 &5164208240335271080
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9878,8 +9868,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Lorenzo El Pobrecito
-  effect: Increases the field by 10% damage.
-  powerBuff: 0
+  keywordAction: Aumenta
+  powerBuff: 7
 --- !u!1 &5339492423891330758
 GameObject:
   m_ObjectHideFlags: 0
@@ -9920,7 +9910,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5540464463364846604, guid: 6c4ea7c5f3b15794ab4c40d67e461394, type: 3}
+  m_Sprite: {fileID: -3320491083850592675, guid: d1b095002998510469ca1ac8ca6d3e1f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10021,7 +10011,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 6493424048725975853, guid: b30b2c8f5d9a39943b650634d2ff9b66, type: 3}
+  m_Sprite: {fileID: 9215010207817756672, guid: b30b2c8f5d9a39943b650634d2ff9b66, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10110,7 +10100,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -7814921376268270111, guid: b7567eaa7db17ad4fb207a02b77d00bd, type: 3}
+  m_Sprite: {fileID: -767143343624904752, guid: 081d67819a7b5f94087b19fbfb60ceb8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10203,11 +10193,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 
+  team: Dogs
   Name: Woufnipper
   Attack: 170
-  Effect: 
-  keyword: 
+  keywordAction: Limpia
+  keywordObject: menos
   Category: 1
 --- !u!224 &5916787738301162473
 RectTransform:
@@ -10278,11 +10268,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 
+  team: Dogs
   Name: El Brayan
   Attack: 220
-  Effect: 
-  keyword: 
+  keywordAction: Roba
+  keywordObject: carta
   Category: 0
 --- !u!1 &6149166584784319001
 GameObject:
@@ -10298,7 +10288,7 @@ GameObject:
   - component: {fileID: 6149166584784319002}
   - component: {fileID: 6149166584784319004}
   m_Layer: 0
-  m_Name: Abracadogbra2
+  m_Name: Avada Kadogbra
   m_TagString: Unit-Cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10425,7 +10415,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3297805932075027167, guid: e80b24f272bd0cc44bd4715f2a7a684f, type: 3}
+  m_Sprite: {fileID: -5444141793433982336, guid: f4ae3865c4208ec40aa88e075aabe480, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10447,11 +10437,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 
+  team: Dogs
   Name: Carlos Espadachin
   Attack: 340
-  Effect: 
-  keyword: 
+  keywordAction: Quita
+  keywordObject: random
   Category: 0
 --- !u!114 &6221308318671875100
 MonoBehaviour:
@@ -10465,11 +10455,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 
+  team: Dogs
   Name: Adolfo el frio
   Attack: 90
-  Effect: 
-  keyword: 
+  keywordAction: Pone
+  keywordObject: Buff
   Category: 2
 --- !u!224 &6277351156144889845
 RectTransform:
@@ -10502,8 +10492,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a18a0cf5f3725444cb247985d914acd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: DogAmen
-  effect: 
+  Name: Firulais
+  effect: Evita que el enemigo obtenga un punto.
 --- !u!1 &6375700622952958568
 GameObject:
   m_ObjectHideFlags: 0
@@ -10544,7 +10534,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2830509892751140417, guid: 6dcc7d96f11f5fb4daaec1f570a75d35, type: 3}
+  m_Sprite: {fileID: -5158197469785228505, guid: db0dee3664bcc5041ab7b646f12c7ba0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10641,9 +10631,8 @@ MonoBehaviour:
   team: Cats
   Name: Pedro El imparable 1
   Attack: 300
-  Effect: Throw fire to teh distance zone of your opponent, remove to a random card
-    90 damage.
-  keyword: 
+  keywordAction: Iguala
+  keywordObject: promedio
   Category: 1
 --- !u!114 &6537778021182857514
 MonoBehaviour:
@@ -10660,8 +10649,8 @@ MonoBehaviour:
   team: Cats
   Name: JackyCat
   Attack: 300
-  Effect: ...
-  keyword: 
+  keywordAction: Disminuye
+  keywordObject: random
   Category: 0
 --- !u!224 &6653448285473492860
 RectTransform:
@@ -10737,8 +10726,8 @@ MonoBehaviour:
   team: Cats
   Name: Jose El Espadachin
   Attack: 250
-  Effect: 
-  keyword: 
+  keywordAction: Pone
+  keywordObject: Buff
   Category: 0
 --- !u!114 &6761045233437537955
 MonoBehaviour:
@@ -10753,7 +10742,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Daniel el pacifista
-  effect: Remove the field card that is placed in the desired row.
 --- !u!224 &6830104973037707358
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10837,7 +10825,7 @@ GameObject:
   - component: {fileID: 6893873941590226530}
   - component: {fileID: 6893873941590226532}
   m_Layer: 0
-  m_Name: DogAmen
+  m_Name: Firulais
   m_TagString: Leader
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10863,7 +10851,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1853637660573969972, guid: 75978519228004d4fba3a2925e9f699a, type: 3}
+  m_Sprite: {fileID: 4934279534762357369, guid: 185de0096155e6544a2838553b86d08e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10956,11 +10944,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 
+  team: Dogs
   Name: Rodolfo el Caliente
   Attack: 75
-  Effect: 
-  keyword: 
+  keywordAction: Pone
+  keywordObject: Field
   Category: 2
 --- !u!114 &6950397329922085404
 MonoBehaviour:
@@ -10982,7 +10970,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8584307604215455190, guid: 622b5aed4dbfb234fb9de26349e04eeb, type: 3}
+  m_Sprite: {fileID: -3695665503711084283, guid: 9793e4749d48cc245a6c225fe400680a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11056,11 +11044,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 
+  team: Dogs
   Name: BollDog
   Attack: 70
-  Effect: 
-  keyword: 
+  keywordAction: Multiplica
+  keywordObject: mismo
   Category: 2
 --- !u!114 &7089132856497253470
 MonoBehaviour:
@@ -11082,7 +11070,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -782758131970958845, guid: 2c5c47fc72865db46aa6a92c103ac2c7, type: 3}
+  m_Sprite: {fileID: -342331865527585026, guid: 5007a5594298725479d8c23fb7831ee4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11166,7 +11154,7 @@ GameObject:
   - component: {fileID: 3534216392813008584}
   - component: {fileID: 7153148672464903143}
   m_Layer: 0
-  m_Name: Peace
+  m_Name: PeaceCat
   m_TagString: Counterfield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11229,8 +11217,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Dogstruction
-  Effect: Remove 95 damage.  (Affect both players)
-  powerToTake: 0
+  Effect: Quita
+  powerToTake: 40
 --- !u!114 &7213142246164165421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11287,11 +11275,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 
+  team: Dogs
   Name: El Awouftador
   Attack: 200
-  Effect: 
-  keyword: 
+  keywordAction: 'Quita '
+  keywordObject: random
   Category: 1
 --- !u!114 &7244378140087086997
 MonoBehaviour:
@@ -11313,7 +11301,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -537318312123014563, guid: aa3c8d97fa1905344b91dffe4bf72062, type: 3}
+  m_Sprite: {fileID: -3427081613424511066, guid: 12c9b5b10e4043a4db5c6f0dc6083a8b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11496,7 +11484,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 686626657868482289, guid: 60ca1751375cf5f43ad39d303703394f, type: 3}
+  m_Sprite: {fileID: 4804595042075610830, guid: 60ca1751375cf5f43ad39d303703394f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11545,7 +11533,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1314834070094510604, guid: f466416024a5d11489a9a32ef793dd4c, type: 3}
+  m_Sprite: {fileID: -8177743947925498896, guid: e2ff69bedd6d76b408b9201a2ff629ec, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11631,12 +11619,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 
-  Name: Abracadogbra1
+  team: Dogs
+  Name: Avada Kadogbra
   Attack: 300
-  Effect: Bark to the sienge zone of your opponent and remove to a random card 90
-    damage
-  keyword: 
+  keywordAction: Elimina
+  keywordObject: mayor
   Category: 1
 --- !u!114 &7625712033856777422
 MonoBehaviour:
@@ -11733,8 +11720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Jocker
-  Effect: Replaced this card with one of your choice placed on the field.
-  Attack: 0
+  Effect: Remplaza
 --- !u!114 &7645638765257414508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11755,7 +11741,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1551269124776326299, guid: 9e97b736401ad5b4e9e2c20e28092aee, type: 3}
+  m_Sprite: {fileID: 5490891978467796961, guid: a6afe99f01399e84db44708aefc44487, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11837,7 +11823,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2171745852450842852, guid: 13463733a7dafaa458556c18da27d43b, type: 3}
+  m_Sprite: {fileID: -7501004639286611643, guid: 13463733a7dafaa458556c18da27d43b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11860,8 +11846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Jocker
-  Effect: Replaced this card with one of your choice placed on the field.
-  Attack: 0
+  Effect: Remplaza
 --- !u!114 &7849612367410550737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11882,7 +11867,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2445804828840266861, guid: 206f6f2ea760c4f44897ae7a40f02ccb, type: 3}
+  m_Sprite: {fileID: 6693324148861272544, guid: 1faa287e3ee6e824d9e0519efda8475b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11957,8 +11942,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Jocker
-  Effect: Replaced this card with one of your choice placed on the field.
-  Attack: 0
+  Effect: Remplaza
 --- !u!114 &7876926807248740187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11979,7 +11963,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -796103758460651532, guid: 2410a5f80b22a0b47bc940ca0f852eb4, type: 3}
+  m_Sprite: {fileID: -8044308987274347905, guid: 39321ad9a33c7d14da9bdebda14f5acc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12053,11 +12037,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 
+  team: Cats
   Name: Catntalf
   Attack: 180
-  Effect: 
-  keyword: 
+  keywordAction: Roba
+  keywordObject: carta
   Category: 1
 --- !u!114 &7880735301198123155
 MonoBehaviour:
@@ -12079,7 +12063,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7082675512089988032, guid: 2631f7b1522c504448986360afacfed4, type: 3}
+  m_Sprite: {fileID: -2015201102778615579, guid: 2631f7b1522c504448986360afacfed4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12153,11 +12137,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 
+  team: Cats
   Name: El Diablo
   Attack: 90
-  Effect: 
-  keyword: 
+  keywordAction: 'Limpia '
+  keywordObject: menos
   Category: 2
 --- !u!114 &8005665272297812359
 MonoBehaviour:
@@ -12179,7 +12163,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1370740937050209999, guid: 54c7a76139e7c5140ae461f22f87c4a1, type: 3}
+  m_Sprite: {fileID: 2641919291285773314, guid: eee6492b66ffc4f4f8608ad9aae039c4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12281,7 +12265,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3840971561466033614, guid: 2d6af2ae239059e4baefb53f6e6a7ead, type: 3}
+  m_Sprite: {fileID: 5945553663170954937, guid: 36f45765f8733734382492d9601d4788, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12356,8 +12340,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Thor
-  Effect: Remove 100 damage. (Affect both players)
-  powerToTake: 0
+  Effect: Quita
+  powerToTake: 20
 --- !u!114 &8031760144339559538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12442,7 +12426,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -6311154358840846075, guid: 4743012f8d68fd5499b2616955c512dc, type: 3}
+  m_Sprite: {fileID: -4611844573050121416, guid: bc709394416e45a4389e366930503899, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12543,7 +12527,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4332734977188170965, guid: 88ae83583c3153447828cebe7c2e8778, type: 3}
+  m_Sprite: {fileID: 6228996025125611941, guid: 908135ee8da14954abfde0854e7cc871, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12708,7 +12692,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1834823477251788845, guid: 245fa0695af84e245b6b010011354da1, type: 3}
+  m_Sprite: {fileID: -7821633658049015776, guid: c947ae475c32f884387cc57969242c0f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12810,7 +12794,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3216486454212997597, guid: e58178397744f77419b71264e2d2db29, type: 3}
+  m_Sprite: {fileID: 3032399133337486615, guid: 8b8bb00fc14719b46a0e356d80dded12, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12912,7 +12896,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8785958497647861834, guid: 584d21c9efebd3e4b9f9f253a69b0e19, type: 3}
+  m_Sprite: {fileID: -5981965590165488355, guid: 7f832aa87a8bedd40a3b4a269d0e6b9e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13013,7 +12997,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5387177124807612666, guid: 001c0f45da79a0b4bbf44a3438f0f2a6, type: 3}
+  m_Sprite: {fileID: 3032399133337486615, guid: 8b8bb00fc14719b46a0e356d80dded12, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13088,8 +13072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Jocker
-  Effect: Replaced this card with one of your choice placed on the field.
-  Attack: 0
+  Effect: Remplaza
 --- !u!114 &8476246631649377508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13110,7 +13093,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1978991181918013070, guid: d35fc7a34059a5549b9903a3b9c4c8a6, type: 3}
+  m_Sprite: {fileID: -5529961187530992257, guid: 1237e98dd995ad141a5b47e20a67ed31, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13212,7 +13195,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2527275950648519515, guid: 65abbed2ca43252479163f38276ced52, type: 3}
+  m_Sprite: {fileID: -2221136780847618189, guid: 891b15871d0b0494d8bd582c8e096e76, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13377,7 +13360,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3451965256136007828, guid: 0e2f3202820f6754a9f06bcd802c48b7, type: 3}
+  m_Sprite: {fileID: -7017170017911850592, guid: cc002c315a1c3244397fe2fd094d4128, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13643,8 +13626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Jocker
-  Effect: Replaced this card with one of your choice placed on the field.
-  Attack: 0
+  Effect: Remplaza
 --- !u!114 &8805714931535614526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13665,7 +13647,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1881895825654383165, guid: 7c185c49f5f00024f8476db8a7d21dbb, type: 3}
+  m_Sprite: {fileID: -5453746878950656143, guid: a2783a7e82642004ca88ca8a8ea4e3a4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13767,7 +13749,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5459400220097003561, guid: ed7c4c10a683f8d41ad8a109726b9e0e, type: 3}
+  m_Sprite: {fileID: 1483514345743064038, guid: ed7c4c10a683f8d41ad8a109726b9e0e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13916,7 +13898,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3311058382192893786, guid: 24bc41174e53e1f4dbe36bab25166c95, type: 3}
+  m_Sprite: {fileID: 872994227729628121, guid: f6bb246304c207343a47d544cde5fe59, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14017,7 +13999,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7197270714967392611, guid: 2917ab1c016a7574e86b2a549832304e, type: 3}
+  m_Sprite: {fileID: 7599552288278505841, guid: 12bd12fa45ac3ff4fa34eb046529f29f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14091,11 +14073,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 
+  team: Cats
   Name: CatBolls
   Attack: 70
-  Effect: 
-  keyword: 
+  keywordAction: Multiplica
+  keywordObject: mismo
   Category: 2
 --- !u!114 &9073251960713968592
 MonoBehaviour:
@@ -14117,7 +14099,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -7443071663494412659, guid: dfaa632ee5313db42bb0cc26f1664e94, type: 3}
+  m_Sprite: {fileID: -1977374852363230309, guid: a01318166733f8842a0b56eb6196a7aa, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14218,7 +14200,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 3643947087146260304, guid: 23b499193af71f54a863152c469dc69e, type: 3}
+  m_Sprite: {fileID: 6452995068526014616, guid: ce56f982f62410043ab0fc3f39b2cb0c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14320,7 +14302,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7560423224246404809, guid: 69f9c6f3bf07a764890c2792dcbcfa4d, type: 3}
+  m_Sprite: {fileID: -7807198841043783530, guid: 69f9c6f3bf07a764890c2792dcbcfa4d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14421,7 +14403,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 6228604715322355078, guid: 603b2cfdfdae8164d9a90c1c07c3ad59, type: 3}
+  m_Sprite: {fileID: -2483866742940317631, guid: 885ce3cec1254bd49b7e098d72aeed25, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

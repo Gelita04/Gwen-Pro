@@ -17,8 +17,5 @@ public class Wildcard : MonoBehaviour
         
     }
 
-    public void Start()
-    {
-        
-    }
+    
 }
