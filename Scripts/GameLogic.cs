@@ -32,6 +32,7 @@ public class GameLogic : MonoBehaviour
     public GameObject cardLeaderEnemy;
     public GameObject catsWin;
     public GameObject dogsWin;
+    public GameObject selectedCard;
 
     [ContextMenu("Logic")]
     public void UpdateDataText() //dataMatch es "Round: " + roundCounter + " Player: " + playerScore + " Enemy: " + enemyScore;
@@ -40,10 +41,16 @@ public class GameLogic : MonoBehaviour
             "Round: " + roundCounter + "\nCats: " + playerScore + "\nDogs: " + enemyScore;
     }
 
+    public void OnCardClick(GameObject card)
+    {
+        selectedCard = card;
+    }
+
     public void ActivateEffects(GameObject[,] board, GameObject card, int x) // metodo que para activar effecto
     {
         EffectsScript effects = this.effects.GetComponent<EffectsScript>();
         Unit_Card effectsUnitCards = effects.GetComponent<Unit_Card>();
+        Wildcard effect = effects.GetComponent<Wildcard>();
         if (card != null)
         {
             if (card.CompareTag("Field"))
@@ -64,13 +71,10 @@ public class GameLogic : MonoBehaviour
             }
             if (card.CompareTag("Wildcard"))
             {
-                //effectwilcard.GetComponent<EffectWildcard>().effectWildcard(board, card);
+                effect.effectWildcard(card, selectedCard);
             }
         }
     }
-
-    public void EndGame() //metodo que termina el juego
-    { }
 
     // ReSharper disable Unity.PerformanceAnalysis
     //este metodo no se sobrecarga, solo se llama si cumple la condicion, no 30 veces por sengundo.
@@ -158,16 +162,15 @@ public class GameLogic : MonoBehaviour
             {
                 if (board[i, j] != null && i < 3)
                 {
-                    //board[i, j].transform.SetParent(cementeryDogs.transform, false);
                     cementeryDogs.GetComponent<Cementery>().RemoveCardCementery(board[i, j]);
                 }
                 else if (board[i, j] != null && i >= 3)
                 {
-                    //board[i, j].transform.SetParent(cementeryCats.transform, false);
                     cementeryCats.GetComponent<Cementery>().RemoveCardCementery(board[i, j]);
                 }
             }
         }
+        roundCounter = +1;
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
@@ -196,8 +199,7 @@ public class GameLogic : MonoBehaviour
             else
             {
                 cardLeaderPlayer.GetComponent<EffectPepe>().ActivateEffect(playerScore);
-                //textleader.GetComponent<TextLeader>().ActivateLeader();
-                //TextPlayer.GetComponent<TextPlayerWin>().ActiveText();
+                catsWinRound.GetComponent<TextPlayerWin>().WinRound();
                 Debug.Log("Player Win");
                 ChangeRound(matrixBoard);
             }
@@ -209,7 +211,7 @@ public class GameLogic : MonoBehaviour
 
     // ReSharper disable Unity.PerformanceAnalysis
 
-    public void CheckEndGame() // se llama constantemente, metodo para verificar la cantidad de rondas.
+    public void CheckEndGame() //metodo que analiza el fin del juego
     {
         if (roundCounter == 2)
         {
@@ -218,14 +220,12 @@ public class GameLogic : MonoBehaviour
                 playerWon = true;
                 Debug.Log("Cats Win");
                 catsWin.GetComponent<TextPlayerWin>().WinGame();
-                EndGame();
             }
             else if (playerScore != 2 && enemyScore == 2)
             {
                 enemyWon = true;
                 Debug.Log("Dogs Win");
                 dogsWin.GetComponent<TextEnemyWin>().WinGame();
-                EndGame();
             }
         }
         else if (roundCounter == 3)
@@ -235,19 +235,15 @@ public class GameLogic : MonoBehaviour
                 playerWon = true;
                 Debug.Log("Cats Win");
                 catsWin.GetComponent<TextPlayerWin>().WinGame();
-                EndGame();
             }
             else if (playerScore < enemyScore)
             {
                 enemyWon = true;
                 Debug.Log("Dogs Win");
                 dogsWin.GetComponent<TextEnemyWin>().WinGame();
-                EndGame();
             }
         }
     }
-
-    void Start() { }
 
     void Update()
     {
