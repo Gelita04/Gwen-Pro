@@ -12,9 +12,13 @@ public class TextEnemyWin : MonoBehaviour
        DogsWin.SetActive(false);
     }
 
-    public void WinRound()
+    public void ActivateWinRound()
     {
         DogsWinRound.SetActive(true);
+    }
+    public void DesactivateWinRound()
+    {
+        DogsWinRound.SetActive(false);
     }
 
     public void WinGame()

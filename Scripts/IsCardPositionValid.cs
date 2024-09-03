@@ -14,19 +14,42 @@ public class IsCardPositionValidScript : MonoBehaviour
             {
                 return true;
             }
-            else if (card.CompareTag("Unit-Cards") && card.GetComponent<Unit_Card>().Category == UnitMember.hero && x == 3 && (y == 1 || y == 2 || y == 3 || y == 4))
+            else if (
+                card.CompareTag("Unit-Cards")
+                && card.GetComponent<Unit_Card>().Category == UnitMember.hero
+                && x == 3
+                && (y == 1 || y == 2 || y == 3 || y == 4)
+            )
             {
                 return true;
             }
-            else if (card.CompareTag("Unit-Cards") && card.GetComponent<Unit_Card>().Category == UnitMember.archers && x == 4 && (y == 1 || y == 2 || y == 3 || y == 4))
+            else if (
+                card.CompareTag("Unit-Cards")
+                && card.GetComponent<Unit_Card>().Category == UnitMember.archers
+                && x == 4
+                && (y == 1 || y == 2 || y == 3 || y == 4)
+            )
             {
                 return true;
             }
-            else if (card.CompareTag("Unit-Cards") && card.GetComponent<Unit_Card>().Category == UnitMember.siege && x == 5 && (y == 1 || y == 2 || y == 3 || y == 4))
+            else if (
+                card.CompareTag("Unit-Cards")
+                && card.GetComponent<Unit_Card>().Category == UnitMember.siege
+                && x == 5
+                && (y == 1 || y == 2 || y == 3 || y == 4)
+            )
             {
                 return true;
             }
             else if (card.CompareTag("Buff") && y != 0)
+            {
+                return true;
+            }
+            else if (card.CompareTag("Wildcard") && y != 0)
+            {
+                return true;
+            }
+            else if (card.CompareTag("Counterfield") && y!=0)
             {
                 return true;
             }
@@ -51,15 +74,30 @@ public class IsCardPositionValidScript : MonoBehaviour
             {
                 return true;
             }
-            else if (card.CompareTag("Unit-Cards") && card.GetComponent<Unit_Card>().Category == UnitMember.siege && x == 0 && (y == 1 || y == 2 || y == 3 || y == 4))
+            else if (
+                card.CompareTag("Unit-Cards")
+                && card.GetComponent<Unit_Card>().Category == UnitMember.siege
+                && x == 0
+                && (y == 1 || y == 2 || y == 3 || y == 4)
+            )
             {
                 return true;
             }
-            else if (card.CompareTag("Unit-Cards") && card.GetComponent<Unit_Card>().Category == UnitMember.archers && x == 1 && (y == 1 || y == 2 || y == 3 || y == 4))
+            else if (
+                card.CompareTag("Unit-Cards")
+                && card.GetComponent<Unit_Card>().Category == UnitMember.archers
+                && x == 1
+                && (y == 1 || y == 2 || y == 3 || y == 4)
+            )
             {
                 return true;
             }
-            else if (card.CompareTag("Unit-Cards") && card.GetComponent<Unit_Card>().Category == UnitMember.hero && x == 2 && (y == 1 || y == 2 || y == 3 || y == 4))
+            else if (
+                card.CompareTag("Unit-Cards")
+                && card.GetComponent<Unit_Card>().Category == UnitMember.hero
+                && x == 2
+                && (y == 1 || y == 2 || y == 3 || y == 4)
+            )
             {
                 return true;
             }

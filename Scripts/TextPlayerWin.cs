@@ -12,9 +12,13 @@ public class TextPlayerWin : MonoBehaviour
         CatsWin.SetActive(false);
     }
 
-    public void WinRound()
+    public void ActivateWinRound()
     {
         CatsWinRound.SetActive(true);
+    }
+    public void DesactivateWinRound()
+    {
+        CatsWinRound.SetActive(false);
     }
 
     public void WinGame()

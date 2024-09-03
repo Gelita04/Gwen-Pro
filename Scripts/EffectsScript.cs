@@ -16,7 +16,7 @@ public class EffectsScript : MonoBehaviour
     public GameObject cementery;
 
     //metodo que selecciona una fila dada la coordenada de la misma
-    public GameObject[] Rowselected(GameObject[,] matrixboard, int x) //!!!
+    public GameObject[] Rowselected(GameObject[,] matrixboard, int x) 
     {
         GameObject[] row =
         {
@@ -97,30 +97,48 @@ public class EffectsScript : MonoBehaviour
     {
         int indexRowEnemy = IndexRowEnemy(board, x);
         removeAttack = cardField.GetComponent<Field_Card>().powerToTake;
+        Debug.Log(removeAttack);
         for (int m = 1; m < board.GetLength(0); m++)
         {
             board[x, m].GetComponent<Unit_Card>().Attack =
                 board[x, m].GetComponent<Unit_Card>().Attack
                 - ((removeAttack * 100) / board[x, m].GetComponent<Unit_Card>().Attack);
+                Debug.Log(board[x,m].GetComponent<Unit_Card>().Attack);
             board[indexRowEnemy, m].GetComponent<Unit_Card>().Attack =
                 board[indexRowEnemy, m].GetComponent<Unit_Card>().Attack
                 - (removeAttack * 100) / board[indexRowEnemy, m].GetComponent<Unit_Card>().Attack;
+                Debug.Log(board[indexRowEnemy, m].GetComponent<Unit_Card>().Attack);
         }
     }
 
-    //metodo efecto de las cartas despeje
-    public void EffectsCounterField(GameObject cardcounterfield, GameObject[,] board)
+    //metodo efecto de las cartas despeje de los gatos
+    public void EffectsCounterFieldCats(GameObject cardcounterfield, GameObject[,] board)
     {
-        Cementery cementery = this.cementery.GetComponent<Cementery>();
-        for (int i = 0; i < board.GetLength(0); i++)
+        for (int i = 3; i < board.GetLength(0); i++)
         {
-            for (int j = 0; j < board.GetLength(1); j++)
+            Debug.Log(board[i, 0]);
+            Debug.Log(cardcounterfield);
+            if (board[i, 0] != null && board[i, 0].CompareTag("Field"))
             {
-                if (board[i, j].CompareTag("Field"))
-                {
-                    cementery.RemoveCardCementery(board[i, j]);
-                    cementery.RemoveCardCementery(cardcounterfield);
-                }
+                Debug.Log("carta sera mandada al cementerio");
+                cementery.GetComponent<Cementery>().RemoveCardCementery(board[i, 0]);
+                cementery.GetComponent<Cementery>().RemoveCardCementery(cardcounterfield);
+            }
+            
+            cementery.GetComponent<Cementery>().RemoveCardCementery(cardcounterfield);
+        }
+    }
+
+    public void EffectsCounterFieldDogs(GameObject cardcounterfield, GameObject[,] board)
+    {
+        for (int i = 0; i <= 2; i++)
+        {
+            Debug.Log(board[i, 0]);
+            if (board[i, 0] != null && board[i, 0].CompareTag("Field"))
+            {
+                Debug.Log("carta mandada al cementerio");
+                cementery.GetComponent<Cementery>().RemoveCardCementery(board[i, 0]);
+                cementery.GetComponent<Cementery>().RemoveCardCementery(cardcounterfield);
             }
         }
     }

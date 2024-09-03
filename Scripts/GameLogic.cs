@@ -21,8 +21,8 @@ public class GameLogic : MonoBehaviour
     public GameObject matrix;
     public GameObject[,] matrixBoard;
     public GameObject effects;
-    public GameObject cementeryCats;
-    public GameObject cementeryDogs;
+
+    public GameObject cementery;
     private GameObject effectwilcard;
     private GameObject leadereffect;
     public GameObject TextEnemy;
@@ -33,6 +33,8 @@ public class GameLogic : MonoBehaviour
     public GameObject catsWin;
     public GameObject dogsWin;
     public GameObject selectedCard;
+    public GameObject handCats;
+    public GameObject handDogs;
 
     [ContextMenu("Logic")]
     public void UpdateDataText() //dataMatch es "Round: " + roundCounter + " Player: " + playerScore + " Enemy: " + enemyScore;
@@ -55,22 +57,45 @@ public class GameLogic : MonoBehaviour
         {
             if (card.CompareTag("Field"))
             {
+                Debug.Log(card);
+                Debug.Log("efecto de carta field activado");
                 effects.EffectsField(board, card, x);
+                
             }
             if (card.CompareTag("Buff"))
             {
+                Debug.Log(card);
+                Debug.Log("efecto de carta buff activado");
                 effects.EffectsBuff(board, card, x);
             }
             if (card.CompareTag("Unit-Cards"))
             {
-                effectsUnitCards.EffectsUnitCardsAtivate(board, card);
+                Debug.Log(card);
+                Debug.Log("efecto de cartas de unidad activado");
+                effectsUnitCards.EffectsUnitCardsAtivate(card);
             }
-            if (card.CompareTag("Counterfield"))
+            if (
+                card.CompareTag("Counterfield")
+                && card.GetComponent<Counterfield_Card>().team == "Cats"
+            )
             {
-                effects.EffectsCounterField(card, board);
+                Debug.Log(card);
+                Debug.Log("efecto de carta counterfield de los gatos activado");
+                effects.EffectsCounterFieldCats(card, board);
+            }
+            if (
+                card.CompareTag("Counterfield")
+                && card.GetComponent<Counterfield_Card>().team == "Dogs"
+            )
+            {
+                Debug.Log(card);
+                Debug.Log("efecto de carta counterfield de los perros activado");
+                effects.EffectsCounterFieldDogs(card, board);
             }
             if (card.CompareTag("Wildcard"))
             {
+                Debug.Log(card);
+                Debug.Log("efecto de la carta wildcard activado");
                 effect.effectWildcard(card, selectedCard);
             }
         }
@@ -94,17 +119,7 @@ public class GameLogic : MonoBehaviour
                     {
                         if (board[i, j].GetComponent<Unit_Card>().Attack <= 0) //elimina las cartas que tienen 0 de poder en el campo y las manda para el cementerio
                         {
-                            if (i < 3)
-                            {
-                                //board[i, j].transform.SetParent(cementeryDogs.transform, false);
-                                cementeryDogs
-                                    .GetComponent<Cementery>()
-                                    .RemoveCardCementery(board[i, j]);
-                            }
-                            //board[i, j].transform.SetParent(cementeryCats.transform, false);
-                            cementeryCats
-                                .GetComponent<Cementery>()
-                                .RemoveCardCementery(board[i, j]);
+                            cementery.GetComponent<Cementery>().RemoveCardCementery(board[i, j]);
                         }
                         else if (i < 2)
                         {
@@ -156,19 +171,30 @@ public class GameLogic : MonoBehaviour
 
     public void ChangeRound(GameObject[,] board) //metodo que cambia de ronda, elimina las cartas del campo y las manda para el cementerio
     {
+        List<GameObject> HandCats = handCats.GetComponent<HandScript>().cards;
+        List<GameObject> HandDogs = handDogs.GetComponent<HandScript>().cards;
         for (int i = 0; i < board.GetLength(0); i++)
         {
             for (int j = 0; j < board.GetLength(1); j++)
             {
-                if (board[i, j] != null && i < 3)
+                if (board[i, j] != null)
                 {
-                    cementeryDogs.GetComponent<Cementery>().RemoveCardCementery(board[i, j]);
-                }
-                else if (board[i, j] != null && i >= 3)
-                {
-                    cementeryCats.GetComponent<Cementery>().RemoveCardCementery(board[i, j]);
+                    Debug.Log("cartas van a ser eliminadas");
+                    Debug.Log(board[i, j]);
+                    cementery.GetComponent<Cementery>().RemoveCardCementery(board[i, j]);
+                    Debug.Log("cartas enviadas al cementerio, cambio de ronda");
                 }
             }
+        }
+        for (int k = 0; k < HandCats.Count; k++)
+        {
+            Debug.Log("cartas de la mano enviadas al cementerio ");
+            cementery.GetComponent<Cementery>().RemoveCardCementery(HandCats[k]);
+        }
+        for (int y = 0; y < HandDogs.Count; y++)
+        {
+            Debug.Log("cartas de la mano enviadas al cementerio ");
+            cementery.GetComponent<Cementery>().RemoveCardCementery(HandDogs[y]);
         }
         roundCounter = +1;
     }
@@ -186,22 +212,28 @@ public class GameLogic : MonoBehaviour
             {
                 playerScore++;
                 Debug.Log("Player win this round");
-                catsWinRound.GetComponent<TextPlayerWin>().WinRound();
+                catsWinRound.GetComponent<TextPlayerWin>().ActivateWinRound();
                 ChangeRound(matrixBoard);
+                catsWinRound.GetComponent<TextPlayerWin>().DesactivateWinRound();
             }
             else if (result == -1)
             {
                 enemyScore++;
                 Debug.Log("Enemy win this round");
-                dogsWinRound.GetComponent<TextEnemyWin>().WinRound();
+                dogsWinRound.GetComponent<TextEnemyWin>().ActivateWinRound();
                 ChangeRound(matrixBoard);
+                dogsWinRound.GetComponent<TextEnemyWin>().DesactivateWinRound();
             }
             else
             {
-                cardLeaderPlayer.GetComponent<EffectPepe>().ActivateEffect(playerScore);
-                catsWinRound.GetComponent<TextPlayerWin>().WinRound();
                 Debug.Log("Player Win");
+                Debug.Log("leaderCat activada");
+                cardLeaderPlayer.GetComponent<EffectPepe>().ActivateEffect(playerScore);
+                catsWinRound.GetComponent<TextPlayerWin>().ActivateWinRound();
+                cardLeaderPlayer.GetComponent<TextLeaderCats>().ActivateTextsLeaderCats();
                 ChangeRound(matrixBoard);
+                catsWinRound.GetComponent<TextPlayerWin>().DesactivateWinRound();
+                cardLeaderPlayer.GetComponent<TextLeaderCats>().DescativateTextsLeaderCats();
             }
             UpdateDataText();
             playerPassTurnBeingReadyForBattle = false;

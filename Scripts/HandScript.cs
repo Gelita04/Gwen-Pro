@@ -13,13 +13,14 @@ public class HandScript : MonoBehaviour
 
     public void Start()
     {
-        cards =  new List<GameObject>();
+        cards = new List<GameObject>();
     }
 
     public void OnCardClick(GameObject card)
     {
         selectedCard = card;
     }
+
     public void AddCard(GameObject card)
     {
         cards.Add(card);
@@ -31,11 +32,37 @@ public class HandScript : MonoBehaviour
     public void RemoveSelectedCardAndInsertInMatrix(GameObject button)
     {
         GameObject[,] matrix = board.GetComponent<MatrixBoard>().Board;
-        IsCardPositionValidScript scriptVar = logicManager.GetComponent<IsCardPositionValidScript>();
+        IsCardPositionValidScript scriptVar =
+            logicManager.GetComponent<IsCardPositionValidScript>();
         int coordinateX = button.GetComponent<CoordinateInMatrix>().coordinateXInMatrixBoard;
         int coordinateY = button.GetComponent<CoordinateInMatrix>().coordinateYInMatrixBoard;
         bool isPlayerTurn = logicManager.GetComponent<GameLogic>().isPlayerTurn;
-        if (((!isPlayerTurn && coordinateX < 3 && scriptVar.IsEnemyCardPositionValidate(matrix,selectedCard,coordinateX,coordinateY)) || (isPlayerTurn && coordinateX >= 3 &&scriptVar.IsPlayerCardPositionValid(matrix, selectedCard, coordinateX, coordinateY))) && selectedCard != null && matrix[coordinateX,coordinateY]==null)
+        if (
+            (
+                (
+                    !isPlayerTurn
+                    && coordinateX < 3
+                    && scriptVar.IsEnemyCardPositionValidate(
+                        matrix,
+                        selectedCard,
+                        coordinateX,
+                        coordinateY
+                    )
+                )
+                || (
+                    isPlayerTurn
+                    && coordinateX >= 3
+                    && scriptVar.IsPlayerCardPositionValid(
+                        matrix,
+                        selectedCard,
+                        coordinateX,
+                        coordinateY
+                    )
+                )
+            )
+            && selectedCard != null
+            && matrix[coordinateX, coordinateY] == null
+        )
         {
             cards.Remove(selectedCard);
             selectedCard.transform.SetParent(board.transform, false);
@@ -50,8 +77,6 @@ public class HandScript : MonoBehaviour
             {
                 logicManager.GetComponent<GameLogic>().isEnemyReadyForBattle = false;
             }
-            
-
         }
     }
 }

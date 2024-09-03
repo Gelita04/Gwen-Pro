@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using GameLibrary.Objects;
 using Unity.VisualScripting;
+using UnityEditor.Build.Content;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Unit_Card : MonoBehaviour
 {
@@ -19,13 +21,13 @@ public class Unit_Card : MonoBehaviour
     private GameObject Deck;
     private GameObject matrixBoard;
     private EffectsScript effectRandom;
+    private GameObject cardTarget;
+    public GameObject[,] board;
 
     // efecto que quita una cantidad random de ataque a una carta random del campo
     public void RandomCards()
     {
         long removeAttack = 0;
-        GameObject[,] board = matrixBoard.GetComponent<MatrixBoard>().Board;
-        GameObject cardTarget = null;
         long attackCardTarget = cardTarget.GetComponent<Unit_Card>().Attack;
         for (int i = 0; i < board.GetLength(0); i++)
         {
@@ -41,6 +43,10 @@ public class Unit_Card : MonoBehaviour
         {
             attackCardTarget -= removeAttack;
         }
+        else
+        {
+            Debug.Log("no hay cartas en el campo del enemigo");
+        }
     }
 
     // efecto que pone una carta aumento en la fila, la carta aumento sale del deck.
@@ -48,14 +54,16 @@ public class Unit_Card : MonoBehaviour
     {
         List<GameObject> deckCats = Deck.GetComponent<Deck_Cats>().Deck;
         GameObject buffCats = deckCats.Find(obj => obj.CompareTag("Buff")); // esto lo que haces que devuelve el primer elemento que encuentra que tenga la etiqueta Buff
-        GameObject[,] board = matrixBoard.GetComponent<MatrixBoard>().Board;
         if (buffCats != null)
         {
+            Debug.Log(buffCats);
             for (int i = 0; i < board.GetLength(1); i++)
             {
                 if (board[3, i] == null)
                 {
+                    Debug.Log(board[3, i]);
                     board[3, i] = buffCats;
+                    Debug.Log(board[3, i]);
                     break;
                 }
             }
@@ -70,14 +78,17 @@ public class Unit_Card : MonoBehaviour
     {
         List<GameObject> deckDogs = Deck.GetComponent<Deck_Dogs>().Deck;
         GameObject buffDogs = deckDogs.Find(obj => obj.CompareTag("Buff"));
-        GameObject[,] board = matrixBoard.GetComponent<MatrixBoard>().Board;
+
         if (buffDogs != null)
         {
+            Debug.Log(buffDogs);
             for (int i = 0; i < board.GetLength(1); i++)
             {
                 if (board[0, 1] == null)
                 {
+                    Debug.Log(board[0, 1]);
                     board[0, 1] = buffDogs;
+                    Debug.Log(board[0, 1]);
                     break;
                 }
             }
@@ -93,14 +104,17 @@ public class Unit_Card : MonoBehaviour
     {
         List<GameObject> deckCats = Deck.GetComponent<Deck_Cats>().Deck;
         GameObject fieldCats = deckCats.Find(obj => obj.CompareTag("Field"));
-        GameObject[,] board = matrixBoard.GetComponent<MatrixBoard>().Board;
+
         if (fieldCats != null)
         {
+            Debug.Log(fieldCats);
             for (int i = 0; i < board.GetLength(1); i++)
             {
                 if (board[0, i] == null)
                 {
+                    Debug.Log(board[0, i]);
                     board[0, i] = fieldCats;
+                    Debug.Log(board[0, i]);
                     break;
                 }
             }
@@ -115,14 +129,16 @@ public class Unit_Card : MonoBehaviour
     {
         List<GameObject> deckDogs = Deck.GetComponent<Deck_Cats>().Deck;
         GameObject fieldDogs = deckDogs.Find(obj => obj.CompareTag("Field"));
-        GameObject[,] board = matrixBoard.GetComponent<MatrixBoard>().Board;
         if (fieldDogs != null)
         {
+            Debug.Log(fieldDogs);
             for (int i = 0; i < board.GetLength(1); i++)
             {
                 if (board[0, i] == null)
                 {
+                    Debug.Log(board[0, i]);
                     board[0, i] = fieldDogs;
+                    Debug.Log(board[0, i]);
                     break;
                 }
             }
@@ -134,62 +150,73 @@ public class Unit_Card : MonoBehaviour
     }
 
     // efecto que elimina la carta con mas poder del campo (propio o del adversario)
-    public void MaxPower(GameObject[,] matrix)
+    public void MaxPower()
     {
-        long temp = Int32.MinValue;
+        long temp = 0;
         GameObject cardTarget = new GameObject();
-        for (int i = 0; i < matrix.GetLength(0); i++)
+        for (int i = 0; i < board.GetLength(0); i++)
         {
-            for (int j = 0; j < matrix.GetLength(1); j++)
+            for (int j = 0; j < board.GetLength(1); j++)
             {
-                if (matrix[i, j] != null && matrix[i, j].GetComponent<Unit_Card>().Attack > temp)
+                if (board[i, j] != null && board[i, j].GetComponent<Unit_Card>().Attack > temp)
                 {
-                    cardTarget = matrix[i, j];
+                    Debug.Log(board[i, j]);
+                    Debug.Log(cardTarget);
+                    temp = board[i, j].GetComponent<Unit_Card>().Attack;
+                    cardTarget = board[i, j];
+                    Debug.Log(cardTarget);
                 }
             }
         }
-        cardTarget.transform.SetParent(cementery.transform, false);
+        cementery.GetComponent<Cementery>().RemoveCardCementery(cardTarget);
     }
 
     //  efecto que elimina la carta con menos poder del campo (solo del rival)
-    public void MinPower(GameObject[,] matrix)
+    public void MinPower()
     {
-        long temp = Int32.MaxValue;
+        long temp = long.MaxValue;
         GameObject cardTarget = new GameObject();
-        for (int i = 0; i < matrix.GetLength(0); i++)
+        for (int i = 0; i < board.GetLength(0); i++)
         {
-            for (int j = 0; j < matrix.GetLength(1); j++)
+            for (int j = 0; j < board.GetLength(1); j++)
             {
-                if (matrix[i, j] != null && matrix[i, j].GetComponent<Unit_Card>().Attack < temp)
+                if (board[i, j] != null && board[i, j].GetComponent<Unit_Card>().Attack < temp)
                 {
-                    cardTarget = matrix[i, j];
+                    Debug.Log(board[i, j]);
+                    Debug.Log(cardTarget);
+                    temp = board[i, j].GetComponent<Unit_Card>().Attack;
+                    cardTarget = board[i, j];
+                    Debug.Log(cardTarget);
                 }
             }
         }
-        cardTarget.transform.SetParent(cementery.transform, false);
+        cementery.GetComponent<Cementery>().RemoveCardCementery(cardTarget);
     }
 
     // efecto que multiplica su ataque por la cantidad de cartas que hay puestas en el campo
-    public void PowerPlusCards(GameObject[,] matrix, GameObject attackingCard)
+    public void PowerPlusCards(GameObject attackingCard)
     {
         long quantityCards = 0;
-        for (int i = 0; i < matrix.GetLength(0); i++)
+        for (int i = 0; i < board.GetLength(0); i++)
         {
-            for (int j = 0; j < matrix.GetLength(1); j++)
+            for (int j = 0; j < board.GetLength(1); j++)
             {
-                if (matrix[i, j] != null)
+                if (board[i, j] != null)
                 {
                     quantityCards++;
                 }
             }
         }
+        Debug.Log(attackingCard.GetComponent<Unit_Card>().Attack);
         attackingCard.GetComponent<Unit_Card>().Attack =
             attackingCard.GetComponent<Unit_Card>().Attack * quantityCards;
+        Debug.Log(attackingCard.GetComponent<Unit_Card>().Attack);
     }
 
     // efecto que limpia la fila con menos cartas unidad (no vacia, propia o del rival)
-    public void CleanRow(GameObject[,] matrix)
+    public void CleanRow()
     {
+        Debug.Log("entro al metodo cleanRow");
         int countRow0 = 0;
         int countRow1 = 0;
         int countRow2 = 0;
@@ -197,31 +224,44 @@ public class Unit_Card : MonoBehaviour
         int countRow4 = 0;
         int countRow5 = 0;
         int[] rows = new int[6];
-        for (int i = 0; i < matrix.GetLength(1); i++)
+        for (int i = 0; i < board.GetLength(1); i++)
         {
-            if (matrix[0, i] != null && matrix[0, i].GetComponent<Unit_Card>())
+
+            if (board[0, i] != null && board[0, i].GetComponent<Unit_Card>())
             {
+                Debug.Log(board[0, i]);
                 countRow0++;
+                Debug.Log(countRow0);
             }
-            if (matrix[1, i] != null && matrix[1, i].GetComponent<Unit_Card>())
+            if (board[1, i] != null && board[1, i].GetComponent<Unit_Card>())
             {
+                Debug.Log(board[1, i]);
                 countRow1++;
+                Debug.Log(countRow1);
             }
-            if (matrix[2, i] != null && matrix[2, i].GetComponent<Unit_Card>())
+            if (board[2, i] != null && board[2, i].GetComponent<Unit_Card>())
             {
+                Debug.Log(board[2, i]);
                 countRow2++;
+                Debug.Log(countRow2);
             }
-            if (matrix[3, i] != null && matrix[3, i].GetComponent<Unit_Card>())
+            if (board[3, i] != null && board[3, i].GetComponent<Unit_Card>())
             {
+                Debug.Log(board[3, i]);
                 countRow3++;
+                Debug.Log(countRow3);
             }
-            if (matrix[4, i] != null && matrix[4, i].GetComponent<Unit_Card>())
+            if (board[4, i] != null && board[4, i].GetComponent<Unit_Card>())
             {
+                Debug.Log(board[4, i]);
                 countRow4++;
+                Debug.Log(countRow4);
             }
-            if (matrix[5, i] != null && matrix[5, i].GetComponent<Unit_Card>())
+            if (board[5, i] != null && board[5, i].GetComponent<Unit_Card>())
             {
+                Debug.Log(board[5, i]);
                 countRow5++;
+                Debug.Log(countRow5);
             }
         }
         rows[0] = countRow0;
@@ -241,7 +281,7 @@ public class Unit_Card : MonoBehaviour
         }
         GameObject[] x = rowToEliminate
             .GetComponent<EffectsScript>()
-            .Rowselected(matrix, coordenateRowToEliminate);
+            .Rowselected(board, coordenateRowToEliminate);
         for (int i = 0; i < x.Length; i++)
         {
             if (x[i] != null && x[i].GetComponent<Unit_Card>())
@@ -252,18 +292,19 @@ public class Unit_Card : MonoBehaviour
     }
 
     // efecto que calcula el promedio de poder de todas las cartas puestas en el campo, luego iguala todas las cartas del campo a ese mismo promedio (propia o del rival)
-    public void CardsSamePower(GameObject[,] matrix)
+    public void CardsSamePower()
     {
+         Debug.Log("entro al metodo CardsSamePower");
         long quantityCards = 0;
         long attackCards = 0;
-        for (int i = 0; i < matrix.GetLength(0); i++)
+        for (int i = 0; i < board.GetLength(0); i++)
         {
-            for (int j = 0; j < matrix.GetLength(1); j++)
+            for (int j = 0; j < board.GetLength(1); j++)
             {
-                if (matrix[i, j] != null)
+                if (board[i, j] != null)
                 {
                     quantityCards++;
-                    attackCards += matrix[i, j].GetComponent<Unit_Card>().Attack;
+                    attackCards += board[i, j].GetComponent<Unit_Card>().Attack;
                 }
             }
         }
@@ -271,24 +312,26 @@ public class Unit_Card : MonoBehaviour
         if (quantityCards > 0)
         {
             long promedy = attackCards / quantityCards;
-            for (int i = 0; i < matrix.GetLength(0); i++)
+            Debug.Log(promedy);
+            for (int i = 0; i < board.GetLength(0); i++)
             {
-                for (int j = 0; j < matrix.GetLength(1); j++)
+                for (int j = 0; j < board.GetLength(1); j++)
                 {
-                    if (matrix[i, j] != null)
+                    if (board[i, j] != null && board[i, j].CompareTag("Unit_Card"))
                     {
-                        matrix[i, j].GetComponent<Unit_Card>().Attack = promedy;
+                        Debug.Log(board[i, j].GetComponent<Unit_Card>().Attack);
+                        board[i, j].GetComponent<Unit_Card>().Attack = promedy;
+                        Debug.Log(board[i, j].GetComponent<Unit_Card>().Attack);
                     }
                 }
             }
         }
     }
 
-    //efecto que roba una carta
-    public void DrawOtherCard() { }
+   
 
     //este metodo antes de llamar a los efectos de las cartas de unidad primero verifica cada palabra clave.
-    public void EffectsUnitCardsAtivate(GameObject[,] board, GameObject card)
+    public void EffectsUnitCardsAtivate(GameObject card)
     {
         if (keywordAction == "Pone" && keywordObject == "Buff" && team == "Cats") // la accion "Pone" viene acompañado de una carta Buff o Field.
         {
@@ -308,11 +351,11 @@ public class Unit_Card : MonoBehaviour
         }
         else if (keywordAction == "Elimina" && keywordObject == "mayor") // la accion "Elimina" viene acompañado de mayor o menor.
         {
-            MaxPower(board);
+            MaxPower();
         }
         else if (keywordAction == "Elimina" && keywordObject == "menor")
         {
-            MinPower(board);
+            MinPower();
         }
         else if (keywordAction == "Dismimuye" && keywordObject == "random") // la accion "Disminuye" viene solo acompañado de random
         {
@@ -320,19 +363,15 @@ public class Unit_Card : MonoBehaviour
         }
         else if (keywordAction == "Iguala" && keywordObject == "promedio") // la accion "Iguala" viene acompañado de promedio.
         {
-            CardsSamePower(board);
-        }
-        else if (keywordAction == "Roba") // la accion "Roba" viene acompañado de una carta.
-        {
-            DrawOtherCard();
+            CardsSamePower();
         }
         else if (keywordAction == "Multiplica" && keywordObject == "mismo") // la accion multiplica viene acompañado de mismo.
         {
-            PowerPlusCards(board, card);
+            PowerPlusCards(card);
         }
         else if (keywordAction == "Limpia" && keywordObject == "menos")
         {
-            CleanRow(board);
+            CleanRow();
         }
     }
 }

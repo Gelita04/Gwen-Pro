@@ -16,4 +16,8 @@ public class TextLeaderDogs : MonoBehaviour
     {
         textLeaderDogs.SetActive(true);
     }
+    public void DescativateTextsLeaderDogs()
+    {
+        textLeaderDogs.SetActive(false);
+    }
 }

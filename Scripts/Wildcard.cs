@@ -20,6 +20,7 @@ public class Wildcard : MonoBehaviour
         float targetposY = cardTarget.transform.position.y;
         float targetposZ = cardTarget.transform.position.z;
         cementery.GetComponent<Cementery>().RemoveCardCementery(cardTarget);
+        Debug.Log("carta intercambiada");
         jockerposX = targetposX;
         jockerposY = targetposY;
         jockerposZ = targetposZ;
