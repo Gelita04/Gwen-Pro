@@ -25,7 +25,6 @@ public class GameLogic : MonoBehaviour
     public GameObject cementery;
     private GameObject effectwilcard;
     private GameObject leadereffect;
-    public GameObject TextEnemy;
     public GameObject catsWinRound;
     public GameObject dogsWinRound;
     public GameObject cardLeaderPlayer;
@@ -33,8 +32,6 @@ public class GameLogic : MonoBehaviour
     public GameObject catsWin;
     public GameObject dogsWin;
     public GameObject selectedCard;
-    public GameObject handCats;
-    public GameObject handDogs;
 
     [ContextMenu("Logic")]
     public void UpdateDataText() //dataMatch es "Round: " + roundCounter + " Player: " + playerScore + " Enemy: " + enemyScore;
@@ -60,7 +57,6 @@ public class GameLogic : MonoBehaviour
                 Debug.Log(card);
                 Debug.Log("efecto de carta field activado");
                 effects.EffectsField(board, card, x);
-                
             }
             if (card.CompareTag("Buff"))
             {
@@ -71,6 +67,7 @@ public class GameLogic : MonoBehaviour
             if (card.CompareTag("Unit-Cards"))
             {
                 Debug.Log(card);
+
                 Debug.Log("efecto de cartas de unidad activado");
                 effectsUnitCards.EffectsUnitCardsAtivate(card);
             }
@@ -171,32 +168,17 @@ public class GameLogic : MonoBehaviour
 
     public void ChangeRound(GameObject[,] board) //metodo que cambia de ronda, elimina las cartas del campo y las manda para el cementerio
     {
-        List<GameObject> HandCats = handCats.GetComponent<HandScript>().cards;
-        List<GameObject> HandDogs = handDogs.GetComponent<HandScript>().cards;
+       
         for (int i = 0; i < board.GetLength(0); i++)
         {
             for (int j = 0; j < board.GetLength(1); j++)
             {
                 if (board[i, j] != null)
                 {
-                    Debug.Log("cartas van a ser eliminadas");
-                    Debug.Log(board[i, j]);
                     cementery.GetComponent<Cementery>().RemoveCardCementery(board[i, j]);
-                    Debug.Log("cartas enviadas al cementerio, cambio de ronda");
                 }
             }
         }
-        for (int k = 0; k < HandCats.Count; k++)
-        {
-            Debug.Log("cartas de la mano enviadas al cementerio ");
-            cementery.GetComponent<Cementery>().RemoveCardCementery(HandCats[k]);
-        }
-        for (int y = 0; y < HandDogs.Count; y++)
-        {
-            Debug.Log("cartas de la mano enviadas al cementerio ");
-            cementery.GetComponent<Cementery>().RemoveCardCementery(HandDogs[y]);
-        }
-        roundCounter = +1;
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
@@ -207,14 +189,13 @@ public class GameLogic : MonoBehaviour
         {
             matrixBoard = matrix.GetComponent<MatrixBoard>().Board;
             result = GetBattleResult(matrixBoard);
+            Debug.Log("cambio de ronda");
             roundCounter++;
             if (result == 1)
             {
                 playerScore++;
-                Debug.Log("Player win this round");
                 catsWinRound.GetComponent<TextPlayerWin>().ActivateWinRound();
                 ChangeRound(matrixBoard);
-                catsWinRound.GetComponent<TextPlayerWin>().DesactivateWinRound();
             }
             else if (result == -1)
             {
@@ -222,7 +203,6 @@ public class GameLogic : MonoBehaviour
                 Debug.Log("Enemy win this round");
                 dogsWinRound.GetComponent<TextEnemyWin>().ActivateWinRound();
                 ChangeRound(matrixBoard);
-                dogsWinRound.GetComponent<TextEnemyWin>().DesactivateWinRound();
             }
             else
             {
@@ -232,7 +212,7 @@ public class GameLogic : MonoBehaviour
                 catsWinRound.GetComponent<TextPlayerWin>().ActivateWinRound();
                 cardLeaderPlayer.GetComponent<TextLeaderCats>().ActivateTextsLeaderCats();
                 ChangeRound(matrixBoard);
-                catsWinRound.GetComponent<TextPlayerWin>().DesactivateWinRound();
+
                 cardLeaderPlayer.GetComponent<TextLeaderCats>().DescativateTextsLeaderCats();
             }
             UpdateDataText();

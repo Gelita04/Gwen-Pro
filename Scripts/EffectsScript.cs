@@ -124,7 +124,7 @@ public class EffectsScript : MonoBehaviour
                 cementery.GetComponent<Cementery>().RemoveCardCementery(board[i, 0]);
                 cementery.GetComponent<Cementery>().RemoveCardCementery(cardcounterfield);
             }
-            
+
             cementery.GetComponent<Cementery>().RemoveCardCementery(cardcounterfield);
         }
     }
@@ -147,6 +147,7 @@ public class EffectsScript : MonoBehaviour
     public void EffectsBuff(GameObject[,] board, GameObject cardBuff, int x)
     {
         removeAttack = cardBuff.GetComponent<Buff_Card>().powerBuff;
+        Debug.Log(removeAttack);
         if (cardBuff != null)
         {
             for (int i = 1; i < board.GetLength(0); i++)
@@ -156,6 +157,4 @@ public class EffectsScript : MonoBehaviour
             }
         }
     }
-
-    //efecto de las cartas despeje
 }

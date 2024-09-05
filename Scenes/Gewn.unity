@@ -3178,6 +3178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 664304212}
   - component: {fileID: 664304211}
+  - component: {fileID: 664304213}
   m_Layer: 0
   m_Name: Effects
   m_TagString: Untagged
@@ -3197,7 +3198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 963e93659eb955b44acaedf471841b2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cementery: {fileID: 1523718913}
+  cementery: {fileID: 1114807208}
 --- !u!4 &664304212
 Transform:
   m_ObjectHideFlags: 0
@@ -3213,6 +3214,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &664304213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664304210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87dc4d3499fc4a7478349413e4c56a27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 
+  Name: 
+  Attack: 0
+  keywordAction: 
+  keywordObject: 
+  Category: 0
 --- !u!1 &671811267
 GameObject:
   m_ObjectHideFlags: 0
@@ -3722,8 +3741,7 @@ MonoBehaviour:
   enemyWon: 0
   matrix: {fileID: 578219582}
   effects: {fileID: 664304210}
-  cementery: {fileID: 1523718913}
-  TextEnemy: {fileID: 1629903044}
+  cementery: {fileID: 1114807208}
   catsWinRound: {fileID: 633367424}
   dogsWinRound: {fileID: 1629903044}
   cardLeaderPlayer: {fileID: 2118648437970570046}
@@ -3731,8 +3749,6 @@ MonoBehaviour:
   catsWin: {fileID: 837523958}
   dogsWin: {fileID: 360765179}
   selectedCard: {fileID: 0}
-  handCats: {fileID: 3547911697770313994}
-  handDogs: {fileID: 6414858828185323340}
 --- !u!1 &795591018
 GameObject:
   m_ObjectHideFlags: 0
@@ -8028,7 +8044,7 @@ MonoBehaviour:
   Attack: 300
   keywordAction: Elimina
   keywordObject: mayor
-  Category: 0
+  Category: 1
 --- !u!222 &23758666571356429
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8798,6 +8814,7 @@ GameObject:
   - component: {fileID: 7538379199283662369}
   - component: {fileID: 7538379199283662370}
   - component: {fileID: 7538379199283662371}
+  - component: {fileID: 7538379199283662372}
   m_Layer: 0
   m_Name: Machi
   m_TagString: Leader
@@ -8912,7 +8929,7 @@ MonoBehaviour:
   team: Dogs
   Name: Julio el comflictivo
   Attack: 80
-  keywordAction: Quita
+  keywordAction: Disminuye
   keywordObject: random
   Category: 2
 --- !u!224 &2279280884128876106
@@ -11000,7 +11017,7 @@ MonoBehaviour:
   Attack: 170
   keywordAction: Limpia
   keywordObject: menos
-  Category: 0
+  Category: 1
 --- !u!224 &5916787738301162473
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11284,7 +11301,7 @@ MonoBehaviour:
   Attack: 90
   keywordAction: Pone
   keywordObject: Buff
-  Category: 0
+  Category: 2
 --- !u!224 &6277351156144889845
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11557,6 +11574,8 @@ MonoBehaviour:
   cards: []
   selectedCard: {fileID: 0}
   logicManager: {fileID: 749276418}
+  textcats: {fileID: 633367424}
+  textdogs: {fileID: 1629903044}
 --- !u!114 &6710238142117520627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11673,6 +11692,7 @@ GameObject:
   - component: {fileID: 6893873941590226530}
   - component: {fileID: 6893873941590226532}
   - component: {fileID: 6893873941590226533}
+  - component: {fileID: 6893873941590226534}
   m_Layer: 0
   m_Name: Firulais
   m_TagString: Leader
@@ -11783,6 +11803,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6893873941590226534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6893873941590226529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7273e88c98ef4924eb7500db2ab66987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textLeaderDogs: {fileID: 503992761}
 --- !u!224 &6923850829896509292
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11819,7 +11852,7 @@ MonoBehaviour:
   Attack: 75
   keywordAction: Pone
   keywordObject: Field
-  Category: 0
+  Category: 2
 --- !u!114 &6950397329922085404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12233,9 +12266,9 @@ MonoBehaviour:
   team: Dogs
   Name: El Awouftador
   Attack: 200
-  keywordAction: 'Quita '
+  keywordAction: 'Disminuye '
   keywordObject: random
-  Category: 0
+  Category: 1
 --- !u!114 &7244378140087086997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12626,6 +12659,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7538379199283662372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118648437970570046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 224b377d70aa0c240923690e5e317b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textLeaderCats: {fileID: 1317022594}
 --- !u!114 &7625712033856777421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15493,6 +15539,8 @@ MonoBehaviour:
   cards: []
   selectedCard: {fileID: 0}
   logicManager: {fileID: 749276418}
+  textcats: {fileID: 633367424}
+  textdogs: {fileID: 1629903044}
 --- !u!224 &8980615245944916006
 RectTransform:
   m_ObjectHideFlags: 0

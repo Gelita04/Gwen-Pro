@@ -10,6 +10,8 @@ public class HandScript : MonoBehaviour
     public List<GameObject> cards;
     public GameObject selectedCard;
     public GameObject logicManager;
+    public GameObject textcats;
+    public GameObject textdogs;
 
     public void Start()
     {
@@ -26,6 +28,8 @@ public class HandScript : MonoBehaviour
         cards.Add(card);
         card.transform.SetParent(transform, false);
         Button button = card.GetComponent<Button>();
+        textcats.GetComponent<TextPlayerWin>().DesactivateWinRound();
+        textdogs.GetComponent<TextEnemyWin>().DesactivateWinRound();
         button.onClick.AddListener(() => OnCardClick(card));
     }
 
@@ -33,7 +37,7 @@ public class HandScript : MonoBehaviour
     {
         GameObject[,] matrix = board.GetComponent<MatrixBoard>().Board;
         IsCardPositionValidScript scriptVar =
-            logicManager.GetComponent<IsCardPositionValidScript>();
+        logicManager.GetComponent<IsCardPositionValidScript>();
         int coordinateX = button.GetComponent<CoordinateInMatrix>().coordinateXInMatrixBoard;
         int coordinateY = button.GetComponent<CoordinateInMatrix>().coordinateYInMatrixBoard;
         bool isPlayerTurn = logicManager.GetComponent<GameLogic>().isPlayerTurn;

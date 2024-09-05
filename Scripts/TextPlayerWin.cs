@@ -6,6 +6,7 @@ public class TextPlayerWin : MonoBehaviour
 {
     public GameObject CatsWinRound;
     public GameObject CatsWin;
+
     void Start()
     {
         CatsWinRound.SetActive(false);
@@ -16,6 +17,7 @@ public class TextPlayerWin : MonoBehaviour
     {
         CatsWinRound.SetActive(true);
     }
+
     public void DesactivateWinRound()
     {
         CatsWinRound.SetActive(false);
@@ -26,6 +28,5 @@ public class TextPlayerWin : MonoBehaviour
         CatsWin.SetActive(true);
     }
 
-    
-    
-}
+    }
+

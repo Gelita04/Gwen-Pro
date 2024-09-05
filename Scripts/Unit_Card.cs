@@ -27,8 +27,11 @@ public class Unit_Card : MonoBehaviour
     // efecto que quita una cantidad random de ataque a una carta random del campo
     public void RandomCards()
     {
-        long removeAttack = 0;
+        Debug.Log("entro a RandomCards");
+        System.Random randomvalor = new System.Random();
+        long removeAttack = randomvalor.Next(20, 61);
         long attackCardTarget = cardTarget.GetComponent<Unit_Card>().Attack;
+
         for (int i = 0; i < board.GetLength(0); i++)
         {
             for (int j = 0; j < board.GetLength(1); j++)
@@ -36,16 +39,21 @@ public class Unit_Card : MonoBehaviour
                 if (board[i, j].CompareTag("Unit-Cards"))
                 {
                     cardTarget = board[i, j];
+                    Debug.Log("carta objetivo" + cardTarget);
+                    Debug.Log(
+                        "poder de la carta objetivo antes de activar efecto" + attackCardTarget
+                    );
+                    if (cardTarget != null)
+                    {
+                        attackCardTarget -= removeAttack;
+                        Debug.Log("poder de la carta luego del efecto" + attackCardTarget);
+                    }
+                    else
+                    {
+                        Debug.Log("no hay cartas en el campo del enemigo");
+                    }
                 }
             }
-        }
-        if (cardTarget != null)
-        {
-            attackCardTarget -= removeAttack;
-        }
-        else
-        {
-            Debug.Log("no hay cartas en el campo del enemigo");
         }
     }
 
@@ -226,7 +234,6 @@ public class Unit_Card : MonoBehaviour
         int[] rows = new int[6];
         for (int i = 0; i < board.GetLength(1); i++)
         {
-
             if (board[0, i] != null && board[0, i].GetComponent<Unit_Card>())
             {
                 Debug.Log(board[0, i]);
@@ -294,7 +301,7 @@ public class Unit_Card : MonoBehaviour
     // efecto que calcula el promedio de poder de todas las cartas puestas en el campo, luego iguala todas las cartas del campo a ese mismo promedio (propia o del rival)
     public void CardsSamePower()
     {
-         Debug.Log("entro al metodo CardsSamePower");
+        Debug.Log("entro al metodo CardsSamePower");
         long quantityCards = 0;
         long attackCards = 0;
         for (int i = 0; i < board.GetLength(0); i++)
@@ -327,8 +334,6 @@ public class Unit_Card : MonoBehaviour
             }
         }
     }
-
-   
 
     //este metodo antes de llamar a los efectos de las cartas de unidad primero verifica cada palabra clave.
     public void EffectsUnitCardsAtivate(GameObject card)
