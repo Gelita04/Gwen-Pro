@@ -6,22 +6,10 @@ using UnityEngine;
 public class EffectPepe : MonoBehaviour
 {
     public GameObject text;
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-    public void ActivateEffect(int playerscore)
-    {
-
-        playerscore++; 
-        
-
-=======
 
     public void ActivateEffect(int playerscore)
     {
         Debug.Log("Entro al metodo del machi");
         playerscore++;
->>>>>>> Stashed changes
     }
 }

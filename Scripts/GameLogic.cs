@@ -62,17 +62,7 @@ public class GameLogic : MonoBehaviour
         {
             if (card.CompareTag("Field"))
             {
-<<<<<<< Updated upstream
-                Debug.Log(card);
-                Debug.Log("efecto de carta field activado");
-=======
-<<<<<<< Updated upstream
-                Debug.Log(card);
-                Debug.Log("efecto de carta field activado");
-=======
                 Debug.Log("Carta field" + card);
->>>>>>> Stashed changes
->>>>>>> Stashed changes
                 effects.EffectsField(board, card, x);
                 Debug.Log("efecto de carta field activado");
             }
@@ -88,10 +78,6 @@ public class GameLogic : MonoBehaviour
 
                 Debug.Log("efecto de cartas de unidad activado");
                 effectsUnitCards.EffectsUnitCardsAtivate(card);
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
             }
             if (
                 card.CompareTag("Counterfield")
@@ -108,27 +94,6 @@ public class GameLogic : MonoBehaviour
             )
             {
                 Debug.Log(card);
-<<<<<<< Updated upstream
-=======
-=======
-            }
-            if (
-                card.CompareTag("Counterfield")
-                && card.GetComponent<Counterfield_Card>().team == "Cats"
-            )
-            {
-                Debug.Log(card);
-                Debug.Log("efecto de carta counterfield de los gatos activado");
-                effects.EffectsCounterFieldCats(card, board);
-            }
-            if (
-                card.CompareTag("Counterfield")
-                && card.GetComponent<Counterfield_Card>().team == "Dogs"
-            )
-            {
-                Debug.Log(card);
->>>>>>> Stashed changes
->>>>>>> Stashed changes
                 Debug.Log("efecto de carta counterfield de los perros activado");
                 effects.EffectsCounterFieldDogs(card, board);
             }
@@ -213,7 +178,6 @@ public class GameLogic : MonoBehaviour
 
     public void ChangeRound(GameObject[,] board) //metodo que cambia de ronda, elimina las cartas del campo y las manda para el cementerio
     {
-       
         for (int i = 0; i < board.GetLength(0); i++)
         {
             for (int j = 0; j < board.GetLength(1); j++)
@@ -251,24 +215,6 @@ public class GameLogic : MonoBehaviour
             }
             else
             {
-<<<<<<< Updated upstream
-                Debug.Log("Player Win");
-                Debug.Log("leaderCat activada");
-                cardLeaderPlayer.GetComponent<EffectPepe>().ActivateEffect(playerScore);
-                catsWinRound.GetComponent<TextPlayerWin>().ActivateWinRound();
-                cardLeaderPlayer.GetComponent<TextLeaderCats>().ActivateTextsLeaderCats();
-                ChangeRound(matrixBoard);
-
-=======
-<<<<<<< Updated upstream
-                Debug.Log("Player Win");
-                Debug.Log("leaderCat activada");
-                cardLeaderPlayer.GetComponent<EffectPepe>().ActivateEffect(playerScore);
-                catsWinRound.GetComponent<TextPlayerWin>().ActivateWinRound();
-                cardLeaderPlayer.GetComponent<TextLeaderCats>().ActivateTextsLeaderCats();
-                ChangeRound(matrixBoard);
-
-=======
                 playerScore++;
                 Debug.Log("Player Win");
                 Debug.Log("leaderCat activada");
@@ -278,8 +224,6 @@ public class GameLogic : MonoBehaviour
                 catsWinRound.GetComponent<TextPlayerWin>().ActivateWinRound();
                 
                 ChangeRound(matrixBoard);
->>>>>>> Stashed changes
->>>>>>> Stashed changes
                 cardLeaderPlayer.GetComponent<TextLeaderCats>().DescativateTextsLeaderCats();
             }
             UpdateDataText();

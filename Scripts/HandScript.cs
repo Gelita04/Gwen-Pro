@@ -12,32 +12,20 @@ public class HandScript : MonoBehaviour
     public GameObject logicManager;
     public GameObject textcats;
     public GameObject textdogs;
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-=======
 
     //propierties of expand card when clicked functionality:
     public GameObject cardDisplaySpace; // Reference to the invisible space (UI Image)
     public Toggle toggleButton; // Reference to the toggle button
     private bool isCardDisplayActive = false;
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 
     public void Start()
     {
         cards = new List<GameObject>();
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-=======
         // Ensure the card display space is initially inactive
         cardDisplaySpace.SetActive(false);
 
         // Add a listener to the toggle button
         toggleButton.onValueChanged.AddListener(OnToggleChanged);
->>>>>>> Stashed changes
->>>>>>> Stashed changes
     }
 
     public void OnCardClick(GameObject card)
@@ -54,20 +42,12 @@ public class HandScript : MonoBehaviour
         }
     }
 
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-=======
     //metodo  que agrega a la mano las 10 cartas sacadas del deck.
->>>>>>> Stashed changes
->>>>>>> Stashed changes
     public void AddCard(GameObject card)
     {
         cards.Add(card);
         card.transform.SetParent(transform, false);
         Button button = card.GetComponent<Button>();
-        textcats.GetComponent<TextPlayerWin>().DesactivateWinRound();
-        textdogs.GetComponent<TextEnemyWin>().DesactivateWinRound();
         button.onClick.AddListener(() => OnCardClick(card));
         textcats.GetComponent<TextPlayerWin>().DesactivateWinRound();
         textdogs.GetComponent<TextEnemyWin>().DesactivateWinRound();
@@ -78,15 +58,7 @@ public class HandScript : MonoBehaviour
     {
         GameObject[,] matrix = board.GetComponent<MatrixBoard>().Board;
         IsCardPositionValidScript scriptVar =
-<<<<<<< Updated upstream
-        logicManager.GetComponent<IsCardPositionValidScript>();
-=======
-<<<<<<< Updated upstream
-        logicManager.GetComponent<IsCardPositionValidScript>();
-=======
             logicManager.GetComponent<IsCardPositionValidScript>();
->>>>>>> Stashed changes
->>>>>>> Stashed changes
         int coordinateX = button.GetComponent<CoordinateInMatrix>().coordinateXInMatrixBoard;
         int coordinateY = button.GetComponent<CoordinateInMatrix>().coordinateYInMatrixBoard;
         bool isPlayerTurn = logicManager.GetComponent<GameLogic>().isPlayerTurn;
@@ -130,10 +102,6 @@ public class HandScript : MonoBehaviour
             {
                 logicManager.GetComponent<GameLogic>().isEnemyReadyForBattle = false;
             }
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-=======
         }
     }
 
@@ -175,8 +143,6 @@ public class HandScript : MonoBehaviour
         if (!isOn)
         {
             cardDisplaySpace.SetActive(false);
->>>>>>> Stashed changes
->>>>>>> Stashed changes
         }
     }
 }

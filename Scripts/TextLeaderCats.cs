@@ -20,13 +20,7 @@ public class TextLeaderCats : MonoBehaviour
 
     public void DescativateTextsLeaderCats()
     {
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-=======
         Debug.Log("se desactivo el texto del lider de los gatos");
->>>>>>> Stashed changes
->>>>>>> Stashed changes
         textLeaderCats.SetActive(false);
     }
 }

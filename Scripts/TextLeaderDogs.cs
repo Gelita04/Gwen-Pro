@@ -17,20 +17,10 @@ public class TextLeaderDogs : MonoBehaviour
         Debug.Log("se activo el texto del lider de los perros");
         textLeaderDogs.SetActive(true);
     }
-<<<<<<< Updated upstream
-    public void DescativateTextsLeaderDogs()
-    {
-=======
-<<<<<<< Updated upstream
-    public void DescativateTextsLeaderDogs()
-    {
-=======
 
     public void DescativateTextsLeaderDogs()
     {
         Debug.Log("se desactivo el efecto del lider de los perros");
->>>>>>> Stashed changes
->>>>>>> Stashed changes
         textLeaderDogs.SetActive(false);
     }
 }

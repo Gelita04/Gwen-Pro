@@ -49,15 +49,7 @@ public class IsCardPositionValidScript : MonoBehaviour
             {
                 return true;
             }
-<<<<<<< Updated upstream
-            else if (card.CompareTag("Counterfield") && y!=0)
-=======
-<<<<<<< Updated upstream
-            else if (card.CompareTag("Counterfield") && y!=0)
-=======
             else if (card.CompareTag("Counterfield") && y != 0)
->>>>>>> Stashed changes
->>>>>>> Stashed changes
             {
                 return true;
             }
