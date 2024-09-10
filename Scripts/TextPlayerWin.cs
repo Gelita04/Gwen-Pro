@@ -15,18 +15,36 @@ public class TextPlayerWin : MonoBehaviour
 
     public void ActivateWinRound()
     {
+        Debug.Log("texto  win round gatos activado");
         CatsWinRound.SetActive(true);
     }
 
     public void DesactivateWinRound()
     {
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+        Debug.Log(" texto win round gatos desactivado");
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
         CatsWinRound.SetActive(false);
     }
 
     public void WinGame()
     {
+        Debug.Log("texto win gatos activado");
         CatsWin.SetActive(true);
     }
+<<<<<<< Updated upstream
 
     }
 
+<<<<<<< Updated upstream
+    }
+
+=======
+=======
+}
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes

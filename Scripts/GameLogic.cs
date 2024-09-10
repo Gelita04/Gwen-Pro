@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameLogic : MonoBehaviour
@@ -45,6 +46,13 @@ public class GameLogic : MonoBehaviour
         selectedCard = card;
     }
 
+    public void ResetScene()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        SceneManager.LoadScene(currentScene.name);
+    }
+
     public void ActivateEffects(GameObject[,] board, GameObject card, int x) // metodo que para activar effecto
     {
         EffectsScript effects = this.effects.GetComponent<EffectsScript>();
@@ -54,9 +62,19 @@ public class GameLogic : MonoBehaviour
         {
             if (card.CompareTag("Field"))
             {
+<<<<<<< Updated upstream
                 Debug.Log(card);
                 Debug.Log("efecto de carta field activado");
+=======
+<<<<<<< Updated upstream
+                Debug.Log(card);
+                Debug.Log("efecto de carta field activado");
+=======
+                Debug.Log("Carta field" + card);
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
                 effects.EffectsField(board, card, x);
+                Debug.Log("efecto de carta field activado");
             }
             if (card.CompareTag("Buff"))
             {
@@ -70,6 +88,10 @@ public class GameLogic : MonoBehaviour
 
                 Debug.Log("efecto de cartas de unidad activado");
                 effectsUnitCards.EffectsUnitCardsAtivate(card);
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
             }
             if (
                 card.CompareTag("Counterfield")
@@ -86,6 +108,27 @@ public class GameLogic : MonoBehaviour
             )
             {
                 Debug.Log(card);
+<<<<<<< Updated upstream
+=======
+=======
+            }
+            if (
+                card.CompareTag("Counterfield")
+                && card.GetComponent<Counterfield_Card>().team == "Cats"
+            )
+            {
+                Debug.Log(card);
+                Debug.Log("efecto de carta counterfield de los gatos activado");
+                effects.EffectsCounterFieldCats(card, board);
+            }
+            if (
+                card.CompareTag("Counterfield")
+                && card.GetComponent<Counterfield_Card>().team == "Dogs"
+            )
+            {
+                Debug.Log(card);
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
                 Debug.Log("efecto de carta counterfield de los perros activado");
                 effects.EffectsCounterFieldDogs(card, board);
             }
@@ -107,7 +150,7 @@ public class GameLogic : MonoBehaviour
         long result;
         for (int i = 0; i < board.GetLength(0); i++)
         {
-            for (int j = 1; j < board.GetLength(1); j++)
+            for (int j = 0; j < board.GetLength(1); j++)
             {
                 if (board[i, j] != null)
                 {
@@ -121,10 +164,12 @@ public class GameLogic : MonoBehaviour
                         else if (i < 2)
                         {
                             enemyTotalAttack += board[i, j].GetComponent<Unit_Card>().Attack;
+                            Debug.Log("el ataque total de los perros es " + enemyTotalAttack);
                         }
                         else
                         {
                             playerTotalAttack += board[i, j].GetComponent<Unit_Card>().Attack;
+                            Debug.Log("el ataque total de los gatos es " + playerTotalAttack);
                         }
                     }
                 }
@@ -206,6 +251,7 @@ public class GameLogic : MonoBehaviour
             }
             else
             {
+<<<<<<< Updated upstream
                 Debug.Log("Player Win");
                 Debug.Log("leaderCat activada");
                 cardLeaderPlayer.GetComponent<EffectPepe>().ActivateEffect(playerScore);
@@ -213,6 +259,27 @@ public class GameLogic : MonoBehaviour
                 cardLeaderPlayer.GetComponent<TextLeaderCats>().ActivateTextsLeaderCats();
                 ChangeRound(matrixBoard);
 
+=======
+<<<<<<< Updated upstream
+                Debug.Log("Player Win");
+                Debug.Log("leaderCat activada");
+                cardLeaderPlayer.GetComponent<EffectPepe>().ActivateEffect(playerScore);
+                catsWinRound.GetComponent<TextPlayerWin>().ActivateWinRound();
+                cardLeaderPlayer.GetComponent<TextLeaderCats>().ActivateTextsLeaderCats();
+                ChangeRound(matrixBoard);
+
+=======
+                playerScore++;
+                Debug.Log("Player Win");
+                Debug.Log("leaderCat activada");
+                cardLeaderPlayer.GetComponent<EffectPepe>().ActivateEffect(playerScore);
+                cardLeaderPlayer.GetComponent<TextLeaderCats>().ActivateTextsLeaderCats();
+                Debug.Log("texto del machi activado");
+                catsWinRound.GetComponent<TextPlayerWin>().ActivateWinRound();
+                
+                ChangeRound(matrixBoard);
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
                 cardLeaderPlayer.GetComponent<TextLeaderCats>().DescativateTextsLeaderCats();
             }
             UpdateDataText();
@@ -232,12 +299,14 @@ public class GameLogic : MonoBehaviour
                 playerWon = true;
                 Debug.Log("Cats Win");
                 catsWin.GetComponent<TextPlayerWin>().WinGame();
+                ResetScene();
             }
             else if (playerScore != 2 && enemyScore == 2)
             {
                 enemyWon = true;
                 Debug.Log("Dogs Win");
                 dogsWin.GetComponent<TextEnemyWin>().WinGame();
+                ResetScene();
             }
         }
         else if (roundCounter == 3)
@@ -247,12 +316,14 @@ public class GameLogic : MonoBehaviour
                 playerWon = true;
                 Debug.Log("Cats Win");
                 catsWin.GetComponent<TextPlayerWin>().WinGame();
+                ResetScene();
             }
             else if (playerScore < enemyScore)
             {
                 enemyWon = true;
                 Debug.Log("Dogs Win");
                 dogsWin.GetComponent<TextEnemyWin>().WinGame();
+                ResetScene();
             }
         }
     }

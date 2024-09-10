@@ -14,11 +14,19 @@ public class TextLeaderCats : MonoBehaviour
 
     public void ActivateTextsLeaderCats()
     {
+        Debug.Log("se activo el texto del lider de los gatos");
         textLeaderCats.SetActive(true);
     }
 
     public void DescativateTextsLeaderCats()
     {
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+        Debug.Log("se desactivo el texto del lider de los gatos");
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
         textLeaderCats.SetActive(false);
     }
 }

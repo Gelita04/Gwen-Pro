@@ -2480,6 +2480,92 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textLeaderDogs: {fileID: 503992761}
+--- !u!1 &513689582
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 513689584}
+  - component: {fileID: 513689583}
+  m_Layer: 5
+  m_Name: ToggleButtomExpandCard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &513689583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513689582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 0.4433962, g: 0.1945087, b: 0.1945087, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.41509432, g: 0.31159338, b: 0.24474901, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 846938306}
+  toggleTransition: 1
+  graphic: {fileID: 1608874784}
+  m_Group: {fileID: 0}
+  onValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_IsOn: 0
+--- !u!224 &513689584
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513689582}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 846938304}
+  - {fileID: 1019974827}
+  m_Father: {fileID: 579828186}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -282.75418, y: -154.96}
+  m_SizeDelta: {x: 94.5916, y: 20}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &578219582
 GameObject:
   m_ObjectHideFlags: 0
@@ -2715,7 +2801,16 @@ RectTransform:
   - {fileID: 503992762}
   - {fileID: 837523959}
   - {fileID: 360765180}
+<<<<<<< Updated upstream
   - {fileID: 1339897758}
+=======
+<<<<<<< Updated upstream
+  - {fileID: 1339897758}
+=======
+  - {fileID: 513689584}
+  - {fileID: 1792539298}
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3230,7 +3325,15 @@ MonoBehaviour:
   Name: 
   Attack: 0
   keywordAction: 
+<<<<<<< Updated upstream
   keywordObject: 
+=======
+<<<<<<< Updated upstream
+  keywordObject: 
+=======
+  keywordObjetive: 
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
   Category: 0
 --- !u!1 &671811267
 GameObject:
@@ -4185,6 +4288,82 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CatsWinRound: {fileID: 633367424}
   CatsWin: {fileID: 837523958}
+--- !u!1 &846938303
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 846938304}
+  - component: {fileID: 846938305}
+  - component: {fileID: 846938306}
+  m_Layer: 5
+  m_Name: Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &846938304
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846938303}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1608874786}
+  m_Father: {fileID: 513689584}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 10, y: -10}
+  m_SizeDelta: {x: 20, y: 20}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &846938305
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846938303}
+  m_CullTransparentMesh: 1
+--- !u!114 &846938306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846938303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &856787146
 GameObject:
   m_ObjectHideFlags: 0
@@ -4717,6 +4896,145 @@ MonoBehaviour:
   coordinateXInMatrixBoard: 4
   coordinateYInMatrixBoard: 2
 --- !u!1 &947814647
+<<<<<<< Updated upstream
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 947814648}
+  - component: {fileID: 947814650}
+  - component: {fileID: 947814649}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &947814648
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947814647}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1339897758}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &947814649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947814647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: mostrar cartas
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4293454079
+  m_fontColor: {r: 1, g: 0.9103774, b: 0.9103774, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 10
+  m_fontSizeBase: 10
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &947814650
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947814647}
+  m_CullTransparentMesh: 1
+--- !u!1 &971698323
+=======
+>>>>>>> Stashed changes
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5146,6 +5464,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1004875806}
   m_CullTransparentMesh: 1
+--- !u!1 &1019974826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1019974827}
+  - component: {fileID: 1019974829}
+  - component: {fileID: 1019974828}
+  m_Layer: 5
+  m_Name: Label
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1019974827
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019974826}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 513689584}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 31.0431, y: -0.5}
+  m_SizeDelta: {x: 16.0861, y: -3}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1019974828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019974826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Show Cards
+--- !u!222 &1019974829
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019974826}
+  m_CullTransparentMesh: 1
 --- !u!1 &1087116655
 GameObject:
   m_ObjectHideFlags: 0
@@ -5559,6 +5956,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5ca036ada6147f48a92ea2602c4f598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
   cartas:
   - {fileID: 2118648437970570046}
   - {fileID: 6893873941590226529}
@@ -5613,6 +6014,11 @@ MonoBehaviour:
   escalaMaxima: 2
   tiempoTransicion: 0.5
   cartaPrefab: {fileID: 872801326}
+<<<<<<< Updated upstream
+=======
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 --- !u!4 &1312942621
 Transform:
   m_ObjectHideFlags: 0
@@ -5912,6 +6318,225 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1339897757}
   m_CullTransparentMesh: 1
+<<<<<<< Updated upstream
+--- !u!1 &1339897757
+=======
+--- !u!114 &1339897762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339897757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5ca036ada6147f48a92ea2602c4f598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cartas:
+  - {fileID: 2118648437970570046}
+  - {fileID: 6893873941590226529}
+  - {fileID: 8067081164784990306}
+  - {fileID: 1139510865976361318}
+  - {fileID: 609410270103389375}
+  - {fileID: 8817775164754815199}
+  - {fileID: 896491714512219251}
+  - {fileID: 8165468806369001584}
+  - {fileID: 9198296307807651642}
+  - {fileID: 4050845342638698718}
+  - {fileID: 2918380897708612483}
+  - {fileID: 5500274428286279087}
+  - {fileID: 6375700622952958568}
+  - {fileID: 4211806038526005706}
+  - {fileID: 2359941520786356554}
+  - {fileID: 4877634399759862145}
+  - {fileID: 7153148672464903142}
+  - {fileID: 1459335949783228450}
+  - {fileID: 8100355778886961421}
+  - {fileID: 4718618198614690708}
+  - {fileID: 6856084055961894910}
+  - {fileID: 346101741267318658}
+  - {fileID: 8496317587240504786}
+  - {fileID: 8484992345788418321}
+  - {fileID: 1750382581098086373}
+  - {fileID: 572508262066410605}
+  - {fileID: 8017193604437883913}
+  - {fileID: 241583546266042369}
+  - {fileID: 8322940569043989468}
+  - {fileID: 114627211236430500}
+  - {fileID: 4375662455644851329}
+  - {fileID: 6149166584784319001}
+  - {fileID: 3594913645239406552}
+  - {fileID: 1906317012399855580}
+  - {fileID: 3827572510041944663}
+  - {fileID: 233069616850750544}
+  - {fileID: 3966309686312717329}
+  - {fileID: 5339492423891330758}
+  - {fileID: 2229956820171954579}
+  - {fileID: 4328245864670185997}
+  - {fileID: 5478690442162100704}
+  - {fileID: 8648525189541720912}
+  - {fileID: 554628370830692982}
+  - {fileID: 4935517333385656698}
+  - {fileID: 2649113786458643236}
+  - {fileID: 8736196597568147045}
+  - {fileID: 3436030048928304249}
+  - {fileID: 2215547299662856030}
+  - {fileID: 604739433122937523}
+  - {fileID: 2233837567498663892}
+  escalaMaxima: 2
+  tiempoTransicion: 0.5
+  cartaPrefab: {fileID: 0}
+--- !u!1 &1485279514
+>>>>>>> Stashed changes
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+<<<<<<< Updated upstream
+  - component: {fileID: 1339897758}
+  - component: {fileID: 1339897761}
+  - component: {fileID: 1339897760}
+  - component: {fileID: 1339897759}
+  - component: {fileID: 1339897762}
+=======
+<<<<<<< Updated upstream
+  - component: {fileID: 1485279515}
+  - component: {fileID: 1485279518}
+  - component: {fileID: 1485279517}
+  - component: {fileID: 1485279516}
+  - component: {fileID: 1485279519}
+=======
+  - component: {fileID: 1523718914}
+  - component: {fileID: 1523718916}
+  - component: {fileID: 1523718915}
+  - component: {fileID: 1523718917}
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+  m_Layer: 5
+  m_Name: BotonMostrarCarta
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1339897758
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339897757}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 947814648}
+  m_Father: {fileID: 579828186}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -363, y: -1.2}
+  m_SizeDelta: {x: 53.5607, y: 44.499}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1339897759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339897757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 0.6226415, g: 0.21801005, b: 0.1321645, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1339897760}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1339897762}
+        m_TargetAssemblyTypeName: showCard, Assembly-CSharp
+        m_MethodName: MostrarCarta
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1339897760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339897757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1339897761
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339897757}
+  m_CullTransparentMesh: 1
 --- !u!114 &1339897762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5986,11 +6611,18 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< Updated upstream
   - component: {fileID: 1485279515}
   - component: {fileID: 1485279518}
   - component: {fileID: 1485279517}
   - component: {fileID: 1485279516}
   - component: {fileID: 1485279519}
+=======
+  - component: {fileID: 1523718914}
+  - component: {fileID: 1523718916}
+  - component: {fileID: 1523718915}
+  - component: {fileID: 1523718917}
+>>>>>>> Stashed changes
   m_Layer: 5
   m_Name: ZoneField2Player
   m_TagString: Untagged
@@ -6421,6 +7053,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1570341878}
   m_CullTransparentMesh: 1
+--- !u!1 &1608874783
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1608874786}
+  - component: {fileID: 1608874785}
+  - component: {fileID: 1608874784}
+  m_Layer: 5
+  m_Name: Checkmark
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1608874784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608874783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1608874785
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608874783}
+  m_CullTransparentMesh: 1
+--- !u!224 &1608874786
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608874783}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 846938304}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 20, y: 20}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1609193842
 GameObject:
   m_ObjectHideFlags: 0
@@ -7271,6 +7978,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1791129911}
   m_CullTransparentMesh: 1
+--- !u!1 &1792539297
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1792539298}
+  - component: {fileID: 1792539300}
+  - component: {fileID: 1792539299}
+  m_Layer: 5
+  m_Name: ExpandedCardSpace
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1792539298
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792539297}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 579828186}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 42, y: 5.9018}
+  m_SizeDelta: {x: 214.4647, y: 296.9688}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1792539299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792539297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1792539300
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792539297}
+  m_CullTransparentMesh: 1
 --- !u!1 &1859150818
 GameObject:
   m_ObjectHideFlags: 0
@@ -8043,7 +8825,7 @@ MonoBehaviour:
   Name: Avada Kadogbra
   Attack: 300
   keywordAction: Elimina
-  keywordObject: mayor
+  keywordObjetive: mayor
   Category: 1
 --- !u!222 &23758666571356429
 CanvasRenderer:
@@ -8245,7 +9027,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Jocker
-  Effect: Remplaza
 --- !u!1 &554628370830692982
 GameObject:
   m_ObjectHideFlags: 0
@@ -8443,7 +9224,7 @@ MonoBehaviour:
   Name: John Snow
   Attack: 80
   keywordAction: Pone
-  keywordObject: Field
+  keywordObjetive: field
   Category: 2
 --- !u!224 &1066254652787000326
 RectTransform:
@@ -8721,7 +9502,7 @@ MonoBehaviour:
   Name: El Michi agresivo
   Attack: 75
   keywordAction: Disminuye
-  keywordObject: random
+  keywordObjetive: random
   Category: 2
 --- !u!1 &1906317012399855580
 GameObject:
@@ -8930,7 +9711,14 @@ MonoBehaviour:
   Name: Julio el comflictivo
   Attack: 80
   keywordAction: Disminuye
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
   keywordObject: random
+=======
+  keywordObjetive: random
+>>>>>>> Stashed changes
   Category: 2
 --- !u!224 &2279280884128876106
 RectTransform:
@@ -8964,7 +9752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Catmmer
-  Effect: Quita
+  keyword: 
   powerToTake: 20
 --- !u!1 &2359941520786356554
 GameObject:
@@ -9207,7 +9995,7 @@ MonoBehaviour:
   Name: Pedro El Imparable 2
   Attack: 300
   keywordAction: Iguala
-  keywordObject: promedio
+  keywordObjetive: promedio
   Category: 1
 --- !u!1 &2649113786458643236
 GameObject:
@@ -9265,7 +10053,7 @@ MonoBehaviour:
   Name: Cat Cruise
   Attack: 400
   keywordAction: Elimina
-  keywordObject: menor
+  keywordObjetive: menor
   Category: 0
 --- !u!224 &2875130029007392286
 RectTransform:
@@ -9645,7 +10433,7 @@ MonoBehaviour:
   Name: Cateyes
   Attack: 250
   keywordAction: Elimina
-  keywordObject: menor
+  keywordObjetive: menor
   Category: 1
 --- !u!222 &3349560728710579446
 CanvasRenderer:
@@ -9671,7 +10459,7 @@ MonoBehaviour:
   Name: Yasmany
   Attack: 320
   keywordAction: Disminuye
-  keywordObject: random
+  keywordObjetive: random
   Category: 0
 --- !u!1 &3436030048928304249
 GameObject:
@@ -9818,7 +10606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Catmmer
-  Effect: Quita
+  keyword: 
   powerToTake: 30
 --- !u!224 &3856271472867467952
 RectTransform:
@@ -9969,7 +10757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Kamikaze
-  Effect: Quita
+  keyword: 
   powerToTake: 30
 --- !u!114 &4190681349247491141
 MonoBehaviour:
@@ -9987,7 +10775,7 @@ MonoBehaviour:
   Name: The HitDog
   Attack: 500
   keywordAction: Iguala
-  keywordObject: promedio
+  keywordObjetive: promedio
   Category: 0
 --- !u!1 &4211806038526005706
 GameObject:
@@ -10026,7 +10814,7 @@ MonoBehaviour:
   Name: HulkCat
   Attack: 500
   keywordAction: Elimina
-  keywordObject: mayor
+  keywordObjetive: mayor
   Category: 0
 --- !u!1 &4328245864670185997
 GameObject:
@@ -10388,7 +11176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Catstruction
-  Effect: Quita
+  keyword: 
   powerToTake: 40
 --- !u!114 &4905591939449921419
 MonoBehaviour:
@@ -10962,6 +11750,54 @@ MonoBehaviour:
       m_Calls: []
 --- !u!65 &5500274428286279091
 BoxCollider:
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5500274428286279087}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!224 &5656020309025835950
+RectTransform:
+>>>>>>> Stashed changes
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5500274428286279087}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!224 &5656020309025835950
+RectTransform:
+>>>>>>> Stashed changes
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -11016,7 +11852,7 @@ MonoBehaviour:
   Name: Woufnipper
   Attack: 170
   keywordAction: Limpia
-  keywordObject: menos
+  keywordObjetive: menos
   Category: 1
 --- !u!224 &5916787738301162473
 RectTransform:
@@ -11091,7 +11927,7 @@ MonoBehaviour:
   Name: El Brayan
   Attack: 220
   keywordAction: Roba
-  keywordObject: carta
+  keywordObjetive: carta
   Category: 0
 --- !u!1 &6149166584784319001
 GameObject:
@@ -11281,8 +12117,8 @@ MonoBehaviour:
   team: Dogs
   Name: Carlos Espadachin
   Attack: 340
-  keywordAction: Quita
-  keywordObject: random
+  keywordAction: Disminuye
+  keywordObjetive: random
   Category: 0
 --- !u!114 &6221308318671875100
 MonoBehaviour:
@@ -11300,7 +12136,7 @@ MonoBehaviour:
   Name: Adolfo el frio
   Attack: 90
   keywordAction: Pone
-  keywordObject: Buff
+  keywordObjetive: buff
   Category: 2
 --- !u!224 &6277351156144889845
 RectTransform:
@@ -11495,7 +12331,7 @@ MonoBehaviour:
   Name: Pedro El imparable 1
   Attack: 300
   keywordAction: Iguala
-  keywordObject: promedio
+  keywordObjetive: promedio
   Category: 1
 --- !u!114 &6537778021182857514
 MonoBehaviour:
@@ -11513,7 +12349,7 @@ MonoBehaviour:
   Name: JackyCat
   Attack: 300
   keywordAction: Disminuye
-  keywordObject: random
+  keywordObjetive: random
   Category: 0
 --- !u!224 &6653448285473492860
 RectTransform:
@@ -11576,6 +12412,14 @@ MonoBehaviour:
   logicManager: {fileID: 749276418}
   textcats: {fileID: 633367424}
   textdogs: {fileID: 1629903044}
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+  cardDisplaySpace: {fileID: 1792539297}
+  toggleButton: {fileID: 513689583}
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 --- !u!114 &6710238142117520627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11592,7 +12436,7 @@ MonoBehaviour:
   Name: Jose El Espadachin
   Attack: 250
   keywordAction: Pone
-  keywordObject: Buff
+  keywordObjetive: buff
   Category: 0
 --- !u!114 &6761045233437537955
 MonoBehaviour:
@@ -11784,6 +12628,46 @@ MonoBehaviour:
       m_Calls: []
 --- !u!65 &6893873941590226533
 BoxCollider:
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6893873941590226529}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6893873941590226534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6893873941590226529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7273e88c98ef4924eb7500db2ab66987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textLeaderDogs: {fileID: 503992761}
+--- !u!224 &6923850829896509292
+RectTransform:
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -11851,7 +12735,7 @@ MonoBehaviour:
   Name: Rodolfo el Caliente
   Attack: 75
   keywordAction: Pone
-  keywordObject: Field
+  keywordObjetive: field
   Category: 2
 --- !u!114 &6950397329922085404
 MonoBehaviour:
@@ -11972,7 +12856,7 @@ MonoBehaviour:
   Name: BollDog
   Attack: 70
   keywordAction: Multiplica
-  keywordObject: mismo
+  keywordObjetive: mismo
   Category: 2
 --- !u!114 &7089132856497253470
 MonoBehaviour:
@@ -12184,7 +13068,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Dogstruction
-  Effect: Quita
+  keyword: 
   powerToTake: 40
 --- !u!114 &7213142246164165421
 MonoBehaviour:
@@ -12267,7 +13151,14 @@ MonoBehaviour:
   Name: El Awouftador
   Attack: 200
   keywordAction: 'Disminuye '
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
   keywordObject: random
+=======
+  keywordObjetive: random
+>>>>>>> Stashed changes
   Category: 1
 --- !u!114 &7244378140087086997
 MonoBehaviour:
@@ -12688,7 +13579,7 @@ MonoBehaviour:
   Name: Avada Kadogbra
   Attack: 300
   keywordAction: Elimina
-  keywordObject: mayor
+  keywordObjetive: mayor
   Category: 1
 --- !u!114 &7625712033856777422
 MonoBehaviour:
@@ -12806,7 +13697,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Jocker
-  Effect: Remplaza
 --- !u!114 &7645638765257414508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12953,7 +13843,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Jocker
-  Effect: Remplaza
 --- !u!114 &7849612367410550737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13070,7 +13959,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Jocker
-  Effect: Remplaza
 --- !u!114 &7876926807248740187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13190,7 +14078,7 @@ MonoBehaviour:
   Name: Catntalf
   Attack: 180
   keywordAction: Roba
-  keywordObject: carta
+  keywordObjetive: carta
   Category: 1
 --- !u!114 &7880735301198123155
 MonoBehaviour:
@@ -13311,7 +14199,7 @@ MonoBehaviour:
   Name: El Diablo
   Attack: 90
   keywordAction: 'Limpia '
-  keywordObject: menos
+  keywordObjetive: menos
   Category: 2
 --- !u!114 &8005665272297812359
 MonoBehaviour:
@@ -13553,7 +14441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Thor
-  Effect: Quita
+  keyword: 
   powerToTake: 20
 --- !u!114 &8031760144339559538
 MonoBehaviour:
@@ -14198,6 +15086,10 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
 --- !u!1001 &8229942758874827445
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14299,6 +15191,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a4ff12ef74c08e42a64ecaa02eb6794, type: 3}
+<<<<<<< Updated upstream
+=======
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 --- !u!1 &8322940569043989468
 GameObject:
   m_ObjectHideFlags: 0
@@ -14558,7 +15455,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Jocker
-  Effect: Remplaza
 --- !u!114 &8476246631649377508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15263,7 +16159,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Jocker
-  Effect: Remplaza
 --- !u!114 &8805714931535614526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15541,6 +16436,14 @@ MonoBehaviour:
   logicManager: {fileID: 749276418}
   textcats: {fileID: 633367424}
   textdogs: {fileID: 1629903044}
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+  cardDisplaySpace: {fileID: 1792539297}
+  toggleButton: {fileID: 513689583}
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 --- !u!224 &8980615245944916006
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15801,7 +16704,7 @@ MonoBehaviour:
   Name: CatBolls
   Attack: 70
   keywordAction: Multiplica
-  keywordObject: mismo
+  keywordObjetive: mismo
   Category: 2
 --- !u!114 &9073251960713968592
 MonoBehaviour:

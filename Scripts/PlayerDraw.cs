@@ -11,6 +11,7 @@ public class DrawCard : MonoBehaviour
     public GameObject PlayerDeck;
     public List<GameObject> Deck1;
 
+//metodo que llena el deck de los gatos.
     public void FillDeck()
     {
         Transform tempChildPlayer = GameObject.Find("PlayerDeck").transform; //busca el gameObject padre.
@@ -28,7 +29,7 @@ public class DrawCard : MonoBehaviour
         FillDeck();
     }
     
-
+//metodo que llena la mano de los gatos.
     public void OnClick()
     {
         HandScript handPlayerScript = PlayerHand.GetComponent<HandScript>();

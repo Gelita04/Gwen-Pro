@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class IsCardPositionValidScript : MonoBehaviour
 {
-    //checkea si la posicion donde va a ser colocada la carta es valida
+    // metodo que checkea si la posicion donde va a ser colocada la carta de los gatos es valida
     public bool IsPlayerCardPositionValid(GameObject[,] matrixBoard, GameObject card, int x, int y)
     {
         if (matrixBoard[x, y] == null)
@@ -49,7 +49,15 @@ public class IsCardPositionValidScript : MonoBehaviour
             {
                 return true;
             }
+<<<<<<< Updated upstream
             else if (card.CompareTag("Counterfield") && y!=0)
+=======
+<<<<<<< Updated upstream
+            else if (card.CompareTag("Counterfield") && y!=0)
+=======
+            else if (card.CompareTag("Counterfield") && y != 0)
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
             {
                 return true;
             }
@@ -66,6 +74,7 @@ public class IsCardPositionValidScript : MonoBehaviour
         }
     }
 
+    //metodo que checkea si la posicion donde va a ser colocada la carta de los perros es valida
     public bool IsEnemyCardPositionValidate(GameObject[,] board, GameObject card, int x, int y)
     {
         if (board[x, y] == null)
@@ -102,6 +111,10 @@ public class IsCardPositionValidScript : MonoBehaviour
                 return true;
             }
             else if (card.CompareTag("Buff") && y != 0)
+            {
+                return true;
+            }
+            else if (card.CompareTag("Counterfield") && y != 0)
             {
                 return true;
             }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEditor.Experimental;
@@ -16,7 +17,15 @@ public class EffectsScript : MonoBehaviour
     public GameObject cementery;
 
     //metodo que selecciona una fila dada la coordenada de la misma
+<<<<<<< Updated upstream
     public GameObject[] Rowselected(GameObject[,] matrixboard, int x) 
+=======
+<<<<<<< Updated upstream
+    public GameObject[] Rowselected(GameObject[,] matrixboard, int x) 
+=======
+    public GameObject[] Rowselected(GameObject[,] matrixboard, int x)
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
     {
         GameObject[] row =
         {
@@ -97,6 +106,10 @@ public class EffectsScript : MonoBehaviour
     {
         int indexRowEnemy = IndexRowEnemy(board, x);
         removeAttack = cardField.GetComponent<Field_Card>().powerToTake;
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
         Debug.Log(removeAttack);
         for (int m = 1; m < board.GetLength(0); m++)
         {
@@ -108,6 +121,36 @@ public class EffectsScript : MonoBehaviour
                 board[indexRowEnemy, m].GetComponent<Unit_Card>().Attack
                 - (removeAttack * 100) / board[indexRowEnemy, m].GetComponent<Unit_Card>().Attack;
                 Debug.Log(board[indexRowEnemy, m].GetComponent<Unit_Card>().Attack);
+<<<<<<< Updated upstream
+=======
+=======
+        Debug.Log("carta field puesta en la fila " + x + "y en la fila " + indexRowEnemy);
+        Debug.Log("carta field quitara de poder " + removeAttack);
+        for (int i = 1; i < board.GetLength(1); i++)
+        {
+            if (board[x, i] != null)
+            {
+                Debug.Log("...carta de los gatos en los field");
+                Debug.Log(board[x, i].GetComponent<Unit_Card>().Attack);
+                board[x, i].GetComponent<Unit_Card>().Attack =
+                    board[x, i].GetComponent<Unit_Card>().Attack
+                    - ((removeAttack * 100) / board[x, i].GetComponent<Unit_Card>().Attack);
+            }
+            if (board[indexRowEnemy, i] != null)
+            {
+                Debug.Log("...carta de los perros en los field");
+                board[indexRowEnemy, i].GetComponent<Unit_Card>().Attack =
+                    board[indexRowEnemy, i].GetComponent<Unit_Card>().Attack
+                    - (removeAttack * 100)
+                        / board[indexRowEnemy, i].GetComponent<Unit_Card>().Attack;
+                Debug.Log(board[indexRowEnemy, i].GetComponent<Unit_Card>().Attack);
+            }
+            else
+            {
+                Debug.Log("no hay cartas en la fila");
+            }
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
         }
     }
 
@@ -115,6 +158,7 @@ public class EffectsScript : MonoBehaviour
     public void EffectsCounterFieldCats(GameObject cardcounterfield, GameObject[,] board)
     {
         for (int i = 3; i < board.GetLength(0); i++)
+<<<<<<< Updated upstream
         {
             Debug.Log(board[i, 0]);
             Debug.Log(cardcounterfield);
@@ -136,6 +180,53 @@ public class EffectsScript : MonoBehaviour
             Debug.Log(board[i, 0]);
             if (board[i, 0] != null && board[i, 0].CompareTag("Field"))
             {
+=======
+<<<<<<< Updated upstream
+        {
+            Debug.Log(board[i, 0]);
+            Debug.Log(cardcounterfield);
+            if (board[i, 0] != null && board[i, 0].CompareTag("Field"))
+            {
+                Debug.Log("carta sera mandada al cementerio");
+                cementery.GetComponent<Cementery>().RemoveCardCementery(board[i, 0]);
+                cementery.GetComponent<Cementery>().RemoveCardCementery(cardcounterfield);
+            }
+
+            cementery.GetComponent<Cementery>().RemoveCardCementery(cardcounterfield);
+        }
+    }
+
+    public void EffectsCounterFieldDogs(GameObject cardcounterfield, GameObject[,] board)
+    {
+        for (int i = 0; i <= 2; i++)
+        {
+            Debug.Log(board[i, 0]);
+            if (board[i, 0] != null && board[i, 0].CompareTag("Field"))
+            {
+=======
+        {
+            Debug.Log(board[i, 0]);
+            Debug.Log(cardcounterfield);
+            if (board[i, 0] != null && board[i, 0].CompareTag("Field"))
+            {
+                Debug.Log("carta sera mandada al cementerio");
+                cementery.GetComponent<Cementery>().RemoveCardCementery(board[i, 0]);
+                cementery.GetComponent<Cementery>().RemoveCardCementery(cardcounterfield);
+            }
+
+            cementery.GetComponent<Cementery>().RemoveCardCementery(cardcounterfield);
+        }
+    }
+
+    public void EffectsCounterFieldDogs(GameObject cardcounterfield, GameObject[,] board)
+    {
+        for (int i = 0; i <= 2; i++)
+        {
+            Debug.Log(board[i, 0]);
+            if (board[i, 0] != null && board[i, 0].CompareTag("Field"))
+            {
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
                 Debug.Log("carta mandada al cementerio");
                 cementery.GetComponent<Cementery>().RemoveCardCementery(board[i, 0]);
                 cementery.GetComponent<Cementery>().RemoveCardCementery(cardcounterfield);
@@ -147,13 +238,24 @@ public class EffectsScript : MonoBehaviour
     public void EffectsBuff(GameObject[,] board, GameObject cardBuff, int x)
     {
         removeAttack = cardBuff.GetComponent<Buff_Card>().powerBuff;
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
         Debug.Log(removeAttack);
         if (cardBuff != null)
+=======
+        Debug.Log("cantidad de poder a curar " + removeAttack);
+        for (int i = 1; i < board.GetLength(1); i++)
+>>>>>>> Stashed changes
         {
-            for (int i = 1; i < board.GetLength(0); i++)
+            if (board[x, i] != cardBuff)
             {
-                board[x, i].GetComponent<Unit_Card>().Attack =
-                    board[x, i].GetComponent<Unit_Card>().Attack + removeAttack;
+                if (board[x, i] != null)
+                {
+                    board[x, i].GetComponent<Unit_Card>().Attack =
+                        board[x, i].GetComponent<Unit_Card>().Attack + removeAttack;
+                }
             }
         }
     }

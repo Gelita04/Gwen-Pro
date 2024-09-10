@@ -12,17 +12,55 @@ public class HandScript : MonoBehaviour
     public GameObject logicManager;
     public GameObject textcats;
     public GameObject textdogs;
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+
+    //propierties of expand card when clicked functionality:
+    public GameObject cardDisplaySpace; // Reference to the invisible space (UI Image)
+    public Toggle toggleButton; // Reference to the toggle button
+    private bool isCardDisplayActive = false;
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 
     public void Start()
     {
         cards = new List<GameObject>();
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+        // Ensure the card display space is initially inactive
+        cardDisplaySpace.SetActive(false);
+
+        // Add a listener to the toggle button
+        toggleButton.onValueChanged.AddListener(OnToggleChanged);
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
     }
 
     public void OnCardClick(GameObject card)
     {
         selectedCard = card;
+        // if (card.CompareTag("Wildcard"))
+        // {
+        //     //llamar efecto joker
+        // }
+        if (isCardDisplayActive)
+        {
+            // Show the clicked card in the display space
+            ShowCardInDisplaySpace(card);
+        }
     }
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+    //metodo  que agrega a la mano las 10 cartas sacadas del deck.
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
     public void AddCard(GameObject card)
     {
         cards.Add(card);
@@ -31,13 +69,24 @@ public class HandScript : MonoBehaviour
         textcats.GetComponent<TextPlayerWin>().DesactivateWinRound();
         textdogs.GetComponent<TextEnemyWin>().DesactivateWinRound();
         button.onClick.AddListener(() => OnCardClick(card));
+        textcats.GetComponent<TextPlayerWin>().DesactivateWinRound();
+        textdogs.GetComponent<TextEnemyWin>().DesactivateWinRound();
     }
 
+    //metodo que quita una carta de la mano y la pone en el tablero
     public void RemoveSelectedCardAndInsertInMatrix(GameObject button)
     {
         GameObject[,] matrix = board.GetComponent<MatrixBoard>().Board;
         IsCardPositionValidScript scriptVar =
+<<<<<<< Updated upstream
         logicManager.GetComponent<IsCardPositionValidScript>();
+=======
+<<<<<<< Updated upstream
+        logicManager.GetComponent<IsCardPositionValidScript>();
+=======
+            logicManager.GetComponent<IsCardPositionValidScript>();
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
         int coordinateX = button.GetComponent<CoordinateInMatrix>().coordinateXInMatrixBoard;
         int coordinateY = button.GetComponent<CoordinateInMatrix>().coordinateYInMatrixBoard;
         bool isPlayerTurn = logicManager.GetComponent<GameLogic>().isPlayerTurn;
@@ -81,6 +130,53 @@ public class HandScript : MonoBehaviour
             {
                 logicManager.GetComponent<GameLogic>().isEnemyReadyForBattle = false;
             }
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+        }
+    }
+
+    //metodo que hace que se muestre la carta mas grande
+    private void ShowCardInDisplaySpace(GameObject card)
+    {
+        // Activate the display space
+        cardDisplaySpace.SetActive(true);
+
+        // Get the RectTransform of the display space
+        RectTransform displaySpaceRectTransform = cardDisplaySpace.GetComponent<RectTransform>();
+
+        // Optionally, set the image of the card to the display space if using UI Image
+        Image cardImage = card.GetComponent<Image>();
+        if (cardImage != null)
+        {
+            Image displayImage = cardDisplaySpace.GetComponent<Image>();
+            displayImage.sprite = cardImage.sprite; // Set the sprite of the display space
+
+            // Optionally set the size of the display space to a larger fixed size for better visibility
+            displaySpaceRectTransform.sizeDelta = new Vector2(200, 300); // Adjust this size as needed
+        }
+        else
+        {
+            Debug.LogError("The clicked card does not have an Image component!");
+        }
+
+        // Debug logs
+        Debug.Log("Displaying card image: " + cardImage.sprite.name);
+    }
+
+    //metodo que controla el estado del boton de mostrar cartas
+    private void OnToggleChanged(bool isOn)
+    {
+        Debug.Log("Entered OnToggleChanged");
+        isCardDisplayActive = isOn;
+
+        // Optionally hide the display space if toggled off
+        if (!isOn)
+        {
+            cardDisplaySpace.SetActive(false);
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
         }
     }
 }

@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class Deck_Dogs : MonoBehaviour
 {
     public GameObject EnemyDeck;
     public List<GameObject> Deck;
+
+    //se llena el deck de los perros.
     void Start()
     {
         Transform parentTransform = GameObject.Find("EnemyDeck").transform; //busca el gameObject padre.
@@ -16,12 +17,6 @@ public class Deck_Dogs : MonoBehaviour
             Deck.Add(childTransform.gameObject);
         }
 
-        foreach (GameObject go in Deck)
-        {
-            
-        }
-        
+        foreach (GameObject go in Deck) { }
     }
-
-   
 }

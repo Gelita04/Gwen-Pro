@@ -8,6 +8,7 @@ public class Deck_Cats : MonoBehaviour
     public GameObject PlayerDeck;
     public List<GameObject> Deck;
   
+  //se llena el deck de los gatos.
     void Start()
     {
         Transform parentTransform = GameObject.Find("PlayerDeck").transform; //busca el gameObject padre.

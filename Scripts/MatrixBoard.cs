@@ -9,6 +9,7 @@ public class MatrixBoard : MonoBehaviour
     public IsCardPositionValidScript isCardPositionValidScript; 
     public GameObject[,] Board;
     
+    //instancia la matriz que sera el tablero.
     public void Start()
     {
         Board = new GameObject[6, 5];

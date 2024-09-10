@@ -7,6 +7,7 @@ public class EffectLeaderDogs : MonoBehaviour
 {
     public void ActivateLeaderDogs(int playerscore)
     {
-       playerscore--;
+        Debug.Log("Entro al metodo de Firulais");
+        playerscore--;
     }
 }
