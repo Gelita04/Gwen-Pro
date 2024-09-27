@@ -14,13 +14,13 @@ public class TextLeaderDogs : MonoBehaviour
 
     public void ActivateTextsLeaderDogs()
     {
-        Debug.Log("se activo el texto del lider de los perros");
+        
         textLeaderDogs.SetActive(true);
     }
 
     public void DescativateTextsLeaderDogs()
     {
-        Debug.Log("se desactivo el efecto del lider de los perros");
+        
         textLeaderDogs.SetActive(false);
     }
 }

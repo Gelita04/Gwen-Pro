@@ -1,13 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using GameLibrary.Objects;
+using UnityEngine;
 
 public class Buff_Card : MonoBehaviour
 {
     public string Name;
-    public string keywordAction;
+    public string team;
     public long powerBuff;
-    
+    public bool IsCreatedByUsers = false;
 }

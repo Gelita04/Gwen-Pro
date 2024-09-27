@@ -11,6 +11,8 @@ public class Unit_Card : MonoBehaviour
     public string keywordAction;
     public string keywordObjetive;
 
+    public bool IsCreatedByUsers = false;
+
     public UnitMember Category;
     private GameObject cementery;
     private GameObject rowToEliminate;
@@ -105,7 +107,7 @@ public class Unit_Card : MonoBehaviour
 
         if (fieldCats != null)
         {
-           // Debug.Log(fieldCats);
+            // Debug.Log(fieldCats);
             for (int i = 0; i < board.GetLength(1); i++)
             {
                 if (board[0, i] == null)
@@ -134,7 +136,7 @@ public class Unit_Card : MonoBehaviour
             {
                 if (board[0, i] == null)
                 {
-                   //Debug.Log(board[0, i]);
+                    //Debug.Log(board[0, i]);
                     board[0, i] = fieldDogs;
                     //Debug.Log(board[0, i]);
                     break;
@@ -208,13 +210,13 @@ public class Unit_Card : MonoBehaviour
         //Debug.Log(attackingCard.GetComponent<Unit_Card>().Attack);
         attackingCard.GetComponent<Unit_Card>().Attack =
             attackingCard.GetComponent<Unit_Card>().Attack * quantityCards;
-       // Debug.Log(attackingCard.GetComponent<Unit_Card>().Attack);
+        // Debug.Log(attackingCard.GetComponent<Unit_Card>().Attack);
     }
 
     // efecto que limpia la fila con menos cartas unidad (no vacia, propia o del rival)
     public void CleanRow()
     {
-       // Debug.Log("entro al metodo cleanRow");
+        // Debug.Log("entro al metodo cleanRow");
         int countRow0 = 0;
         int countRow1 = 0;
         int countRow2 = 0;
@@ -240,7 +242,7 @@ public class Unit_Card : MonoBehaviour
             {
                 //Debug.Log(board[2, i]);
                 countRow2++;
-               // Debug.Log(countRow2);
+                // Debug.Log(countRow2);
             }
             if (board[3, i] != null && board[3, i].GetComponent<Unit_Card>())
             {
@@ -258,7 +260,7 @@ public class Unit_Card : MonoBehaviour
             {
                 //Debug.Log(board[5, i]);
                 countRow5++;
-               // Debug.Log(countRow5);
+                // Debug.Log(countRow5);
             }
         }
         rows[0] = countRow0;
@@ -291,7 +293,7 @@ public class Unit_Card : MonoBehaviour
     // efecto que calcula el promedio de poder de todas las cartas puestas en el campo, luego iguala todas las cartas del campo a ese mismo promedio (propia o del rival)
     public void CardsSamePower()
     {
-       // Debug.Log("entro al metodo CardsSamePower");
+        // Debug.Log("entro al metodo CardsSamePower");
         long quantityCards = 0;
         long attackCards = 0;
         for (int i = 0; i < board.GetLength(0); i++)

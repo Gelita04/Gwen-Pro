@@ -6,7 +6,6 @@ public class TextLeaderCats : MonoBehaviour
 {
     public GameObject textLeaderCats;
 
-    // Start is called before the first frame update
     void Start()
     {
         textLeaderCats.SetActive(false);
@@ -14,13 +13,11 @@ public class TextLeaderCats : MonoBehaviour
 
     public void ActivateTextsLeaderCats()
     {
-        Debug.Log("se activo el texto del lider de los gatos");
         textLeaderCats.SetActive(true);
     }
 
     public void DescativateTextsLeaderCats()
     {
-        Debug.Log("se desactivo el texto del lider de los gatos");
         textLeaderCats.SetActive(false);
     }
 }

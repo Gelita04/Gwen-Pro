@@ -45,12 +45,15 @@ public class HandScript : MonoBehaviour
     //metodo  que agrega a la mano las 10 cartas sacadas del deck.
     public void AddCard(GameObject card)
     {
+        
         cards.Add(card);
         card.transform.SetParent(transform, false);
         Button button = card.GetComponent<Button>();
         button.onClick.AddListener(() => OnCardClick(card));
-        textcats.GetComponent<TextPlayerWin>().DesactivateWinRound();
-        textdogs.GetComponent<TextEnemyWin>().DesactivateWinRound();
+        // textcats.GetComponent<TextPlayerWin>().DesactivateWinRound();
+        // textdogs.GetComponent<TextEnemyWin>().DesactivateWinRound();
+        // textcats.GetComponent<TextLeaderCats>().DescativateTextsLeaderCats();
+        // textdogs.GetComponent<TextLeaderDogs>().DescativateTextsLeaderDogs();
     }
 
     //metodo que quita una carta de la mano y la pone en el tablero

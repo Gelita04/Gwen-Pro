@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -22,7 +23,6 @@ public class GameLogic : MonoBehaviour
     public GameObject matrix;
     public GameObject[,] matrixBoard;
     public GameObject effects;
-
     public GameObject cementery;
     private GameObject effectwilcard;
     private GameObject leadereffect;
@@ -32,7 +32,14 @@ public class GameLogic : MonoBehaviour
     public GameObject cardLeaderEnemy;
     public GameObject catsWin;
     public GameObject dogsWin;
-    public GameObject selectedCard;
+    public GameObject textCatsTurn;
+    public GameObject textDogsTurn;
+
+    public void Start()
+    {
+        textCatsTurn.SetActive(false);
+        textDogsTurn.SetActive(false);
+    }
 
     [ContextMenu("Logic")]
     public void UpdateDataText() //dataMatch es "Round: " + roundCounter + " Player: " + playerScore + " Enemy: " + enemyScore;
@@ -41,11 +48,7 @@ public class GameLogic : MonoBehaviour
             "Round: " + roundCounter + "\nCats: " + playerScore + "\nDogs: " + enemyScore;
     }
 
-    public void OnCardClick(GameObject card)
-    {
-        selectedCard = card;
-    }
-
+    //este metodo resetea la escena cuando se acaba el juego
     public void ResetScene()
     {
         Scene currentScene = SceneManager.GetActiveScene();
@@ -53,62 +56,128 @@ public class GameLogic : MonoBehaviour
         SceneManager.LoadScene(currentScene.name);
     }
 
-    public void ActivateEffects(GameObject[,] board, GameObject card, int x) // metodo que para activar effecto
+    //metodo que pone el letrero del turno de cada jugador
+    public void TextTurnsPlayers()
     {
-        EffectsScript effects = this.effects.GetComponent<EffectsScript>();
+        if (isPlayerTurn)
+        {
+            textDogsTurn.SetActive(false);
+            textCatsTurn.SetActive(true);
+        }
+        else
+        {
+            textCatsTurn.SetActive(false);
+            textDogsTurn.SetActive(true);
+        }
+    }
+
+    //metodo que para activar los efectos de todas las cartas puestas en el tablero
+    public void ActivateEffects(GameObject[,] board, GameObject card, int x, List<GameObject> hand = null, List<GameObject> otherHand = null, List<GameObject> deck = null, List<GameObject> otherDeck = null)
+    {
+        //---------------------------------------> agregar hand, otherHand,deck y otherDeck como parametros
+        EffectsScript Effects = effects.GetComponent<EffectsScript>();
         Unit_Card effectsUnitCards = effects.GetComponent<Unit_Card>();
-        Wildcard effect = effects.GetComponent<Wildcard>();
+        EffectsUsers effectsUsers = effects.GetComponent<EffectsUsers>();
+
+        // Wildcard effect = effects.GetComponent<Wildcard>();
         if (card != null)
         {
             if (card.CompareTag("Field"))
             {
-                Debug.Log("Carta field" + card);
-                effects.EffectsField(board, card, x);
-                Debug.Log("efecto de carta field activado");
+                Field_Card cardfield = card.GetComponent<Field_Card>();
+                if (cardfield.IsCreatedByUsers)
+                {
+                    Debug.Log("Carta De Usuario " + cardfield);
+                    //llamar al efecto
+                    effectsUsers.EffectsByUser(board, card, x, hand, otherHand, deck, otherDeck);
+                }
+                else
+                {
+                    Debug.Log("Carta Field " + card);
+                    Debug.Log("Efecto de cartas Field va a ser activado");
+                    Effects.EffectsField(board, card, x);
+                    Debug.Log("Efecto de cartas Field ya fue activado");
+                }
             }
             if (card.CompareTag("Buff"))
             {
-                Debug.Log(card);
-                Debug.Log("efecto de carta buff activado");
-                effects.EffectsBuff(board, card, x);
+                Buff_Card cardbuff = card.GetComponent<Buff_Card>();
+                if (cardbuff.IsCreatedByUsers)
+                {
+                    Debug.Log("Carta De Usuario " + cardbuff);
+                    //llamar al efecto
+                    effectsUsers.EffectsByUser(board, card, x, hand, otherHand, deck, otherDeck);
+                }
+                else
+                {
+                    Debug.Log("Carta Buff " + card);
+                    Debug.Log("Efecto de cartas Buff va a ser activado");
+                    Effects.EffectsBuff(board, card, x);
+                    Debug.Log("Efecto de cartas Buff ya fue activado");
+                }
             }
             if (card.CompareTag("Unit-Cards"))
             {
-                Debug.Log(card);
-
-                Debug.Log("efecto de cartas de unidad activado");
-                effectsUnitCards.EffectsUnitCardsAtivate(card);
+                Unit_Card unitcard = card.GetComponent<Unit_Card>();
+                if (unitcard.IsCreatedByUsers)
+                {
+                    Debug.Log("Carta De Usuario " + card);
+                    //llamar al efecto
+                    effectsUsers.EffectsByUser(board, card, x, hand, otherHand, deck, otherDeck);
+                }
+                else
+                {
+                    Debug.Log("Carta de Unidad " + card);
+                    Debug.Log("Efecto de cartas de unidad va ser activado");
+                    effectsUnitCards.EffectsUnitCardsAtivate(card);
+                    Debug.Log("Efecto de cartas de unidad ya fue activado");
+                }
             }
             if (
                 card.CompareTag("Counterfield")
                 && card.GetComponent<Counterfield_Card>().team == "Cats"
             )
             {
-                Debug.Log(card);
-                Debug.Log("efecto de carta counterfield de los gatos activado");
-                effects.EffectsCounterFieldCats(card, board);
+                Counterfield_Card countercard = card.GetComponent<Counterfield_Card>();
+                if (countercard.IsCreatedByUsers)
+                {
+                    Debug.Log("Carta De Usuario " + card);
+                    //llamar al efecto
+                    effectsUsers.EffectsByUser(board, card, x, hand, otherHand, deck, otherDeck);
+                }
+                else
+                {
+                    Debug.Log("Carta CounterField de los gatos " + card);
+                    Debug.Log("Efecto de cartas Counterfield de los gatos  va a ser activado");
+                    Effects.EffectsCounterFieldCats(card, board);
+                    Debug.Log("Efecto de cartas CounterField de los gatos ya fue activado");
+                }
             }
             if (
                 card.CompareTag("Counterfield")
                 && card.GetComponent<Counterfield_Card>().team == "Dogs"
             )
             {
-                Debug.Log(card);
-                Debug.Log("efecto de carta counterfield de los perros activado");
-                effects.EffectsCounterFieldDogs(card, board);
-            }
-            if (card.CompareTag("Wildcard"))
-            {
-                Debug.Log(card);
-                Debug.Log("efecto de la carta wildcard activado");
-                effect.effectWildcard(card, selectedCard);
+                Counterfield_Card countercard = card.GetComponent<Counterfield_Card>();
+                if (countercard.IsCreatedByUsers)
+                {
+                    Debug.Log("Carta De Usuario " + card);
+                    //llamar al efecto
+                    effectsUsers.EffectsByUser(board, card, x, hand, otherHand, deck, otherDeck);
+                }
+                else
+                {
+                    Debug.Log("Carta CounterField de los perros " + card);
+                    Debug.Log("Efecto de cartas CounterField de los perros  va a ser activado");
+                    Effects.EffectsCounterFieldDogs(card, board);
+                    Debug.Log("Efecto de cartas CounterField ya fue activado");
+                }
             }
         }
     }
 
-    // ReSharper disable Unity.PerformanceAnalysis
-    //este metodo no se sobrecarga, solo se llama si cumple la condicion, no 30 veces por sengundo.
-    public long GetBattleResult(GameObject[,] board) //devuelve el result que es quien gano esa ronda, 1:playerWin -1:enemyWin 0:draw
+    //devuelve el result que es quien gano esa ronda, 1:playerWin -1:enemyWin 0:draw
+    public long GetBattleResult(GameObject[,] board)
     {
         long playerTotalAttack = 0;
         long enemyTotalAttack = 0;
@@ -143,12 +212,12 @@ public class GameLogic : MonoBehaviour
         if (playerTotalAttack > enemyTotalAttack)
         {
             result = 1;
-            Debug.Log(playerTotalAttack);
+            Debug.Log(" El ataque total de los gatos es " + playerTotalAttack);
         }
         else if (playerTotalAttack < enemyTotalAttack)
         {
             result = -1;
-            Debug.Log(enemyTotalAttack);
+            Debug.Log("El ataque total de los perros es " + enemyTotalAttack);
         }
         else
         {
@@ -157,7 +226,8 @@ public class GameLogic : MonoBehaviour
         return result;
     }
 
-    public void PassTurn() // se llama al presionar el boton de pasar turno
+    // se llama al presionar el boton de pasar turno
+    public void PassTurn()
     {
         if (isPlayerTurn)
         {
@@ -176,7 +246,8 @@ public class GameLogic : MonoBehaviour
         }
     }
 
-    public void ChangeRound(GameObject[,] board) //metodo que cambia de ronda, elimina las cartas del campo y las manda para el cementerio
+    //metodo que cambia de ronda, elimina las cartas del campo y las manda para el cementerio
+    public void ChangeRound(GameObject[,] board)
     {
         for (int i = 0; i < board.GetLength(0); i++)
         {
@@ -190,16 +261,32 @@ public class GameLogic : MonoBehaviour
         }
     }
 
-    // ReSharper disable Unity.PerformanceAnalysis
+    //metodo que verifica si se puede cambiar de ronda y de quien es el turno
     public void CheckReadyForBattle()
     {
         long result = 0;
+        int countDraw = 0;
         if (playerPassTurnBeingReadyForBattle && enemyPassTurnBeingReadyForBattle)
         {
             matrixBoard = matrix.GetComponent<MatrixBoard>().Board;
             result = GetBattleResult(matrixBoard);
-            Debug.Log("cambio de ronda");
+            Debug.Log("roundcounter antes de sumarle 1-  " + roundCounter);
             roundCounter++;
+            Debug.Log("roundcounter despues de sumarle 1-  " + roundCounter);
+            if (roundCounter == 1)
+            {
+                Debug.Log("Carta lider de los perros activada");
+                enemyScore++;
+                cardLeaderEnemy.GetComponent<TextLeaderDogs>().ActivateTextsLeaderDogs();
+                ChangeRound(matrixBoard);
+            }
+            if (countDraw == 1)
+            {
+                Debug.Log("Carta lider de los gatos activada");
+                playerScore++;
+                cardLeaderPlayer.GetComponent<TextLeaderCats>().ActivateTextsLeaderCats();
+                ChangeRound(matrixBoard);
+            }
             if (result == 1)
             {
                 playerScore++;
@@ -209,22 +296,13 @@ public class GameLogic : MonoBehaviour
             else if (result == -1)
             {
                 enemyScore++;
-                Debug.Log("Enemy win this round");
+                Debug.Log("Perros ganan esta ronda");
                 dogsWinRound.GetComponent<TextEnemyWin>().ActivateWinRound();
                 ChangeRound(matrixBoard);
             }
             else
             {
-                playerScore++;
-                Debug.Log("Player Win");
-                Debug.Log("leaderCat activada");
-                cardLeaderPlayer.GetComponent<EffectPepe>().ActivateEffect(playerScore);
-                cardLeaderPlayer.GetComponent<TextLeaderCats>().ActivateTextsLeaderCats();
-                Debug.Log("texto del machi activado");
-                catsWinRound.GetComponent<TextPlayerWin>().ActivateWinRound();
-                
-                ChangeRound(matrixBoard);
-                cardLeaderPlayer.GetComponent<TextLeaderCats>().DescativateTextsLeaderCats();
+                countDraw++;
             }
             UpdateDataText();
             playerPassTurnBeingReadyForBattle = false;
@@ -232,40 +310,38 @@ public class GameLogic : MonoBehaviour
         }
     }
 
-    // ReSharper disable Unity.PerformanceAnalysis
-
-    public void CheckEndGame() //metodo que analiza el fin del juego
+    //metodo que analiza el fin del juego
+    public void CheckEndGame()
     {
         if (roundCounter == 2)
         {
             if (playerScore == 2 && enemyScore != 2)
             {
                 playerWon = true;
-                Debug.Log("Cats Win");
+                Debug.Log("Gatos ganan el juego");
                 catsWin.GetComponent<TextPlayerWin>().WinGame();
-                ResetScene();
             }
             else if (playerScore != 2 && enemyScore == 2)
             {
                 enemyWon = true;
-                Debug.Log("Dogs Win");
+                Debug.Log("Perros ganan el juegos");
                 dogsWin.GetComponent<TextEnemyWin>().WinGame();
-                ResetScene();
             }
+            ResetScene();
         }
         else if (roundCounter == 3)
         {
             if (playerScore > enemyScore)
             {
                 playerWon = true;
-                Debug.Log("Cats Win");
+                Debug.Log("Gatos ganan el juego");
                 catsWin.GetComponent<TextPlayerWin>().WinGame();
                 ResetScene();
             }
             else if (playerScore < enemyScore)
             {
                 enemyWon = true;
-                Debug.Log("Dogs Win");
+                Debug.Log("Perros ganan el juego");
                 dogsWin.GetComponent<TextEnemyWin>().WinGame();
                 ResetScene();
             }
@@ -274,6 +350,7 @@ public class GameLogic : MonoBehaviour
 
     void Update()
     {
+        TextTurnsPlayers();
         CheckReadyForBattle();
         CheckEndGame();
     }

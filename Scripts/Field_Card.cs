@@ -7,6 +7,8 @@ using UnityEngine;
 public class Field_Card : MonoBehaviour
 {
     public string Name;
-    public string keyword;
+    public string team;
     public long powerToTake;
+    public bool IsCreatedByUsers = false;
+
 }

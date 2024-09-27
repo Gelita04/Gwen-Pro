@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class IsCardPositionValidScript : MonoBehaviour
 {
-    // metodo que checkea si la posicion donde va a ser colocada la carta de los gatos es valida
+    // metodo que verifica si la posicion donde va a ser colocada la carta de los gatos es valida
     public bool IsPlayerCardPositionValid(GameObject[,] matrixBoard, GameObject card, int x, int y)
     {
         if (matrixBoard[x, y] == null)
@@ -66,7 +66,7 @@ public class IsCardPositionValidScript : MonoBehaviour
         }
     }
 
-    //metodo que checkea si la posicion donde va a ser colocada la carta de los perros es valida
+    //metodo que verifica si la posicion donde va a ser colocada la carta de los perros es valida
     public bool IsEnemyCardPositionValidate(GameObject[,] board, GameObject card, int x, int y)
     {
         if (board[x, y] == null)

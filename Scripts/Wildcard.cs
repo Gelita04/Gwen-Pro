@@ -7,6 +7,8 @@ using UnityEngine;
 public class Wildcard : MonoBehaviour
 {
     public string Name;
+    public string team;
+    private bool IsCardCreatedByUsers = false;
 
     // sustituye una carta selecionada por una wilcard y regresa a tu mano
     public void effectWildcard(GameObject jocker, GameObject cardTarget)

@@ -15,19 +15,19 @@ public class TextEnemyWin : MonoBehaviour
 
     public void ActivateWinRound()
     {
-        Debug.Log("texto win round perros activado");
+        
         DogsWinRound.SetActive(true);
     }
 
     public void DesactivateWinRound()
     {
-        Debug.Log("texto win round perros desactivado");
+       
         DogsWinRound.SetActive(false);
     }
 
     public void WinGame()
     {
-        Debug.Log(" texto win perros activado");
+       
         DogsWin.SetActive(true);
     }
 }

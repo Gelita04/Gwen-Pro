@@ -16,7 +16,7 @@ public class EffectsScript : MonoBehaviour
     private long removeAttack;
     public GameObject cementery;
 
-    //metodo que selecciona una fila dada la coordenada de la misma
+    //metodo que selecciona una fila dada la coordenada de la misma.
     public GameObject[] Rowselected(GameObject[,] matrixboard, int x)
     {
         GameObject[] row =
@@ -29,8 +29,8 @@ public class EffectsScript : MonoBehaviour
         return row;
     }
 
-    //metodo que analiza cuantos espacios en la matriz no estan en null, o sea devuelve cuantas cartas hay puesta en una fila
-    public GameObject[] ArrayCardNoNull(GameObject[] row) //!!!
+    //metodo devuelve cuantas cartas hay puesta en una fila.
+    public GameObject[] ArrayCardNoNull(GameObject[] row)
     {
         GameObject[] result;
         int nonNullCount = 0;
@@ -54,8 +54,8 @@ public class EffectsScript : MonoBehaviour
         return result;
     }
 
-    //metodo que dado la cordenada de la fila del player 1 devuelve la coordenada de la fila del player enemy
-    public int IndexRowEnemy(GameObject[,] board, int x) //!!!
+    //metodo que dado la cordenada de la fila de uno de los jugador devuelve la coordenada de la fila del otro jugador.
+    public int IndexRowEnemy(GameObject[,] board, int x)
     {
         int indexRowEnemy = 0;
         for (int i = 0; i < board.GetLength(0); i++)
@@ -92,8 +92,7 @@ public class EffectsScript : MonoBehaviour
         return indexRowEnemy;
     }
 
-    //metodo efecto de las cartas climas
-    //como este metodo afecta a los dos jugadores se lo quita a las dos filas.
+    //metodo efecto de las cartas climas que afecta a los dos jugadores.
     public void EffectsField(GameObject[,] board, GameObject cardField, int x) // metodo efecto cartas clima.
     {
         int indexRowEnemy = IndexRowEnemy(board, x);
@@ -126,7 +125,7 @@ public class EffectsScript : MonoBehaviour
         }
     }
 
-    //metodo efecto de las cartas despeje de los gatos
+    //metodo efecto de las cartas despeje de los gatos.
     public void EffectsCounterFieldCats(GameObject cardcounterfield, GameObject[,] board)
     {
         for (int i = 3; i < board.GetLength(0); i++)
@@ -144,6 +143,7 @@ public class EffectsScript : MonoBehaviour
         }
     }
 
+    //metodo efecto de las cartas despeje de los perros.
     public void EffectsCounterFieldDogs(GameObject cardcounterfield, GameObject[,] board)
     {
         for (int i = 0; i <= 2; i++)
@@ -174,5 +174,11 @@ public class EffectsScript : MonoBehaviour
                 }
             }
         }
+    }
+
+    //metodo efecto de las cartas creadas por usuario
+    public void EffectsUser(GameObject [,] board,GameObject userCard, int x,GameObject deck,GameObject otherDeck,GameObject hand,GameObject otherHand)
+    {
+
     }
 }
