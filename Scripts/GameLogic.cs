@@ -89,14 +89,15 @@ public class GameLogic : MonoBehaviour
                 {
                     Debug.Log("Carta De Usuario " + cardfield);
                     //llamar al efecto
-                    effectsUsers.EffectsByUser(board, card, x, hand, otherHand, deck, otherDeck);
+                    //si no pincha el gameCOntext, se puede instanciar aqui un GameContext y ponerle los valores actuales de cada propiedad y pasarlo como parametro al metodo de abajo de este comentario
+                    effectsUsers.EffectsByUser(card);
                 }
                 else
                 {
-                    Debug.Log("Carta Field " + card);
-                    Debug.Log("Efecto de cartas Field va a ser activado");
-                    Effects.EffectsField(board, card, x);
-                    Debug.Log("Efecto de cartas Field ya fue activado");
+                    // Debug.Log("Carta Field " + card);
+                    // Debug.Log("Efecto de cartas Field va a ser activado");
+                    // // Effects.EffectsField(board, card, x);
+                    // Debug.Log("Efecto de cartas Field ya fue activado");
                 }
             }
             if (card.CompareTag("Buff"))
@@ -106,14 +107,14 @@ public class GameLogic : MonoBehaviour
                 {
                     Debug.Log("Carta De Usuario " + cardbuff);
                     //llamar al efecto
-                    effectsUsers.EffectsByUser(board, card, x, hand, otherHand, deck, otherDeck);
+                    effectsUsers.EffectsByUser(card);
                 }
                 else
                 {
-                    Debug.Log("Carta Buff " + card);
-                    Debug.Log("Efecto de cartas Buff va a ser activado");
-                    Effects.EffectsBuff(board, card, x);
-                    Debug.Log("Efecto de cartas Buff ya fue activado");
+                    // Debug.Log("Carta Buff " + card);
+                    // Debug.Log("Efecto de cartas Buff va a ser activado");
+                    // // Effects.EffectsBuff(board, card, x);
+                    // Debug.Log("Efecto de cartas Buff ya fue activado");
                 }
             }
             if (card.CompareTag("Unit-Cards"))
@@ -123,14 +124,14 @@ public class GameLogic : MonoBehaviour
                 {
                     Debug.Log("Carta De Usuario " + card);
                     //llamar al efecto
-                    effectsUsers.EffectsByUser(board, card, x, hand, otherHand, deck, otherDeck);
+                    effectsUsers.EffectsByUser(card);
                 }
                 else
                 {
-                    Debug.Log("Carta de Unidad " + card);
-                    Debug.Log("Efecto de cartas de unidad va ser activado");
-                    effectsUnitCards.EffectsUnitCardsAtivate(card);
-                    Debug.Log("Efecto de cartas de unidad ya fue activado");
+                    // Debug.Log("Carta de Unidad " + card);
+                    // Debug.Log("Efecto de cartas de unidad va ser activado");
+                    // // effectsUnitCards.EffectsUnitCardsAtivate(card);
+                    // Debug.Log("Efecto de cartas de unidad ya fue activado");
                 }
             }
             if (
@@ -143,14 +144,14 @@ public class GameLogic : MonoBehaviour
                 {
                     Debug.Log("Carta De Usuario " + card);
                     //llamar al efecto
-                    effectsUsers.EffectsByUser(board, card, x, hand, otherHand, deck, otherDeck);
+                    effectsUsers.EffectsByUser(card);
                 }
                 else
                 {
-                    Debug.Log("Carta CounterField de los gatos " + card);
-                    Debug.Log("Efecto de cartas Counterfield de los gatos  va a ser activado");
-                    Effects.EffectsCounterFieldCats(card, board);
-                    Debug.Log("Efecto de cartas CounterField de los gatos ya fue activado");
+                //     Debug.Log("Carta CounterField de los gatos " + card);
+                //     Debug.Log("Efecto de cartas Counterfield de los gatos  va a ser activado");
+                //     // Effects.EffectsCounterFieldCats(card, board);
+                //     Debug.Log("Efecto de cartas CounterField de los gatos ya fue activado");
                 }
             }
             if (
@@ -163,14 +164,14 @@ public class GameLogic : MonoBehaviour
                 {
                     Debug.Log("Carta De Usuario " + card);
                     //llamar al efecto
-                    effectsUsers.EffectsByUser(board, card, x, hand, otherHand, deck, otherDeck);
+                    effectsUsers.EffectsByUser(card);
                 }
                 else
                 {
-                    Debug.Log("Carta CounterField de los perros " + card);
-                    Debug.Log("Efecto de cartas CounterField de los perros  va a ser activado");
-                    Effects.EffectsCounterFieldDogs(card, board);
-                    Debug.Log("Efecto de cartas CounterField ya fue activado");
+                    // Debug.Log("Carta CounterField de los perros " + card);
+                    // Debug.Log("Efecto de cartas CounterField de los perros  va a ser activado");
+                    // // Effects.EffectsCounterFieldDogs(card, board);
+                    // Debug.Log("Efecto de cartas CounterField ya fue activado");
                 }
             }
         }
@@ -188,6 +189,7 @@ public class GameLogic : MonoBehaviour
             {
                 if (board[i, j] != null)
                 {
+                    Debug.Log(board[i, j]);
                     ActivateEffects(board, board[i, j], i);
                     if (board[i, j].CompareTag("Unit-Cards"))
                     {

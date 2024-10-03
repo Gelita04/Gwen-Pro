@@ -334,6 +334,7 @@ public class Variable : Expression
 
     public override object Evaluate(VariableEnvironment env)
     {
+        Debug.Log("Entro a un Evaluate");
         return env.GetVariable(name);
     }
 }
@@ -352,8 +353,10 @@ public class Assignment : Expression
 
     public override object Evaluate(VariableEnvironment env)
     {
+        Debug.Log("Entro a Assignment");
         var evaluatedValue = value.Evaluate(env);
         env.SetVariable(name, evaluatedValue);
+        Debug.Log("set variable: " + name + " value: " + evaluatedValue);
         return evaluatedValue;
     }
 }
@@ -395,6 +398,84 @@ public class CompoundAssignment : Expression
     }
 }
 
+//Member Access (dot operator)
+public class MemberAccess : Expression
+{
+    private Expression obj;
+    private string memberName;
+    private Expression parameter;
+
+    public MemberAccess(Expression obj, string memberName, Expression parameter)
+    {
+        this.obj = obj;
+        this.memberName = memberName;
+        this.parameter = parameter;
+    }
+
+    public override object Evaluate(VariableEnvironment env) //problema con los tipos
+    {
+        Debug.Log("Entro a MEMBERACCESS");
+        // Try to get the method
+        Debug.Log("memberName: " + memberName);
+        var method = typeof(GameContext).GetMethod(memberName);
+        if (method != null)
+        {
+
+            var evaluatedObj = obj.Evaluate(env);
+
+            //cast evaluatedObj to GameContext
+            var tryContextCast = evaluatedObj as GameContext;
+
+            // Cast evaluatedObj to List<GameObject>
+            var tryListOfGameObjectsCast = evaluatedObj as List<GameObject>;
+
+            if (tryContextCast != null)
+            {
+                //castedObj is context and must be returned context.property or context.property(TriggerPlayer) form
+                return method.Invoke(
+                    env.GetVariable("context"),
+                    new object[] { (string)env.GetVariable("TriggerPlayer") }
+                );
+            }
+            else if (tryListOfGameObjectsCast != null)
+            {
+                if (parameter == null)
+                {
+                    return method.Invoke(
+                        env.GetVariable("context"),
+                        new object[] { tryListOfGameObjectsCast }
+                    );
+                }
+                else
+                {
+                    Debug.Log("Entro a parameter != null");
+                    Debug.Log("memberName: " + memberName);
+
+                    var target = parameter.Evaluate(env);
+                    Debug.Log(target);
+                    var castedTarget = target as GameObject;
+                    Debug.Log(castedTarget);
+                    if (castedTarget == null)
+                    {
+                        throw new InvalidCastException("target is not a GameObject");
+                    }
+                    return method.Invoke(
+                        env.GetVariable("context"),
+                        new object[] { tryListOfGameObjectsCast, castedTarget }
+                    );
+                }
+            }
+            else
+            {
+                throw new InvalidCastException(
+                    "evaluatedObj is not a GameContext or List<GameObject>"
+                );
+            }
+        }
+        throw new Exception($"Member {memberName} not found on Context");
+    }
+}
+
 // Increment and Decrement
 public class IncrementDecrement : Expression
 {
@@ -423,6 +504,7 @@ public class IncrementDecrement : Expression
         return evaluatedValue;
     }
 }
+
 // While loop
 public class While : Expression
 {
@@ -513,6 +595,7 @@ public class Block : Expression
 
     public override object Evaluate(VariableEnvironment env)
     {
+        Debug.Log("Entro a block evaluate");
         foreach (var statement in statements)
         {
             statement.Evaluate(env);

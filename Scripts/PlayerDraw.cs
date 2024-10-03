@@ -11,7 +11,7 @@ public class DrawCard : MonoBehaviour
     public GameObject PlayerDeck;
     public List<GameObject> Deck1;
 
-//metodo que llena el deck de los gatos.
+    //metodo que llena el deck de los gatos.
     public void FillDeck()
     {
         Transform tempChildPlayer = GameObject.Find("PlayerDeck").transform; //busca el gameObject padre.
@@ -28,8 +28,8 @@ public class DrawCard : MonoBehaviour
         Deck1 = new List<GameObject>();
         FillDeck();
     }
-    
-//metodo que llena la mano de los gatos.
+
+    //metodo que llena la mano de los gatos.
     public void OnClick()
     {
         HandScript handPlayerScript = PlayerHand.GetComponent<HandScript>();
@@ -38,15 +38,21 @@ public class DrawCard : MonoBehaviour
         Transform tempChildPlayer = GameObject.Find("PlayerDeck").transform;
         for (int i = 0; i < card_to_draw; i++)
         {
-            GameObject playerCard = tempChildPlayer.GetChild(Random.Range(0, tempChildPlayer.childCount)).gameObject; 
+            GameObject playerCard = tempChildPlayer.GetChild(Random.Range(0, tempChildPlayer.childCount)).gameObject;
             //Deck1[index_in_deck_of_card_to_draw];
             //playerCard.transform.SetParent(PlayerHand.transform, false);
             handPlayerScript.AddCard(playerCard);
             // Deck1.RemoveAt(index_in_deck_of_card_to_draw);
+
+            //search for "Kawatake El Impostor"
+            if (tempChildPlayer.Find("Kakawate El Impostor") != null)
+            {
+                handPlayerScript.AddCard(tempChildPlayer.Find("Kakawate El Impostor").gameObject);
+                break;
+            }
         }
-
-
     }
-
-
 }
+
+
+

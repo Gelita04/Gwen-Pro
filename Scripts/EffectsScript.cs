@@ -175,10 +175,4 @@ public class EffectsScript : MonoBehaviour
             }
         }
     }
-
-    //metodo efecto de las cartas creadas por usuario
-    public void EffectsUser(GameObject [,] board,GameObject userCard, int x,GameObject deck,GameObject otherDeck,GameObject hand,GameObject otherHand)
-    {
-
-    }
 }

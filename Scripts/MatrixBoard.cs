@@ -10,10 +10,11 @@ public class MatrixBoard : MonoBehaviour
     public GameObject[,] Board;
     
     //instancia la matriz que sera el tablero.
-    public void Start()
+    public void Awake()
     {
         Board = new GameObject[6, 5];
         isCardPositionValidScript = GameObject.FindGameObjectWithTag("Logic").GetComponent<IsCardPositionValidScript>();
     }
+    
     
 }
