@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class Unit_Card : MonoBehaviour
 {
-    public string team;
-    public string Name;
-    public long Attack;
+    public string team;//accesible Owner
+    public string Name;//accesible Name
+    public long Attack;//accesible Power
     public string keywordAction;
     public string keywordObjetive;
 

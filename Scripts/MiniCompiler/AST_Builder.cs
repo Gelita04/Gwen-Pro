@@ -45,6 +45,42 @@ public class AST_Builder : MonoBehaviour
             }
             else if (token == ".")
             {
+                //first check if this line is a assignment or compound assignment,if not,proceed
+                if (index + 1 < tokens.Length && tokens[index + 1] == "=")
+                {
+                    int tempIndex = index;
+                    index += 2; // Skip variable and "="
+                    Expression value = ParseExpression(tokens, ref index);
+                    string completeMemberAccessName = tokens[tempIndex - 2] + "." + tokens[tempIndex];
+                    return new Assignment(completeMemberAccessName, value);
+                }
+                else if (
+                    index + 1 < tokens.Length
+                    && (
+                        tokens[index + 1] == "+="
+                        || tokens[index + 1] == "-="
+                        || tokens[index + 1] == "*="
+                        || tokens[index + 1] == "/="
+                    )
+                )
+                {
+                    int tempIndex = index;
+                    index += 2; // Skip variable and operator
+                    Expression value = ParseExpression(tokens, ref index);
+                    string completeMemberAccessName = tokens[tempIndex - 2] + "." + tokens[tempIndex];
+                    return new CompoundAssignment(completeMemberAccessName, tokens[tempIndex + 1], value);
+                }
+                else if (
+                    index + 1 < tokens.Length
+                    && (tokens[index + 1] == "++" || tokens[index + 1] == "--")
+                )
+                {
+                    int tempIndex = index;
+                    index += 2; // Skip variable and operator
+                    string completeMemberAccessName = tokens[tempIndex - 2] + "." + tokens[tempIndex];
+                    return new IncrementDecrement(completeMemberAccessName, tokens[tempIndex + 1]);
+                }
+
                 // Handle dot operator for member access
                 string memberName = tokens[index];
                 index++; // Move to the next token after the member name

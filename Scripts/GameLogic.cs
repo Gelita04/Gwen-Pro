@@ -24,6 +24,10 @@ public class GameLogic : MonoBehaviour
     public GameObject[,] matrixBoard;
     public GameObject effects;
     public GameObject cementery;
+    public GameObject playerHand;
+    public GameObject enemyHand;
+    public GameObject playerDeck;
+    public GameObject enemyDeck;
     private GameObject effectwilcard;
     private GameObject leadereffect;
     public GameObject catsWinRound;
@@ -148,10 +152,10 @@ public class GameLogic : MonoBehaviour
                 }
                 else
                 {
-                //     Debug.Log("Carta CounterField de los gatos " + card);
-                //     Debug.Log("Efecto de cartas Counterfield de los gatos  va a ser activado");
-                //     // Effects.EffectsCounterFieldCats(card, board);
-                //     Debug.Log("Efecto de cartas CounterField de los gatos ya fue activado");
+                    //     Debug.Log("Carta CounterField de los gatos " + card);
+                    //     Debug.Log("Efecto de cartas Counterfield de los gatos  va a ser activado");
+                    //     // Effects.EffectsCounterFieldCats(card, board);
+                    //     Debug.Log("Efecto de cartas CounterField de los gatos ya fue activado");
                 }
             }
             if (
@@ -175,6 +179,37 @@ public class GameLogic : MonoBehaviour
                 }
             }
         }
+        UpdateUnityHierarchyOfCards(board, playerHand, enemyHand, playerDeck, enemyDeck, cementery);
+    }
+    private void UpdateUnityHierarchyOfCards(GameObject[,] board, GameObject playerHand, GameObject enemyHand, GameObject playerDeck, GameObject enemyDeck, GameObject cementeryDogs)
+    {
+        foreach (var item in playerHand.GetComponent<HandScript>().cards)
+        {
+            item.transform.SetParent(playerHand.transform);
+        }
+        foreach (var item in enemyHand.GetComponent<HandScript>().cards)
+        {
+            item.transform.SetParent(enemyHand.transform);
+        }
+        foreach (var item in playerDeck.GetComponent<Deck_Cats>().Deck)
+        {
+            item.transform.SetParent(playerDeck.transform);
+        }
+        foreach (var item in enemyDeck.GetComponent<Deck_Dogs>().Deck)
+        {
+            item.transform.SetParent(enemyDeck.transform);
+        }
+        foreach (var item in cementeryDogs.GetComponent<Cementery>().graveyard)
+        {
+            item.transform.SetParent(cementeryDogs.transform);
+        }
+        // foreach (var item in board)
+        // {
+        //     if (item != null)
+        //     {
+        //         item.transform.SetParent(matrix.transform);
+        //     }
+        // }
     }
 
     //devuelve el result que es quien gano esa ronda, 1:playerWin -1:enemyWin 0:draw
@@ -272,9 +307,9 @@ public class GameLogic : MonoBehaviour
         {
             matrixBoard = matrix.GetComponent<MatrixBoard>().Board;
             result = GetBattleResult(matrixBoard);
-            Debug.Log("roundcounter antes de sumarle 1-  " + roundCounter);
+            //Debug.Log("roundcounter antes de sumarle 1-  " + roundCounter);
             roundCounter++;
-            Debug.Log("roundcounter despues de sumarle 1-  " + roundCounter);
+            //Debug.Log("roundcounter despues de sumarle 1-  " + roundCounter);
             if (roundCounter == 1)
             {
                 Debug.Log("Carta lider de los perros activada");

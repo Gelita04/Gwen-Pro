@@ -6,17 +6,17 @@ using UnityEngine;
 
 public class Wildcard : MonoBehaviour
 {
-    public string Name;
-    public string team;
-    private bool IsCardCreatedByUsers = false;
+    public string Name;//accesible Name
+    public string team;//accesible Owner
+    // private bool IsCardCreatedByUsers = false;
 
     // sustituye una carta selecionada por una wilcard y regresa a tu mano
-    public void effectWildcard(GameObject jocker, GameObject cardTarget)
-    {
-        Vector3 jockerPosition = jocker.transform.position;
-        Vector3 targetPosition = cardTarget.transform.position;
-        jocker.transform.position = targetPosition;
-        cardTarget.transform.position = jockerPosition;
-        Debug.Log("carta intercambiada");
-    }
+    // public void effectWildcard(GameObject jocker, GameObject cardTarget)
+    // {
+    //     Vector3 jockerPosition = jocker.transform.position;
+    //     Vector3 targetPosition = cardTarget.transform.position;
+    //     jocker.transform.position = targetPosition;
+    //     cardTarget.transform.position = jockerPosition;
+    //     Debug.Log("carta intercambiada");
+    // }
 }

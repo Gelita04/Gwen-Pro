@@ -4252,7 +4252,8 @@ MonoBehaviour:
   m_Text: "card {\r\n    Type: \"Field\",\r\n    Name: \"Kakawate El Impostor\",\r\n   
     Faction: \"Dogs\",\r\n    Power: 10,\r\n    Range: \"Hero\" ,\n OnActivation:
     [\r\n        {\r\n            Effect: {\n\t\tName: \"Draw\" ,\n\t\t\r\n       
-    }\r\n    ]\n}\n"
+    }\r\n    ]\n}\ncard{\nType: \"Buff\",\r\n    Name: \"Doctorino El Mecanico\",\r\n   
+    Faction: \"Dogs\",\nOnActivation [\n{    \nEffect{\nName: \"RetunToDeck\"}}]}\r\r\n"
 --- !u!222 &687258003
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4637,6 +4638,10 @@ MonoBehaviour:
   matrix: {fileID: 578219582}
   effects: {fileID: 664304210}
   cementery: {fileID: 1114807208}
+  playerHand: {fileID: 3547911697770313994}
+  enemyHand: {fileID: 6414858828185323340}
+  playerDeck: {fileID: 131780075}
+  enemyDeck: {fileID: 1991082728}
   catsWinRound: {fileID: 633367424}
   dogsWinRound: {fileID: 1629903044}
   cardLeaderPlayer: {fileID: 2118648437970570046}

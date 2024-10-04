@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.Security;
 using GameLibrary.Objects;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using Debug = UnityEngine.Debug;
 
 public class CardsUsers : MonoBehaviour
 {
@@ -42,7 +44,9 @@ public class CardsUsers : MonoBehaviour
             Debug.Log(string.Join(", ", tokenList));
         }
         CreateGameObjectsForCards(tokens);
-
+        Image newImageCard = NewCard.AddComponent<Image>();
+        newImageCard.color = Color.black;
+        NewCard.AddComponent<Button>();
 
     }
     // metodo que por cada carta,  crea un nuevo gameObject y llama al metodo de crear la carta
@@ -52,7 +56,6 @@ public class CardsUsers : MonoBehaviour
 
         foreach (var cardTokens in tokens)
         {
-            Debug.Log("se crea la carta");
             NewCard = new GameObject("UserCard");
             CreateCardsByUsers(tokens);
         }
@@ -71,7 +74,7 @@ public class CardsUsers : MonoBehaviour
             List<string> effectNames = new List<string>();
             Dictionary<string, List<GameObject>> targets = new Dictionary<string, List<GameObject>>();
             Dictionary<string, List<Tuple<string, object>>> Params = new Dictionary<string, List<Tuple<string, object>>>();
-
+            UnityEngine.Debug.Log("la cantidad de cartas es " + tokens.Count + "y va por la carta " + i);
             for (int j = 0; j < tokens[i].Count; j++)
             {
                 if (tokens[i][j] == "Name" && !onActivation)
@@ -123,9 +126,7 @@ public class CardsUsers : MonoBehaviour
 
             list.RellenarListaDeCartas(nameCard, effectNames, targets, Params);
             //no aumentar i en el ultimo if si no se saltara un token
-            Image newImageCard = NewCard.AddComponent<Image>();
-            newImageCard.color = Color.black;
-            NewCard.AddComponent<Button>();
+
 
         }
 

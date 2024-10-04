@@ -6,8 +6,8 @@ using GameLibrary.Objects;
 
 public class Counterfield_Card : MonoBehaviour
 {
-    public string Name;
-    public string team;
+    public string Name;//accesible Name
+    public string team;//accesible Owner
     public bool IsCreatedByUsers = false;
 
 }

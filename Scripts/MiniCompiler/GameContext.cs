@@ -39,8 +39,9 @@ public class GameContext : MonoBehaviour
         }
         return "no es una carta definida en el juego";
     }
-    //devuelve una lista con todas las cartas puestas en el tablero
-    public List<GameObject> Board()
+   
+ //devuelve una lista con todas las cartas puestas en el tablero    
+    private List<GameObject> Board()
     {
         List<GameObject> cardsInBoard = new List<GameObject>();
         for (int i = 0; i < board.GetLength(0); i++)
