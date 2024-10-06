@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AST_Builder : MonoBehaviour
 {
-    public static Expression ParseExpression(string[] tokens, ref int index)
+    public static Expression ParseExpression(string[] tokens, ref int index,bool calledFromWhile=false)
     {
         var expressions = new Stack<Expression>();
         var operators = new Stack<string>();
@@ -25,10 +25,18 @@ public class AST_Builder : MonoBehaviour
             }
             else if (token == "(")
             {
+                if(calledFromWhile)
+                {
+                    continue;
+                }
                 operators.Push(token);
             }
             else if (token == ")")
             {
+                if (calledFromWhile)
+                {
+                    break;
+                }
                 while (operators.Count > 0 && operators.Peek() != "(")
                     ApplyOperator(expressions, operators.Pop());
                 operators.Pop(); // quita '('
@@ -131,6 +139,7 @@ public class AST_Builder : MonoBehaviour
             }
             else
             {
+                Debug.Log("New Variable: " + token);
                 expressions.Push(new Variable(token));
             }
         }
@@ -287,6 +296,9 @@ public class AST_Builder : MonoBehaviour
         Expression collection = new Variable(tokens[index++]);
         index++; // Skip "{"
         Expression body = ParseStatements(tokens, ref index);
+        var debugProposite = body as Block;
+        if (debugProposite != null)
+            Debug.Log("el body del for in tiene " + debugProposite.statements.Count + " statments");
         return new ForIn(variable, collection, body);
     }
 
@@ -301,7 +313,7 @@ public class AST_Builder : MonoBehaviour
     private static Expression ParseWhile(string[] tokens, ref int index)
     {
         index++; // Skip "while"
-        Expression condition = ParseExpression(tokens, ref index);
+        Expression condition = ParseExpression(tokens, ref index,true);
         index++; // Skip "{"
         Expression body = ParseStatements(tokens, ref index);
         return new While(condition, body);
@@ -321,6 +333,7 @@ public class AST_Builder : MonoBehaviour
         string variable = tokens[index];
         string op = tokens[index + 1];
         index += 2; // Skip variable and operator
+        Debug.Log("variable: " + variable + " op: " + op+"en ParseIncrementDecrement");
         return new IncrementDecrement(variable, op);
     }
 

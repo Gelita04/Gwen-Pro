@@ -17,6 +17,6 @@ public class Deck_Dogs : MonoBehaviour
             Deck.Add(childTransform.gameObject);
         }
 
-        foreach (GameObject go in Deck) { }
+        // foreach (GameObject go in Deck) { }
     }
 }

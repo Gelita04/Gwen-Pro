@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using GameLibrary.Objects;
+using Unity.VisualScripting;
 using UnityEngine;
+using System;
 
 public class GameContext : MonoBehaviour
 {
-    public string owner; //----propiedad context.owner que devuelve la faccion de la carta
     public GameObject[,] board;
     public GameObject playerHand;
     public GameObject enemyHand;
@@ -39,8 +40,8 @@ public class GameContext : MonoBehaviour
         }
         return "no es una carta definida en el juego";
     }
-   
- //devuelve una lista con todas las cartas puestas en el tablero    
+
+    //devuelve una lista con todas las cartas puestas en el tablero    
     private List<GameObject> Board()
     {
         List<GameObject> cardsInBoard = new List<GameObject>();
@@ -66,7 +67,6 @@ public class GameContext : MonoBehaviour
         }
         return enemyHand.GetComponent<HandScript>().cards;// posible error
     }
-
     public List<GameObject> Hand(string team)
     {
         if (team == "Cats")
@@ -84,7 +84,6 @@ public class GameContext : MonoBehaviour
         }
         return enemyDeck.GetComponent<Deck_Dogs>().Deck;
     }
-
     public List<GameObject> Deck(string team)
     {
         if (team == "Cats")
@@ -93,8 +92,6 @@ public class GameContext : MonoBehaviour
         }
         return enemyDeck.GetComponent<Deck_Dogs>().Deck;
     }
-
-
     //devuelve una lista con todas las cartas puesta en el tablero dependiendo del player
     public List<GameObject> fieldOfPlayer(string team)
     {
@@ -162,8 +159,6 @@ public class GameContext : MonoBehaviour
             return enemyBoard;
         }
     }
-
-
     //devueluna lista con todas la cartas que ahy dentro del cementerio
     public List<GameObject> graveryardOfPlayer(string team)
     {
@@ -181,8 +176,6 @@ public class GameContext : MonoBehaviour
         }
         return cementeryDogs.GetComponent<Cementery>().graveyard;
     }
-
-
     //devuelve una lista con todas las cartas que cumplen con un predicado
     public void Find()
     {
@@ -195,6 +188,13 @@ public class GameContext : MonoBehaviour
         Debug.Log(targets.Count);
         targets.Add(target);
     }
+    public void Add(List<GameObject> targets, GameObject target)
+    {
+        Debug.Log("Entro a Push");
+        Debug.Log(targets.Count);
+        targets.Add(target);
+    }
+
     //agrega una carta al fondo de la lista
     public void SendBottom(List<GameObject> targets, GameObject target)
     {
@@ -207,7 +207,12 @@ public class GameContext : MonoBehaviour
     {
         Debug.Log("Entro a Pop");
         Debug.Log(targets.Count);
+        Debug.Log(string.Join(", ", targets));
         Debug.Log(targets[targets.Count - 1]);
+        if (targets.Count == 0)
+        {
+            return null;
+        }
         GameObject result = targets[targets.Count - 1];
         targets.RemoveAt(targets.Count - 1);
         return result;
@@ -215,9 +220,17 @@ public class GameContext : MonoBehaviour
     //remueve una carta de la lista
     public void Remove(List<GameObject> targets, GameObject target)
     {
-        Debug.Log("Entro a Remove");
-        Debug.Log(targets.Count);
-        targets.Remove(target);
+        if (targets.Contains(target))
+        {
+            targets.Remove(target);
+            // Destruir el objeto en la escena de Unity
+            Destroy(target);
+
+        }
+        else
+        {
+            Debug.Log("El objeto no se encuentra en la lista");
+        }
     }
     //mezcla la lista
     public void Shuffle(List<GameObject> targets)
@@ -228,7 +241,7 @@ public class GameContext : MonoBehaviour
         for (int i = 0; i < n; i++)
         {
             // Generar un índice aleatorio entre i y n-1
-            int j = Random.Range(i, n);
+            int j = UnityEngine.Random.Range(i, n);
             // Intercambiar los elementos
             GameObject temp = targets[i];
             targets[i] = targets[j];

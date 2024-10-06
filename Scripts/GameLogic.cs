@@ -185,23 +185,23 @@ public class GameLogic : MonoBehaviour
     {
         foreach (var item in playerHand.GetComponent<HandScript>().cards)
         {
-            item.transform.SetParent(playerHand.transform);
+            item.transform.SetParent(playerHand.transform, false);
         }
         foreach (var item in enemyHand.GetComponent<HandScript>().cards)
         {
-            item.transform.SetParent(enemyHand.transform);
+            item.transform.SetParent(enemyHand.transform, false);
         }
         foreach (var item in playerDeck.GetComponent<Deck_Cats>().Deck)
         {
-            item.transform.SetParent(playerDeck.transform);
+            item.transform.SetParent(playerDeck.transform, false);
         }
         foreach (var item in enemyDeck.GetComponent<Deck_Dogs>().Deck)
         {
-            item.transform.SetParent(enemyDeck.transform);
+            item.transform.SetParent(enemyDeck.transform, false);
         }
         foreach (var item in cementeryDogs.GetComponent<Cementery>().graveyard)
         {
-            item.transform.SetParent(cementeryDogs.transform);
+            item.transform.SetParent(cementeryDogs.transform, false);
         }
         // foreach (var item in board)
         // {
@@ -224,7 +224,7 @@ public class GameLogic : MonoBehaviour
             {
                 if (board[i, j] != null)
                 {
-                    Debug.Log(board[i, j]);
+                    //Debug.Log(board[i, j]);
                     ActivateEffects(board, board[i, j], i);
                     if (board[i, j].CompareTag("Unit-Cards"))
                     {
@@ -235,12 +235,12 @@ public class GameLogic : MonoBehaviour
                         else if (i < 2)
                         {
                             enemyTotalAttack += board[i, j].GetComponent<Unit_Card>().Attack;
-                            Debug.Log("el ataque total de los perros es " + enemyTotalAttack);
+                            //Debug.Log("el ataque total de los perros es " + enemyTotalAttack);
                         }
                         else
                         {
                             playerTotalAttack += board[i, j].GetComponent<Unit_Card>().Attack;
-                            Debug.Log("el ataque total de los gatos es " + playerTotalAttack);
+                            //Debug.Log("el ataque total de los gatos es " + playerTotalAttack);
                         }
                     }
                 }
@@ -249,7 +249,7 @@ public class GameLogic : MonoBehaviour
         if (playerTotalAttack > enemyTotalAttack)
         {
             result = 1;
-            Debug.Log(" El ataque total de los gatos es " + playerTotalAttack);
+            //Debug.Log(" El ataque total de los gatos es " + playerTotalAttack);
         }
         else if (playerTotalAttack < enemyTotalAttack)
         {

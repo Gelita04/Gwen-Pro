@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 // Base class for all expressions
@@ -433,14 +434,7 @@ public class Assignment : Expression
         else
         {
             // Handle normal variable assignment
-            if (env.IsVariable(name))
-            {
-                env.SetVariable(name, evaluatedValue);
-            }
-            else
-            {
-                throw new Exception($"Variable '{name}' not found in the environment.");
-            }
+            env.SetVariable(name, evaluatedValue);
         }
         Debug.Log("set variable: " + name + " value: " + evaluatedValue);
         return evaluatedValue;
@@ -625,122 +619,126 @@ public class MemberAccess : Expression
         Debug.Log("Entro a MEMBERACCESS");
         // Try to get the method
         Debug.Log("memberName: " + memberName);
-        var card = obj.Evaluate(env);
-        var tryTargetCast = card as GameObject;
-        if (tryTargetCast != null)
+        var method = typeof(GameContext).GetMethod(memberName);
+        if (method != null)
         {
-            Debug.Log("Entro a tryTargetCast != null");
-            //access the script component that has the property
-            object script;
-            if (tryTargetCast.CompareTag("Unit-Cards"))
-            {
-                script = tryTargetCast.GetComponent<Unit_Card>();
-            }
-            else if (tryTargetCast.CompareTag("Buff"))
-            {
-                script = tryTargetCast.GetComponent<Buff_Card>();
-            }
-            else if (tryTargetCast.CompareTag("Field"))
-            {
-                script = tryTargetCast.GetComponent<Field_Card>();
-            }
-            else if (tryTargetCast.CompareTag("Counterfield"))
-            {
-                script = tryTargetCast.GetComponent<Counterfield_Card>();
-            }
-            else if (tryTargetCast.CompareTag("Wildcard"))
-            {
-                script = tryTargetCast.GetComponent<Wildcard>();
-            }
-            else
-            {
-                throw new Exception("target is not a GameObject with a script component");
-            }
 
-            string temporalMemberName = memberName;
-            if (temporalMemberName == "Power")
+            var evaluatedObj = obj.Evaluate(env);
+
+            //cast evaluatedObj to GameContext
+            var tryContextCast = evaluatedObj as GameContext;
+
+            // Cast evaluatedObj to List<GameObject>
+            var tryListOfGameObjectsCast = evaluatedObj as List<GameObject>;
+
+            if (tryContextCast != null)
             {
-                //check if the script is a Unit_Card,other way gives a error message
-                if (script is Unit_Card)
-                    temporalMemberName = "Attack";
+                //castedObj is context and must be returned context.property or context.property(TriggerPlayer) form
+                return method.Invoke(
+                    env.GetVariable("context"),
+                    new object[] { (string)env.GetVariable("TriggerPlayer") }
+                );
+            }
+            else if (tryListOfGameObjectsCast != null)
+            {
+                if (parameter == null)
+                {
+                    return method.Invoke(
+                        env.GetVariable("context"),
+                        new object[] { tryListOfGameObjectsCast }
+                    );
+                }
                 else
-                    throw new Exception("target is not a Unit_Card");
-            }
-            else if (temporalMemberName == "Owner")
-                temporalMemberName = "team";
+                {
+                    Debug.Log("Entro a parameter != null");
+                    Debug.Log("memberName: " + memberName);
 
-            //get the field
-            var field = script.GetType().GetField(temporalMemberName);
-            if (field != null)
-            {
-                return field.GetValue(script);
+                    var target = parameter.Evaluate(env);
+                    Debug.Log(target);
+                    var castedTarget = target as GameObject;
+                    Debug.Log(castedTarget);
+                    if (castedTarget == null)
+                    {
+                        throw new InvalidCastException("target is not a GameObject");
+                    }
+                    return method.Invoke(
+                        env.GetVariable("context"),
+                        new object[] { tryListOfGameObjectsCast, castedTarget }
+                    );
+                }
             }
             else
             {
-                throw new Exception($"Field '{memberName}' not found on script '{script.GetType().Name}'.");
+                throw new InvalidCastException(
+                    "evaluatedObj is not a GameContext or List<GameObject>"
+                );
+            }
+        }
+        else if (method == null)
+        {
+            var card = obj.Evaluate(env);
+            var tryTargetCast = card as GameObject;
+            if (tryTargetCast != null)
+            {
+                Debug.Log("Entro a tryTargetCast != null");
+                //access the script component that has the property
+                object script;
+                if (tryTargetCast.CompareTag("Unit-Cards"))
+                {
+                    script = tryTargetCast.GetComponent<Unit_Card>();
+                }
+                else if (tryTargetCast.CompareTag("Buff"))
+                {
+                    script = tryTargetCast.GetComponent<Buff_Card>();
+                }
+                else if (tryTargetCast.CompareTag("Field"))
+                {
+                    script = tryTargetCast.GetComponent<Field_Card>();
+                }
+                else if (tryTargetCast.CompareTag("Counterfield"))
+                {
+                    script = tryTargetCast.GetComponent<Counterfield_Card>();
+                }
+                else if (tryTargetCast.CompareTag("Wildcard"))
+                {
+                    script = tryTargetCast.GetComponent<Wildcard>();
+                }
+                else
+                {
+                    throw new Exception("target is not a GameObject with a script component");
+                }
+
+                string temporalMemberName = memberName;
+                if (temporalMemberName == "Power")
+                {
+                    //check if the script is a Unit_Card,other way gives a error message
+                    if (script is Unit_Card)
+                        temporalMemberName = "Attack";
+                    else
+                        throw new Exception("target is not a Unit_Card");
+                }
+                else if (temporalMemberName == "Owner")
+                    temporalMemberName = "team";
+
+                //get the field
+                var field = script.GetType().GetField(temporalMemberName);
+                if (field != null)
+                {
+                    return field.GetValue(script);
+                }
+                else
+                {
+                    throw new Exception($"Field '{memberName}' not found on script '{script.GetType().Name}'.");
+                }
+            }
+            else
+            {
+                throw new Exception("Card is not a GameObject with a script component");
             }
         }
         else
         {
-            var method = typeof(GameContext).GetMethod(memberName);
-            if (method != null)
-            {
-
-                var evaluatedObj = obj.Evaluate(env);
-
-                //cast evaluatedObj to GameContext
-                var tryContextCast = evaluatedObj as GameContext;
-
-                // Cast evaluatedObj to List<GameObject>
-                var tryListOfGameObjectsCast = evaluatedObj as List<GameObject>;
-
-                if (tryContextCast != null)
-                {
-                    //castedObj is context and must be returned context.property or context.property(TriggerPlayer) form
-                    return method.Invoke(
-                        env.GetVariable("context"),
-                        new object[] { (string)env.GetVariable("TriggerPlayer") }
-                    );
-                }
-                else if (tryListOfGameObjectsCast != null)
-                {
-                    if (parameter == null)
-                    {
-                        return method.Invoke(
-                            env.GetVariable("context"),
-                            new object[] { tryListOfGameObjectsCast }
-                        );
-                    }
-                    else
-                    {
-                        Debug.Log("Entro a parameter != null");
-                        Debug.Log("memberName: " + memberName);
-
-                        var target = parameter.Evaluate(env);
-                        Debug.Log(target);
-                        var castedTarget = target as GameObject;
-                        Debug.Log(castedTarget);
-                        if (castedTarget == null)
-                        {
-                            throw new InvalidCastException("target is not a GameObject");
-                        }
-                        return method.Invoke(
-                            env.GetVariable("context"),
-                            new object[] { tryListOfGameObjectsCast, castedTarget }
-                        );
-                    }
-                }
-                else
-                {
-                    throw new InvalidCastException(
-                        "evaluatedObj is not a GameContext or List<GameObject>"
-                    );
-                }
-            }
-            else
-            {
-                throw new Exception($"Member {memberName} not found on Context");
-            }
+            throw new Exception($"Member {memberName} not found on Context");
         }
     }
 }
@@ -812,14 +810,20 @@ public class ForIn : Expression
 
     public override object Evaluate(VariableEnvironment env)
     {
-        var evaluatedCollection = collection.Evaluate(env) as IEnumerable<object>;
+        var evaluatedCollection = collection.Evaluate(env) as List<GameObject>;
         if (evaluatedCollection == null)
         {
+            Debug.Log("collection en el ForIn es null");
             return null; // ForIn loop does not return a value
         }
+        Debug.Log("La cantidad de cartas en la collection del ForIn es " + evaluatedCollection.Count);
 
+        //for debug reasons
         foreach (var item in evaluatedCollection)
         {
+            Debug.Log("Entro a ForIn");
+            Debug.Log("variable: " + variable);
+            Debug.Log("item: " + item);
             env.SetVariable(variable, item);
             body.Evaluate(env);
         }
@@ -855,7 +859,7 @@ public class Index : Expression
 // Block expression to hold multiple statements
 public class Block : Expression
 {
-    private List<Expression> statements;
+    public List<Expression> statements;
 
     public Block(List<Expression> statements)
     {
@@ -865,8 +869,11 @@ public class Block : Expression
     public override object Evaluate(VariableEnvironment env)
     {
         Debug.Log("Entro a block evaluate");
+        Debug.Log("Cantidad de statments del block: " + statements.Count);
         foreach (var statement in statements)
         {
+            Debug.Log(statement);
+
             statement.Evaluate(env);
         }
         return null;

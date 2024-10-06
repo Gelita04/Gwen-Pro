@@ -138,7 +138,6 @@ public class EffectsScript : MonoBehaviour
                 cementery.GetComponent<Cementery>().RemoveCardCementery(board[i, 0]);
                 cementery.GetComponent<Cementery>().RemoveCardCementery(cardcounterfield);
             }
-
             cementery.GetComponent<Cementery>().RemoveCardCementery(cardcounterfield);
         }
     }
@@ -155,6 +154,7 @@ public class EffectsScript : MonoBehaviour
                 cementery.GetComponent<Cementery>().RemoveCardCementery(board[i, 0]);
                 cementery.GetComponent<Cementery>().RemoveCardCementery(cardcounterfield);
             }
+            cementery.GetComponent<Cementery>().RemoveCardCementery(cardcounterfield);
         }
     }
 

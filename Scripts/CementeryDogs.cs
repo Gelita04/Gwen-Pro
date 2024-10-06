@@ -13,7 +13,10 @@ public class Cementery : MonoBehaviour
         if (card != null)
         {
             graveyard.Add(card);
-            Destroy(card.gameObject);
+            card.transform.SetParent(cementery.transform, false);
+            card.transform.position = cementery.transform.position;
+            // card.SetActive(false);
+            /////Asegurarse que cuando 
         }
     }
 }

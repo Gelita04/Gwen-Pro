@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Security;
+using System.Runtime.CompilerServices;
 using GameLibrary.Objects;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -26,7 +27,7 @@ public class CardsUsers : MonoBehaviour
     public EffectsUsers Effects;
     public ListsOfCards list;
     public GameObject lista;
-    private GameObject NewCard;
+    // private GameObject NewCard;
 
     void Start()
     {
@@ -36,7 +37,6 @@ public class CardsUsers : MonoBehaviour
             Effects = gameObject.AddComponent<EffectsUsers>();
 
         }
-
         List<string> listTokens = TokenizedTexts.Tokenizar(CodeCards.text);
         List<List<string>> tokens = TokenizedTexts.TokenizarCards(listTokens);
         foreach (var tokenList in tokens)
@@ -44,92 +44,99 @@ public class CardsUsers : MonoBehaviour
             Debug.Log(string.Join(", ", tokenList));
         }
         CreateGameObjectsForCards(tokens);
-        Image newImageCard = NewCard.AddComponent<Image>();
-        newImageCard.color = Color.black;
-        NewCard.AddComponent<Button>();
+
 
     }
     // metodo que por cada carta,  crea un nuevo gameObject y llama al metodo de crear la carta
     public void CreateGameObjectsForCards(List<List<string>> tokens)
     {
 
-
+        Debug.Log("la cantidad de cartas que van a ser creadas es " + tokens.Count);
         foreach (var cardTokens in tokens)
         {
-            NewCard = new GameObject("UserCard");
-            CreateCardsByUsers(tokens);
+            Debug.Log("Creating card with tokens: " + string.Join(", ", cardTokens));
+            GameObject NewCard = new GameObject("UserCard");
+            Image newImageCard = NewCard.AddComponent<Image>();
+            newImageCard.color = Color.black;
+            NewCard.AddComponent<Button>();
+
+            // Fill card
+            CreateCardsByUsers(cardTokens, NewCard);
+
+            // Log the created card details
+            Debug.Log("Card created with components: " + NewCard.GetComponents<Component>().Length);
         }
     }
 
-    public void CreateCardsByUsers(List<List<string>> tokens)//agregar list<codeEffects> como parametros
+    public void CreateCardsByUsers(List<string> tokens, GameObject NewCard)//agregar list<codeEffects> como parametros
     {
-        string nameCard = null;
-        string type = null;
-        string range = null;
-        string power = null;
-        string faction = null;
+        string nameCard = " ";
+        string type = " ";
+        string range = " ";
+        string power = " ";
+        string faction = " ";
+        onActivation = false;
+        List<string> effectNames = new List<string>();
+        Dictionary<string, string> targets = new Dictionary<string, string>();
+        Dictionary<string, List<Tuple<string, object>>> Params = new Dictionary<string, List<Tuple<string, object>>>();
+        Debug.Log("FRANCO///// la cantidad de tokens es " + tokens.Count);
+
         //actualizando las propiedades de la carta a crear
         for (int i = 0; i < tokens.Count; i++)
         {
-            List<string> effectNames = new List<string>();
-            Dictionary<string, List<GameObject>> targets = new Dictionary<string, List<GameObject>>();
-            Dictionary<string, List<Tuple<string, object>>> Params = new Dictionary<string, List<Tuple<string, object>>>();
-            UnityEngine.Debug.Log("la cantidad de cartas es " + tokens.Count + "y va por la carta " + i);
-            for (int j = 0; j < tokens[i].Count; j++)
+            Debug.Log("analizando token: " + tokens[i]);
+            if (tokens[i] == "Name" && !onActivation)
             {
-                if (tokens[i][j] == "Name" && !onActivation)
+                Debug.Log("entro al if de Name");
+                i++;
+                for (; i < tokens.Count; i++)
                 {
-                    j++;
-                    for (; j < tokens[i].Count; j++)
+                    if (tokens[i] == "Faction")
                     {
-                        if (tokens[i][j] == "Faction")
-                        {
-                            break;
-                        }
-                        nameCard += tokens[i][j] + " ";
-                        NewCard.name = nameCard;
+                        break;
                     }
-
-
-                    Debug.Log("El nombre seleccionado es " + nameCard);
+                    nameCard += tokens[i] + " ";
+                    NewCard.name = nameCard;
                 }
-                if (tokens[i][j] == "Power" && !onActivation)
-                {
-                    j++;
-                    power = tokens[i][j];
-                    Debug.Log("el poder seleccionado es " + power);
-                }
-                if (tokens[i][j] == "Range" && !onActivation)
-                {
-                    j++;
-                    range = tokens[i][j];
-                    Debug.Log("el rango seleccionado es " + range);
-                }
-                if (tokens[i][j] == "Type" && !onActivation)
-                {
-                    j++;
-                    type = tokens[i][j];
-                    Debug.Log("el tipo seleccionado es " + type);
-                }
-                if (tokens[i][j] == "Faction" && !onActivation)
-                {
-                    j++;
-                    faction = tokens[i][j];
-                    Debug.Log("La faccion seleccionada es " + faction);
-                }
-                if (tokens[i][j] == "OnActivation")
-                {
-                    onActivation = true;
-                    OnActivation(onActivation, NewCard, tokens, effectNames, targets, Params);
-                }
+                Debug.Log("El nombre seleccionado es " + nameCard);
             }
-
-            list.RellenarListaDeCartas(nameCard, effectNames, targets, Params);
+            if (tokens[i] == "Power" && !onActivation)
+            {
+                Debug.Log("entro al if de Power");
+                i++;
+                power = tokens[i];
+                Debug.Log("el poder seleccionado es " + power);
+            }
+            if (tokens[i] == "Range" && !onActivation)
+            {
+                Debug.Log("entro al if de Range");
+                i++;
+                range = tokens[i];
+                Debug.Log("el rango seleccionado es " + range);
+            }
+            if (tokens[i] == "Type" && !onActivation)
+            {
+                Debug.Log("entro al if de Type");
+                i++;
+                type = tokens[i];
+                Debug.Log("el tipo seleccionado es " + type);
+            }
+            if (tokens[i] == "Faction" && !onActivation)
+            {
+                i++;
+                faction = tokens[i];
+                Debug.Log("La faccion seleccionada es " + faction);
+            }
+            if (tokens[i] == "OnActivation")
+            {
+                onActivation = true;
+                OnActivation(onActivation, NewCard, tokens, effectNames, targets, Params);
+            }
             //no aumentar i en el ultimo if si no se saltara un token
-
-
         }
+        list.RellenarListaDeCartas(nameCard, effectNames, targets, Params);
 
+        Debug.Log("Valores finales - Name: " + nameCard + ", Type: " + type + ", Range: " + range + ", Power: " + power + ", Faction: " + faction);
         //utilizando las propiedades
         if (faction == "Cats")
         {
@@ -140,14 +147,19 @@ public class CardsUsers : MonoBehaviour
         else
         {
             //mandar carta al deck de los perros
-            var temp = DeckDogs.GetComponent<Deck_Dogs>().Deck;
-            temp.Add(NewCard);
-            NewCard.transform.SetParent(DeckDogs.transform);
+            if (!DeckDogs.GetComponent<Deck_Dogs>().Deck.Contains(NewCard))
+            {
+                //DeckDogs.GetComponent<Deck_Dogs>().Deck.Add(NewCard);
+                NewCard.transform.SetParent(DeckDogs.transform);
+            }
+
         }
         if (type == "Unit-Card")
         {
+            //Debug.Log("entro al if de las cartas de unidad");
             //asignamos propiedades a la nueva carta de unidad
             Unit_Card NewUnitCard = NewCard.AddComponent<Unit_Card>();
+
             NewUnitCard.tag = "Unit-Cards";
             NewUnitCard.Name = nameCard;
             Debug.Log("El nombre de la carta de unidad es " + NewUnitCard.Name);
@@ -184,40 +196,48 @@ public class CardsUsers : MonoBehaviour
         }
         if (type == "Buff")
         {
+            //Debug.Log("entro al if de las cartas buff");
             //asignamos propiedades a la nueva carta buff
             Buff_Card NewBuffCard = NewCard.AddComponent<Buff_Card>();
             NewBuffCard.tag = "Buff";
             NewBuffCard.Name = nameCard;
+            NewBuffCard.team = faction;
             Debug.Log("el nombre de la carta buff es " + NewBuffCard.Name);
             NewBuffCard.IsCreatedByUsers = true;
         }
         if (type == "Field")
         {
+            //Debug.Log("entro al if de las cartas de Field");
             //asignamos propiedades a la nueva carta field
             Field_Card NewFieldCard = NewCard.AddComponent<Field_Card>();
             NewFieldCard.tag = "Field";
             NewFieldCard.Name = nameCard;
+            NewFieldCard.team = faction;
+
             Debug.Log("el nombre de la carta field es " + NewFieldCard.Name);
             NewFieldCard.IsCreatedByUsers = true;
         }
         if (type == "Counter-Field")
         {
+            //Debug.Log("entro al if de las cartas CounterField");
             //asignamos propiedades a la nueva carta counterfield
             Counterfield_Card NewCounterfieldCard = NewCard.AddComponent<Counterfield_Card>();
             NewCounterfieldCard.Name = nameCard;
             NewCounterfieldCard.tag = "Counterfield";
+            NewCounterfieldCard.team = faction;
             Debug.Log("el nombre de la carta counterfield es " + NewCounterfieldCard.Name);
             NewCounterfieldCard.IsCreatedByUsers = true;
         }
         if (type == "Leader")
         {
+            // Debug.Log("entro al if de las cartas lider");
             //asignamos propiedades a la nueva carta lider
             Leader_Card NewLeaderCard = NewCard.AddComponent<Leader_Card>();
             NewLeaderCard.Name = nameCard;
+            NewLeaderCard.team = faction;
             // Debug.Log("el nombre de la carta lider es " + NewLeaderCard.Name);
             NewLeaderCard.IsCreatedByUsers = true;
         }
-
     }
     private object ParseParam(string param)
     {
@@ -235,59 +255,81 @@ public class CardsUsers : MonoBehaviour
         }
     }
 
-    public void OnActivation(bool onActivation, GameObject NewCard, List<List<string>> tokens, List<string> nameEffects, Dictionary<string, List<GameObject>> targets, Dictionary<string, List<Tuple<string, object>>> Params)//------------------->ESTE metodo lo que debe hacer,es guardar en una lista la informacion de los efectos de esta carta,es decir, en dicha lista debe estar el orden por nombre de los efectos a ejecutar y otra lista con los "targets" de cada efecto,donde para el primer efecto le corresponda el primer target , el segundo efecto le corrasponda el segundo target y asi.ejemplo: effectosDELaCarta:[Damage,ReturnToDeck,...] targetsDeLosEfectos:[otherField,otherHand,...].EL objetivo de esto es usar ambas listas en EffectsUser script al llamar al metodo que activa el efecto de una carta, y ahi en ese metodo (el de la pila de cosas comentadas que tenia tupla de pila de cosas, context.Hand y toa esa pga) empezar a iterar por las listas activando uno por uno los efecto de dicha carta. Fijate q debe ser creada estas dos listas de las que hable pero por cada carta. Cada carta tendra sus propias dos listas.cuando digo dos listas me refiero a las que hable al principio,la de numbre de efectos y targets de efectos.DEspue vemos como meterselo a las cartas, por ahora logra conseguir dichas listas para una carta que es revisando cada token y sacando la info que te interesa y meterla en las listas..
+    public void OnActivation(bool onActivation, GameObject NewCard, List<string> tokens, List<string> nameEffects, Dictionary<string, string> targets, Dictionary<string, List<Tuple<string, object>>> Params)//------------------->ESTE metodo lo que debe hacer,es guardar en una lista la informacion de los efectos de esta carta,es decir, en dicha lista debe estar el orden por nombre de los efectos a ejecutar y otra lista con los "targets" de cada efecto,donde para el primer efecto le corresponda el primer target , el segundo efecto le corrasponda el segundo target y asi.ejemplo: effectosDELaCarta:[Damage,ReturnToDeck,...] targetsDeLosEfectos:[otherField,otherHand,...].EL objetivo de esto es usar ambas listas en EffectsUser script al llamar al metodo que activa el efecto de una carta, y ahi en ese metodo (el de la pila de cosas comentadas que tenia tupla de pila de cosas, context.Hand y toa esa pga) empezar a iterar por las listas activando uno por uno los efecto de dicha carta. Fijate q debe ser creada estas dos listas de las que hable pero por cada carta. Cada carta tendra sus propias dos listas.cuando digo dos listas me refiero a las que hable al principio,la de numbre de efectos y targets de efectos.DEspue vemos como meterselo a las cartas, por ahora logra conseguir dichas listas para una carta que es revisando cada token y sacando la info que te interesa y meterla en las listas..
     {
+        //Debug.Log("entro en el OnActivation");
         list = lista.GetComponent<ListsOfCards>();
         string nameEffect = "";
         for (int i = 0; i < tokens.Count; i++)
         {
-            for (int j = 0; j < tokens[i].Count; j++)
-            {
-                if (tokens[i][j] == "PostActivation")
-                {
-                    onPostAction = true;
-                    PostActivation(tokens, i, nameEffects, targets, Params);
-                }
-                if (tokens[i][j] == "Effect" && onActivation && !onPostAction)
-                {
-                    j++;
-                    if (tokens[i][j] == "Name")
-                    {
-                        nameEffect = tokens[i][j + 1];
-                        Debug.Log("el nombre del effecto es " + nameEffect);
-                        nameEffects.Add(nameEffect);
-                    }
-                    List<Tuple<string, object>> listParams = new List<Tuple<string, object>>();
 
-                    for (int k = j; tokens[i][k] != "Selector"; k++)
-                    {
-                        if (k + 1 >= tokens[i].Count)
-                        {
-                            break;
-                        }
-                        else if (tokens[i][k] != "Name" && tokens[i][k] != nameEffect)
-                        {
-                            object param = ParseParam(tokens[i][k + 1]);
-                            listParams.Add(new Tuple<string, object>(tokens[i][k], param));
-                            Debug.Log("los parametros son:" + string.Join(", ", param));
-                        }
-                    }
-                    Params.Add(nameEffect, listParams);
-                }
-                if (tokens[i][j] == "Selector" && !onPostAction)
-                {
-                    Debug.Log("verifica que es selector y llama al metodo");
-                    Selector(tokens, nameEffect, targets);
-                    // Debug.Log("sale del metodo Selector y va a llamar al EffectsByUsers");
-                    // Effects.EffectsByUser(NewCard);//esto dejalo normal como estaba antes al no ser q creas que tu idea esta buena,mejor que lo que te dije.Yo no la entendi bien.
-                }
+            // Debug.Log("se esta analizando el token: " + tokens[i]);
+            if (tokens[i] == "PostActivation")
+            {
+                onPostAction = true;
+                Debug.Log("va a llamar al PostAction");
+                PostActivation(tokens, nameEffects, targets, Params);
             }
+            if (tokens[i] == "Effect" && onActivation && !onPostAction)
+            {
+                //Debug.Log(" antes de Name i = " + i);
+                i++;
+                if (tokens[i] == "Name")
+                {
+                    i++;
+                    nameEffect = tokens[i];
+                    Debug.Log("el nombre del effecto es " + nameEffect);
+                    nameEffects.Add(nameEffect);
+                    if (i + 1 >= tokens.Count)
+                    {
+                        break;
+                    }
+                    i++;
+                }
+                if (tokens[i] == "Effect" || tokens[i] == "Selector")
+                {
+                    i--;
+                    continue;
+                }
+                //Debug.Log(" Despues de verificar Name i = " + i);
+                List<Tuple<string, object>> listParams = new List<Tuple<string, object>>();
+
+                //rellenar listParams con los parametros:
+                for (; i < tokens.Count; i++)
+                {
+                    //Debug.Log("i=" + i);
+                    //Debug.Log("se printea" + tokens[i]);
+                    if (tokens[i] == "Effect" || tokens[i] == "Selector")
+                    {
+                        i--;
+                        break;
+                    }
+                    else if (tokens[i] != " " && char.IsLetter(tokens[i][0]))
+                    {
+                        // Debug.Log("va a empezar a guardar los parametros con " + tokens[i]);
+                        object param = ParseParam(tokens[i + 1]);
+                        listParams.Add(new Tuple<string, object>(tokens[i], param));
+                        //Debug.Log(" MAGELA\\\\\\\\los parametros son:" + tokens[i] + " " + param);
+                        i++;
+                    }
+
+                }
+
+                Params.Add(nameEffect, listParams);
+            }
+            if (tokens[i] == "Selector" && !onPostAction)
+            {
+                //Debug.Log("verifica que es selector y llama al metodo");
+                Selector(tokens, nameEffect, targets);
+
+            }
+
         }
     }
 
-    public void Selector(List<List<string>> tokens, string nameEffect, Dictionary<string, List<GameObject>> targets)
+    public void Selector(List<string> tokens, string nameEffect, Dictionary<string, string> targets)
     {
-        Debug.Log("entra al metodo selector");
+        //Debug.Log("entra al metodo selector");
         string source = "";
         string single = "";
         string sourceFather = "";
@@ -295,190 +337,191 @@ public class CardsUsers : MonoBehaviour
 
         List<GameObject> boardplayer = new List<GameObject>();
         List<GameObject> boardenemy = new List<GameObject>();
-
-
         for (int i = 0; i < tokens.Count; i++)
         {
-            for (int j = 0; j < tokens[i].Count; j++)
+            if (tokens[i] == "Source")
             {
-                if (tokens[i][j] == "Source")
+                i++;
+                source = tokens[i];
+                Debug.Log("El source es " + source);
+                if (tokens[i + 1] == "Single")
                 {
-                    source = tokens[i][j + 1];
-                    Debug.Log(source);
-                    if (tokens[i][j + 2] == "Single")
-                    {
-                        single = tokens[i][j + 3];
-                        Debug.Log(single);
-                    }
-                    if (source == "hand")
-                    {
-                        sourceFather = source;
-                        if (single == "false")
-                        {
-                            singleFather = single;
-                            targets.Add(nameEffect, playerHand.GetComponent<HandScript>().cards);
-                        }
-                        else
-                        {
-                            singleFather = single;
-                            //hacer que reciba solo una carta
-                        }
-                    }
-                    if (source == "otherHand")
-                    {
-                        sourceFather = source;
-                        if (single == "false")
-                        {
-                            singleFather = single;
-                            targets.Add(nameEffect, enemyHand.GetComponent<HandScript>().cards);
-
-                        }
-                        else
-                        {
-                            singleFather = single;
-                            //hacer que reciba solo una carta
-                        }
-                    }
-                    if (source == "deck")
-                    {
-                        sourceFather = source;
-                        if (single == "false")
-                        {
-                            singleFather = single;
-                            targets.Add(nameEffect, DeckCats.GetComponent<Deck_Cats>().Deck);
-                        }
-                        else
-                        {
-                            singleFather = single;
-                            //hacer que reciba solo una carta
-                        }
-                    }
-                    if (source == "otherDeck")
-                    {
-                        sourceFather = source;
-                        if (single == "false")
-                        {
-                            singleFather = single;
-                            targets.Add(nameEffect, DeckDogs.GetComponent<Deck_Dogs>().Deck);
-
-                        }
-                        else
-                        {
-                            singleFather = single;
-                            //hacer que reciba solo una carta
-                        }
-                    }
-                    if (source == "board")
-                    {
-                        Debug.Log("entra al source board");
-                        sourceFather = source;
-                        for (int m = 3; m <= 5; m++)
-                        {
-                            for (int n = 0; n < 5; n++)
-                            {
-                                tablero = board.GetComponent<MatrixBoard>().Board;
-
-                                if (tablero[m, n] != null)
-                                {
-                                    boardplayer.Add(tablero[j, n]);
-                                    Debug.Log(string.Join(", ", boardplayer));
-                                    if (single == "false")
-                                    {
-                                        singleFather = single;
-                                        targets.Add(nameEffect, boardplayer);
-                                    }
-                                    else
-                                    {
-                                        singleFather = single;
-                                        //hacer que reciba solo una carta
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    if (source == "otherBoard")
-                    {
-                        sourceFather = source;
-                        for (int m = 0; m <= 2; m++)
-                        {
-                            for (int n = 0; n < tablero.GetLength(1); n++)
-                            {
-                                if (tablero[m, n] != null)
-                                {
-                                    boardenemy.Add(tablero[j, n]);
-                                    if (single == "false")
-                                    {
-                                        singleFather = single;
-                                        targets.Add(nameEffect, boardenemy);
-                                    }
-                                    else
-                                    {
-                                        singleFather = single;
-                                        //hacer que reciba solo una carta
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    if (source == "graveryard")
-                    {
-                        sourceFather = source;
-                        if (single == "false")
-                        {
-                            singleFather = single;
-                            targets.Add(nameEffect, cementeryCats.GetComponent<Cementery>().graveyard);
-
-                        }
-                        else
-                        {
-                            singleFather = single;
-                            //hacer que reciba solo una carta
-                        }
-                    }
-                    if (source == "parent")
-                    {
-                        source = sourceFather;
-                        single = singleFather;
-                        //hacer que se llame al source del padre
-                    }
-
+                    single = tokens[i + 2];
+                    Debug.Log("El single es " + single);
                 }
+                if (source == "hand")
+                {
+                    sourceFather = source;
+                    if (single == "false")
+                    {
+                        singleFather = single;
+                        //Debug.Log("va a rellenar la lista de targets con las cartas de la mano del jugador");
+                        targets.Add(nameEffect, "hand");
+                    }
+                    else
+                    {
+                        singleFather = single;
+                        targets.Add(nameEffect, "hand single");
+                    }
+                }
+                if (source == "otherHand")
+                {
+                    sourceFather = source;
+                    if (single == "false")
+                    {
+                        singleFather = single;
+                        targets.Add(nameEffect, "otherHand");
+
+                    }
+                    else
+                    {
+                        singleFather = single;
+                        targets.Add(nameEffect, "otherHand single");
+                    }
+                }
+                if (source == "deck")
+                {
+                    sourceFather = source;
+                    if (single == "false")
+                    {
+                        singleFather = single;
+                        targets.Add(nameEffect, "deck");
+                    }
+                    else
+                    {
+                        singleFather = single;
+                        targets.Add(nameEffect, "deck single");
+                    }
+                }
+                if (source == "otherDeck")
+                {
+                    sourceFather = source;
+                    if (single == "false")
+                    {
+                        singleFather = single;
+                        targets.Add(nameEffect, "otherDeck");
+
+                    }
+                    else
+                    {
+                        singleFather = single;
+                        targets.Add(nameEffect, "otherDeck single");
+                    }
+                }
+                if (source == "board")
+                {
+                    sourceFather = source;
+                    for (int m = 3; m <= 5; m++)
+                    {
+                        for (int n = 0; n < 5; n++)
+                        {
+                            tablero = board.GetComponent<MatrixBoard>().Board;
+
+                            if (tablero[m, n] != null)
+                            {
+                                boardplayer.Add(tablero[i, n]);
+                                Debug.Log(string.Join(", ", boardplayer));
+                                if (single == "false")
+                                {
+                                    singleFather = single;
+                                    //targets.Add(nameEffect, boardplayer);
+                                }
+                                else
+                                {
+                                    singleFather = single;
+                                    // targets.Add(nameEffect, "board single");
+                                }
+                            }
+                        }
+                    }
+                }
+                if (source == "otherBoard")
+                {
+                    sourceFather = source;
+                    for (int m = 0; m <= 2; m++)
+                    {
+                        for (int n = 0; n < tablero.GetLength(1); n++)
+                        {
+                            if (tablero[m, n] != null)
+                            {
+                                boardenemy.Add(tablero[i, n]);
+                                if (single == "false")
+                                {
+                                    singleFather = single;
+                                    //targets.Add(nameEffect, boardenemy);
+                                }
+                                else
+                                {
+                                    singleFather = single;
+                                    targets.Add(nameEffect, "otherBoard single");
+                                }
+                            }
+                        }
+                    }
+                }
+                if (source == "graveryard")
+                {
+                    sourceFather = source;
+                    if (single == "false")
+                    {
+                        singleFather = single;
+                        targets.Add(nameEffect, "graveryard");
+                    }
+                    else
+                    {
+                        singleFather = single;
+                        targets.Add(nameEffect, "graveryard single");
+                    }
+                }
+                //poner para el segundo cementerio otherGraveryard
+                if (source == "parent")
+                {
+                    source = sourceFather;
+                    single = singleFather;
+                    //hacer que se llame al source del padre
+                }
+
             }
-
         }
-    }
 
-    public void PostActivation(List<List<string>> tokens, int index, List<string> nameEffects, Dictionary<string, List<GameObject>> targets, Dictionary<string, List<Tuple<string, object>>> Params)
+    }
+    public void PostActivation(List<string> tokens, List<string> nameEffects, Dictionary<string, string> targets, Dictionary<string, List<Tuple<string, object>>> Params)
     {
         string nameEffectPostAction = " ";
-        index++;
         for (int i = 0; i < tokens.Count; i++)
         {
-            if (tokens[i][index] == "Name")
+            if (tokens[i] == "Name")
             {
-                nameEffectPostAction = tokens[i][index];
+                nameEffectPostAction = tokens[i];
                 nameEffects.Add(nameEffectPostAction);
             }
 
             List<Tuple<string, object>> listParams = new List<Tuple<string, object>>();
-            for (int k = index; tokens[i][k] != "Selector" || k + 1 >= tokens[i].Count; k++)
+            if (tokens[i] != "Selector" && i + 1 >= tokens.Count)
             {
-                if (tokens[i][k] != "Name" && tokens[i][k] != nameEffectPostAction)
-                {
-                    object param = ParseParam(tokens[i][k + 1]);
-                    listParams.Add(new Tuple<string, object>(tokens[i][k], param));
-                    Debug.Log("los parametros son:" + string.Join(", ", param));
-                }
+                break;
+            }
+            else if (tokens[i] != "Name" && tokens[i] != nameEffectPostAction)
+            {
+                object param = ParseParam(tokens[i + 1]);
+                listParams.Add(new Tuple<string, object>(tokens[i], param));
+                // Debug.Log(" MAGELA\\\\\\\\los parametros son:" + string.Join(", ", param));
             }
             Params.Add(nameEffectPostAction, listParams);
 
-            if (tokens[i][index] == "Selector")
+            if (tokens[i] == "Selector")
             {
                 Selector(tokens, nameEffectPostAction, targets);
             }
         }
     }
 }
+
+
+
+
+
+
 
 
 

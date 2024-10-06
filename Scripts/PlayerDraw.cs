@@ -9,47 +9,28 @@ public class DrawCard : MonoBehaviour
 {
     public GameObject PlayerHand;
     public GameObject PlayerDeck;
-    public List<GameObject> Deck1;
+    private List<GameObject> deckCats;
 
-    //metodo que llena el deck de los gatos.
-    public void FillDeck()
-    {
-        Transform tempChildPlayer = GameObject.Find("PlayerDeck").transform; //busca el gameObject padre.
-        for (int i = 0; i < tempChildPlayer.childCount; i++)
-        {
-            Transform childTransform = tempChildPlayer.GetChild(i); //utilizo el metodo Getchild para ir iterando por los gameObjects de PlayerDeck.
-            Deck1.Add(childTransform.gameObject);
-        }
-
-    }
-
-    public void Start()
-    {
-        Deck1 = new List<GameObject>();
-        FillDeck();
-    }
 
     //metodo que llena la mano de los gatos.
     public void OnClick()
     {
+
         HandScript handPlayerScript = PlayerHand.GetComponent<HandScript>();
         int card_to_draw = 10 - handPlayerScript.cards.Count;
-
+        deckCats = PlayerDeck.GetComponent<Deck_Cats>().Deck;
         Transform tempChildPlayer = GameObject.Find("PlayerDeck").transform;
         for (int i = 0; i < card_to_draw; i++)
         {
-            GameObject playerCard = tempChildPlayer.GetChild(Random.Range(0, tempChildPlayer.childCount)).gameObject;
-            //Deck1[index_in_deck_of_card_to_draw];
-            //playerCard.transform.SetParent(PlayerHand.transform, false);
-            handPlayerScript.AddCard(playerCard);
-            // Deck1.RemoveAt(index_in_deck_of_card_to_draw);
-
-            //search for "Kawatake El Impostor"
-            if (tempChildPlayer.Find("Kakawate El Impostor") != null)
+            if (deckCats.Count==0)
             {
-                handPlayerScript.AddCard(tempChildPlayer.Find("Kakawate El Impostor").gameObject);
-                break;
+                return;
             }
+            GameObject playerCard = tempChildPlayer.GetChild(Random.Range(0, tempChildPlayer.childCount)).gameObject;
+            handPlayerScript.AddCard(playerCard);
+            //remove card added to the hand from the deck
+            deckCats.Remove(playerCard);
+
         }
     }
 }

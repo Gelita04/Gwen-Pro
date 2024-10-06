@@ -758,7 +758,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerHand: {fileID: 3547911697770313994}
   PlayerDeck: {fileID: 131780075}
-  Deck1: []
 --- !u!114 &98268087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1430,6 +1429,11 @@ MonoBehaviour:
   TokenizedTexts: {fileID: 918170740}
   context: {fileID: 640127057}
   list: {fileID: 2027910147}
+  hand: {fileID: 0}
+  otherHand: {fileID: 0}
+  deck: {fileID: 0}
+  otherDeck: {fileID: 0}
+  graveyard: {fileID: 0}
 --- !u!4 &237983443
 Transform:
   m_ObjectHideFlags: 0
@@ -2488,19 +2492,19 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 456043520}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1078dfef5b80a1846828e0675c9a3506, type: 3}
   m_Resource: {fileID: 8300000, guid: 1078dfef5b80a1846828e0675c9a3506, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -2663,9 +2667,12 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "effect {\r\n    Name: \"Draw\",\r\n    Action: (targets,context) => {\r\n       
-    topCard = context.Deck.Pop();\r\n        context.Hand.Push(topCard);\r\n       
-    context.Hand.Shuffle();\r\n    }\r\n}\r\n\r\n\r\n"
+  m_Text: "\neffect {\r\n    Name: \"Damage\",\r\n    Params: {\r\n        Amount:
+    Number \r\n        },\r\n    Action: (targets, context) => {\r\n        for target
+    in targets {\r\n            i=0;\r\n            while (i<Amount){\n\t\ti++;\r\n               
+    target.Power-=1;\n}\r\n        };\r\n    }\r\n}\neffect {\r\n    Name: \"Draw\",\r\n   
+    Action: (targets,context) => {\r\n        topCard = context.Deck.Pop();\r\n       
+    context.Hand.Push(topCard);\r\n        context.Hand.Shuffle();\r\n    }\r\n}\r\n"
 --- !u!222 &467299156
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3382,17 +3389,6 @@ RectTransform:
   - {fileID: 467299154}
   - {fileID: 578219583}
   - {fileID: 131780076}
-  - {fileID: 1215762390069540991}
-  - {fileID: 8991380153159779447}
-  - {fileID: 872726570955945898}
-  - {fileID: 9082272532819941074}
-  - {fileID: 4838259875646261495}
-  - {fileID: 3083751906084337263}
-  - {fileID: 5656020309025835950}
-  - {fileID: 7343421910148109226}
-  - {fileID: 5369362246319994401}
-  - {fileID: 8980615245944916006}
-  - {fileID: 5230548121432229991}
   - {fileID: 1991082729}
   - {fileID: 174280519702629406}
   - {fileID: 6653448285473492860}
@@ -3927,7 +3923,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74e810e75eef6f44186b1fedae1992fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  owner: 
   playerHand: {fileID: 3547911697770313994}
   enemyHand: {fileID: 6414858828185323340}
   playerDeck: {fileID: 131780075}
@@ -4031,6 +4026,11 @@ MonoBehaviour:
   TokenizedTexts: {fileID: 918170740}
   context: {fileID: 640127057}
   list: {fileID: 2027910147}
+  hand: {fileID: 3547911697770313994}
+  otherHand: {fileID: 6414858828185323340}
+  deck: {fileID: 131780075}
+  otherDeck: {fileID: 1991082728}
+  graveyard: {fileID: 1114807208}
 --- !u!1 &671811267
 GameObject:
   m_ObjectHideFlags: 0
@@ -4251,9 +4251,11 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "card {\r\n    Type: \"Field\",\r\n    Name: \"Kakawate El Impostor\",\r\n   
     Faction: \"Dogs\",\r\n    Power: 10,\r\n    Range: \"Hero\" ,\n OnActivation:
-    [\r\n        {\r\n            Effect: {\n\t\tName: \"Draw\" ,\n\t\t\r\n       
-    }\r\n    ]\n}\ncard{\nType: \"Buff\",\r\n    Name: \"Doctorino El Mecanico\",\r\n   
-    Faction: \"Dogs\",\nOnActivation [\n{    \nEffect{\nName: \"RetunToDeck\"}}]}\r\r\n"
+    [\r\n        {\r\n            Effect: {\n\t\tName: \"Draw\" ,\n\t\t}\r\n       
+    \nEffect: {\r\n\t\tName:  \"Damage\",\r\n\t\tAmount: 5,\r\n\t\t}\r\nSelector{\r\n\tSource:
+    \"hand\",\r\n\tSingle: \"false\",\r\n\r\n\t\t}\r\n}\n\t\n}\r\n    ]\n}\ncard
+    {\nType: \"Buff\",\r\n    Name: \"Franco\",\r\n    Faction: \"Dogs\",\r\n   
+    Power: 10,\r\n    Range: \"Hero\" ,\n}\n\n\r\r\n"
 --- !u!222 &687258003
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8654,7 +8656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.19607843}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8726,6 +8728,17 @@ Transform:
   - {fileID: 3856271472867467952}
   - {fileID: 2486371706381661685}
   - {fileID: 27651220919461483}
+  - {fileID: 1215762390069540991}
+  - {fileID: 8991380153159779447}
+  - {fileID: 872726570955945898}
+  - {fileID: 9082272532819941074}
+  - {fileID: 4838259875646261495}
+  - {fileID: 3083751906084337263}
+  - {fileID: 5656020309025835950}
+  - {fileID: 7343421910148109226}
+  - {fileID: 5369362246319994401}
+  - {fileID: 8980615245944916006}
+  - {fileID: 5230548121432229991}
   - {fileID: 8105089422147237254}
   - {fileID: 2279280884128876106}
   - {fileID: 6923850829896509292}
@@ -9871,15 +9884,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8322940569043989468}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.31264448}
-  m_LocalScale: {x: 0.41666666, y: 0.41666666, z: 0.41666666}
+  m_LocalPosition: {x: 0, y: 0, z: -0.7503468}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 579828186}
+  m_Father: {fileID: 1991082729}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 250.48738, y: 109.34012}
+  m_AnchoredPosition: {x: 453.99982, y: 258.9999}
   m_SizeDelta: {x: 70, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &896491714512219251
@@ -9989,15 +10002,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8017193604437883913}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.31264448}
-  m_LocalScale: {x: 0.41666666, y: 0.41666666, z: 0.41666666}
+  m_LocalPosition: {x: 0, y: 0, z: -0.7503468}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 579828186}
+  m_Father: {fileID: 1991082729}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 250.48738, y: 109.34012}
+  m_AnchoredPosition: {x: 453.99982, y: 258.9999}
   m_SizeDelta: {x: 70, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1383448979369871034
@@ -10450,7 +10463,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Catmmer
   team: Cats
-  powerToTake: 20
+  powerToTake: 0
   IsCreatedByUsers: 0
 --- !u!1 &2359941520786356554
 GameObject:
@@ -11109,15 +11122,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6149166584784319001}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.31264448}
-  m_LocalScale: {x: 0.41666666, y: 0.41666666, z: 0.41666666}
+  m_LocalPosition: {x: 0, y: 0, z: -0.7503468}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 579828186}
+  m_Father: {fileID: 1991082729}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 250.48738, y: 109.34012}
+  m_AnchoredPosition: {x: 453.99982, y: 258.9999}
   m_SizeDelta: {x: 70, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3083954885564327798
@@ -11312,7 +11325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Catmmer
   team: Cats
-  powerToTake: 30
+  powerToTake: 0
   IsCreatedByUsers: 0
 --- !u!224 &3856271472867467952
 RectTransform:
@@ -11466,7 +11479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Kamikaze
   team: Dogs
-  powerToTake: 30
+  powerToTake: 0
   IsCreatedByUsers: 0
 --- !u!114 &4190681349247491141
 MonoBehaviour:
@@ -11823,15 +11836,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4375662455644851329}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.31264448}
-  m_LocalScale: {x: 0.41666666, y: 0.41666666, z: 0.41666666}
+  m_LocalPosition: {x: 0, y: 0, z: -0.7503468}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 579828186}
+  m_Father: {fileID: 1991082729}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 250.48738, y: 109.34012}
+  m_AnchoredPosition: {x: 453.99982, y: 258.9999}
   m_SizeDelta: {x: 70, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &4872958797279275413
@@ -11888,7 +11901,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Catstruction
   team: Cats
-  powerToTake: 40
+  powerToTake: 0
   IsCreatedByUsers: 0
 --- !u!114 &4905591939449921419
 MonoBehaviour:
@@ -12111,15 +12124,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3966309686312717329}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.31264448}
-  m_LocalScale: {x: 0.41666666, y: 0.41666666, z: 0.41666666}
+  m_LocalPosition: {x: 0, y: 0, z: -0.7503468}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 579828186}
+  m_Father: {fileID: 1991082729}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 250.48738, y: 109.34012}
+  m_AnchoredPosition: {x: 453.99982, y: 258.9999}
   m_SizeDelta: {x: 70, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5316381421396989406
@@ -12278,15 +12291,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3827572510041944663}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.31264448}
-  m_LocalScale: {x: 0.41666666, y: 0.41666666, z: 0.41666666}
+  m_LocalPosition: {x: 0, y: 0, z: -0.7503468}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 579828186}
+  m_Father: {fileID: 1991082729}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 250.48738, y: 109.34012}
+  m_AnchoredPosition: {x: 453.99982, y: 258.9999}
   m_SizeDelta: {x: 70, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5477396331587704220
@@ -12491,15 +12504,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3594913645239406552}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.31264448}
-  m_LocalScale: {x: 0.41666666, y: 0.41666666, z: 0.41666666}
+  m_LocalPosition: {x: 0, y: 0, z: -0.7503468}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 579828186}
+  m_Father: {fileID: 1991082729}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 250.48738, y: 109.34012}
+  m_AnchoredPosition: {x: 453.99982, y: 258.9999}
   m_SizeDelta: {x: 70, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5701020952547915664
@@ -13701,7 +13714,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Dogstruction
   team: Dogs
-  powerToTake: 40
+  powerToTake: 0
   IsCreatedByUsers: 0
 --- !u!114 &7213142246164165421
 MonoBehaviour:
@@ -13898,15 +13911,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1906317012399855580}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.31264448}
-  m_LocalScale: {x: 0.41666666, y: 0.41666666, z: 0.41666666}
+  m_LocalPosition: {x: 0, y: 0, z: -0.7503468}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 579828186}
+  m_Father: {fileID: 1991082729}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 250.48738, y: 109.34012}
+  m_AnchoredPosition: {x: 453.99982, y: 258.9999}
   m_SizeDelta: {x: 70, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7343421910148109227
@@ -15075,7 +15088,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Thor
   team: Dogs
-  powerToTake: 20
+  powerToTake: 0
   IsCreatedByUsers: 0
 --- !u!114 &8031760144339559538
 MonoBehaviour:
@@ -16972,15 +16985,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 233069616850750544}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.31264448}
-  m_LocalScale: {x: 0.41666666, y: 0.41666666, z: 0.41666666}
+  m_LocalPosition: {x: 0, y: 0, z: -0.7503468}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 579828186}
+  m_Father: {fileID: 1991082729}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 250.48738, y: 109.34012}
+  m_AnchoredPosition: {x: 453.99982, y: 258.9999}
   m_SizeDelta: {x: 70, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8980615245944916007
@@ -17094,15 +17107,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241583546266042369}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.31264448}
-  m_LocalScale: {x: 0.41666666, y: 0.41666666, z: 0.41666666}
+  m_LocalPosition: {x: 0, y: 0, z: -0.7503468}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 579828186}
+  m_Father: {fileID: 1991082729}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 250.48738, y: 109.34012}
+  m_AnchoredPosition: {x: 453.99982, y: 258.9999}
   m_SizeDelta: {x: 70, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8991380153159779448
@@ -17338,15 +17351,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 114627211236430500}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.31264448}
-  m_LocalScale: {x: 0.41666666, y: 0.41666666, z: 0.41666666}
+  m_LocalPosition: {x: 0, y: 0, z: -0.7503468}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 579828186}
+  m_Father: {fileID: 1991082729}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 250.48738, y: 109.34012}
+  m_AnchoredPosition: {x: 453.99982, y: 258.9999}
   m_SizeDelta: {x: 70, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &9082272532819941075

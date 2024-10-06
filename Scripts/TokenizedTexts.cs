@@ -15,7 +15,7 @@ public class TokenizedTexts : MonoBehaviour
             ']' };
 
         // Divide el texto en tokens
-        string[] tokens = entrada.Split(delimitadores, StringSplitOptions.RemoveEmptyEntries);
+        string[] tokens = entrada.Split(delimitadores, StringSplitOptions.RemoveEmptyEntries).Select(t => t.Trim()).ToArray();
 
         // Separa los símbolos de puntuación en tokens individuales
         List<string> tokensList = new List<string>();
@@ -99,10 +99,15 @@ public class TokenizedTexts : MonoBehaviour
     public List<Tuple<string, List<string>>> TokenizarEffects(string effects)
     {
         // Split the input string into individual effects based on the keyword "effect"
-        string[] individualEffects = effects.Split(
-            new[] { "effect" },
-            StringSplitOptions.RemoveEmptyEntries
-        );
+        // string[] individualEffects = effects.Split(
+        //     new[] { "effect" },
+        //     StringSplitOptions.RemoveEmptyEntries
+        // );
+        string[] individualEffects = effects
+        .Split(new[] { "effect" }, StringSplitOptions.RemoveEmptyEntries)
+        .Select(e => e.Trim())
+        .Where(e => !string.IsNullOrWhiteSpace(e))
+        .ToArray();
 
         // Define the delimiters
         char[] delimiters = new char[]
@@ -158,6 +163,7 @@ public class TokenizedTexts : MonoBehaviour
         List<Tuple<string, List<string>>> tokensList = new List<Tuple<string, List<string>>>();
 
         Debug.Log("Cantidad de efectos: " + individualEffects.Length);
+        //Debug.Log("los efectos que hay son " + string.Join("\\EFFECT\\ ", individualEffects));
         // Process each effect
         foreach (var effect in individualEffects)
         {
