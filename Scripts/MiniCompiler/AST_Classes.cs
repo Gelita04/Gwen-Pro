@@ -717,7 +717,7 @@ public class MemberAccess : Expression
                     else
                         throw new Exception("target is not a Unit_Card");
                 }
-                else if (temporalMemberName == "Owner")
+                else if (temporalMemberName == "Owner" || temporalMemberName == "Faction")
                     temporalMemberName = "team";
 
                 //get the field

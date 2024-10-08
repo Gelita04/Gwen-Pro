@@ -25,7 +25,7 @@ public class CodedEffect
     //     ast.Evaluate(env);
     // }
 
-    public void Execute(List<Tuple<string, object>> effectParams, Find predicate = null)
+    public void Execute(List<Tuple<string, object>> effectParams, Dictionary<string, Tuple<string, Expression>> predicate = null)
     {
         var targets = new List<GameObject>();
         var newTargets = new List<GameObject>();
@@ -47,8 +47,8 @@ public class CodedEffect
         {
             foreach (var target in targets)
             {
-                env.SetVariable(predicate.variable, target);
-                if ((bool)predicate.condition.Evaluate(env))
+                env.SetVariable(predicate[name].Item1, target);
+                if ((bool)predicate[name].Item2.Evaluate(env))
                 {
                     newTargets.Add(target);
                 }

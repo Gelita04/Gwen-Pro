@@ -78,7 +78,7 @@ public class CardsUsers : MonoBehaviour
         List<string> effectNames = new List<string>();
         Dictionary<string, string> targets = new Dictionary<string, string>();
         Dictionary<string, List<Tuple<string, object>>> Params = new Dictionary<string, List<Tuple<string, object>>>();
-        Dictionary<string, Find> predicates = new Dictionary<string, Find>();
+        Dictionary<string, Tuple<string, Expression>> predicates = new Dictionary<string, Tuple<string, Expression>>();
         //Debug.Log("FRANCO///// la cantidad de tokens es " + tokens.Count);
 
         //actualizando las propiedades de la carta a crear
@@ -257,7 +257,7 @@ public class CardsUsers : MonoBehaviour
         }
     }
 
-    public void OnActivation(bool onActivation, GameObject NewCard, List<string> tokens, List<string> nameEffects, Dictionary<string, string> targets, Dictionary<string, List<Tuple<string, object>>> Params, Dictionary<string, Find> predicates)//------------------->ESTE metodo lo que debe hacer,es guardar en una lista la informacion de los efectos de esta carta,es decir, en dicha lista debe estar el orden por nombre de los efectos a ejecutar y otra lista con los "targets" de cada efecto,donde para el primer efecto le corresponda el primer target , el segundo efecto le corrasponda el segundo target y asi.ejemplo: effectosDELaCarta:[Damage,ReturnToDeck,...] targetsDeLosEfectos:[otherField,otherHand,...].EL objetivo de esto es usar ambas listas en EffectsUser script al llamar al metodo que activa el efecto de una carta, y ahi en ese metodo (el de la pila de cosas comentadas que tenia tupla de pila de cosas, context.Hand y toa esa pga) empezar a iterar por las listas activando uno por uno los efecto de dicha carta. Fijate q debe ser creada estas dos listas de las que hable pero por cada carta. Cada carta tendra sus propias dos listas.cuando digo dos listas me refiero a las que hable al principio,la de numbre de efectos y targets de efectos.DEspue vemos como meterselo a las cartas, por ahora logra conseguir dichas listas para una carta que es revisando cada token y sacando la info que te interesa y meterla en las listas..
+    public void OnActivation(bool onActivation, GameObject NewCard, List<string> tokens, List<string> nameEffects, Dictionary<string, string> targets, Dictionary<string, List<Tuple<string, object>>> Params, Dictionary<string,  Tuple<string, Expression>> predicates)//------------------->ESTE metodo lo que debe hacer,es guardar en una lista la informacion de los efectos de esta carta,es decir, en dicha lista debe estar el orden por nombre de los efectos a ejecutar y otra lista con los "targets" de cada efecto,donde para el primer efecto le corresponda el primer target , el segundo efecto le corrasponda el segundo target y asi.ejemplo: effectosDELaCarta:[Damage,ReturnToDeck,...] targetsDeLosEfectos:[otherField,otherHand,...].EL objetivo de esto es usar ambas listas en EffectsUser script al llamar al metodo que activa el efecto de una carta, y ahi en ese metodo (el de la pila de cosas comentadas que tenia tupla de pila de cosas, context.Hand y toa esa pga) empezar a iterar por las listas activando uno por uno los efecto de dicha carta. Fijate q debe ser creada estas dos listas de las que hable pero por cada carta. Cada carta tendra sus propias dos listas.cuando digo dos listas me refiero a las que hable al principio,la de numbre de efectos y targets de efectos.DEspue vemos como meterselo a las cartas, por ahora logra conseguir dichas listas para una carta que es revisando cada token y sacando la info que te interesa y meterla en las listas..
     {
         //Debug.Log("entro en el OnActivation");
         list = lista.GetComponent<ListsOfCards>();
@@ -328,7 +328,7 @@ public class CardsUsers : MonoBehaviour
         }
     }
 
-    public void Selector(List<string> tokens, string nameEffect, Dictionary<string, string> targets, Dictionary<string, Find> predicates)
+    public void Selector(List<string> tokens, string nameEffect, Dictionary<string, string> targets, Dictionary<string, Tuple<string, Expression>> predicates)
     {
         //Debug.Log("entra al metodo selector");
         string source = "";
@@ -495,39 +495,39 @@ public class CardsUsers : MonoBehaviour
             if (tokens[i] == "Predicate")
             {
                 Debug.Log("ENTRO A PREDICATEEEEEEEEEEEEE");
-                //         if (effectWithPredicate.ContainsKey(nameEffect))
-                //         {
-                //             int index = 0;
-                //             List<string> predicateTokens = TokenizedTexts.TokenizarPredicate(effectWithPredicate[nameEffect]).ToList();
-                //             //example is : (unit) => unit.Attack > 5
-                //             //we have to parse only what is after the => token
-                //             for (int r = 0; r < predicateTokens.Count; r++)
-                //             {
-                //                 //remove every token before the => token including the => token
-                //                 if (predicateTokens[r] == "=>")
-                //                 {
-                //                     predicateTokens.RemoveRange(0, r + 1);
-                //                     break;
-                //                 }
-                //             }
-                //             Expression predicate = AST_Builder.ParseExpression(predicateTokens.ToArray(), ref index);
-                //             if (predicate as Find != null)
-                //             {
-                //                 Find find = (Find)predicate;
-                //                 predicates.Add(nameEffect, find);
-                //             }
-                //         }
-                //         else
-                //         {
-                //             Debug.Log("Predicate: null");
-                //             throw new Exception("Predicate: null");
-                //         }
-                //     }
-            }
+                if (effectWithPredicate.ContainsKey(nameEffect))
+                {
+                    int index = 0;
+                    List<string> predicateTokens = TokenizedTexts.TokenizarPredicate(effectWithPredicate[nameEffect]).ToList();
+                    //example is : (unit) => unit.Attack > 5
+                    //we have to parse only what is after the => token
+                    string variable = predicateTokens[1];
 
+                    for (int r = 0; r < predicateTokens.Count; r++)
+                    {
+                        //remove every token before the => token including the => token
+                        if (predicateTokens[r] == "=>")
+                        {
+                            predicateTokens.RemoveRange(0, r + 1);
+                            break;
+                        }
+                    }
+                    Expression predicate = AST_Builder.ParseExpression(predicateTokens.ToArray(), ref index);
+                    if (predicate != null)
+                    {
+                        predicates.Add(nameEffect, new Tuple<string, Expression>(variable, predicate));
+                    }
+                }
+                else
+                {
+                    Debug.Log("Predicate: null");
+                    throw new Exception("Predicate: null");
+                }
+            }
         }
     }
-    public void PostAction(List<string> tokens, int x, List<string> nameEffects, Dictionary<string, string> targets, Dictionary<string, List<Tuple<string, object>>> Params, Dictionary<string, Find> predicates)
+
+    public void PostAction(List<string> tokens, int x, List<string> nameEffects, Dictionary<string, string> targets, Dictionary<string, List<Tuple<string, object>>> Params, Dictionary<string, Tuple<string, Expression>> predicates)
     {
         string nameEffectPostAction = " ";
         for (int i = x + 1; i < tokens.Count; i++)
