@@ -3992,7 +3992,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 963e93659eb955b44acaedf471841b2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cementery: {fileID: 1114807208}
+  playerBoard: {fileID: 578219586}
+  enemyBoard: {fileID: 1232501428}
+  cementeryCats: {fileID: 1523718913}
+  cementeryDogs: {fileID: 1114807208}
 --- !u!4 &664304212
 Transform:
   m_ObjectHideFlags: 0
@@ -4027,6 +4030,10 @@ MonoBehaviour:
   keywordObjetive: 
   IsCreatedByUsers: 0
   Category: 0
+  cementeryCats: {fileID: 1523718913}
+  cementeryDogs: {fileID: 1114807208}
+  playerBoard: {fileID: 578219586}
+  enemyBoard: {fileID: 1232501428}
 --- !u!114 &664304214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9877,6 +9884,10 @@ MonoBehaviour:
   keywordObjetive: mayor
   IsCreatedByUsers: 0
   Category: 1
+  cementeryCats: {fileID: 0}
+  cementeryDogs: {fileID: 0}
+  playerBoard: {fileID: 0}
+  enemyBoard: {fileID: 0}
 --- !u!222 &23758666571356429
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10278,6 +10289,10 @@ MonoBehaviour:
   keywordObjetive: field
   IsCreatedByUsers: 0
   Category: 2
+  cementeryCats: {fileID: 0}
+  cementeryDogs: {fileID: 0}
+  playerBoard: {fileID: 0}
+  enemyBoard: {fileID: 0}
 --- !u!224 &1066254652787000326
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10558,6 +10573,10 @@ MonoBehaviour:
   keywordObjetive: random
   IsCreatedByUsers: 0
   Category: 2
+  cementeryCats: {fileID: 0}
+  cementeryDogs: {fileID: 0}
+  playerBoard: {fileID: 0}
+  enemyBoard: {fileID: 0}
 --- !u!1 &1906317012399855580
 GameObject:
   m_ObjectHideFlags: 0
@@ -10773,6 +10792,10 @@ MonoBehaviour:
   keywordObjetive: random
   IsCreatedByUsers: 0
   Category: 2
+  cementeryCats: {fileID: 0}
+  cementeryDogs: {fileID: 0}
+  playerBoard: {fileID: 0}
+  enemyBoard: {fileID: 0}
 --- !u!224 &2279280884128876106
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10806,7 +10829,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Catmmer
   team: Cats
-  powerToTake: 0
+  powerToTake: 20
   IsCreatedByUsers: 0
 --- !u!1 &2359941520786356554
 GameObject:
@@ -11053,6 +11076,10 @@ MonoBehaviour:
   keywordObjetive: promedio
   IsCreatedByUsers: 0
   Category: 1
+  cementeryCats: {fileID: 0}
+  cementeryDogs: {fileID: 0}
+  playerBoard: {fileID: 0}
+  enemyBoard: {fileID: 0}
 --- !u!1 &2649113786458643236
 GameObject:
   m_ObjectHideFlags: 0
@@ -11112,6 +11139,10 @@ MonoBehaviour:
   keywordObjetive: menor
   IsCreatedByUsers: 0
   Category: 0
+  cementeryCats: {fileID: 0}
+  cementeryDogs: {fileID: 0}
+  playerBoard: {fileID: 0}
+  enemyBoard: {fileID: 0}
 --- !u!224 &2875130029007392286
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11476,6 +11507,10 @@ MonoBehaviour:
   keywordObjetive: menor
   IsCreatedByUsers: 0
   Category: 1
+  cementeryCats: {fileID: 0}
+  cementeryDogs: {fileID: 0}
+  playerBoard: {fileID: 0}
+  enemyBoard: {fileID: 0}
 --- !u!222 &3349560728710579446
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11503,6 +11538,10 @@ MonoBehaviour:
   keywordObjetive: random
   IsCreatedByUsers: 0
   Category: 0
+  cementeryCats: {fileID: 0}
+  cementeryDogs: {fileID: 0}
+  playerBoard: {fileID: 0}
+  enemyBoard: {fileID: 0}
 --- !u!1 &3436030048928304249
 GameObject:
   m_ObjectHideFlags: 0
@@ -11649,7 +11688,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Catmmer
   team: Cats
-  powerToTake: 0
+  powerToTake: 30
   IsCreatedByUsers: 0
 --- !u!224 &3856271472867467952
 RectTransform:
@@ -11803,7 +11842,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Kamikaze
   team: Dogs
-  powerToTake: 0
+  powerToTake: 30
   IsCreatedByUsers: 0
 --- !u!114 &4190681349247491141
 MonoBehaviour:
@@ -11824,6 +11863,10 @@ MonoBehaviour:
   keywordObjetive: promedio
   IsCreatedByUsers: 0
   Category: 0
+  cementeryCats: {fileID: 0}
+  cementeryDogs: {fileID: 0}
+  playerBoard: {fileID: 0}
+  enemyBoard: {fileID: 0}
 --- !u!1 &4211806038526005706
 GameObject:
   m_ObjectHideFlags: 0
@@ -11864,6 +11907,10 @@ MonoBehaviour:
   keywordObjetive: mayor
   IsCreatedByUsers: 0
   Category: 0
+  cementeryCats: {fileID: 0}
+  cementeryDogs: {fileID: 0}
+  playerBoard: {fileID: 0}
+  enemyBoard: {fileID: 0}
 --- !u!1 &4328245864670185997
 GameObject:
   m_ObjectHideFlags: 0
@@ -12225,7 +12272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Catstruction
   team: Cats
-  powerToTake: 0
+  powerToTake: 40
   IsCreatedByUsers: 0
 --- !u!114 &4905591939449921419
 MonoBehaviour:
@@ -12858,6 +12905,10 @@ MonoBehaviour:
   keywordObjetive: menos
   IsCreatedByUsers: 0
   Category: 1
+  cementeryCats: {fileID: 0}
+  cementeryDogs: {fileID: 0}
+  playerBoard: {fileID: 0}
+  enemyBoard: {fileID: 0}
 --- !u!224 &5916787738301162473
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12934,6 +12985,10 @@ MonoBehaviour:
   keywordObjetive: carta
   IsCreatedByUsers: 0
   Category: 0
+  cementeryCats: {fileID: 0}
+  cementeryDogs: {fileID: 0}
+  playerBoard: {fileID: 0}
+  enemyBoard: {fileID: 0}
 --- !u!1 &6149166584784319001
 GameObject:
   m_ObjectHideFlags: 0
@@ -13126,6 +13181,10 @@ MonoBehaviour:
   keywordObjetive: random
   IsCreatedByUsers: 0
   Category: 0
+  cementeryCats: {fileID: 0}
+  cementeryDogs: {fileID: 0}
+  playerBoard: {fileID: 0}
+  enemyBoard: {fileID: 0}
 --- !u!114 &6221308318671875100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13145,6 +13204,10 @@ MonoBehaviour:
   keywordObjetive: buff
   IsCreatedByUsers: 0
   Category: 2
+  cementeryCats: {fileID: 0}
+  cementeryDogs: {fileID: 0}
+  playerBoard: {fileID: 0}
+  enemyBoard: {fileID: 0}
 --- !u!224 &6277351156144889845
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13327,6 +13390,10 @@ MonoBehaviour:
   keywordObjetive: promedio
   IsCreatedByUsers: 0
   Category: 0
+  cementeryCats: {fileID: 0}
+  cementeryDogs: {fileID: 0}
+  playerBoard: {fileID: 0}
+  enemyBoard: {fileID: 0}
 --- !u!114 &6537778021182857514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13346,6 +13413,10 @@ MonoBehaviour:
   keywordObjetive: random
   IsCreatedByUsers: 0
   Category: 0
+  cementeryCats: {fileID: 0}
+  cementeryDogs: {fileID: 0}
+  playerBoard: {fileID: 0}
+  enemyBoard: {fileID: 0}
 --- !u!224 &6653448285473492860
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13431,6 +13502,10 @@ MonoBehaviour:
   keywordObjetive: buff
   IsCreatedByUsers: 0
   Category: 0
+  cementeryCats: {fileID: 0}
+  cementeryDogs: {fileID: 0}
+  playerBoard: {fileID: 0}
+  enemyBoard: {fileID: 0}
 --- !u!114 &6761045233437537955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13554,6 +13629,10 @@ MonoBehaviour:
   keywordObjetive: field
   IsCreatedByUsers: 0
   Category: 2
+  cementeryCats: {fileID: 0}
+  cementeryDogs: {fileID: 0}
+  playerBoard: {fileID: 0}
+  enemyBoard: {fileID: 0}
 --- !u!114 &6950397329922085404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13676,6 +13755,10 @@ MonoBehaviour:
   keywordObjetive: mismo
   IsCreatedByUsers: 0
   Category: 2
+  cementeryCats: {fileID: 0}
+  cementeryDogs: {fileID: 0}
+  playerBoard: {fileID: 0}
+  enemyBoard: {fileID: 0}
 --- !u!114 &7089132856497253470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13887,7 +13970,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Dogstruction
   team: Dogs
-  powerToTake: 0
+  powerToTake: 40
   IsCreatedByUsers: 0
 --- !u!114 &7213142246164165421
 MonoBehaviour:
@@ -13973,6 +14056,10 @@ MonoBehaviour:
   keywordObjetive: random
   IsCreatedByUsers: 0
   Category: 1
+  cementeryCats: {fileID: 0}
+  cementeryDogs: {fileID: 0}
+  playerBoard: {fileID: 0}
+  enemyBoard: {fileID: 0}
 --- !u!114 &7244378140087086997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14395,6 +14482,10 @@ MonoBehaviour:
   keywordObjetive: mayor
   IsCreatedByUsers: 0
   Category: 1
+  cementeryCats: {fileID: 0}
+  cementeryDogs: {fileID: 0}
+  playerBoard: {fileID: 0}
+  enemyBoard: {fileID: 0}
 --- !u!114 &7625712033856777422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14898,6 +14989,10 @@ MonoBehaviour:
   keywordObjetive: carta
   IsCreatedByUsers: 0
   Category: 1
+  cementeryCats: {fileID: 0}
+  cementeryDogs: {fileID: 0}
+  playerBoard: {fileID: 0}
+  enemyBoard: {fileID: 0}
 --- !u!114 &7880735301198123155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15020,6 +15115,10 @@ MonoBehaviour:
   keywordObjetive: menos
   IsCreatedByUsers: 0
   Category: 2
+  cementeryCats: {fileID: 0}
+  cementeryDogs: {fileID: 0}
+  playerBoard: {fileID: 0}
+  enemyBoard: {fileID: 0}
 --- !u!114 &8005665272297812359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15261,7 +15360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Thor
   team: Dogs
-  powerToTake: 0
+  powerToTake: 20
   IsCreatedByUsers: 0
 --- !u!114 &8031760144339559538
 MonoBehaviour:
@@ -17416,6 +17515,10 @@ MonoBehaviour:
   keywordObjetive: mismo
   IsCreatedByUsers: 0
   Category: 2
+  cementeryCats: {fileID: 0}
+  cementeryDogs: {fileID: 0}
+  playerBoard: {fileID: 0}
+  enemyBoard: {fileID: 0}
 --- !u!114 &9073251960713968592
 MonoBehaviour:
   m_ObjectHideFlags: 0

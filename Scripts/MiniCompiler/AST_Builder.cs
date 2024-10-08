@@ -45,10 +45,18 @@ public class AST_Builder : MonoBehaviour
             {
                 expressions.Push(new Boolean(token == "true"));
             }
-            else if (token[0] == '\"')
+            else if (token == "\"")
             {
-                //remove the quotes
-                string str = token.Substring(1, token.Length - 2);
+                string str = "";
+                while (tokens[index] != "\"")
+                {
+                    Debug.Log("token: " + tokens[index] + " index: " + index);
+                    str += tokens[index] + " ";
+                    index++;
+                }
+                index++;
+                //remove the last whitespace added by us
+                str = str.Remove(str.Length - 1);
                 expressions.Push(new StringLiteral(str));
             }
             else if (token == ".")

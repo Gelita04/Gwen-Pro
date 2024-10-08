@@ -84,8 +84,6 @@ public class GameLogic : MonoBehaviour
         EffectsScript Effects = effects.GetComponent<EffectsScript>();
         Unit_Card effectsUnitCards = effects.GetComponent<Unit_Card>();
         EffectsUsers effectsUsers = effects.GetComponent<EffectsUsers>();
-
-        // Wildcard effect = effects.GetComponent<Wildcard>();
         if (card != null)
         {
             if (card.CompareTag("Field"))
@@ -94,16 +92,13 @@ public class GameLogic : MonoBehaviour
                 if (cardfield.IsCreatedByUsers)
                 {
                     Debug.Log("Carta De Usuario " + cardfield);
-                    //llamar al efecto
-                    //si no pincha el gameCOntext, se puede instanciar aqui un GameContext y ponerle los valores actuales de cada propiedad y pasarlo como parametro al metodo de abajo de este comentario
                     effectsUsers.EffectsByUser(card);
                 }
                 else
                 {
-                    // Debug.Log("Carta Field " + card);
-                    // Debug.Log("Efecto de cartas Field va a ser activado");
-                    // // Effects.EffectsField(board, card, x);
-                    // Debug.Log("Efecto de cartas Field ya fue activado");
+                    Debug.Log("Carta Field " + card);
+                    Effects.EffectsField(card, x);
+                    Debug.Log("Efecto de cartas Field ya fue activado");
                 }
             }
             if (card.CompareTag("Buff"))
@@ -112,15 +107,13 @@ public class GameLogic : MonoBehaviour
                 if (cardbuff.IsCreatedByUsers)
                 {
                     Debug.Log("Carta De Usuario " + cardbuff);
-                    //llamar al efecto
                     effectsUsers.EffectsByUser(card);
                 }
                 else
                 {
-                    // Debug.Log("Carta Buff " + card);
-                    // Debug.Log("Efecto de cartas Buff va a ser activado");
-                    // // Effects.EffectsBuff(board, card, x);
-                    // Debug.Log("Efecto de cartas Buff ya fue activado");
+                    Debug.Log("Carta Buff " + card);
+                    Effects.EffectsBuff(card, x);
+                    Debug.Log("Efecto de cartas Buff ya fue activado");
                 }
             }
             if (card.CompareTag("Unit-Cards"))
@@ -129,55 +122,28 @@ public class GameLogic : MonoBehaviour
                 if (unitcard.IsCreatedByUsers)
                 {
                     Debug.Log("Carta De Usuario " + card);
-                    //llamar al efecto
                     effectsUsers.EffectsByUser(card);
                 }
                 else
                 {
-                    // Debug.Log("Carta de Unidad " + card);
-                    // Debug.Log("Efecto de cartas de unidad va ser activado");
-                    // // effectsUnitCards.EffectsUnitCardsAtivate(card);
-                    // Debug.Log("Efecto de cartas de unidad ya fue activado");
+                    Debug.Log("Carta de Unidad " + card);
+                    effectsUnitCards.EffectsUnitCardsAtivate(card);
+
                 }
             }
-            if (
-                card.CompareTag("Counterfield")
-                && card.GetComponent<Counterfield_Card>().team == "Cats"
-            )
+            if (card.CompareTag("Counterfield"))
             {
                 Counterfield_Card countercard = card.GetComponent<Counterfield_Card>();
                 if (countercard.IsCreatedByUsers)
                 {
                     Debug.Log("Carta De Usuario " + card);
-                    //llamar al efecto
                     effectsUsers.EffectsByUser(card);
                 }
                 else
                 {
-                    //     Debug.Log("Carta CounterField de los gatos " + card);
-                    //     Debug.Log("Efecto de cartas Counterfield de los gatos  va a ser activado");
-                    //     // Effects.EffectsCounterFieldCats(card, board);
-                    //     Debug.Log("Efecto de cartas CounterField de los gatos ya fue activado");
-                }
-            }
-            if (
-                card.CompareTag("Counterfield")
-                && card.GetComponent<Counterfield_Card>().team == "Dogs"
-            )
-            {
-                Counterfield_Card countercard = card.GetComponent<Counterfield_Card>();
-                if (countercard.IsCreatedByUsers)
-                {
-                    Debug.Log("Carta De Usuario " + card);
-                    //llamar al efecto
-                    effectsUsers.EffectsByUser(card);
-                }
-                else
-                {
-                    // Debug.Log("Carta CounterField de los perros " + card);
-                    // Debug.Log("Efecto de cartas CounterField de los perros  va a ser activado");
-                    // // Effects.EffectsCounterFieldDogs(card, board);
-                    // Debug.Log("Efecto de cartas CounterField ya fue activado");
+                    Debug.Log("Carta CounterField de los gatos " + card);
+                    Effects.EffectsCounterField(card);
+                    Debug.Log("Efecto de cartas CounterField de los gatos ya fue activado");
                 }
             }
         }
@@ -304,7 +270,7 @@ public class GameLogic : MonoBehaviour
     //metodo que cambia de ronda, elimina las cartas del campo y las manda para el cementerio
     public void ChangeRound()
     {
-        Debug.Log("entra a cambiar la ronda");
+
         GameObject[,] playerBoard = this.playerBoard.GetComponent<MatrixBoard>().Board;
         GameObject[,] enemyBoard = this.enemyBoard.GetComponent<MatrixBoard>().Board;
         for (int i = 0; i < 3; i++)
@@ -314,12 +280,10 @@ public class GameLogic : MonoBehaviour
 
                 if (playerBoard[i, j] != null)
                 {
-                    Debug.Log("Va a mandar las cartas para el cementerio de los gatos");
                     cementeryCats.GetComponent<CementeryCats>().RemoveCardCementery(playerBoard[i, j]);
                 }
                 if (enemyBoard[i, j] != null)
                 {
-                    Debug.Log("va a mandar las cartas para el cementerio de los perros ");
                     cementeryDogs.GetComponent<Cementery>().RemoveCardCementery(enemyBoard[i, j]);
                 }
 

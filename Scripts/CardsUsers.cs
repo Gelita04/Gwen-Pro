@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Net.Security;
 using System.Runtime.CompilerServices;
 using GameLibrary.Objects;
@@ -40,7 +41,7 @@ public class CardsUsers : MonoBehaviour
         }
         List<string> listTokens = TokenizedTexts.Tokenizar(CodeCards.text);
         List<List<string>> tokens = TokenizedTexts.TokenizarCards(listTokens);
-        //effectWithPredicate = TokenizedTexts.GetEffectsWithPredicate(CodeCards.text);
+        effectWithPredicate = TokenizedTexts.GetEffectsWithPredicate(CodeCards.text);
         foreach (var tokenList in tokens)
         {
             Debug.Log(string.Join(", ", tokenList));
@@ -56,17 +57,13 @@ public class CardsUsers : MonoBehaviour
         //Debug.Log("la cantidad de cartas que van a ser creadas es " + tokens.Count);
         foreach (var cardTokens in tokens)
         {
-            Debug.Log("Creating card with tokens: " + string.Join(", ", cardTokens));
+            //Debug.Log("Creating card with tokens: " + string.Join(", ", cardTokens));
             GameObject NewCard = new GameObject("UserCard");
             Image newImageCard = NewCard.AddComponent<Image>();
             newImageCard.color = Color.black;
             NewCard.AddComponent<Button>();
-
-            // Fill card
             CreateCardsByUsers(cardTokens, NewCard);
-
-            // Log the created card details
-            Debug.Log("Card created with components: " + NewCard.GetComponents<Component>().Length);
+            //Debug.Log("Card created with components: " + NewCard.GetComponents<Component>().Length);
         }
     }
 
@@ -89,7 +86,7 @@ public class CardsUsers : MonoBehaviour
         {
             if (tokens[i] == "Name" && !onActivation)
             {
-                Debug.Log("entro al if de Name");
+                //Debug.Log("entro al if de Name");
                 i++;
                 for (; i < tokens.Count; i++)
                 {
@@ -104,21 +101,21 @@ public class CardsUsers : MonoBehaviour
             }
             if (tokens[i] == "Power" && !onActivation)
             {
-                Debug.Log("entro al if de Power");
+                // Debug.Log("entro al if de Power");
                 i++;
                 power = tokens[i];
                 Debug.Log("el poder seleccionado es " + power);
             }
             if (tokens[i] == "Range" && !onActivation)
             {
-                Debug.Log("entro al if de Range");
+                //Debug.Log("entro al if de Range");
                 i++;
                 range = tokens[i];
                 Debug.Log("el rango seleccionado es " + range);
             }
             if (tokens[i] == "Type" && !onActivation)
             {
-                Debug.Log("entro al if de Type");
+                //Debug.Log("entro al if de Type");
                 i++;
                 type = tokens[i];
                 Debug.Log("el tipo seleccionado es " + type);
@@ -140,7 +137,6 @@ public class CardsUsers : MonoBehaviour
         }
         list.RellenarListaDeCartas(nameCard, effectNames, targets, Params, predicates);
 
-        Debug.Log("Valores finales - Name: " + nameCard + ", Type: " + type + ", Range: " + range + ", Power: " + power + ", Faction: " + faction);
         //utilizando las propiedades
         if (faction == "Cats")
         {
@@ -242,6 +238,8 @@ public class CardsUsers : MonoBehaviour
             // Debug.Log("el nombre de la carta lider es " + NewLeaderCard.Name);
             NewLeaderCard.IsCreatedByUsers = true;
         }
+        Debug.Log("Valores finales de la carta  - Name: " + nameCard + ", Type: " + type + ", Range: " + range + ", Power: " + power + ", Faction: " + faction);
+
     }
     private object ParseParam(string param)
     {
@@ -269,7 +267,7 @@ public class CardsUsers : MonoBehaviour
             // Debug.Log("se esta analizando el token: " + tokens[i]);
             if (tokens[i] == "PostAction")
             {
-                Debug.Log("////////////////////////////entro a postaction/////////////////////////////");
+                //Debug.Log("////////////////////////////entro a postaction/////////////////////////////");
                 onPostAction = true;
                 PostAction(tokens, i, nameEffects, targets, Params, predicates);
             }
@@ -312,7 +310,7 @@ public class CardsUsers : MonoBehaviour
                         // Debug.Log("va a empezar a guardar los parametros con " + tokens[i]);
                         object param = ParseParam(tokens[i + 1]);
                         listParams.Add(new Tuple<string, object>(tokens[i], param));
-                        Debug.Log(" MAGELA\\\\\\\\los parametros son:" + tokens[i] + " " + param);
+                        // Debug.Log(" MAGELA\\\\\\\\los parametros son:" + tokens[i] + " " + param);
                         i++;
                     }
 
@@ -346,11 +344,11 @@ public class CardsUsers : MonoBehaviour
             {
                 i++;
                 source = tokens[i];
-                Debug.Log("El source es " + source);
+                //Debug.Log("El source es " + source);
                 if (tokens[i + 1] == "Single")
                 {
                     single = tokens[i + 2];
-                    Debug.Log("El single es " + single);
+                    // Debug.Log("El single es " + single);
                 }
                 if (source == "hand")
                 {
@@ -358,7 +356,6 @@ public class CardsUsers : MonoBehaviour
                     if (single == "false")
                     {
                         singleFather = single;
-                        //Debug.Log("va a rellenar la lista de targets con las cartas de la mano del jugador");
                         targets.Add(nameEffect, "hand");
                     }
                     else
@@ -418,22 +415,18 @@ public class CardsUsers : MonoBehaviour
                     {
                         for (int n = 0; n < 5; n++)
                         {
-                            //hacer que pinche pa loas matrices separadas
-
-
                             if (matrixPlayerBoard.Board[m, n] != null)
                             {
                                 boardplayer.Add(matrixPlayerBoard.Board[i, n]);
-                                Debug.Log(string.Join(", ", boardplayer));
                                 if (single == "false")
                                 {
                                     singleFather = single;
-                                    //targets.Add(nameEffect, boardplayer);
+                                    targets.Add(nameEffect, "board");
                                 }
                                 else
                                 {
                                     singleFather = single;
-                                    // targets.Add(nameEffect, "board single");
+                                    targets.Add(nameEffect, "board single");
                                 }
                             }
                         }
@@ -452,7 +445,7 @@ public class CardsUsers : MonoBehaviour
                                 if (single == "false")
                                 {
                                     singleFather = single;
-                                    //targets.Add(nameEffect, boardenemy);
+                                    targets.Add(nameEffect, "otherBoard");
                                 }
                                 else
                                 {
@@ -477,7 +470,20 @@ public class CardsUsers : MonoBehaviour
                         targets.Add(nameEffect, "graveryard single");
                     }
                 }
-                //poner para el segundo cementerio otherGraveryard
+                if (source == "otherGraveryard")
+                {
+                    sourceFather = source;
+                    if (single == "false")
+                    {
+                        singleFather = single;
+                        targets.Add(nameEffect, "otherGraveryard");
+                    }
+                    else
+                    {
+                        singleFather = single;
+                        targets.Add(nameEffect, "otherGraveryard single");
+                    }
+                }
                 if (source == "parent")
                 {
                     source = sourceFather;
@@ -489,24 +495,37 @@ public class CardsUsers : MonoBehaviour
             if (tokens[i] == "Predicate")
             {
                 Debug.Log("ENTRO A PREDICATEEEEEEEEEEEEE");
-                // if (effectWithPredicate.ContainsKey(nameEffect))
-                // {
-                //     int index=0;
-                //     Expression predicate = AST_Builder.ParseExpression(TokenizedTexts.TokenizarPredicate(effectWithPredicate[nameEffect]),ref index);
-                //     if (predicate as Find != null)
-                //     {
-                //         Find find = (Find)predicate;
-                //         predicates.Add(nameEffect, find);
+                //         if (effectWithPredicate.ContainsKey(nameEffect))
+                //         {
+                //             int index = 0;
+                //             List<string> predicateTokens = TokenizedTexts.TokenizarPredicate(effectWithPredicate[nameEffect]).ToList();
+                //             //example is : (unit) => unit.Attack > 5
+                //             //we have to parse only what is after the => token
+                //             for (int r = 0; r < predicateTokens.Count; r++)
+                //             {
+                //                 //remove every token before the => token including the => token
+                //                 if (predicateTokens[r] == "=>")
+                //                 {
+                //                     predicateTokens.RemoveRange(0, r + 1);
+                //                     break;
+                //                 }
+                //             }
+                //             Expression predicate = AST_Builder.ParseExpression(predicateTokens.ToArray(), ref index);
+                //             if (predicate as Find != null)
+                //             {
+                //                 Find find = (Find)predicate;
+                //                 predicates.Add(nameEffect, find);
+                //             }
+                //         }
+                //         else
+                //         {
+                //             Debug.Log("Predicate: null");
+                //             throw new Exception("Predicate: null");
+                //         }
                 //     }
-                // }
-                // else
-                // {
-                //     Debug.Log("Predicate: null");
-                //     throw new Exception("Predicate: null");
-                // }
             }
-        }
 
+        }
     }
     public void PostAction(List<string> tokens, int x, List<string> nameEffects, Dictionary<string, string> targets, Dictionary<string, List<Tuple<string, object>>> Params, Dictionary<string, Find> predicates)
     {
@@ -518,7 +537,7 @@ public class CardsUsers : MonoBehaviour
             {
                 nameEffectPostAction = tokens[i + 1];
                 nameEffects.Add(nameEffectPostAction);
-                Debug.Log("el nombre del effecto en el postaction es " + nameEffectPostAction);
+                //Debug.Log("el nombre del effecto en el postaction es " + nameEffectPostAction);
                 if (i + 1 >= tokens.Count)
                 {
                     break;
@@ -529,8 +548,6 @@ public class CardsUsers : MonoBehaviour
             List<Tuple<string, object>> listParams = new List<Tuple<string, object>>();
             for (; i < tokens.Count; i++)
             {
-                //Debug.Log("i=" + i);
-
                 if (tokens[i] == "Name" || tokens[i] == "Selector")
                 {
                     i--;
@@ -544,19 +561,17 @@ public class CardsUsers : MonoBehaviour
                     }
                     object param = ParseParam(tokens[i + 1]);
                     listParams.Add(new Tuple<string, object>(tokens[i], param));
-                    Debug.Log(" MAGELA\\\\\\\\los parametros  en postactivation son:" + tokens[i] + " " + param);
+                    // Debug.Log(" MAGELA\\\\\\\\los parametros  en postactivation son:" + tokens[i] + " " + param);
                     i++;
                 }
 
             }
             Params.Add(nameEffectPostAction, listParams);
-
-
-
             if (tokens[i] == "Selector")
             {
                 Selector(tokens, nameEffectPostAction, targets, predicates);
             }
+
         }
     }
 }

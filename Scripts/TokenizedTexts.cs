@@ -279,13 +279,241 @@ public class TokenizedTexts : MonoBehaviour
     public Dictionary<string, string> GetEffectsWithPredicate(string text)
     {
         Dictionary<string, string> effectsDictionary = new Dictionary<string, string>();
-        throw new NotImplementedException();
+        //stack to store a effect and after finding its predicate, we can add it to the dictionary and pop it from the stack
+        Stack<string> effectsStack = new Stack<string>();
+        //no stack for predicate needed cause when we find a predicate we can just add it to the dictionary with the last effect in the stack
+        //and then pop the effect from the stack
+        //if a effect is found and the stack is not empty,then the effect in the stack has not predicate,that means is not valid,so we pop it and push the current effect
 
+        //iterating over the text
+        for (int i = 0; i < text.Length; i++)
+        {
+            //if we find a effect or PostAction
+            if (
+                text[i] == 'E'
+                    && text[i + 1] == 'f'
+                    && text[i + 2] == 'f'
+                    && text[i + 3] == 'e'
+                    && text[i + 4] == 'c'
+                    && text[i + 5] == 't'
+                || text[i] == 'P'
+                    && text[i + 1] == 'o'
+                    && text[i + 2] == 's'
+                    && text[i + 3] == 't'
+                    && text[i + 4] == 'A'
+                    && text[i + 5] == 'c'
+                    && text[i + 6] == 't'
+                    && text[i + 7] == 'i'
+                    && text[i + 8] == 'o'
+                    && text[i + 9] == 'n'
+            )
+            {
+                //if we find a effect
+                if (text[i] == 'E')
+                {
+                    //getting the name using indexOf cause the name is example Name: "EffectName" or Name:"EffectName" or Name:      "EffectName"
+                    int indexOfName = text.IndexOf("Name:", i);
+                    //the start of the name is on the first quote end of the name is the second quote "
+                    int startOfName = text.IndexOf('"', indexOfName) + 1;
+                    int endOfName = text.IndexOf('"', startOfName);
+                    //checking if the stack is not empty
+                    if (effectsStack.Count > 0)
+                    {
+                        //if the stack is not empty,then the effect in the stack has not predicate,that means is not valid,so we pop it and push the current effect
+                        effectsStack.Pop();
+                    }
+                    //pushing the effect to the stack
+                    effectsStack.Push(text.Substring(startOfName, endOfName - startOfName));
+                }
+                else if (text[i] == 'P')
+                {
+                    //getting the name using indexOf cause the name is example Name: "EffectName" or Name:"EffectName" or Name:      "EffectName"
+                    int indexOfName = text.IndexOf("Name:", i);
+                    //the start of the name is on the first quote end of the name is the second quote "
+                    int startOfName = text.IndexOf('"', indexOfName) + 1;
+                    int endOfName = text.IndexOf('"', startOfName);
+                    //checking if the stack is not empty
+                    if (effectsStack.Count > 0)
+                    {
+                        //if the stack is not empty,then the effect in the stack has not predicate,that means is not valid,so we pop it and push the current effect
+                        effectsStack.Pop();
+                    }
+                    //pushing the effect to the stack
+                    effectsStack.Push(text.Substring(startOfName, endOfName - startOfName));
+                }
+            }
+            //if we find a predicate
+            else if (
+                text[i] == 'P'
+                && text[i + 1] == 'r'
+                && text[i + 2] == 'e'
+                && text[i + 3] == 'd'
+                && text[i + 4] == 'i'
+                && text[i + 5] == 'c'
+                && text[i + 6] == 'a'
+                && text[i + 7] == 't'
+                && text[i + 8] == 'e'
+            )
+            {
+                //an example is Predicate: (variable) => lotofcode }
+                //important to note that ends in the }  symbol
+                //getting all from ( symbol that is the start and should be included ,to the end that it is marked by the } symbol or the coma symbol and should be not included none of both
+                int startOfPredicate = text.IndexOf('(', i);
+                //checking if it ends in coma or } symbol by checking wich one is closer
+                int endOfPredicate =
+                    text.IndexOf(',', startOfPredicate) < text.IndexOf('}', startOfPredicate)
+                        ? text.IndexOf(',', startOfPredicate)
+                        : text.IndexOf('}', startOfPredicate);
+
+                //getting the predicate without including the } symbol
+                string predicate = text.Substring(
+                    startOfPredicate,
+                    endOfPredicate - startOfPredicate
+                );
+                //checking if the stack is not empty
+                if (effectsStack.Count > 0)
+                {
+                    //getting the effect from the stack
+                    string effect = effectsStack.Pop();
+                    //adding the effect with the predicate to the dictionary
+                    effectsDictionary.Add(effect, predicate);
+                }
+            }
+        }
+        return effectsDictionary;
     }
-    public string[] TokenizarPredicate(string text)
+
+    public string[] TokenizarPredicate(string predicate)
     {
-        throw new NotImplementedException();
+        string[] individualEffects = predicate
+            .Split(new[] { "effect" }, StringSplitOptions.RemoveEmptyEntries)
+            .Select(e => e.Trim())
+            .Where(e => !string.IsNullOrWhiteSpace(e))
+            .ToArray();
+
+        // Define the delimiters
+        char[] delimiters = new char[]
+        {
+            '{',
+            '}',
+            '[',
+            ']',
+            '(',
+            ')',
+            ';',
+            '.',
+            '"',
+            ',',
+            ':',
+            '*',
+            '/',
+            '^',
+            '%',
+            '!',
+            '?',
+            ' ',
+            '\n',
+            '\r',
+            '\"',
+            '+',
+            '-',
+            '<',
+            '>',
+            '=',
+            '@',
+        };
+
+        // Define the multi-character tokens
+        string[] multiCharTokens = new string[]
+        {
+            "++",
+            "--",
+            ">=",
+            "<=",
+            "==",
+            "||",
+            "&&",
+            "@@",
+            "+=",
+            "-=",
+            "*=",
+            "/=",
+            "=>"
+        };
+
+        // ------------------- Debug.Log("Cantidad de efectos: " + individualEffects.Length);
+        //Debug.Log("los efectos que hay son " + string.Join("\\EFFECT\\ ", individualEffects));
+        // Process each effect
+        List<string> tokens = new List<string>();
+
+        foreach (var effect in individualEffects)
+        {
+            int startIndex = 0;
+
+            // Tokenize the effect
+            for (int i = 0; i < effect.Length; i++)
+            {
+                // Check for multi-character tokens
+                bool isMultiCharToken = false;
+                foreach (var token in multiCharTokens)
+                {
+                    if (
+                        i + token.Length <= effect.Length
+                        && effect.Substring(i, token.Length) == token
+                    )
+                    {
+                        // If there is text before the multi-character token, add it as a token
+                        if (i > startIndex)
+                        {
+                            tokens.Add(effect.Substring(startIndex, i - startIndex).Trim());
+                        }
+
+                        // Add the multi-character token
+                        tokens.Add(token);
+                        i += token.Length - 1;
+                        startIndex = i + 1;
+                        isMultiCharToken = true;
+                        break;
+                    }
+                }
+
+                if (isMultiCharToken)
+                {
+                    continue;
+                }
+
+                // Check if the character is a delimiter or whitespace
+                if (Array.Exists(delimiters, d => d == effect[i]) || char.IsWhiteSpace(effect[i]))
+                {
+                    // If there is text before the delimiter or whitespace, add it as a token
+                    if (i > startIndex)
+                    {
+                        tokens.Add(effect.Substring(startIndex, i - startIndex).Trim());
+                    }
+
+                    // Add the delimiter as a token if it is not whitespace
+                    if (!char.IsWhiteSpace(effect[i]))
+                    {
+                        tokens.Add(effect[i].ToString());
+                    }
+
+                    // Update the start index
+                    startIndex = i + 1;
+                }
+            }
+
+            // Add the last token if there is remaining text
+            if (startIndex < effect.Length)
+            {
+                tokens.Add(effect.Substring(startIndex).Trim());
+            }
+        }
+
+        return tokens.ToArray();
     }
 
 }
+
+
+
 

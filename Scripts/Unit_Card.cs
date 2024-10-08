@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using GameLibrary.Objects;
 using UnityEngine;
 
@@ -14,39 +15,50 @@ public class Unit_Card : MonoBehaviour
     public bool IsCreatedByUsers = false;
 
     public UnitMember Category;
-    private GameObject cementery;
+    public GameObject cementeryCats;
+    public GameObject cementeryDogs;
     private GameObject rowToEliminate;
     private GameObject Deck;
     private GameObject matrixBoard;
     private EffectsScript effectRandom;
-    private GameObject cardTarget;
-    public GameObject[,] board;
-
+    public MatrixBoard playerBoard;
+    public MatrixBoard enemyBoard;
     // efecto que quita una cantidad random de ataque a una carta random del campo
-    public void RandomCards()
+    public void RandomCards(GameObject card)
     {
         System.Random randomvalor = new System.Random();
         long removeAttack = randomvalor.Next(20, 61);
-        long attackCardTarget = cardTarget.GetComponent<Unit_Card>().Attack;
+        //getting team of card
 
-        for (int i = 0; i < board.GetLength(0); i++)
+        for (int i = 0; i < 3; i++)
         {
-            for (int j = 0; j < board.GetLength(1); j++)
+            for (int j = 0; j < 5; j++)
             {
-                if (board[i, j].CompareTag("Unit-Cards"))
+                if (card.GetComponent<Unit_Card>().team == "Dogs")
                 {
-                    cardTarget = board[i, j];
-                    if (cardTarget != null)
+
+                    if (playerBoard.Board[i, j] != null && playerBoard.Board[i, j].CompareTag("Unit-Cards"))
                     {
-                        attackCardTarget -= removeAttack;
-                    }
-                    else
-                    {
-                        Debug.Log("no hay cartas en el campo del enemigo");
+                        Debug.Log("La carta de Cats target del efecto RandomCards es " + playerBoard.Board[i, j]);
+                        playerBoard.Board[i, j].GetComponent<Unit_Card>().Attack =
+                            playerBoard.Board[i, j].GetComponent<Unit_Card>().Attack - removeAttack;
+                        break;
                     }
                 }
+                else if (card.GetComponent<Unit_Card>().team == "Cats")
+                {
+                    if (enemyBoard.Board[i, j] != null && enemyBoard.Board[i, j].CompareTag("Unit-Cards"))
+                    {
+                        Debug.Log("La carta de Dogs target  del efecto RandomCards es " + enemyBoard.Board[i, j]);
+                        enemyBoard.Board[i, j].GetComponent<Unit_Card>().Attack =
+                            enemyBoard.Board[i, j].GetComponent<Unit_Card>().Attack - removeAttack;
+                        break;
+                    }
+                }
+
             }
         }
+
     }
 
     // efecto que pone una carta aumento en la fila, la carta aumento sale del deck.
@@ -56,15 +68,17 @@ public class Unit_Card : MonoBehaviour
         GameObject buffCats = deckCats.Find(obj => obj.CompareTag("Buff")); //devuelve el primer elemento que encuentra que tenga la etiqueta Buff
         if (buffCats != null)
         {
-            // Debug.Log(buffCats);
-            for (int i = 0; i < board.GetLength(1); i++)
+            for (int j = 0; j < 3; j++)
             {
-                if (board[3, i] == null)
+                for (int i = 1; i < 5; i++)
                 {
-                    // Debug.Log(board[3, i]);
-                    board[3, i] = buffCats;
-                    // Debug.Log(board[3, i]);
-                    break;
+                    if (playerBoard.Board[j, i] == null)
+                    {
+                        playerBoard.Board[j, i] = buffCats;
+                        //changing parent from deck to board of the card
+                        buffCats.transform.SetParent(playerBoard.transform);
+                        break;
+                    }
                 }
             }
         }
@@ -81,15 +95,17 @@ public class Unit_Card : MonoBehaviour
 
         if (buffDogs != null)
         {
-            // Debug.Log(buffDogs);
-            for (int i = 0; i < board.GetLength(1); i++)
+            for (int j = 0; j < 3; j++)
             {
-                if (board[0, 1] == null)
+                for (int i = 1; i < 5; i++)
                 {
-                    //Debug.Log(board[0, 1]);
-                    board[0, 1] = buffDogs;
-                    //Debug.Log(board[0, 1]);
-                    break;
+                    if (enemyBoard.Board[j, i] == null)
+                    {
+                        enemyBoard.Board[j, i] = buffDogs;
+                        //changing parent from deck to board of the card
+                        buffDogs.transform.SetParent(enemyBoard.transform);
+                        break;
+                    }
                 }
             }
         }
@@ -103,49 +119,52 @@ public class Unit_Card : MonoBehaviour
     public void PutFieldCats()
     {
         List<GameObject> deckCats = Deck.GetComponent<Deck_Cats>().Deck;
-        GameObject fieldCats = deckCats.Find(obj => obj.CompareTag("Field"));
-
+        GameObject fieldCats = deckCats.Find(obj => obj.CompareTag("Field")); //devuelve el primer elemento que encuentra que tenga la etiqueta Buff
         if (fieldCats != null)
         {
-            // Debug.Log(fieldCats);
-            for (int i = 0; i < board.GetLength(1); i++)
+            for (int j = 0; j < 3; j++)
             {
-                if (board[0, i] == null)
+                for (int i = 1; i < 5; i++)
                 {
-                    //Debug.Log(board[0, i]);
-                    board[0, i] = fieldCats;
-                    //Debug.Log(board[0, i]);
-                    break;
+                    if (playerBoard.Board[j, i] == null)
+                    {
+                        playerBoard.Board[j, i] = fieldCats;
+                        //changing parent from deck to board of the card
+                        fieldCats.transform.SetParent(playerBoard.transform);
+                        break;
+                    }
                 }
             }
         }
         else
         {
-            Debug.Log(" no quedan cartas Fields en el deck");
+            Debug.Log("no quedan cartas Buff en el deck");
         }
     }
 
     public void PutFieldDogs()
     {
         List<GameObject> deckDogs = Deck.GetComponent<Deck_Cats>().Deck;
-        GameObject fieldDogs = deckDogs.Find(obj => obj.CompareTag("Field"));
+        GameObject fieldDogs = deckDogs.Find(obj => obj.CompareTag("Field")); //devuelve el primer elemento que encuentra que tenga la etiqueta Buff
         if (fieldDogs != null)
         {
-            //Debug.Log(fieldDogs);
-            for (int i = 0; i < board.GetLength(1); i++)
+            for (int j = 0; j < 3; j++)
             {
-                if (board[0, i] == null)
+                for (int i = 1; i < 5; i++)
                 {
-                    //Debug.Log(board[0, i]);
-                    board[0, i] = fieldDogs;
-                    //Debug.Log(board[0, i]);
-                    break;
+                    if (enemyBoard.Board[j, i] == null)
+                    {
+                        enemyBoard.Board[j, i] = fieldDogs;
+                        //changing parent from deck to board of the card
+                        fieldDogs.transform.SetParent(enemyBoard.transform);
+                        break;
+                    }
                 }
             }
         }
         else
         {
-            Debug.Log(" no quedan cartas Fields en el deck");
+            Debug.Log("no quedan cartas Buff en el deck");
         }
     }
 
@@ -154,54 +173,87 @@ public class Unit_Card : MonoBehaviour
     {
         long temp = 0;
         GameObject cardTarget = new GameObject();
-        for (int i = 0; i < board.GetLength(0); i++)
+        for (int i = 0; i < 3; i++)
         {
-            for (int j = 0; j < board.GetLength(1); j++)
+            for (int j = 0; j < 5; j++)
             {
-                if (board[i, j] != null && board[i, j].GetComponent<Unit_Card>().Attack > temp)
+                if (playerBoard.Board[i, j] != null && playerBoard.Board[i, j].GetComponent<Unit_Card>().Attack > temp)
                 {
-                    // Debug.Log(board[i, j]);
-                    // Debug.Log(cardTarget);
-                    temp = board[i, j].GetComponent<Unit_Card>().Attack;
-                    cardTarget = board[i, j];
-                    //Debug.Log(cardTarget);
+                    temp = playerBoard.Board[i, j].GetComponent<Unit_Card>().Attack;
+                    cardTarget = playerBoard.Board[i, j];
+                }
+                if (enemyBoard.Board[i, j] != null && enemyBoard.Board[i, j].GetComponent<Unit_Card>().Attack > temp)
+                {
+                    temp = enemyBoard.Board[i, j].GetComponent<Unit_Card>().Attack;
+                    cardTarget = enemyBoard.Board[i, j];
                 }
             }
         }
-        cementery.GetComponent<Cementery>().RemoveCardCementery(cardTarget);
+        if (cardTarget != null)
+        {
+            if (cardTarget.GetComponent<Unit_Card>().team == "Dogs")
+            {
+                cementeryDogs.GetComponent<Cementery>().RemoveCardCementery(cardTarget);
+            }
+            else
+            {
+                cementeryCats.GetComponent<CementeryCats>().RemoveCardCementery(cardTarget);
+            }
+        }
+        else
+            Debug.Log("no hay cartas en el campo para buscar el poder maximo para mandar al cementerio");
+
     }
 
     //  efecto que elimina la carta con menos poder del campo (solo del rival)
     public void MinPower()
     {
-        long temp = long.MaxValue;
+        long temp = 0;
         GameObject cardTarget = new GameObject();
-        for (int i = 0; i < board.GetLength(0); i++)
+        for (int i = 0; i < 3; i++)
         {
-            for (int j = 0; j < board.GetLength(1); j++)
+            for (int j = 0; j < 5; j++)
             {
-                if (board[i, j] != null && board[i, j].GetComponent<Unit_Card>().Attack < temp)
+                if (playerBoard.Board[i, j] != null && playerBoard.Board[i, j].GetComponent<Unit_Card>().Attack <= temp)
                 {
-                    // Debug.Log(board[i, j]);
-                    // Debug.Log(cardTarget);
-                    temp = board[i, j].GetComponent<Unit_Card>().Attack;
-                    cardTarget = board[i, j];
-                    //Debug.Log(cardTarget);
+                    temp = playerBoard.Board[i, j].GetComponent<Unit_Card>().Attack;
+                    cardTarget = playerBoard.Board[i, j];
+                }
+                if (enemyBoard.Board[i, j] != null && enemyBoard.Board[i, j].GetComponent<Unit_Card>().Attack <= temp)
+                {
+                    temp = enemyBoard.Board[i, j].GetComponent<Unit_Card>().Attack;
+                    cardTarget = enemyBoard.Board[i, j];
                 }
             }
         }
-        cementery.GetComponent<Cementery>().RemoveCardCementery(cardTarget);
+        if (cardTarget != null)
+        {
+            if (cardTarget.GetComponent<Unit_Card>().team == "Dogs")
+            {
+                cementeryDogs.GetComponent<Cementery>().RemoveCardCementery(cardTarget);
+            }
+            else
+            {
+                cementeryCats.GetComponent<CementeryCats>().RemoveCardCementery(cardTarget);
+            }
+        }
+        else
+            Debug.Log("no hay cartas en el campo para buscar el poder maximo para mandar al cementerio");
     }
 
     // efecto que multiplica su ataque por la cantidad de cartas que hay puestas en el campo
     public void PowerPlusCards(GameObject attackingCard)
     {
         long quantityCards = 0;
-        for (int i = 0; i < board.GetLength(0); i++)
+        for (int i = 0; i < 3; i++)
         {
-            for (int j = 0; j < board.GetLength(1); j++)
+            for (int j = 0; j < 5; j++)
             {
-                if (board[i, j] != null)
+                if (playerBoard.Board[i, j] != null)
+                {
+                    quantityCards++;
+                }
+                if (enemyBoard.Board[i, j] != null)
                 {
                     quantityCards++;
                 }
@@ -216,110 +268,109 @@ public class Unit_Card : MonoBehaviour
     // efecto que limpia la fila con menos cartas unidad (no vacia, propia o del rival)
     public void CleanRow()
     {
-        // Debug.Log("entro al metodo cleanRow");
         int countRow0 = 0;
         int countRow1 = 0;
         int countRow2 = 0;
         int countRow3 = 0;
         int countRow4 = 0;
         int countRow5 = 0;
-        int[] rows = new int[6];
-        for (int i = 0; i < board.GetLength(1); i++)
+        for (int i = 0; i < 3; i++)
         {
-            if (board[0, i] != null && board[0, i].GetComponent<Unit_Card>())
+            for (int j = 0; j < 5; j++)
             {
-                //Debug.Log(board[0, i]);
-                countRow0++;
-                //Debug.Log(countRow0);
-            }
-            if (board[1, i] != null && board[1, i].GetComponent<Unit_Card>())
-            {
-                //Debug.Log(board[1, i]);
-                countRow1++;
-                //Debug.Log(countRow1);
-            }
-            if (board[2, i] != null && board[2, i].GetComponent<Unit_Card>())
-            {
-                //Debug.Log(board[2, i]);
-                countRow2++;
-                // Debug.Log(countRow2);
-            }
-            if (board[3, i] != null && board[3, i].GetComponent<Unit_Card>())
-            {
-                //Debug.Log(board[3, i]);
-                countRow3++;
-                //Debug.Log(countRow3);
-            }
-            if (board[4, i] != null && board[4, i].GetComponent<Unit_Card>())
-            {
-                //Debug.Log(board[4, i]);
-                countRow4++;
-                //Debug.Log(countRow4);
-            }
-            if (board[5, i] != null && board[5, i].GetComponent<Unit_Card>())
-            {
-                //Debug.Log(board[5, i]);
-                countRow5++;
-                // Debug.Log(countRow5);
+                if (playerBoard.Board[i, j] != null)
+                {
+                    if (i == 0)
+                    {
+                        countRow0++;
+                    }
+                    if (i == 1)
+                    {
+                        countRow1++;
+                    }
+                    if (i == 2)
+                    {
+                        countRow2++;
+                    }
+                }
+                if (enemyBoard.Board[i, j] != null)
+                {
+                    if (i == 0)
+                    {
+                        countRow3++;
+                    }
+                    if (i == 1)
+                    {
+                        countRow4++;
+                    }
+                    if (i == 2)
+                    {
+                        countRow5++;
+                    }
+                }
             }
         }
-        rows[0] = countRow0;
-        rows[1] = countRow1;
-        rows[2] = countRow2;
-        rows[3] = countRow3;
-        rows[4] = countRow4;
-        rows[5] = countRow5;
-        int a = Int32.MaxValue;
-        int coordenateRowToEliminate = -1;
-        for (int i = 0; i < rows.Length; i++)
+        //getting the row with less cards
+        int[] rows = { countRow0, countRow1, countRow2, countRow3, countRow4, countRow5 };
+        //getting the index of the row with less cards
+        int index = Array.IndexOf(rows, rows.Min());
+        //removing all the cards in the row with less cards
+        for (int i = 0; i < 5; i++)
         {
-            if (rows[i] < a)
+            //the index of the row target could be max 6, but if the index is from 0 to 2, the row is from the player, if the index is from 3 to 5, the row is from the enemy
+            if (index >= 0 && index <= 2)
             {
-                coordenateRowToEliminate = i;
+                if (playerBoard.Board[index, i] != null)
+                {
+                    cementeryCats.GetComponent<CementeryCats>().RemoveCardCementery(playerBoard.Board[index, i]);
+                }
+            }
+            else
+            {
+                if (enemyBoard.Board[index, i] != null)
+                {
+                    cementeryDogs.GetComponent<Cementery>().RemoveCardCementery(enemyBoard.Board[index, i]);
+                }
             }
         }
-        GameObject[] x = rowToEliminate
-            .GetComponent<EffectsScript>()
-            .Rowselected(board, coordenateRowToEliminate);
-        for (int i = 0; i < x.Length; i++)
-        {
-            if (x[i] != null && x[i].GetComponent<Unit_Card>())
-            {
-                x[i].transform.SetParent(cementery.transform, false);
-            }
-        }
+
     }
 
     // efecto que calcula el promedio de poder de todas las cartas puestas en el campo, luego iguala todas las cartas del campo a ese mismo promedio (propia o del rival)
     public void CardsSamePower()
     {
-        // Debug.Log("entro al metodo CardsSamePower");
         long quantityCards = 0;
         long attackCards = 0;
-        for (int i = 0; i < board.GetLength(0); i++)
+        for (int i = 0; i < 3; i++)
         {
-            for (int j = 0; j < board.GetLength(1); j++)
+            for (int j = 0; j < 5; j++)
             {
-                if (board[i, j] != null)
+                if (playerBoard.Board[i, j] != null)
                 {
                     quantityCards++;
-                    attackCards += board[i, j].GetComponent<Unit_Card>().Attack;
+                    attackCards += playerBoard.Board[i, j].GetComponent<Unit_Card>().Attack;
+                }
+                if (enemyBoard.Board[i, j] != null)
+                {
+                    quantityCards++;
+                    attackCards += enemyBoard.Board[i, j].GetComponent<Unit_Card>().Attack;
                 }
             }
         }
         if (quantityCards > 0)
         {
             long promedy = attackCards / quantityCards;
-            //Debug.Log(promedy);
-            for (int i = 0; i < board.GetLength(0); i++)
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < board.GetLength(1); j++)
+                for (int j = 0; j < 5; j++)
                 {
-                    if (board[i, j] != null && board[i, j].CompareTag("Unit_Card"))
+                    if (playerBoard.Board[i, j] != null && playerBoard.Board[i, j].CompareTag("Unit_Card"))
                     {
-                        //Debug.Log(board[i, j].GetComponent<Unit_Card>().Attack);
-                        board[i, j].GetComponent<Unit_Card>().Attack = promedy;
-                        //Debug.Log(board[i, j].GetComponent<Unit_Card>().Attack);
+                        playerBoard.Board[i, j].GetComponent<Unit_Card>().Attack = promedy;
+                    }
+                    if (enemyBoard.Board[i, j] != null && enemyBoard.Board[i, j].CompareTag("Unit_Card"))
+                    {
+                        enemyBoard.Board[i, j].GetComponent<Unit_Card>().Attack = promedy;
                     }
                 }
             }
@@ -355,7 +406,7 @@ public class Unit_Card : MonoBehaviour
         }
         else if (keywordAction == "Dismimuye" && keywordObjetive == "random") // la accion "Disminuye" viene acompañado de random
         {
-            RandomCards();
+            RandomCards(card);
         }
         else if (keywordAction == "Iguala" && keywordObjetive == "promedio") // la accion "Iguala" viene acompañado de promedio.
         {

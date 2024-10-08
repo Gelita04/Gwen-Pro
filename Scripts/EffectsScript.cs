@@ -11,10 +11,13 @@ using Random = UnityEngine.Random;
 public class EffectsScript : MonoBehaviour
 {
     private GameObject cardTarget;
+    public MatrixBoard playerBoard;
+    public MatrixBoard enemyBoard;
     private long attackCard;
     private long attackcardTarget;
     private long removeAttack;
-    public GameObject cementery;
+    public GameObject cementeryCats;
+    public GameObject cementeryDogs;
 
     //metodo que selecciona una fila dada la coordenada de la misma.
     public GameObject[] Rowselected(GameObject[,] matrixboard, int x)
@@ -29,58 +32,21 @@ public class EffectsScript : MonoBehaviour
         return row;
     }
 
-    //metodo devuelve cuantas cartas hay puesta en una fila.
-    public GameObject[] ArrayCardNoNull(GameObject[] row)
-    {
-        GameObject[] result;
-        int nonNullCount = 0;
-        foreach (GameObject obj in row)
-        {
-            if (obj != null)
-            {
-                nonNullCount++;
-            }
-        }
-        result = new GameObject[nonNullCount];
-        int index = 0;
-        foreach (GameObject obj in row)
-        {
-            if (obj != null)
-            {
-                result[index] = obj;
-                index++;
-            }
-        }
-        return result;
-    }
-
     //metodo que dado la cordenada de la fila de uno de los jugador devuelve la coordenada de la fila del otro jugador.
-    public int IndexRowEnemy(GameObject[,] board, int x)
+    public int IndexRowEnemy(int x)
     {
         int indexRowEnemy = 0;
-        for (int i = 0; i < board.GetLength(0); i++)
+        for (int i = 0; i < 5; i++)
         {
             if (x == 0)
             {
-                indexRowEnemy = 5;
+                indexRowEnemy = 2;
             }
             else if (x == 1)
             {
-                indexRowEnemy = 4;
-            }
-            else if (x == 2)
-            {
-                indexRowEnemy = 3;
-            }
-            else if (x == 3)
-            {
-                indexRowEnemy = 2;
-            }
-            else if (x == 4)
-            {
                 indexRowEnemy = 1;
             }
-            else if (x == 5)
+            else if (x == 2)
             {
                 indexRowEnemy = 0;
             }
@@ -93,30 +59,43 @@ public class EffectsScript : MonoBehaviour
     }
 
     //metodo efecto de las cartas climas que afecta a los dos jugadores.
-    public void EffectsField(GameObject[,] board, GameObject cardField, int x) // metodo efecto cartas clima.
+    public void EffectsField(GameObject card, int x) // metodo efecto cartas clima.
     {
-        int indexRowEnemy = IndexRowEnemy(board, x);
-        removeAttack = cardField.GetComponent<Field_Card>().powerToTake;
-        Debug.Log("carta field puesta en la fila " + x + "y en la fila " + indexRowEnemy);
-        Debug.Log("carta field quitara de poder " + removeAttack);
-        for (int i = 1; i < board.GetLength(1); i++)
+        Debug.Log("entro al efecto de las cartas Field");
+        int indexRowEnemy = IndexRowEnemy(x);
+        removeAttack = card.GetComponent<Field_Card>().powerToTake;
+        Debug.Log("carta field va a atacar a la fila " + x + "y a la fila " + indexRowEnemy + "quitara " + removeAttack + "de poder");
+        for (int i = 1; i < 5; i++)
         {
-            if (board[x, i] != null)
+            if (playerBoard.Board[x, i] != null)
             {
                 Debug.Log("...carta de los gatos en los field");
-                Debug.Log(board[x, i].GetComponent<Unit_Card>().Attack);
-                board[x, i].GetComponent<Unit_Card>().Attack =
-                    board[x, i].GetComponent<Unit_Card>().Attack
-                    - ((removeAttack * 100) / board[x, i].GetComponent<Unit_Card>().Attack);
+                List<long> powerByCardsBeforeEffect = new List<long>();
+                List<long> powerByCardsAfterEffet = new List<long>();
+                powerByCardsBeforeEffect.Add(playerBoard.Board[x, i].GetComponent<Unit_Card>().Attack);
+                playerBoard.Board[x, i].GetComponent<Unit_Card>().Attack =
+                    playerBoard.Board[x, i].GetComponent<Unit_Card>().Attack
+                    - removeAttack;
+                powerByCardsAfterEffet.Add(playerBoard.Board[x, i].GetComponent<Unit_Card>().Attack);
+                Debug.Log(" el poder de las cartas puestas en el campo antes de ser activado el efecto es " + string.Join(", ", powerByCardsBeforeEffect));
+                Debug.Log(" el poder de las cartas puestas en el campo despues de ser activado el efecto es " + string.Join(", ", powerByCardsAfterEffet));
+
+
             }
-            if (board[indexRowEnemy, i] != null)
+            if (enemyBoard.Board[indexRowEnemy, i] != null)
             {
-                Debug.Log("...carta de los perros en los field");
-                board[indexRowEnemy, i].GetComponent<Unit_Card>().Attack =
-                    board[indexRowEnemy, i].GetComponent<Unit_Card>().Attack
-                    - (removeAttack * 100)
-                        / board[indexRowEnemy, i].GetComponent<Unit_Card>().Attack;
-                Debug.Log(board[indexRowEnemy, i].GetComponent<Unit_Card>().Attack);
+                Debug.Log("...carta de los gatos en los field");
+                List<long> powerByCardsBeforeEffect = new List<long>();
+                List<long> powerByCardsAfterEffet = new List<long>();
+                powerByCardsBeforeEffect.Add(playerBoard.Board[x, i].GetComponent<Unit_Card>().Attack);
+                enemyBoard.Board[x, i].GetComponent<Unit_Card>().Attack =
+                    enemyBoard.Board[x, i].GetComponent<Unit_Card>().Attack
+                    - removeAttack;
+                powerByCardsAfterEffet.Add(enemyBoard.Board[x, i].GetComponent<Unit_Card>().Attack);
+                Debug.Log(" el poder de las cartas puestas en el campo antes de ser activado el efecto es " + string.Join(", ", powerByCardsBeforeEffect));
+                Debug.Log(" el poder de las cartas puestas en el campo despues de ser activado el efecto es " + string.Join(", ", powerByCardsAfterEffet));
+
+
             }
             else
             {
@@ -126,51 +105,45 @@ public class EffectsScript : MonoBehaviour
     }
 
     //metodo efecto de las cartas despeje de los gatos.
-    public void EffectsCounterFieldCats(GameObject cardcounterfield, GameObject[,] board)
+    public void EffectsCounterField(GameObject card)
     {
-        for (int i = 3; i < board.GetLength(0); i++)
+        Debug.Log("entro al efecto de las cartas counterfield");
+        for (int i = 0; i < 3; i++)
         {
-            Debug.Log(board[i, 0]);
-            Debug.Log(cardcounterfield);
-            if (board[i, 0] != null && board[i, 0].CompareTag("Field"))
+            if (playerBoard.Board[i, 0] != null && playerBoard.Board[i, 0].CompareTag("Field"))
             {
-                Debug.Log("carta sera mandada al cementerio");
-                cementery.GetComponent<Cementery>().RemoveCardCementery(board[i, 0]);
-                cementery.GetComponent<Cementery>().RemoveCardCementery(cardcounterfield);
-            }
-            cementery.GetComponent<Cementery>().RemoveCardCementery(cardcounterfield);
-        }
-    }
+                Debug.Log(" la carta field que va a ser eliminada es " + playerBoard.Board[i, 0]);
+                cementeryCats.GetComponent<CementeryCats>().RemoveCardCementery(playerBoard.Board[i, 0]);
+                cementeryCats.GetComponent<CementeryCats>().RemoveCardCementery(card);
 
-    //metodo efecto de las cartas despeje de los perros.
-    public void EffectsCounterFieldDogs(GameObject cardcounterfield, GameObject[,] board)
-    {
-        for (int i = 0; i <= 2; i++)
-        {
-            Debug.Log(board[i, 0]);
-            if (board[i, 0] != null && board[i, 0].CompareTag("Field"))
-            {
-                Debug.Log("carta mandada al cementerio");
-                cementery.GetComponent<Cementery>().RemoveCardCementery(board[i, 0]);
-                cementery.GetComponent<Cementery>().RemoveCardCementery(cardcounterfield);
             }
-            cementery.GetComponent<Cementery>().RemoveCardCementery(cardcounterfield);
+            if (enemyBoard.Board[i, 0] != null && enemyBoard.Board[i, 0].CompareTag("Field"))
+            {
+                Debug.Log(" la carta field que va a ser eliminada es " + playerBoard.Board[i, 0]);
+                cementeryDogs.GetComponent<CementeryCats>().RemoveCardCementery(playerBoard.Board[i, 0]);
+                cementeryCats.GetComponent<CementeryCats>().RemoveCardCementery(card);
+            }
+
+
         }
     }
 
     //metodo efecto de las cartas aumento
-    public void EffectsBuff(GameObject[,] board, GameObject cardBuff, int x)
+    public void EffectsBuff(GameObject card, int x)
     {
-        removeAttack = cardBuff.GetComponent<Buff_Card>().powerBuff;
+        Debug.Log("entro al efecto de las cartas buff");
+        removeAttack = card.GetComponent<Buff_Card>().powerBuff;
         Debug.Log("cantidad de poder a curar " + removeAttack);
-        for (int i = 1; i < board.GetLength(1); i++)
+        for (int i = 1; i < 5; i++)
         {
-            if (board[x, i] != cardBuff)
+            if (playerBoard.Board[x, i] != card)
             {
-                if (board[x, i] != null)
+                if (playerBoard.Board[x, i] != null)
                 {
-                    board[x, i].GetComponent<Unit_Card>().Attack =
-                        board[x, i].GetComponent<Unit_Card>().Attack + removeAttack;
+                    Debug.Log("ataque de " + playerBoard.Board[x, i] + " antes de sumarle powerBuff es " + playerBoard.Board[x, i].GetComponent<Unit_Card>().Attack);
+                    playerBoard.Board[x, i].GetComponent<Unit_Card>().Attack = playerBoard.Board[x, i].GetComponent<Unit_Card>().Attack + removeAttack;
+                    Debug.Log("ataque de " + playerBoard.Board[x, i] + " despues de sumarle powerBuff es " + playerBoard.Board[x, i].GetComponent<Unit_Card>().Attack);
+
                 }
             }
         }
