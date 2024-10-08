@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AST_Builder : MonoBehaviour
 {
-    public static Expression ParseExpression(string[] tokens, ref int index,bool calledFromWhile=false)
+    public static Expression ParseExpression(string[] tokens, ref int index, bool calledFromWhile = false, bool calledFromFind = false)
     {
         var expressions = new Stack<Expression>();
         var operators = new Stack<string>();
@@ -25,7 +25,7 @@ public class AST_Builder : MonoBehaviour
             }
             else if (token == "(")
             {
-                if(calledFromWhile)
+                if (calledFromWhile)
                 {
                     continue;
                 }
@@ -33,7 +33,7 @@ public class AST_Builder : MonoBehaviour
             }
             else if (token == ")")
             {
-                if (calledFromWhile)
+                if (index < tokens.Length && ((tokens[index] == ";" && calledFromFind) || (tokens[index] == "{" && calledFromWhile)))//(supuestamente arreglado)posible error ya que si no es el ultimo parentisis,se parte fula pq no se termina de analizar la expression
                 {
                     break;
                 }
@@ -93,8 +93,20 @@ public class AST_Builder : MonoBehaviour
                 string memberName = tokens[index];
                 index++; // Move to the next token after the member name
 
+                if (memberName == "Find")
+                {
+                    //predicate example: targets.Find((card) => card.Power > 100) returns the list filtered
+                    index++; // Skip second "("
+                    string variable = tokens[index];
+                    index++; // Skip variable
+                    index++; // skip ")"
+                    index++; //skip =>
+                    Expression condition = ParseExpression(tokens, ref index);
+                    Expression collection = expressions.Pop();
+                    expressions.Push(new Find(variable, collection, condition));
+                }
                 // Check if the next token is '(' indicating a method call
-                if (tokens[index] == "(")
+                else if (tokens[index] == "(")
                 {
                     index++; // Move past '('
                     Expression paramExpression = null;
@@ -313,7 +325,7 @@ public class AST_Builder : MonoBehaviour
     private static Expression ParseWhile(string[] tokens, ref int index)
     {
         index++; // Skip "while"
-        Expression condition = ParseExpression(tokens, ref index,true);
+        Expression condition = ParseExpression(tokens, ref index, true);
         index++; // Skip "{"
         Expression body = ParseStatements(tokens, ref index);
         return new While(condition, body);
@@ -333,7 +345,7 @@ public class AST_Builder : MonoBehaviour
         string variable = tokens[index];
         string op = tokens[index + 1];
         index += 2; // Skip variable and operator
-        Debug.Log("variable: " + variable + " op: " + op+"en ParseIncrementDecrement");
+        Debug.Log("variable: " + variable + " op: " + op + "en ParseIncrementDecrement");
         return new IncrementDecrement(variable, op);
     }
 

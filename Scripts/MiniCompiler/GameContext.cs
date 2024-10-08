@@ -7,7 +7,8 @@ using System;
 
 public class GameContext : MonoBehaviour
 {
-    public GameObject[,] board;
+    public MatrixBoard matrixPlayerBoard;
+    public MatrixBoard matrixEnemyBoard;
     public GameObject playerHand;
     public GameObject enemyHand;
     public GameObject playerDeck;
@@ -42,22 +43,25 @@ public class GameContext : MonoBehaviour
     }
 
     //devuelve una lista con todas las cartas puestas en el tablero    
-    private List<GameObject> Board()
+    public List<GameObject> Board()
     {
         List<GameObject> cardsInBoard = new List<GameObject>();
-        for (int i = 0; i < board.GetLength(0); i++)
+        for (int i = 0; i < 3; i++)
         {
-            for (int j = 0; j < board.GetLength(1); j++)
+            for (int j = 0; j < 5; j++)
             {
-                if (board[i, j] != null)
+                if (matrixPlayerBoard.Board[i, j] != null)
                 {
-                    cardsInBoard.Add(board[i, j]);
+                    cardsInBoard.Add(matrixPlayerBoard.Board[i, j]);
+                }
+                if (matrixEnemyBoard.Board[i, j] != null)
+                {
+                    cardsInBoard.Add(matrixEnemyBoard.Board[i, j]);
                 }
             }
         }
         return cardsInBoard;
     }
-
     //devuelve una lista con todas las cartas en la mano del player
     public List<GameObject> handOfPlayer(string team)
     {
@@ -97,15 +101,16 @@ public class GameContext : MonoBehaviour
     {
         List<GameObject> playerBoard = new List<GameObject>();
         List<GameObject> enemyBoard = new List<GameObject>();
+
         if (team == "Cats")
         {
-            for (int i = 3; i <= 5; i++)
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < board.GetLength(1); j++)
+                for (int j = 0; j < 5; j++)
                 {
-                    if (board[i, j] != null)
+                    if (matrixPlayerBoard.Board[i, j] != null)
                     {
-                        playerBoard.Add(board[i, j]);
+                        playerBoard.Add(matrixPlayerBoard.Board[i, j]);
                     }
                 }
             }
@@ -113,13 +118,13 @@ public class GameContext : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i <= 2; i++)
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < board.GetLength(1); j++)
+                for (int j = 0; j < 4; j++)
                 {
-                    if (board[i, j] != null)
+                    if (matrixEnemyBoard.Board[i, j] != null)
                     {
-                        enemyBoard.Add(board[i, j]);
+                        enemyBoard.Add(matrixEnemyBoard.Board[i, j]);
                     }
                 }
             }
@@ -132,13 +137,13 @@ public class GameContext : MonoBehaviour
         List<GameObject> enemyBoard = new List<GameObject>();
         if (team == "Cats")
         {
-            for (int i = 3; i <= 5; i++)
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < board.GetLength(1); j++)
+                for (int j = 0; j < 5; j++)
                 {
-                    if (board[i, j] != null)
+                    if (matrixPlayerBoard.Board[i, j] != null)
                     {
-                        playerBoard.Add(board[i, j]);
+                        playerBoard.Add(matrixPlayerBoard.Board[i, j]);
                     }
                 }
             }
@@ -146,13 +151,13 @@ public class GameContext : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i <= 2; i++)
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < board.GetLength(1); j++)
+                for (int j = 0; j < 4; j++)
                 {
-                    if (board[i, j] != null)
+                    if (matrixEnemyBoard.Board[i, j] != null)
                     {
-                        enemyBoard.Add(board[i, j]);
+                        enemyBoard.Add(matrixEnemyBoard.Board[i, j]);
                     }
                 }
             }

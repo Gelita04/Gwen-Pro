@@ -18,8 +18,8 @@ public class CardsUsers : MonoBehaviour
     public GameObject DeckDogs;
     public GameObject playerHand;
     public GameObject enemyHand;
-    public GameObject board;
-    public GameObject[,] tablero;
+    public MatrixBoard matrixPlayerBoard;
+    public MatrixBoard matrixEnemyBoard;
     public GameObject cementeryCats;
     public GameObject cementeryDogs;
     bool onActivation = false;
@@ -28,6 +28,7 @@ public class CardsUsers : MonoBehaviour
     public ListsOfCards list;
     public GameObject lista;
     // private GameObject NewCard;
+    private Dictionary<string, string> effectWithPredicate = new Dictionary<string, string>();
 
     void Start()
     {
@@ -39,6 +40,7 @@ public class CardsUsers : MonoBehaviour
         }
         List<string> listTokens = TokenizedTexts.Tokenizar(CodeCards.text);
         List<List<string>> tokens = TokenizedTexts.TokenizarCards(listTokens);
+        //effectWithPredicate = TokenizedTexts.GetEffectsWithPredicate(CodeCards.text);
         foreach (var tokenList in tokens)
         {
             Debug.Log(string.Join(", ", tokenList));
@@ -51,7 +53,7 @@ public class CardsUsers : MonoBehaviour
     public void CreateGameObjectsForCards(List<List<string>> tokens)
     {
 
-        Debug.Log("la cantidad de cartas que van a ser creadas es " + tokens.Count);
+        //Debug.Log("la cantidad de cartas que van a ser creadas es " + tokens.Count);
         foreach (var cardTokens in tokens)
         {
             Debug.Log("Creating card with tokens: " + string.Join(", ", cardTokens));
@@ -79,12 +81,12 @@ public class CardsUsers : MonoBehaviour
         List<string> effectNames = new List<string>();
         Dictionary<string, string> targets = new Dictionary<string, string>();
         Dictionary<string, List<Tuple<string, object>>> Params = new Dictionary<string, List<Tuple<string, object>>>();
-        Debug.Log("FRANCO///// la cantidad de tokens es " + tokens.Count);
+        Dictionary<string, Find> predicates = new Dictionary<string, Find>();
+        //Debug.Log("FRANCO///// la cantidad de tokens es " + tokens.Count);
 
         //actualizando las propiedades de la carta a crear
         for (int i = 0; i < tokens.Count; i++)
         {
-            Debug.Log("analizando token: " + tokens[i]);
             if (tokens[i] == "Name" && !onActivation)
             {
                 Debug.Log("entro al if de Name");
@@ -129,12 +131,14 @@ public class CardsUsers : MonoBehaviour
             }
             if (tokens[i] == "OnActivation")
             {
+                Debug.Log("entro al if del onactivation");
                 onActivation = true;
-                OnActivation(onActivation, NewCard, tokens, effectNames, targets, Params);
+                OnActivation(onActivation, NewCard, tokens, effectNames, targets, Params, predicates);
+
             }
             //no aumentar i en el ultimo if si no se saltara un token
         }
-        list.RellenarListaDeCartas(nameCard, effectNames, targets, Params);
+        list.RellenarListaDeCartas(nameCard, effectNames, targets, Params, predicates);
 
         Debug.Log("Valores finales - Name: " + nameCard + ", Type: " + type + ", Range: " + range + ", Power: " + power + ", Faction: " + faction);
         //utilizando las propiedades
@@ -255,20 +259,19 @@ public class CardsUsers : MonoBehaviour
         }
     }
 
-    public void OnActivation(bool onActivation, GameObject NewCard, List<string> tokens, List<string> nameEffects, Dictionary<string, string> targets, Dictionary<string, List<Tuple<string, object>>> Params)//------------------->ESTE metodo lo que debe hacer,es guardar en una lista la informacion de los efectos de esta carta,es decir, en dicha lista debe estar el orden por nombre de los efectos a ejecutar y otra lista con los "targets" de cada efecto,donde para el primer efecto le corresponda el primer target , el segundo efecto le corrasponda el segundo target y asi.ejemplo: effectosDELaCarta:[Damage,ReturnToDeck,...] targetsDeLosEfectos:[otherField,otherHand,...].EL objetivo de esto es usar ambas listas en EffectsUser script al llamar al metodo que activa el efecto de una carta, y ahi en ese metodo (el de la pila de cosas comentadas que tenia tupla de pila de cosas, context.Hand y toa esa pga) empezar a iterar por las listas activando uno por uno los efecto de dicha carta. Fijate q debe ser creada estas dos listas de las que hable pero por cada carta. Cada carta tendra sus propias dos listas.cuando digo dos listas me refiero a las que hable al principio,la de numbre de efectos y targets de efectos.DEspue vemos como meterselo a las cartas, por ahora logra conseguir dichas listas para una carta que es revisando cada token y sacando la info que te interesa y meterla en las listas..
+    public void OnActivation(bool onActivation, GameObject NewCard, List<string> tokens, List<string> nameEffects, Dictionary<string, string> targets, Dictionary<string, List<Tuple<string, object>>> Params, Dictionary<string, Find> predicates)//------------------->ESTE metodo lo que debe hacer,es guardar en una lista la informacion de los efectos de esta carta,es decir, en dicha lista debe estar el orden por nombre de los efectos a ejecutar y otra lista con los "targets" de cada efecto,donde para el primer efecto le corresponda el primer target , el segundo efecto le corrasponda el segundo target y asi.ejemplo: effectosDELaCarta:[Damage,ReturnToDeck,...] targetsDeLosEfectos:[otherField,otherHand,...].EL objetivo de esto es usar ambas listas en EffectsUser script al llamar al metodo que activa el efecto de una carta, y ahi en ese metodo (el de la pila de cosas comentadas que tenia tupla de pila de cosas, context.Hand y toa esa pga) empezar a iterar por las listas activando uno por uno los efecto de dicha carta. Fijate q debe ser creada estas dos listas de las que hable pero por cada carta. Cada carta tendra sus propias dos listas.cuando digo dos listas me refiero a las que hable al principio,la de numbre de efectos y targets de efectos.DEspue vemos como meterselo a las cartas, por ahora logra conseguir dichas listas para una carta que es revisando cada token y sacando la info que te interesa y meterla en las listas..
     {
         //Debug.Log("entro en el OnActivation");
         list = lista.GetComponent<ListsOfCards>();
         string nameEffect = "";
         for (int i = 0; i < tokens.Count; i++)
         {
-
             // Debug.Log("se esta analizando el token: " + tokens[i]);
-            if (tokens[i] == "PostActivation")
+            if (tokens[i] == "PostAction")
             {
+                Debug.Log("////////////////////////////entro a postaction/////////////////////////////");
                 onPostAction = true;
-                Debug.Log("va a llamar al PostAction");
-                PostActivation(tokens, nameEffects, targets, Params);
+                PostAction(tokens, i, nameEffects, targets, Params, predicates);
             }
             if (tokens[i] == "Effect" && onActivation && !onPostAction)
             {
@@ -309,7 +312,7 @@ public class CardsUsers : MonoBehaviour
                         // Debug.Log("va a empezar a guardar los parametros con " + tokens[i]);
                         object param = ParseParam(tokens[i + 1]);
                         listParams.Add(new Tuple<string, object>(tokens[i], param));
-                        //Debug.Log(" MAGELA\\\\\\\\los parametros son:" + tokens[i] + " " + param);
+                        Debug.Log(" MAGELA\\\\\\\\los parametros son:" + tokens[i] + " " + param);
                         i++;
                     }
 
@@ -320,14 +323,14 @@ public class CardsUsers : MonoBehaviour
             if (tokens[i] == "Selector" && !onPostAction)
             {
                 //Debug.Log("verifica que es selector y llama al metodo");
-                Selector(tokens, nameEffect, targets);
+                Selector(tokens, nameEffect, targets, predicates);
 
             }
 
         }
     }
 
-    public void Selector(List<string> tokens, string nameEffect, Dictionary<string, string> targets)
+    public void Selector(List<string> tokens, string nameEffect, Dictionary<string, string> targets, Dictionary<string, Find> predicates)
     {
         //Debug.Log("entra al metodo selector");
         string source = "";
@@ -411,15 +414,16 @@ public class CardsUsers : MonoBehaviour
                 if (source == "board")
                 {
                     sourceFather = source;
-                    for (int m = 3; m <= 5; m++)
+                    for (int m = 0; m < 3; m++)
                     {
                         for (int n = 0; n < 5; n++)
                         {
-                            tablero = board.GetComponent<MatrixBoard>().Board;
+                            //hacer que pinche pa loas matrices separadas
 
-                            if (tablero[m, n] != null)
+
+                            if (matrixPlayerBoard.Board[m, n] != null)
                             {
-                                boardplayer.Add(tablero[i, n]);
+                                boardplayer.Add(matrixPlayerBoard.Board[i, n]);
                                 Debug.Log(string.Join(", ", boardplayer));
                                 if (single == "false")
                                 {
@@ -438,13 +442,13 @@ public class CardsUsers : MonoBehaviour
                 if (source == "otherBoard")
                 {
                     sourceFather = source;
-                    for (int m = 0; m <= 2; m++)
+                    for (int m = 0; m < 3; m++)
                     {
-                        for (int n = 0; n < tablero.GetLength(1); n++)
+                        for (int n = 0; n < 5; n++)
                         {
-                            if (tablero[m, n] != null)
+                            if (matrixEnemyBoard.Board[m, n] != null)
                             {
-                                boardenemy.Add(tablero[i, n]);
+                                boardenemy.Add(matrixEnemyBoard.Board[i, n]);
                                 if (single == "false")
                                 {
                                     singleFather = single;
@@ -482,36 +486,76 @@ public class CardsUsers : MonoBehaviour
                 }
 
             }
+            if (tokens[i] == "Predicate")
+            {
+                Debug.Log("ENTRO A PREDICATEEEEEEEEEEEEE");
+                // if (effectWithPredicate.ContainsKey(nameEffect))
+                // {
+                //     int index=0;
+                //     Expression predicate = AST_Builder.ParseExpression(TokenizedTexts.TokenizarPredicate(effectWithPredicate[nameEffect]),ref index);
+                //     if (predicate as Find != null)
+                //     {
+                //         Find find = (Find)predicate;
+                //         predicates.Add(nameEffect, find);
+                //     }
+                // }
+                // else
+                // {
+                //     Debug.Log("Predicate: null");
+                //     throw new Exception("Predicate: null");
+                // }
+            }
         }
 
     }
-    public void PostActivation(List<string> tokens, List<string> nameEffects, Dictionary<string, string> targets, Dictionary<string, List<Tuple<string, object>>> Params)
+    public void PostAction(List<string> tokens, int x, List<string> nameEffects, Dictionary<string, string> targets, Dictionary<string, List<Tuple<string, object>>> Params, Dictionary<string, Find> predicates)
     {
         string nameEffectPostAction = " ";
-        for (int i = 0; i < tokens.Count; i++)
+        for (int i = x + 1; i < tokens.Count; i++)
         {
+
             if (tokens[i] == "Name")
             {
-                nameEffectPostAction = tokens[i];
+                nameEffectPostAction = tokens[i + 1];
                 nameEffects.Add(nameEffectPostAction);
+                Debug.Log("el nombre del effecto en el postaction es " + nameEffectPostAction);
+                if (i + 1 >= tokens.Count)
+                {
+                    break;
+                }
+                i++;
             }
 
             List<Tuple<string, object>> listParams = new List<Tuple<string, object>>();
-            if (tokens[i] != "Selector" && i + 1 >= tokens.Count)
+            for (; i < tokens.Count; i++)
             {
-                break;
-            }
-            else if (tokens[i] != "Name" && tokens[i] != nameEffectPostAction)
-            {
-                object param = ParseParam(tokens[i + 1]);
-                listParams.Add(new Tuple<string, object>(tokens[i], param));
-                // Debug.Log(" MAGELA\\\\\\\\los parametros son:" + string.Join(", ", param));
+                //Debug.Log("i=" + i);
+
+                if (tokens[i] == "Name" || tokens[i] == "Selector")
+                {
+                    i--;
+                    break;
+                }
+                else if (tokens[i] != " " && char.IsLetter(tokens[i][0]))
+                {
+                    if (i + 1 >= tokens.Count)
+                    {
+                        break;
+                    }
+                    object param = ParseParam(tokens[i + 1]);
+                    listParams.Add(new Tuple<string, object>(tokens[i], param));
+                    Debug.Log(" MAGELA\\\\\\\\los parametros  en postactivation son:" + tokens[i] + " " + param);
+                    i++;
+                }
+
             }
             Params.Add(nameEffectPostAction, listParams);
 
+
+
             if (tokens[i] == "Selector")
             {
-                Selector(tokens, nameEffectPostAction, targets);
+                Selector(tokens, nameEffectPostAction, targets, predicates);
             }
         }
     }

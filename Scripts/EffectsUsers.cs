@@ -14,7 +14,7 @@ public class EffectsUsers : MonoBehaviour
     public List<CodedEffect> listOfCodedEffects;
 
     public ListsOfCards list;
-
+    public MatrixBoard board;
     public GameObject hand;
     public GameObject otherHand;
     public GameObject deck;
@@ -80,6 +80,7 @@ public class EffectsUsers : MonoBehaviour
                         string effectName = listOfCodedEffects[k].name;
                         Dictionary<string, string> sourceList = list.listOfCards[i].Item3;
                         Dictionary<string, List<Tuple<string, object>>> paramList = list.listOfCards[i].Item4;
+                        Dictionary<string, Find> predicateList = list.listOfCards[i].Item5;
 
                         if (effectName == effectsList[j])
                         {
@@ -160,7 +161,9 @@ public class EffectsUsers : MonoBehaviour
                                 enviromentVariables.AddRange(paramList[effectName]);
                             }
                             //execute the effect
-                            listOfCodedEffects[k].Execute(enviromentVariables);
+
+                            listOfCodedEffects[k].Execute(enviromentVariables, predicateList.ContainsKey(effectName) ? predicateList[effectName] : null);
+
                         }
 
                     }

@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class CementeryCats : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject cementery;
+    public List<GameObject> graveyard;
+    public void RemoveCardCementery(GameObject card)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (card != null)
+        {
+            graveyard.Add(card);
+            card.transform.SetParent(cementery.transform, false);
+            card.transform.position = cementery.transform.position;
+            // card.SetActive(false);
+            /////Asegurarse que cuando 
+        }
     }
 }

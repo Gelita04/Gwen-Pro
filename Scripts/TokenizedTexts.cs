@@ -276,4 +276,16 @@ public class TokenizedTexts : MonoBehaviour
 
         return tokensList;
     }
+    public Dictionary<string, string> GetEffectsWithPredicate(string text)
+    {
+        Dictionary<string, string> effectsDictionary = new Dictionary<string, string>();
+        throw new NotImplementedException();
+
+    }
+    public string[] TokenizarPredicate(string text)
+    {
+        throw new NotImplementedException();
+    }
+
 }
+

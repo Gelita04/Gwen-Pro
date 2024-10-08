@@ -831,6 +831,40 @@ public class ForIn : Expression
     }
 }
 
+//predicate example: targets.Find((card) => card.Power > 100) returns the list filtered
+public class Find : Expression
+{
+    public string variable;
+    private Expression collection;
+    public Expression condition;
+
+    public Find(string variable, Expression collection, Expression condition)
+    {
+        this.variable = variable;
+        this.collection = collection;
+        this.condition = condition;
+    }
+
+    public override object Evaluate(VariableEnvironment env)
+    {
+        var evaluatedCollection = collection.Evaluate(env) as IEnumerable<object>;
+        if (evaluatedCollection == null)
+        {
+            return null;
+        }
+        List<object> filtered = new List<object>();
+        foreach (var item in evaluatedCollection)
+        {
+            env.SetVariable(variable, item);
+            if ((bool)condition.Evaluate(env))
+            {
+                filtered.Add(item);
+            }
+        }
+        return filtered;
+    }
+}
+
 // Indexing
 public class Index : Expression
 {

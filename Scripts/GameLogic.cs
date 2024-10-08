@@ -20,10 +20,13 @@ public class GameLogic : MonoBehaviour
     private int roundCounter = 0;
     public bool playerWon = false;
     public bool enemyWon = false;
-    public GameObject matrix;
-    public GameObject[,] matrixBoard;
+    public MatrixBoard matrixPlayeroard;
+    public MatrixBoard matrixEnemyBoard;
+    public GameObject playerBoard;
+    public GameObject enemyBoard;
     public GameObject effects;
-    public GameObject cementery;
+    public GameObject cementeryDogs;
+    public GameObject cementeryCats;
     public GameObject playerHand;
     public GameObject enemyHand;
     public GameObject playerDeck;
@@ -76,9 +79,8 @@ public class GameLogic : MonoBehaviour
     }
 
     //metodo que para activar los efectos de todas las cartas puestas en el tablero
-    public void ActivateEffects(GameObject[,] board, GameObject card, int x, List<GameObject> hand = null, List<GameObject> otherHand = null, List<GameObject> deck = null, List<GameObject> otherDeck = null)
+    public void ActivateEffects(GameObject card, int x, List<GameObject> hand = null, List<GameObject> otherHand = null, List<GameObject> deck = null, List<GameObject> otherDeck = null)
     {
-        //---------------------------------------> agregar hand, otherHand,deck y otherDeck como parametros
         EffectsScript Effects = effects.GetComponent<EffectsScript>();
         Unit_Card effectsUnitCards = effects.GetComponent<Unit_Card>();
         EffectsUsers effectsUsers = effects.GetComponent<EffectsUsers>();
@@ -179,9 +181,9 @@ public class GameLogic : MonoBehaviour
                 }
             }
         }
-        UpdateUnityHierarchyOfCards(board, playerHand, enemyHand, playerDeck, enemyDeck, cementery);
+        UpdateUnityHierarchyOfCards(matrixPlayeroard.Board, matrixEnemyBoard.Board, playerHand, enemyHand, playerDeck, enemyDeck, cementeryDogs, cementeryCats);
     }
-    private void UpdateUnityHierarchyOfCards(GameObject[,] board, GameObject playerHand, GameObject enemyHand, GameObject playerDeck, GameObject enemyDeck, GameObject cementeryDogs)
+    private void UpdateUnityHierarchyOfCards(GameObject[,] playerBoard, GameObject[,] enemyBoard, GameObject playerHand, GameObject enemyHand, GameObject playerDeck, GameObject enemyDeck, GameObject cementeryDogs, GameObject cementeryCats)
     {
         foreach (var item in playerHand.GetComponent<HandScript>().cards)
         {
@@ -203,6 +205,10 @@ public class GameLogic : MonoBehaviour
         {
             item.transform.SetParent(cementeryDogs.transform, false);
         }
+        foreach (var item in cementeryCats.GetComponent<CementeryCats>().graveyard)
+        {
+            item.transform.SetParent(cementeryCats.transform, false);
+        }
         // foreach (var item in board)
         // {
         //     if (item != null)
@@ -213,34 +219,47 @@ public class GameLogic : MonoBehaviour
     }
 
     //devuelve el result que es quien gano esa ronda, 1:playerWin -1:enemyWin 0:draw
-    public long GetBattleResult(GameObject[,] board)
+    public long GetBattleResult()
     {
+        GameObject[,] playerBoard = this.playerBoard.GetComponent<MatrixBoard>().Board;
+        GameObject[,] enemyBoard = this.enemyBoard.GetComponent<MatrixBoard>().Board;
         long playerTotalAttack = 0;
         long enemyTotalAttack = 0;
         long result;
-        for (int i = 0; i < board.GetLength(0); i++)
+        for (int i = 0; i < 3; i++)
         {
-            for (int j = 0; j < board.GetLength(1); j++)
+            for (int j = 0; j < 5; j++)
             {
-                if (board[i, j] != null)
+                if (playerBoard[i, j] != null)
                 {
-                    //Debug.Log(board[i, j]);
-                    ActivateEffects(board, board[i, j], i);
-                    if (board[i, j].CompareTag("Unit-Cards"))
+                    ActivateEffects(playerBoard[i, j], i);
+
+                    if (playerBoard[i, j].CompareTag("Unit-Cards"))
                     {
-                        if (board[i, j].GetComponent<Unit_Card>().Attack <= 0) //elimina las cartas que tienen 0 de poder en el campo y las manda para el cementerio
+                        if (playerBoard[i, j].GetComponent<Unit_Card>().Attack <= 0) //elimina las cartas que tienen 0 de poder en el campo y las manda para el cementerio
                         {
-                            cementery.GetComponent<Cementery>().RemoveCardCementery(board[i, j]);
-                        }
-                        else if (i < 2)
-                        {
-                            enemyTotalAttack += board[i, j].GetComponent<Unit_Card>().Attack;
-                            //Debug.Log("el ataque total de los perros es " + enemyTotalAttack);
+                            cementeryCats.GetComponent<CementeryCats>().RemoveCardCementery(playerBoard[i, j]);
+
                         }
                         else
                         {
-                            playerTotalAttack += board[i, j].GetComponent<Unit_Card>().Attack;
-                            //Debug.Log("el ataque total de los gatos es " + playerTotalAttack);
+                            playerTotalAttack += playerBoard[i, j].GetComponent<Unit_Card>().Attack;
+                        }
+                    }
+                }
+                if (enemyBoard[i, j] != null)
+                {
+                    ActivateEffects(enemyBoard[i, j], i);
+
+                    if (enemyBoard[i, j].CompareTag("Unit-Cards"))
+                    {
+                        if (enemyBoard[i, j].GetComponent<Unit_Card>().Attack <= 0) //elimina las cartas que tienen 0 de poder en el campo y las manda para el cementerio
+                        {
+                            cementeryCats.GetComponent<CementeryCats>().RemoveCardCementery(enemyBoard[i, j]);
+                        }
+                        else
+                        {
+                            enemyTotalAttack += enemyBoard[i, j].GetComponent<Unit_Card>().Attack;
                         }
                     }
                 }
@@ -249,12 +268,11 @@ public class GameLogic : MonoBehaviour
         if (playerTotalAttack > enemyTotalAttack)
         {
             result = 1;
-            //Debug.Log(" El ataque total de los gatos es " + playerTotalAttack);
+
         }
         else if (playerTotalAttack < enemyTotalAttack)
         {
             result = -1;
-            Debug.Log("El ataque total de los perros es " + enemyTotalAttack);
         }
         else
         {
@@ -284,16 +302,27 @@ public class GameLogic : MonoBehaviour
     }
 
     //metodo que cambia de ronda, elimina las cartas del campo y las manda para el cementerio
-    public void ChangeRound(GameObject[,] board)
+    public void ChangeRound()
     {
-        for (int i = 0; i < board.GetLength(0); i++)
+        Debug.Log("entra a cambiar la ronda");
+        GameObject[,] playerBoard = this.playerBoard.GetComponent<MatrixBoard>().Board;
+        GameObject[,] enemyBoard = this.enemyBoard.GetComponent<MatrixBoard>().Board;
+        for (int i = 0; i < 3; i++)
         {
-            for (int j = 0; j < board.GetLength(1); j++)
+            for (int j = 0; j < 5; j++)
             {
-                if (board[i, j] != null)
+
+                if (playerBoard[i, j] != null)
                 {
-                    cementery.GetComponent<Cementery>().RemoveCardCementery(board[i, j]);
+                    Debug.Log("Va a mandar las cartas para el cementerio de los gatos");
+                    cementeryCats.GetComponent<CementeryCats>().RemoveCardCementery(playerBoard[i, j]);
                 }
+                if (enemyBoard[i, j] != null)
+                {
+                    Debug.Log("va a mandar las cartas para el cementerio de los perros ");
+                    cementeryDogs.GetComponent<Cementery>().RemoveCardCementery(enemyBoard[i, j]);
+                }
+
             }
         }
     }
@@ -301,12 +330,14 @@ public class GameLogic : MonoBehaviour
     //metodo que verifica si se puede cambiar de ronda y de quien es el turno
     public void CheckReadyForBattle()
     {
+        GameObject[,] playerBoard = this.playerBoard.GetComponent<MatrixBoard>().Board;
+        GameObject[,] enemyBoard = this.enemyBoard.GetComponent<MatrixBoard>().Board;
         long result = 0;
         int countDraw = 0;
         if (playerPassTurnBeingReadyForBattle && enemyPassTurnBeingReadyForBattle)
         {
-            matrixBoard = matrix.GetComponent<MatrixBoard>().Board;
-            result = GetBattleResult(matrixBoard);
+
+            result = GetBattleResult();
             //Debug.Log("roundcounter antes de sumarle 1-  " + roundCounter);
             roundCounter++;
             //Debug.Log("roundcounter despues de sumarle 1-  " + roundCounter);
@@ -315,31 +346,30 @@ public class GameLogic : MonoBehaviour
                 Debug.Log("Carta lider de los perros activada");
                 enemyScore++;
                 cardLeaderEnemy.GetComponent<TextLeaderDogs>().ActivateTextsLeaderDogs();
-                ChangeRound(matrixBoard);
+                ChangeRound();
             }
             if (countDraw == 1)
             {
                 Debug.Log("Carta lider de los gatos activada");
                 playerScore++;
                 cardLeaderPlayer.GetComponent<TextLeaderCats>().ActivateTextsLeaderCats();
-                ChangeRound(matrixBoard);
+                ChangeRound();
+
             }
             if (result == 1)
             {
                 playerScore++;
                 catsWinRound.GetComponent<TextPlayerWin>().ActivateWinRound();
-                ChangeRound(matrixBoard);
+                ChangeRound();
+
             }
             else if (result == -1)
             {
                 enemyScore++;
                 Debug.Log("Perros ganan esta ronda");
                 dogsWinRound.GetComponent<TextEnemyWin>().ActivateWinRound();
-                ChangeRound(matrixBoard);
-            }
-            else
-            {
-                countDraw++;
+                ChangeRound();
+
             }
             UpdateDataText();
             playerPassTurnBeingReadyForBattle = false;
@@ -383,6 +413,20 @@ public class GameLogic : MonoBehaviour
                 ResetScene();
             }
         }
+    }
+    //printea con debug.log el contenido de la matriz
+    void PrintGameObjectArray(GameObject[,] array)
+    {
+        string arrayContent = "Array Content:\n";
+        for (int i = 0; i < array.GetLength(0); i++)
+        {
+            for (int j = 0; j < array.GetLength(1); j++)
+            {
+                arrayContent += $"[{i},{j}] = {array[i, j]?.name ?? "null"}\t";
+            }
+            arrayContent += "\n";
+        }
+        Debug.Log(arrayContent);
     }
 
     void Update()
